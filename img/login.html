@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SummitRacing.com.br</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #29292c 0%, #29292c 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-card {
+            background: white;
+            width: 100%;
+            max-width: 430px;
+            padding: 45px 40px;
+            border-radius: 25px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            text-align: center;
+            color: #1743d1;
+            font-size: 32px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .social-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .social-btn {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            padding: 12px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            transition: 0.2s;
+        }
+
+        .social-btn:hover {
+            background: #111;
+        }
+
+        .social-btn img {
+            width: 22px;
+            height: 22px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .divider span {
+            color: #666;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .divider hr {
+            flex: 1;
+            border: none;
+            height: 1px;
+            background: #ddd;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+
+        input:focus {
+            border-color: #1743d1;
+            box-shadow: 0 0 0 3px rgba(27, 23, 233, 0.35);
+            outline: none;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #1743d1 0%, #5557f5 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(27, 23, 233, 0.35);
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .links a {
+            color: #1743d1;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-voltar {
+            display: block;
+            margin: 25px auto 0 auto;
+            background: transparent;
+            border: 2px solid #1743d1;
+            padding: 10px 25px;
+            color: #1743d1;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .btn-voltar:hover {
+            background: #1743d1;
+            color: white;
+        }
+
+        .notif {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            background: linear-gradient(135deg, #1743d1, #5557f5);
+            padding: 15px 22px;
+            border-radius: 15px;
+            color: white;
+            font-weight: 600;
+            font-size: 15px;
+            box-shadow: 0 10px 25px rgba(27, 23, 233, 0.35);
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.4s ease;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        .notif.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-card">
+        <h2>Entrar</h2>
+
+        <!-- LOGIN SOCIAL -->
+        <div class="social-buttons">
+            <button class="social-btn" onclick="loginSocial('Google')">
+                <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google">
+                Entrar com Google
+            </button>
+
+            <button class="social-btn" onclick="loginSocial('Apple')">
+                <ion-icon name="logo-apple"></ion-icon>
+                Entrar com Apple
+            </button>
+        </div>
+
+        <div class="divider">
+            <hr>
+            <span>ou</span>
+            <hr>
+        </div>
+
+        <!-- FORM -->
+        <form onsubmit="fazerLogin(event)">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="seu@email.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" placeholder="sua senha" required>
+            </div>
+
+            <button type="submit" class="btn-login">Entrar</button>
+
+            <div class="links">
+                <a href="#">Esqueci minha senha</a>
+            </div>
+        </form>
+
+        <button class="btn-voltar" onclick="window.location.href='index.html'">← Voltar</button>
+    </div>
+
+    <!-- NOTIFICAÇÃO DE LOGIN -->
+    <div id="notif" class="notif">
+        <span id="notif-text"></span>
+    </div>
+
+    <!-- ICONES -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- SCRIPT -->
+    <script>
+        function mostrarNotif(msg) {
+            const n = document.getElementById("notif");
+            const text = document.getElementById("notif-text");
+
+            text.textContent = msg;
+            n.classList.add("show");
+
+            setTimeout(() => {
+                n.classList.remove("show");
+            }, 3000);
+        }
+
+        function fazerLogin(event) {
+            event.preventDefault();
+
+            const email = document.getElementById("email").value.trim();
+            const senha = document.getElementById("senha").value.trim();
+
+            if (email === "admin@teste.com" && senha === "1234") {
+                mostrarNotif("Login realizado com sucesso! Redirecionando...");
+                setTimeout(() => {
+                    window.location.href = "perfil.html";
+                }, 2000);
+            } else {
+                mostrarNotif("Email ou senha incorretos.");
+            }
+        }
+
+        function loginSocial(tipo) {
+            mostrarNotif(`Entrando com ${tipo}...`);
+            setTimeout(() => {
+                window.location.href = "perfil.html";
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>

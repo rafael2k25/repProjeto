@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão Summit Racing - Benefícios</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+
+        body{
+            font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+            background:linear-gradient(135deg,#1743d1 0%,#5557f5 100%);
+            min-height:100vh;
+            padding:20px;
+        }
+
+        .container{
+            max-width:1200px;
+            margin:0 auto;
+        }
+
+        .header{
+            background:white;
+            padding:20px 40px;
+            border-radius:15px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            box-shadow:0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom:30px;
+        }
+
+        .header h1{
+            font-size:28px;
+            color:#1743d1;
+        }
+
+        .btn-voltar{
+            background:transparent;
+            border:2px solid #1743d1;
+            color:#1743d1;
+            padding:10px 25px;
+            border-radius:8px;
+            cursor:pointer;
+            font-weight:bold;
+            transition:.3s;
+        }
+
+        .btn-voltar:hover{
+            background:#1743d1;
+            color:white;
+        }
+
+        .cartao-section{
+            background:white;
+            border-radius:15px;
+            padding:40px;
+            box-shadow:0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .cartao-titulo{
+            font-size:32px;
+            color:#333;
+            font-weight:700;
+            margin-bottom:20px;
+            border-bottom:3px solid #1743d1;
+            padding-bottom:12px;
+        }
+
+        .cartao-display{
+            background:linear-gradient(135deg,#1743d1 0%,#5557f5 100%);
+            border-radius:15px;
+            color:white;
+            padding:35px;
+            margin-bottom:30px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        .cartao-info h2{
+            font-size:24px;
+            margin-bottom:10px;
+        }
+
+        .cartao-info p{
+            font-size:15px;
+            opacity:.9;
+        }
+
+        .cartao-img{
+            background:white;
+            width:240px;
+            height:150px;
+            border-radius:12px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:18px;
+            color:#333;
+            font-weight:600;
+        }
+
+        .beneficios{
+            margin-top:20px;
+        }
+
+        .beneficios h3{
+            font-size:22px;
+            font-weight:700;
+            color:#1743d1;
+            margin-bottom:15px;
+        }
+
+        .beneficios ul{
+            list-style:none;
+        }
+
+        .beneficios li{
+            background:#f9f9f9;
+            padding:15px;
+            border-radius:10px;
+            margin-bottom:12px;
+            display:flex;
+            align-items:center;
+            gap:10px;
+            font-size:16px;
+            color:#333;
+            box-shadow:0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .beneficios ion-icon{
+            color:#1743d1;
+            font-size:22px;
+        }
+
+        .btn-solicitar{
+            width:100%;
+            padding:18px;
+            margin-top:25px;
+            border:none;
+            background:linear-gradient(135deg,#1743d1,#5557f5);
+            border-radius:12px;
+            color:white;
+            font-size:18px;
+            font-weight:bold;
+            cursor:pointer;
+            transition:.3s;
+        }
+
+        .btn-solicitar:hover{
+            transform:translateY(-2px);
+            box-shadow:0 10px 25px rgba(102,126,234,0.4);
+        }
+
+        @media(max-width:768px){
+            .cartao-display{
+                flex-direction:column;
+                gap:20px;
+                text-align:center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>Cartão Summit Racing</h1>
+        <button class="btn-voltar" onclick="window.history.back()">← Voltar</button>
+    </div>
+
+    <div class="cartao-section">
+
+        <div class="cartao-display">
+            <div class="cartao-info">
+                <h2>O cartão oficial dos fãs de performance</h2>
+                <p>Mais vantagens, mais limite, mais liberdade para turbinar seus projetos.</p>
+            </div>
+
+            <div class="cartao-img">
+                CARTÃO SUMMIT
+            </div>
+        </div>
+
+        <div class="beneficios">
+            <h3>Benefícios Exclusivos</h3>
+
+            <ul>
+                <li>
+                    <ion-icon name="rocket-outline"></ion-icon>
+                    Cashback de até 5% em compras no site
+                </li>
+
+                <li>
+                    <ion-icon name="car-sport-outline"></ion-icon>
+                    Parcelamento especial em até 24x sem juros
+                </li>
+
+                <li>
+                    <ion-icon name="shield-checkmark-outline"></ion-icon>
+                    Proteção antifraude e compra segura
+                </li>
+
+                <li>
+                    <ion-icon name="gift-outline"></ion-icon>
+                    Ofertas antecipadas e cupons exclusivos
+                </li>
+
+                <li>
+                    <ion-icon name="flash-outline"></ion-icon>
+                    Aprovação rápida em menos de 2 minutos
+                </li>
+            </ul>
+        </div>
+
+        <button class="btn-solicitar">Solicitar Cartão Agora</button>
+
+    </div>
+
+</div>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfil - SummitRacing.com.br</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1d1d1f 0%, #29292c 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.profile-card {
+    background: white;
+    width: 100%;
+    max-width: 500px;
+    padding: 45px 40px;
+    border-radius: 25px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+    text-align: center;
+    color: #1b3785;
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+.profile-photo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.profile-photo img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 4px solid #1b3785;
+    object-fit: cover;
+}
+
+.camera-icon {
+    position: absolute;
+    bottom: 0;
+    right: calc(50% - 55px);
+    background: #1b3785;
+    border-radius: 50%;
+    padding: 8px;
+    cursor: pointer;
+    border: 3px solid white;
+}
+
+.camera-icon ion-icon {
+    color: white;
+    font-size: 20px;
+}
+
+#inputFoto { display: none; }
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+label {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 6px;
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+input:focus {
+    border-color: #1b3785;
+    outline: none;
+}
+
+.btn-salvar {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #1b3785, #5557f5);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-sair {
+    display: block;
+    margin: 25px auto 0;
+    background: transparent;
+    border: 2px solid #1b3785;
+    padding: 10px 25px;
+    color: #1b3785;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.notif {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    background: linear-gradient(135deg, #1b3785, #5557f5);
+    padding: 15px 22px;
+    border-radius: 15px;
+    color: white;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: 0.4s;
+}
+
+.notif.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<div class="profile-card">
+<h2>Meu Perfil</h2>
+
+<div class="profile-photo">
+<img id="fotoPerfil" src="perfil1.jpg">
+<div class="camera-icon" onclick="inputFoto.click()">
+<ion-icon name="camera-outline"></ion-icon>
+</div>
+<input type="file" id="inputFoto" accept="image/*">
+</div>
+
+<form id="formPerfil">
+<div class="form-group">
+<label>Nome Completo</label>
+<input id="nome" required>
+</div>
+
+<div class="form-group">
+<label>Email</label>
+<input id="email" type="email" required>
+</div>
+
+<div class="form-group">
+<label>Telefone</label>
+<input id="telefone" placeholder="(11) 99999-9999">
+</div>
+
+<div class="form-group">
+<label>Cargo</label>
+<input id="cargo" placeholder="Ex: Analista de Sistemas">
+</div>
+
+<div class="form-group">
+<label>Departamento</label>
+<input id="departamento" placeholder="Ex: TI">
+</div>
+
+<button class="btn-salvar">Salvar Alterações</button>
+</form>
+
+<button class="btn-sair" onclick="sair()">← Voltar</button>
+</div>
+
+<div class="notif" id="notif"><span id="notifText"></span></div>
+
+<script>
+const campos = ["nome", "email", "telefone", "cargo", "departamento"];
+
+function mostrarNotif(msg) {
+    const n = document.getElementById("notif");
+    document.getElementById("notifText").textContent = msg;
+    n.classList.add("show");
+    setTimeout(() => n.classList.remove("show"), 3000);
+}
+
+/* ====== CARREGAR DADOS (FRONTEND) ====== */
+function carregarPerfil() {
+    campos.forEach(id => {
+        const valor = localStorage.getItem(id);
+        if (valor) document.getElementById(id).value = valor;
+    });
+
+    const foto = localStorage.getItem("fotoPerfil");
+    if (foto) document.getElementById("fotoPerfil").src = foto;
+
+    // 🔌 GANCHO BACKEND FUTURO
+    // fetch("/api/perfil").then(...)
+}
+
+/* ====== SALVAR DADOS ====== */
+document.getElementById("formPerfil").addEventListener("submit", e => {
+    e.preventDefault();
+
+    campos.forEach(id => {
+        localStorage.setItem(id, document.getElementById(id).value);
+    });
+
+    mostrarNotif("Perfil salvo com sucesso!");
+
+    // 🔌 GANCHO BACKEND FUTURO
+    // fetch("/api/perfil", { method: "POST", body: JSON.stringify(...) })
+});
+
+/* ====== FOTO ====== */
+inputFoto.addEventListener("change", e => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+        fotoPerfil.src = reader.result;
+        localStorage.setItem("fotoPerfil", reader.result);
+        mostrarNotif("Foto atualizada!");
+    };
+    reader.readAsDataURL(file);
+});
+
+function sair() {
+    window.location.href = "index.html";
+}
+
+carregarPerfil();
+</script>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600&display=swap');
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* VARIÁVEIS */
+:root {
+    --cor-padrao: #1b3785;
+    --cor-padrao-hover: #1b3785;
+
+    --bg-principal: #ffffff;
+    --bg-secundario: #f4f5f7;
+    --bg-hover: #cecece;
+
+    --cor-fonte: #111111;
+    --cor-fonte-suave: #555555;
+
+    --borda-padrao: #e1e4e8;
+}
+
+/* BODY */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-principal);
+    color: var(--cor-fonte);
+}
+
+/* LAYOUT */
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* SERVER RAIL */
+.server-rail {
+    width: 70px;
+    background: var(--bg-secundario);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15px;
+    border-right: 1px solid var(--borda-padrao);
+}
+
+.server-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--bg-principal);
+    border-radius: 50%;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cor-padrao);
+    cursor: pointer;
+    border: 1px solid var(--borda-padrao);
+    transition: background 0.2s ease;
+}
+
+.server-icon:hover {
+    background: var(--bg-hover);
+}
+
+.server-icon img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+/* SIDEBAR */
+.sidebar-channels {
+    width: 300px;
+    background: var(--bg-principal);
+    color: var(--cor-fonte);
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--borda-padrao);
+}
+
+.server-header {
+    padding: 15px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--borda-padrao);
+}
+
+.channels-list {
+    flex: 1;
+    padding: 10px;
+}
+
+/* CHANNEL ITEM (DIV e A) */
+.channel-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 6px;
+
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.08s ease;
+}
+
+/* HOVER */
+.channel-item:hover {
+    background-color: var(--bg-hover);
+}
+
+/* ITEM ATIVO */
+.channel-item.active,
+.channel-item[aria-current="page"] {
+    background-color: var(--cor-padrao);
+    color: white;
+}
+
+/* CLIQUE */
+.channel-item:active {
+    transform: scale(0.97);
+}
+
+/* PAINEL DO USUÁRIO */
+.user-panel {
+    padding: 10px;
+    background: var(--bg-secundario);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--borda-padrao);
+}
+
+.foto-perfil {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* CHAT */
+.chat-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-principal);
+    color: var(--cor-fonte);
+}
+
+.chat-header {
+    padding: 15px;
+    border-bottom: 1px solid var(--borda-padrao);
+    font-weight: 600;
+}
+
+.messages-container {
+    padding: 20px;
+    flex: 1;
+    overflow-y: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.messages-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-image: url('logopreta.png');
+    background-position: center;
+    background-size: cover; /* MANDA A IMAGEM COBRIR TODO O ESPAÇO DISPONÍVEL */
+    background-repeat: no-repeat;
+
+/* EFEITOS */
+    opacity: 0.1;
+    filter: invert(1);
+    z-index: -1;
+}
+/* MENSAGENS */
+.message-wrapper {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+.msg-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+.msg-header {
+        display: flex;
+        gap: 10px;
+        font-size: 14px;
+        color: var(--cor-fonte-suave);
+    }
+
+/* BADGE */
+.badge {
+    background: var(--cor-padrao);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-size: 12px;
+    }
+
+/* CONTEÚDO DOS CANAIS */
+.channel-content {
+    display: none;
+    animation: fadeIn 0.25s ease-in;
+    }
+
+.channel-content.active {
+    display: block;
+    }
+
+/* ANIMAÇÃO */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        }
+    }
+
+/* =========================================
+   RESPONSIVIDADE NO MOBILE
+========================================= */
+@media (max-width: 768px) {
+
+/* MUDAR O LAYOUT GERAL PARA VERTICAL */
+    .app-container {
+        flex-direction: column;
+
+/* TUDO FICA UM EM BAIXO DO OUTRO */
+        height: 100vh;
+        overflow: hidden; /* EVITA ROLAGEM DUPLA */
+        }
+
+/* TRANSFORMAR A BARRA LATERAL DE CANAIS EM BARRA HORIZONTAL */
+    .server-rail {
+        width: 100%; /* OCUPA LARGURA TOTAL */
+        height: 70px; /* ALTURA FIXA NO TOPO */
+        flex-direction: row; /* ÍCONES LADO A LADO */
+        padding: 10px;
+        border-right: none;
+        border-bottom: 1px solid var(--borda-padrao);
+        overflow-x: auto; /* PERMITE ROLAR PARA O LADO SE TIVER MUITOS CARACTERES */
+        align-items: center; /* CENTRALIZA NA VERTICAL */
+        }
+
+/* AJUSTE DOS ÍCONES NA HORIZONTAL */
+    .server-icon {
+        margin-bottom: 0; /* REMOVE MARGEM DE BAIXO */
+        margin-right: 15px; /* ADICIONA MARGEM A DIREITA */
+        flex-shrink: 0; /* IMPEDE QUE O ÍCONE SEJA ESMAGADO */
+        }
+
+/* AJUSTAR LISTA DE CANAIS */
+    .sidebar-channels {
+        width: 100%; /* LARGURA TOTAL */
+        height: auto;
+        max-height: 200px; /* LIMITA A ALTURA */
+        border-right: none;
+        border-bottom: 1px solid var(--borda-padrao);
+        overflow-y: auto; /* SCROLL INTERNO */
+        flex: none; /* NÃO ESTICA INFINITAMENTE */
+        }
+
+/* GANHAR ESPAÇO NO MOBILE */
+    .server-header {
+        padding: 10px;
+        font-size: 14px;
+        }
+
+/* ÁREA DO CHAT OCUPA O QUE SOBRAR */
+    .chat-area {
+        width: 100%;
+        flex: 1; /* OCUPA TODO O ESPAÇO VERTICAL RESTANTE */
+
+
+        }
+    }
