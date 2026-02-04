@@ -225,17 +225,17 @@ body {
     }
 
 /* ANIMAÇÃO */
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(4px);
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
     }
 
     to {
         opacity: 1;
         transform: translateY(0);
-        }
     }
+}
 
 /* =========================================
    RESPONSIVIDADE NO MOBILE
@@ -243,55 +243,252 @@ body {
 @media (max-width: 768px) {
 
 /* MUDAR O LAYOUT GERAL PARA VERTICAL */
-    .app-container {
-        flex-direction: column;
+.app-container {
+    flex-direction: column;
 
 /* TUDO FICA UM EM BAIXO DO OUTRO */
-        height: 100vh;
-        overflow: hidden; /* EVITA ROLAGEM DUPLA */
-        }
+    height: 100vh;
+    overflow: hidden; /* EVITA ROLAGEM DUPLA */
+    }
 
 /* TRANSFORMAR A BARRA LATERAL DE CANAIS EM BARRA HORIZONTAL */
-    .server-rail {
-        width: 100%; /* OCUPA LARGURA TOTAL */
-        height: 70px; /* ALTURA FIXA NO TOPO */
-        flex-direction: row; /* ÍCONES LADO A LADO */
-        padding: 10px;
-        border-right: none;
-        border-bottom: 1px solid var(--borda-padrao);
-        overflow-x: auto; /* PERMITE ROLAR PARA O LADO SE TIVER MUITOS CARACTERES */
-        align-items: center; /* CENTRALIZA NA VERTICAL */
-        }
+.server-rail {
+    width: 100%; /* OCUPA LARGURA TOTAL */
+    height: 70px; /* ALTURA FIXA NO TOPO */
+    flex-direction: row; /* ÍCONES LADO A LADO */
+    padding: 10px;
+    border-right: none;
+    border-bottom: 1px solid var(--borda-padrao);
+    overflow-x: auto; /* PERMITE ROLAR PARA O LADO SE TIVER MUITOS CARACTERES */
+    align-items: center; /* CENTRALIZA NA VERTICAL */
+    }
 
 /* AJUSTE DOS ÍCONES NA HORIZONTAL */
-    .server-icon {
-        margin-bottom: 0; /* REMOVE MARGEM DE BAIXO */
-        margin-right: 15px; /* ADICIONA MARGEM A DIREITA */
-        flex-shrink: 0; /* IMPEDE QUE O ÍCONE SEJA ESMAGADO */
-        }
+.server-icon {
+    margin-bottom: 0; /* REMOVE MARGEM DE BAIXO */
+    margin-right: 15px; /* ADICIONA MARGEM A DIREITA */
+    flex-shrink: 0; /* IMPEDE QUE O ÍCONE SEJA ESMAGADO */
+    }
 
 /* AJUSTAR LISTA DE CANAIS */
-    .sidebar-channels {
-        width: 100%; /* LARGURA TOTAL */
-        height: auto;
-        max-height: 200px; /* LIMITA A ALTURA */
-        border-right: none;
-        border-bottom: 1px solid var(--borda-padrao);
-        overflow-y: auto; /* SCROLL INTERNO */
-        flex: none; /* NÃO ESTICA INFINITAMENTE */
-        }
+.sidebar-channels {
+    width: 100%; /* LARGURA TOTAL */
+    height: auto;
+    max-height: 200px; /* LIMITA A ALTURA */
+    border-right: none;
+    border-bottom: 1px solid var(--borda-padrao);
+    overflow-y: auto; /* SCROLL INTERNO */
+    flex: none; /* NÃO ESTICA INFINITAMENTE */
+    }
 
 /* GANHAR ESPAÇO NO MOBILE */
-    .server-header {
-        padding: 10px;
-        font-size: 14px;
-        }
+.server-header {
+    padding: 10px;
+    font-size: 14px;
+    }
 
 /* ÁREA DO CHAT OCUPA O QUE SOBRAR */
-    .chat-area {
-        width: 100%;
-        flex: 1; /* OCUPA TODO O ESPAÇO VERTICAL RESTANTE */
+.chat-area {
+    width: 100%;
+    flex: 1; /* OCUPA TODO O ESPAÇO VERTICAL RESTANTE */
 
 
-        }
     }
+}
+
+/* ÁREA PRINCIPAL DO CHAT */
+.chat-area {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #F2F3F5; 
+    position: relative;
+    width: 100%;
+}
+
+.chat-header {
+    height: 50px;
+    border-bottom: 1px solid #e3e5e8;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    flex-shrink: 0;
+}
+
+/* CONTAINER DAS MENSAGENS */
+.messages-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1; 
+}
+
+/* LOGO NO FUNDO */
+.chat-background-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.1;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.chat-background-logo img {
+    width: 300px;
+    filter: grayscale(100%);
+}
+
+/* ESTILO DA MENSAGEM INDIVIDUAL */
+.message-wrapper {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
+
+.msg-avatar-container {
+    margin-right: 16px;
+    margin-top: 4px;
+}
+
+.avatar-placeholder {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.msg-header {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 4px;
+}
+
+.username {
+    font-weight: 600;
+    color: #2e3338;
+    margin-right: 8px;
+}
+
+.timestamp {
+    font-size: 0.75rem;
+    color: #72767d;
+}
+
+.msg-text {
+    color: #2e3338;
+    line-height: 1.4;
+}
+
+/* RODAPÉ */
+.chat-input-area {
+    padding: 0 16px 24px 16px;
+    background-color: #F2F3F5;
+    flex-shrink: 0;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+/* CAIXA BRANCO DO INPUT */
+.input-content {
+    background-color: #ebedef; 
+    border-radius: 8px;
+    flex: 1;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column; /* ÍCONES LADO A LADO */
+    border: 1px solid transparent;
+    transition: 0.2s;
+}
+
+.input-content:focus-within {
+    background-color: #fff;
+    border-color: #5865F2;
+    box-shadow: 0 0 0 2px rgba(88, 101, 242, 0.2);
+}
+
+.input-content input {
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+    color: #2e3338;
+    margin-bottom: 8px;
+}
+
+/* BARRA DOS ÍCONES DE FORMATAÇÃO */
+.input-icons {
+    display: flex;
+    gap: 4px;
+    border-top: 1px solid #dedede;
+    padding-top: 6px;
+}
+
+.icon-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #4f5660;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    transition: 0.2s;
+}
+
+.icon-btn:hover {
+    background-color: #d8dadd;
+}
+
+.font-bold { font-weight: bold; font-family: serif; }
+.font-italic { font-style: italic; font-family: serif; }
+.font-underline { text-decoration: underline; font-family: serif; }
+
+/* BOTÃO ENVIAR */
+.send-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #5865F2; 
+    font-size: 24px;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.send-btn:hover {
+    color: #4752c4;
+}
+
+/* CORREÇÃO */
+.channel-name {
+    display: flex;          
+    align-items: center;    
+    gap: 10px;              
+}
+
+.channel-name h3 {
+    margin: 0;              /* REMOVER MARGENS PADRÕES DO H3 PRA FICAR ALINHADO */
+    font-size: 16px;        /* AJUSTE DO TAMANHO */
+}
+
+.channel-name ion-icon {
+    font-size: 20px;        /* AJUSTAR O TAMANHO DO ÍCONE */
+    color: #5865F2;         /* COR DO ITEM */
+}
