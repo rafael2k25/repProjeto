@@ -13,11 +13,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* RESET & BÁSICO */
+        /* RESET */
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #f4f6f8; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
 
-        /* --- CABEÇALHO GLOBAL (Idêntico aos outros) --- */
+        /* --- CABEÇALHO GLOBAL --- */
         .cabecalho-principal {
             background-color: #1a4da3;
             color: white;
@@ -60,7 +60,7 @@
         /* --- ESTRUTURA DO CORPO --- */
         .corpo-aplicacao { display: flex; flex: 1; overflow: hidden; }
 
-        /* Barra Lateral de Ícones (Rail) */
+        /* Barra Lateral de Ícones */
         .barra-lateral-icones { 
             width: 70px; background-color: white; border-right: 1px solid #e0e0e0;
             display: flex; flex-direction: column; align-items: center; padding: 15px 0; gap: 12px; flex-shrink: 0; z-index: 5;
@@ -254,7 +254,7 @@
 
     <div class="corpo-aplicacao">
         
-        <!-- RAIL (Marcado o ícone de pessoas como ativo) -->
+        <!-- RAIL -->
         <nav class="barra-lateral-icones">
             <a href="inicio.html" class="icone-lateral" title="Notícias"><ion-icon name="newspaper-outline"></ion-icon></a>
             <div class="separador"></div>
@@ -268,7 +268,7 @@
         <!-- LAYOUT DE CHAT -->
         <main class="layout-chat">
             
-            <!-- Lista de Conversas (Esquerda) -->
+            <!-- Lista de Conversas -->
             <aside class="painel-lista-conversas">
                 <div class="cabecalho-lista">
                     <h2 class="titulo-painel">Mensagens</h2>
@@ -285,7 +285,7 @@
                     </div>
 
                     <div class="item-canal">
-                        <div class="avatar-canal" style="background: #e67e22;">M</div>
+                        <div class="avatar-canal" style="background: #1a4da3;">M</div>
                         <div class="info-canal">
                             <span class="nome-canal">Manutenção</span>
                             <span class="preview-msg">Relatório do Técnico</span>
@@ -294,7 +294,7 @@
                     </div>
 
                     <div class="item-canal">
-                        <div class="avatar-canal" style="background: #27ae60;">S</div>
+                        <div class="avatar-canal" style="background: #1a4da3;">S</div>
                         <div class="info-canal">
                             <span class="nome-canal">Segurança</span>
                             <span class="preview-msg"></span>
@@ -302,7 +302,7 @@
                     </div>
 
                     <div class="item-canal">
-                        <div class="avatar-canal" style="background: #8e44ad;">RH</div>
+                        <div class="avatar-canal" style="background: #1a4da3;">RH</div>
                         <div class="info-canal">
                             <span class="nome-canal">Recursos Humanos</span>
                             <span class="preview-msg">Feliz aniversário, Teste Usuário!</span>
@@ -312,7 +312,7 @@
                 </div>
             </aside>
 
-            <!-- Área Principal do Chat (Direita) -->
+            <!-- Área Principal do Chat -->
             <section class="area-chat-principal">
                 <header class="cabecalho-chat">
                     <div class="info-chat-ativo">
@@ -383,7 +383,7 @@
             // Se for minha mensagem, adiciona a classe 'minha'
             div.className = `mensagem ${msg.tipo === 'minha' ? 'minha' : ''}`;
             
-            // Avatar (Lógica simples para iniciais)
+            // Avatar 
             const iniciais = msg.tipo === 'minha' ? 'TU' : msg.usuario.substring(0,2).toUpperCase();
 
             div.innerHTML = `
