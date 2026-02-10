@@ -14,7 +14,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #1d1d1f 0%, #29292c 100%);
+    background: #fff;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -104,7 +104,7 @@ input:focus {
 .btn-salvar {
     width: 100%;
     padding: 14px;
-    background: linear-gradient(135deg, #1b3785, #5557f5);
+    background: #1b3785;
     color: white;
     border: none;
     border-radius: 12px;
@@ -173,17 +173,17 @@ input:focus {
 
 <div class="form-group">
 <label>Telefone</label>
-<input id="telefone" placeholder="(11) 99999-9999">
+<input id="telefone" placeholder="(79) 99999-9999">
 </div>
 
 <div class="form-group">
-<label>Cargo</label>
-<input id="cargo" placeholder="Ex: Analista de Sistemas">
+<label>CPF</label>
+<input id="cpf" placeholder="Ex: 000.000.000-00">
 </div>
 
 <div class="form-group">
-<label>Departamento</label>
-<input id="departamento" placeholder="Ex: TI">
+<label>Data de Nascimento</label>
+<input id="datanascimento" placeholder="Ex: 00/00/0000">
 </div>
 
 <button class="btn-salvar">Salvar Alterações</button>
@@ -195,7 +195,7 @@ input:focus {
 <div class="notif" id="notif"><span id="notifText"></span></div>
 
 <script>
-const campos = ["nome", "email", "telefone", "cargo", "departamento"];
+const campos = ["nome", "email", "telefone", "cpf", "datanascimento"];
 
 function mostrarNotif(msg) {
     const n = document.getElementById("notif");

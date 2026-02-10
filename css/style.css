@@ -1,3 +1,503 @@
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-</style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600&display=swap');
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* VARIÁVEIS */
+:root {
+    --cor-padrao: #1b3785;
+    --cor-padrao-hover: #1b3785;
+
+    --bg-principal: #ffffff;
+    --bg-secundario: #f4f5f7;
+    --bg-hover: #cecece;
+
+    --cor-fonte: #111111;
+    --cor-fonte-suave: #555555;
+
+    --borda-padrao: #e1e4e8;
+
+    --logo-opacity: 0.1;
+    --logo-filter: grayscale(100%);
+}
+
+/* MODO ESCURO */
+body.dark-theme {
+    --bg-principal: #313338;    
+    --bg-secundario: #2b2d31;    
+    --bg-hover: #3f4147;
+    
+    --cor-fonte: #dbdee1;        
+    --cor-fonte-suave: #b5bac1;
+    
+    --borda-padrao: #1e1f22;
+    --cor-padrao: #1b52d7; 
+    
+}
+/* ================================= TESTE ====================================== */
+
+/* Container de mensagens limpo */
+.messages-container {
+    flex: 1; /* Faz as mensagens ocuparem todo o espaço central */
+    overflow-y: auto; /* Ativa o scroll se houver muitas mensagens */
+    position: relative;
+    z-index: 1; 
+    background: transparent !important; /* Permite ver a logo ao fundo */
+    padding: 20px;
+}
+
+/* Garante que o fundo da área de chat não cubra a logo */
+.chat-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative; /* Mantém a logo presa aqui dentro */
+    background-color: var(--bg-principal);
+    height: 100vh; /* Garante que ocupe a tela toda */
+    overflow: hidden; 
+}
+
+.chat-header, 
+.messages-container, 
+.chat-input-area {
+    position: relative;
+    z-index: 1; /* Coloca o conteúdo na frente da logo */
+    background: transparent !important; 
+}
+
+/*================================================================*/
+
+/* Garante que as mensagens fiquem acima da logo */
+.message-wrapper {
+    position: relative;
+    z-index: 1; /* Garante que o texto fique sobre a logo */
+    display: flex;
+    margin-bottom: 20px;
+}
+
+/* AJUSTE PARA O INPUT NO MODO ESCURO */
+body.dark-theme .input-content {
+    background-color: #383a40;
+}
+
+body.dark-theme .input-content input {
+    color: #dbdee1;
+}
+
+body.dark-theme .chat-header, 
+body.dark-theme .user-panel {
+    background-color: var(--bg-secundario);
+}
+
+/* BODY */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-principal);
+    color: var(--cor-fonte);
+}
+
+/* LAYOUT */
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* SERVER RAIL */
+.server-rail {
+    width: 70px;
+    background: var(--bg-secundario);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15px;
+    border-right: 1px solid var(--borda-padrao);
+}
+
+.server-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--bg-principal);
+    border-radius: 50%;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cor-padrao);
+    cursor: pointer;
+    border: 1px solid var(--borda-padrao);
+    transition: background 0.2s ease;
+}
+
+.server-icon:hover {
+    background: var(--bg-hover);
+}
+
+.server-icon img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+/* SIDEBAR */
+.sidebar-channels {
+    width: 300px;
+    background: var(--bg-principal);
+    color: var(--cor-fonte);
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--borda-padrao);
+}
+
+.server-header {
+    padding: 15px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--borda-padrao);
+}
+
+.channels-list {
+    flex: 1;
+    padding: 10px;
+}
+
+/* CHANNEL ITEM (DIV e A) */
+.channel-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 6px;
+
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.08s ease;
+}
+
+/* HOVER */
+.channel-item:hover {
+    background-color: var(--bg-hover);
+}
+
+/* ITEM ATIVO */
+.channel-item.active,
+.channel-item[aria-current="page"] {
+    background-color: var(--cor-padrao);
+    color: white;
+}
+
+/* CLIQUE */
+.channel-item:active {
+    transform: scale(0.97);
+}
+
+/* PAINEL DO USUÁRIO */
+.user-panel {
+    padding: 12px 15px; /* 12px de respiro vertical */
+    background: var(--bg-secundario);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--borda-padrao);
+    /* Remova qualquer height: fixa daqui */
+}
+
+.foto-perfil {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.chat-header {
+    padding: 15px;
+    border-bottom: 1px solid var(--borda-padrao);
+    font-weight: 600;
+    background-color: var(--bg-principal); /* Usa a variável automática */
+    color: var(--cor-fonte);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* MENSAGENS */
+.message-wrapper {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+.msg-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+.msg-header {
+        display: flex;
+        gap: 10px;
+        font-size: 14px;
+        color: var(--cor-fonte-suave);
+    }
+
+/* BADGE */
+.badge {
+    background: var(--cor-padrao);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-size: 12px;
+    }
+
+/* CONTEÚDO DOS CANAIS */
+.channel-content {
+    display: none;
+    animation: fadeIn 0.25s ease-in;
+    }
+
+.channel-content.active {
+    display: block;
+    }
+
+/* ANIMAÇÃO */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================================
+   ESTILOS GERAIS (Funcionam em qualquer tamanho de tela)
+   ============================================================ */
+
+.messages-container {
+    background: transparent !important;
+    position: relative;
+    z-index: 1; /* Mantém o texto acima da logo */
+}
+
+.chat-background-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* 'cover' faz preencher tudo. Se a logo ficar muito cortada, use 'contain' */
+    object-fit: cover; 
+    
+    /* Coloca a logo atrás de tudo (z-index 0) */
+    z-index: 0; 
+    pointer-events: none;
+    opacity: 0.05; 
+}
+
+.chat-header, 
+.chat-input-area {
+    position: relative;
+    z-index: 2; /* Fica na frente da logo */
+    background-color: var(--bg-principal); /* Evita transparência onde não deve */
+}
+
+.chat-input-area {
+    padding: 12px 20px; /* MESMOS 12px de respiro vertical */
+    background-color: var(--bg-principal);
+    border-top: 1px solid var(--borda-padrao);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ... mantenha suas outras classes como .input-content, .msg-text, etc aqui fora ... */
+
+
+/* ============================================================
+   RESPONSIVIDADE (O que MUDA no Celular)
+   ============================================================ */
+@media (max-width: 768px) {
+    
+    .app-container {
+        flex-direction: column; /* No celular o layout vira pilha */
+    }
+
+    .server-rail {
+        width: 100%;
+        height: 60px;
+        flex-direction: row; /* Ícones ficam lado a lado no topo */
+        overflow-x: auto;
+        padding: 0 10px;
+    }
+
+    .sidebar-channels {
+        width: 100%;
+        height: auto;
+        max-height: 150px; /* Limita a lista de canais para sobrar chat */
+    }
+
+    .chat-background-logo {
+        width: 200px; /* Logo menor para não poluir a tela pequena */
+    }
+
+    .chat-input-area {
+        padding: 10px; /* Menos espaço sobrando no celular */
+    }
+} 
+/* =================== FIM MOBILE =================== */
+
+/* ESTILO DA MENSAGEM INDIVIDUAL */
+.message-wrapper {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
+
+.msg-avatar-container {
+    margin-right: 16px;
+    margin-top: 4px;
+}
+
+.avatar-placeholder {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.msg-header {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 4px;
+}
+
+.username {
+    font-weight: 600;
+    color: var(--cor-fonte);
+    margin-right: 8px;
+}
+
+.timestamp {
+    font-size: 0.75rem;
+    color: var(--cor-fonte-suave);
+}
+
+.msg-text {
+    color: var(--cor-fonte); 
+    line-height: 1.4;
+    word-wrap: break-word; 
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;             /* Ocupa a largura total em telas pequenas */
+    max-width: 900px;        /* LIMITE DE LARGURA: Deixa ela mais "centralizada" e larga no PC */
+    margin: 0 auto;          /* Garante a centralização */
+}
+
+/* CAIXA BRANCO DO INPUT */
+.input-content {
+    background-color: var(--bg-secundario);
+    border-radius: 8px;
+    flex: 1;
+    padding: 6px 15px; /* Padding interno bem pequeno */
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border: 1px solid var(--borda-padrao);
+}
+
+.input-content:focus-within {
+    background-color: #fff;
+    border-color: #1b52d7;
+    box-shadow: 0 0 0 2px rgba(88, 101, 242, 0.2);
+}
+
+.input-content input {
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1.1rem; /* Texto levemente maior */
+    color: var(--cor-fonte);
+}
+
+/* BARRA DOS ÍCONES DE FORMATAÇÃO */
+.input-icons {
+    display: flex;
+    gap: 15px;
+    border-top: 1px solid rgba(0,0,0,0.1); /* Linha divisória fina */
+    padding-top: 10px;
+}
+
+.icon-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #4f5660;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    transition: 0.2s;
+}
+
+.icon-btn:hover {
+    background-color: #d8dadd;
+}
+
+.font-bold { font-weight: bold; font-family: serif; }
+.font-italic { font-style: italic; font-family: serif; }
+.font-underline { text-decoration: underline; font-family: serif; }
+
+/* BOTÃO ENVIAR */
+.send-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #1b52d7; 
+    font-size: 24px;
+    margin-top: 0;      /* Remova o 8px que estava aqui */
+    display: flex;
+    align-items: center;
+    align-self: center; /* Centraliza em relação ao input */
+}
+
+.send-btn:hover {
+    color: #1b52d7;
+}
+
+/* CORREÇÃO */
+.channel-name {
+    display: flex;          
+    align-items: center;    
+    gap: 10px;              
+}
+
+.channel-name h3 {
+    margin: 0;              /* REMOVER MARGENS PADRÕES DO H3 PRA FICAR ALINHADO */
+    font-size: 16px;        /* AJUSTE DO TAMANHO */
+}
+
+.channel-name ion-icon {
+    font-size: 20px;        /* AJUSTAR O TAMANHO DO ÍCONE */
+    color: #1b52d7;         /* COR DO ITEM */
+}

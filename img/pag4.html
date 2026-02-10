@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFTT - Instituto de Formação Técnica para o Trabalho</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Ícones -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <nav class="server-rail">
+            <div class="server-icon home">
+                <ion-icon name="business-outline"></ion-icon>
+            </div>
+
+            <div class="separator"></div>
+
+
+            <div class="server-icon">
+                <ion-icon name="people-outline"></ion-icon>
+            </div>
+
+            <div class="server-icon">
+                <ion-icon name="construct-outline"></ion-icon>
+            </div>
+        </nav>
+        
+
+<!-- ================ INÍCIO CORPO CANAIS ================ -->
+
+        <aside class="sidebar-channels">
+            <header class="server-header">
+                <h3>IFTT - Instituto de Formação Técnica para o Trabalho</h3>
+            </header>
+
+            <div class="channels-list">
+                <div class="channel-item active" href="index.html">
+                    <ion-icon name="megaphone-outline" class="hash"></ion-icon>
+                    <span>Avisos-Gerais</span>
+                </div>
+
+                <div class="channel-category">
+                    <ion-icon name="chevron-down-outline" class="arrow"></ion-icon>
+                    <span> VAGAS</span>
+                </div>
+
+                <div class="channel-item" href="">
+                    <ion-icon name="chatbubbles-outline" class="hash"></ion-icon>
+                    <span>Cursos</span>
+                </div>
+
+<!-- ================ INÍCIO CATEGORIA TURMAS ================ -->
+
+                <div class="channel-category">
+                    <ion-icon name="chevron-down-outline" class="arrow"></ion-icon>
+                    <span> TURMAS</span>
+                </div>
+
+
+                <a class="channel-item" href="pag1.html">
+                    <ion-icon name="radio-button-on-outline" class="hash"></ion-icon>
+                    <span>Técnico em Mecânica<br></span>
+                </a>
+
+
+                <a class="channel-item" href="pag2.html">
+                    <ion-icon name="radio-button-on-outline" class="hash"></ion-icon>
+                    <span>Técnico em Logística<br></span>
+                </a>
+
+
+                <a class="channel-item" href="pag3.html">
+                    <ion-icon name="radio-button-on-outline" class="hash"></ion-icon>
+                    <span>Técnico em Eletromecânica<br></span>
+                </a>
+
+
+                <a class="channel-item" href="pag4.html">
+                    <ion-icon name="radio-button-on-outline" class="hash"></ion-icon>
+                    <span>Técnico em Administração<br></span>
+                </a>
+
+
+                <a class="channel-item" href="pag5.html">
+                    <ion-icon name="radio-button-on-outline" class="hash"></ion-icon>
+                    <span>Técnico em Redes de Computadores<br></span>
+                </a>
+
+
+                <a class="channel-item" href="pag6.html">
+                    <ion-icon name="radio-button-on-outline" class="hash"></ion-icon>
+                    <span>Técnico em Automação Industrial<br></span>
+                </a>
+            </div>
+
+<!-- ================ FIM CATEGORIA TURMAS ================ -->
+<!-- ================ FIM CORPO CANAIS ================ -->
+
+<!-- ================ INÍCIO CORPO USUÁRIO ================ -->
+
+            <div class="user-panel">
+                <div class="user-info">
+                    <img src="perfil1.jpg" class="foto-perfil">
+                    <div>
+                        <h4>Teste Usuário</h4>
+                        <span>Gestor de Projetos</span>
+                    </div>
+                </div>
+                <ion-icon name="settings-outline"></ion-icon>
+            </div>
+        </aside>
+
+<!-- ================ FIM CORPO USUÁRIO ================ -->
+
+        <main class="chat-area">
+
+            <header class="chat-header">
+                <div class="channel-name">
+                    <ion-icon name="megaphone-outline"></ion-icon>
+                    <h3>avisos-gerais</h3>
+                </div>
+            </header>
+
+            <main class="chat-area">
+                <div class="messages-container">
+                    <div class="message-wrapper">
+                        <div class="msg-avatar-container">
+                            <div class="avatar-placeholder" style="background-color: #5865F2;">JS</div>
+                        </div>
+                        <div class="msg-content">
+                            <div class="msg-header">
+                                <span class="username">O cara</span>
+                                <span class="timestamp">Ontem às 09:00</span>
+                            </div>
+                            <p class="msg-text">
+                                Avisos
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-area">
+                    <div class="input-wrapper">
+                        <div class="input-content">
+                            <input type="text" placeholder="Comentar em Avisos-gerais..." id="messageInput">
+
+                            <div class="input-icons">
+                                <button class="icon-btn font-bold">B</button>
+                                <button class="icon-btn font-italic">I</button>
+                                <button class="icon-btn font-underline">U</button>
+                                <button class="icon-btn"><ion-icon name="list-outline"></ion-icon></button>
+                            </div>
+                        </div>
+
+                        <button class="send-btn" onclick="sendMessage()">
+                            <ion-icon name="send-outline"></ion-icon>
+                        </button>
+                    </div>
+                </div>
+            </main>
+        </main>
+
+    </div>
+    <script>
+// ==================== SCRIPT DO CHAT ( 1 ) ====================
+function sendMessage() {
+    const input = document.getElementById('messageInput');
+    const text = input.value;
+
+    if (text.trim() === "") return; // NÃO MANDA MENSAGEM VAZIA
+
+        const container = document.querySelector('.messages-container');
+
+            // CRIAR O HTML DA NOVA MENSAGEM
+            const messageHTML = `
+                <div class="message-wrapper">
+                    <div class="msg-avatar-container">
+                        <div class="avatar-placeholder" style="background-color: #5865F2;">VC</div>
+                    </div>
+                    <div class="msg-content">
+                        <div class="msg-header">
+                            <span class="username">Teste Usuário</span>
+                            <span class="timestamp">Hoje às ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                        </div>
+                        <p class="msg-text">${text}</p>
+                    </div>
+                </div>
+    `;
+
+// ADICIONA A MENSAGEM ANTES DO INPUT ( dentro da área scrollável )
+    container.insertAdjacentHTML('beforeend', messageHTML);
+
+// LIMPA O INPUT
+    input.value = "";
+
+// ROLA PARA BAIXO AUTOMATICAMENTE
+    container.scrollTop = container.scrollHeight;
+        }
+
+// ENVIAR COM ENTER
+    document.getElementById('messageInput').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+
+// ==================== SCRIPT DO CHAT ( 2 ) ====================
+
+// CARREGAR AS MENSAGENS QUANDO ABRIR A PÁGINA
+document.addEventListener('DOMContentLoaded', () => {
+    loadMessages();
+});
+
+function sendMessage() {
+    const input = document.getElementById('messageInput');
+    const text = input.value.trim();
+
+    if (text === "") return;
+
+    const timestamp = `Hoje às ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+    
+// OBJETO DA MENSAGEM
+    const newMessage = {
+        username: "Teste Usuário",
+        time: timestamp,
+        content: text,
+        avatar: "VC"
+    };
+
+// ADICIONAR NA TELA
+    addMessageToDOM(newMessage);
+
+// SALVAR NO LocalStorage
+    saveMessage(newMessage);
+
+    input.value = "";
+}
+
+// CARREGAR A MENSAGEM NO HTML
+function addMessageToDOM(msg) {
+    const container = document.querySelector('.messages-container');
+    const messageHTML = `
+        <div class="message-wrapper">
+            <div class="msg-avatar-container">
+                <div class="avatar-placeholder" style="background-color: #5865F2;">${msg.avatar}</div>
+            </div>
+            <div class="msg-content">
+                <div class="msg-header">
+                    <span class="username">${msg.username}</span>
+                    <span class="timestamp">${msg.time}</span>
+                </div>
+                <p class="msg-text">${msg.content}</p>
+            </div>
+        </div>
+    `;
+    container.insertAdjacentHTML('beforeend', messageHTML);
+    container.scrollTop = container.scrollHeight;
+}
+
+// SALVAR NO LocalStorage
+function saveMessage(msg) {
+    let messages = JSON.parse(localStorage.getItem('chat_messages')) || [];
+    messages.push(msg);
+    localStorage.setItem('chat_messages', JSON.stringify(messages));
+}
+
+// CARREGAR NO LocalStorage
+function loadMessages() {
+    let messages = JSON.parse(localStorage.getItem('chat_messages')) || [];
+    messages.forEach(msg => addMessageToDOM(msg));
+}
+
+// ENVIAR COM ENTER
+document.getElementById('messageInput').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        sendMessage();
+    }
+});
+</script>
+
+</body>
+</html>

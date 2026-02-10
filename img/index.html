@@ -1,143 +1,422 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IFTT - Instituto de Formação Técnica para o Trabalho</title>
-    <link rel="stylesheet" href="style.css">
-
+    <title>IFTT - Chat Corporativo</title>
+    
     <!-- Ícones -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-</head>
+    
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* RESET & BÁSICO */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f6f8; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
 
+        /* --- CABEÇALHO GLOBAL (Idêntico aos outros) --- */
+        .cabecalho-principal {
+            background-color: #1a4da3;
+            color: white;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 10;
+            flex-shrink: 0;
+        }
+
+        .cabecalho-esquerda { display: flex; align-items: center; gap: 20px; }
+        .logo-texto { font-weight: 800; font-size: 18px; letter-spacing: 0.5px; }
+        
+        .navegacao-principal { display: flex; gap: 5px; margin-left: 20px; }
+        .item-navegacao { 
+            color: rgba(255,255,255,0.8); 
+            text-decoration: none; 
+            font-size: 14px; 
+            font-weight: 600; 
+            padding: 8px 12px; 
+            border-radius: 4px; 
+            transition: 0.2s; 
+            display: flex; align-items: center; gap: 6px;
+        }
+        .item-navegacao:hover { background-color: rgba(255,255,255,0.1); color: white; }
+        .item-navegacao.ativo { background-color: rgba(255,255,255,0.2); color: white; }
+
+        .cabecalho-direita { display: flex; align-items: center; gap: 20px; }
+        .botao-busca { font-size: 20px; cursor: pointer; opacity: 0.8; }
+        .perfil-usuario { display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 5px 10px; border-radius: 20px; transition: 0.2s; }
+        .perfil-usuario:hover { background-color: rgba(255,255,255,0.1); }
+        .avatar { width: 32px; height: 32px; background-color: #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #1a4da3; font-weight: bold; font-size: 12px; border: 2px solid rgba(255,255,255,0.5); }
+        .info-usuario { text-align: right; line-height: 1.2; }
+        .nome-usuario { font-size: 13px; font-weight: bold; display: block; }
+        .cargo-usuario { font-size: 11px; opacity: 0.7; }
+
+        /* --- ESTRUTURA DO CORPO --- */
+        .corpo-aplicacao { display: flex; flex: 1; overflow: hidden; }
+
+        /* Barra Lateral de Ícones (Rail) */
+        .barra-lateral-icones { 
+            width: 70px; background-color: white; border-right: 1px solid #e0e0e0;
+            display: flex; flex-direction: column; align-items: center; padding: 15px 0; gap: 12px; flex-shrink: 0; z-index: 5;
+        }
+        .icone-lateral { 
+            width: 44px; height: 44px; background-color: #f0f2f5; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; font-size: 22px; color: #5c5e64; 
+            cursor: pointer; transition: 0.2s; position: relative;
+        }
+        .icone-lateral:hover, .icone-lateral.ativo { border-radius: 12px; background-color: #1a4da3; color: white; }
+        /* Notificação vermelha no ícone */
+        .notificacao-badge { position: absolute; top: -2px; right: -2px; background: #e44d26; color: white; font-size: 10px; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid white; font-weight: bold;}
+        .separador { width: 32px; height: 2px; background: #e0e0e0; margin: 4px 0; }
+
+        /* --- LAYOUT DO CHAT (Específico desta página) --- */
+        .layout-chat {
+            flex: 1;
+            display: flex;
+            background-color: #fff;
+            overflow: hidden;
+        }
+
+        /* Coluna da Esquerda: Lista de Conversas */
+        .painel-lista-conversas {
+            width: 300px;
+            border-right: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            background-color: #f8f9fa;
+        }
+
+        .cabecalho-lista { padding: 20px; border-bottom: 1px solid #e0e0e0; }
+        .titulo-painel { font-family: 'Poppins', sans-serif; font-size: 18px; color: #1a4da3; font-weight: 700; margin-bottom: 10px; }
+        .input-busca-chat { width: 100%; padding: 8px 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 13px; outline: none; }
+        .input-busca-chat:focus { border-color: #1a4da3; }
+
+        .lista-canais { flex: 1; overflow-y: auto; padding: 10px 0; }
+        .item-canal {
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+            border-left: 3px solid transparent;
+        }
+        .item-canal:hover { background-color: #eef2f6; }
+        
+        .avatar-canal { width: 36px; height: 36px; background-color: #ccc; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 14px; flex-shrink: 0; }
+        .info-canal { flex: 1; overflow: hidden; }
+        .nome-canal { font-size: 14px; font-weight: 600; color: #333; display: block; margin-bottom: 2px; }
+        .preview-msg { font-size: 12px; color: #777; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
+        .status-online { width: 10px; height: 10px; background-color: #2ecc71; border-radius: 50%; border: 2px solid #f8f9fa; margin-left: auto; }
+
+        /* Coluna da Direita: Chat Ativo */
+        .area-chat-principal {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            position: relative;
+        }
+
+        .cabecalho-chat {
+            height: 60px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            justify-content: space-between;
+        }
+        .info-chat-ativo { display: flex; align-items: center; gap: 10px; }
+        .titulo-chat-ativo { font-weight: 700; color: #333; font-size: 16px; }
+        .subtitulo-chat { font-size: 12px; color: #2ecc71; display: flex; align-items: center; gap: 4px; }
+        .botoes-chat { font-size: 20px; color: #666; cursor: pointer; display: flex; gap: 15px; }
+
+        /* Área de Mensagens */
+        .container-mensagens {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background-color: #fff;
+        }
+
+        .mensagem {
+            display: flex;
+            gap: 12px;
+            max-width: 80%;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .mensagem.minha { align-self: flex-end; flex-direction: row-reverse; }
+        
+        .avatar-msg { width: 32px; height: 32px; border-radius: 50%; background-color: #ddd; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: bold; flex-shrink: 0; }
+        .mensagem.minha .avatar-msg { background-color: #1a4da3; color: white; }
+
+        .conteudo-msg {
+            background-color: #f0f2f5;
+            padding: 10px 15px;
+            border-radius: 0 12px 12px 12px;
+            position: relative;
+        }
+        .mensagem.minha .conteudo-msg {
+            background-color: #1a4da3;
+            color: white;
+            border-radius: 12px 0 12px 12px;
+        }
+
+        .cabecalho-msg { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 4px; font-size: 11px; opacity: 0.7; }
+        .mensagem.minha .cabecalho-msg { flex-direction: row-reverse; color: rgba(255,255,255,0.9); }
+        
+        .texto-msg { font-size: 14px; line-height: 1.5; }
+
+        /* Área de Input */
+        .area-input {
+            padding: 20px;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            background-color: white;
+        }
+
+        .botao-anexo { font-size: 24px; color: #666; cursor: pointer; padding: 5px; border-radius: 50%; transition: 0.2s; }
+        .botao-anexo:hover { background-color: #f0f0f0; color: #333; }
+
+        .campo-texto-chat {
+            flex: 1;
+            padding: 12px 15px;
+            border-radius: 25px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+        .campo-texto-chat:focus { border-color: #1a4da3; box-shadow: 0 0 0 2px rgba(26, 77, 163, 0.1); }
+
+        .botao-enviar {
+            width: 45px; height: 45px;
+            background-color: #1a4da3;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            transition: 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .botao-enviar:hover { transform: scale(1.05); background-color: #153d82; }
+
+        @media (max-width: 768px) {
+            .painel-lista-conversas { display: none; } /* Esconde a lista no mobile para focar no chat */
+            .barra-lateral-icones { display: none; }
+            .cabecalho-principal { padding: 0 15px; }
+        }
+    </style>
+</head>
 <body>
 
-    <div class="app-container">
+    <!-- CABEÇALHO -->
+    <header class="cabecalho-principal">
+        <div class="cabecalho-esquerda">
+            <div class="logo-texto">IFTT</div>
+            <nav class="navegacao-principal">
+                <a href="inicio.html" class="item-navegacao">
+                    <ion-icon name="home-outline"></ion-icon> <span>Início</span>
+                </a>
+                <a href="cursos.html" class="item-navegacao">
+                    <ion-icon name="school-outline"></ion-icon> <span>Cursos</span>
+                </a>
+            </nav>
+        </div>
 
-        <nav class="server-rail">
-            <div class="server-icon home">
-                <ion-icon name="business-outline"></ion-icon>
+        <div class="cabecalho-direita">
+            <div class="botao-busca"><ion-icon name="search-outline"></ion-icon></div>
+            <div class="perfil-usuario">
+                <div class="info-usuario">
+                    <span class="nome-usuario">Teste Usuário</span>
+                    <span class="cargo-usuario">Gestor de Projetos</span>
+                </div>
+                <div class="avatar">TU</div>
+                <ion-icon name="chevron-down-outline" style="font-size: 12px; color: rgba(255,255,255,0.7)"></ion-icon>
             </div>
+        </div>
+    </header>
 
-            <div class="separator"></div>
-
-
-            <div class="server-icon">
+    <div class="corpo-aplicacao">
+        
+        <!-- RAIL (Marcado o ícone de pessoas como ativo) -->
+        <nav class="barra-lateral-icones">
+            <a href="inicio.html" class="icone-lateral" title="Notícias"><ion-icon name="newspaper-outline"></ion-icon></a>
+            <div class="separador"></div>
+            <div class="icone-lateral ativo" title="Chat Interno">
                 <ion-icon name="people-outline"></ion-icon>
+                <div class="notificacao-badge">3</div>
             </div>
-
-            <div class="server-icon">
-                <ion-icon name="construct-outline"></ion-icon>
-            </div>
+            <div class="icone-lateral" title="Manutenção"><ion-icon name="construct-outline"></ion-icon></div>
         </nav>
 
-        <aside class="sidebar-channels">
-
-            <header class="server-header">
-                <h3>IFTT - Instituto de Formação Técnica para o Trabalho</h3>
-            </header>
-
-            <div class="channels-list">
-                <div class="channel-item active" href="index.html">
-                    <ion-icon name="megaphone-outline" class="hash"></ion-icon>
-                    <span>Avisos-Gerais</span>
+        <!-- LAYOUT DE CHAT -->
+        <main class="layout-chat">
+            
+            <!-- Lista de Conversas (Esquerda) -->
+            <aside class="painel-lista-conversas">
+                <div class="cabecalho-lista">
+                    <h2 class="titulo-painel">Mensagens</h2>
+                    <input type="text" class="input-busca-chat" placeholder="Buscar conversas...">
                 </div>
-                
-                <div class="channel-category">
-                    <ion-icon name="chevron-down-outline" class="arrow"></ion-icon>
-                    <span> VAGAS</span>
-                </div>
-
-                <div class="channel-item" href="">
-                    <ion-icon name="chatbubbles-outline" class="hash"></ion-icon>
-                    <span>Cursos</span>
-                </div>
-
-                <div class="channel-category">
-                    <ion-icon name="chevron-down-outline" class="arrow"></ion-icon>
-                    <span> TURMAS</span>
-                </div>
-                
-               
-                <a class="channel-item" href="pag1.html">
-                    <ion-icon name="radio-button-on-outline" class="hash"></ion-icon>
-                    <span>Técnico em Mecânica<br></span>
-                </a>
-
-                
-                <a class="channel-item" href="pag2.html">
-                    <ion-icon name="radio-button-on-outline" class="hash"></ion-icon>
-                <span>Técnico em Logística<br></span>
-                </a>
-
-                
-                <a class="channel-item" href="pag3.html">
-                    <ion-icon name="radio-button-on-outline" class="hash"></ion-icon>
-                <span>Técnico em Eletromecânica<br></span>
-                </a>
-
-                
-                <a class="channel-item" href="pag4.html">
-                    <ion-icon name="radio-button-on-outline" class="hash"></ion-icon>
-                <span>Técnico em Administração<br></span>
-                </a>
-
-                
-                <a class="channel-item" href="pag5.html">
-                    <ion-icon name="radio-button-on-outline" class="hash"></ion-icon>
-                <span>Técnico em Redes de Computadores<br></span>
-                </a>
-
-                
-                <a class="channel-item" href="pag6.html">
-                    <ion-icon name="radio-button-on-outline" class="hash"></ion-icon>
-                <span>Técnico em Automação Industrial<br></span>
-                </a>
-
-            </div>
-
-            <div class="user-panel">
-                <div class="user-info">
-                    <img src="perfil1.jpg" class="foto-perfil">
-                    <div>
-                        <h4>JÃO</h4>
-                        <span>Gestor de Projetos</span>
-                    </div>
-                </div>
-                <ion-icon name="settings-outline"></ion-icon>
-            </div>
-
-        </aside>
-
-        <main class="chat-area">
-
-            <header class="chat-header">
-                <div class="channel-name">
-                    <ion-icon name="megaphone-outline"></ion-icon>
-                    <h3>avisos-gerais</h3>
-                </div>
-            </header>
-
-            <div class="messages-container">
-                <div class="message-wrapper">
-                    <img src="logo-2.jpg" class="msg-avatar">
-                    <div class="msg-content">
-                        <div class="msg-header">
-                            <span class="username">Direção</span>
-                            <span class="timestamp">Ontem às 09:00</span>
+                <div class="lista-canais">
+                    
+                    <div class="item-canal ativo">
+                        <div class="avatar-canal" style="background: #1a4da3;">G</div>
+                        <div class="info-canal">
+                            <span class="nome-canal">Geral</span>
+                            <span class="preview-msg">Aviso sobre o feriado...</span>
                         </div>
-                        <p class="msg-text">
-                            Avisos
-                        </p>
                     </div>
+
+                    <div class="item-canal">
+                        <div class="avatar-canal" style="background: #e67e22;">M</div>
+                        <div class="info-canal">
+                            <span class="nome-canal">Manutenção</span>
+                            <span class="preview-msg">Relatório do Técnico</span>
+                        </div>
+                        <div class="status-online"></div>
+                    </div>
+
+                    <div class="item-canal">
+                        <div class="avatar-canal" style="background: #27ae60;">S</div>
+                        <div class="info-canal">
+                            <span class="nome-canal">Segurança</span>
+                            <span class="preview-msg"></span>
+                        </div>
+                    </div>
+
+                    <div class="item-canal">
+                        <div class="avatar-canal" style="background: #8e44ad;">RH</div>
+                        <div class="info-canal">
+                            <span class="nome-canal">Recursos Humanos</span>
+                            <span class="preview-msg">Feliz aniversário, Teste Usuário!</span>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
+            </aside>
+
+            <!-- Área Principal do Chat (Direita) -->
+            <section class="area-chat-principal">
+                <header class="cabecalho-chat">
+                    <div class="info-chat-ativo">
+                        <div class="avatar-canal" style="background: #1a4da3; width: 32px; height: 32px; font-size: 12px;">G</div>
+                        <div>
+                            <div class="titulo-chat-ativo">Canal Geral</div>
+                            <div class="subtitulo-chat"><ion-icon name="ellipse"></ion-icon> 42 membros online</div>
+                        </div>
+                    </div>
+                    <div class="botoes-chat">
+                        <ion-icon name="call-outline"></ion-icon>
+                        <ion-icon name="information-circle-outline"></ion-icon>
+                    </div>
+                </header>
+
+                <div class="container-mensagens" id="containerMensagens">
+                    <!-- Mensagens iniciais de exemplo -->
+                    <div class="mensagem">
+                        <div class="avatar-msg">RH</div>
+                        <div class="conteudo-msg">
+                            <div class="cabecalho-msg">
+                                <span class="nome-usuario-msg">RH Oficial</span>
+                                <span class="horario-msg">10:00</span>
+                            </div>
+                            <p class="texto-msg">Bom dia a todos! Lembrem-se de enviar o ponto até sexta-feira.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="area-input">
+                    <div class="botao-anexo"><ion-icon name="add-circle-outline"></ion-icon></div>
+                    <input type="text" class="campo-texto-chat" id="inputMensagem" placeholder="Digite sua mensagem...">
+                    <button class="botao-enviar" onclick="enviarMensagem()"><ion-icon name="send"></ion-icon></button>
+                </div>
+            </section>
 
         </main>
-
     </div>
+
+    <!-- Funcionalidade do Chat  -->
+    <script>
+        const inputMensagem = document.getElementById('inputMensagem');
+        const containerMensagens = document.getElementById('containerMensagens');
+
+        // Carregar mensagens ao iniciar
+        document.addEventListener('DOMContentLoaded', carregarMensagens);
+
+        function enviarMensagem() {
+            const texto = inputMensagem.value.trim();
+            if (texto === "") return;
+
+            const msgObj = {
+                usuario: "Teste Usuário",
+                conteudo: texto,
+                horario: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+                tipo: 'minha'
+            };
+
+            adicionarMensagemDOM(msgObj);
+            salvarMensagem(msgObj);
+            inputMensagem.value = "";
+        }
+
+        function adicionarMensagemDOM(msg) {
+            const div = document.createElement('div');
+
+            // Se for minha mensagem, adiciona a classe 'minha'
+            div.className = `mensagem ${msg.tipo === 'minha' ? 'minha' : ''}`;
+            
+            // Avatar (Lógica simples para iniciais)
+            const iniciais = msg.tipo === 'minha' ? 'TU' : msg.usuario.substring(0,2).toUpperCase();
+
+            div.innerHTML = `
+                <div class="avatar-msg">${iniciais}</div>
+                <div class="conteudo-msg">
+                    <div class="cabecalho-msg">
+                        <span class="nome-usuario-msg">${msg.usuario}</span>
+                        <span class="horario-msg">${msg.horario}</span>
+                    </div>
+                    <p class="texto-msg">${msg.conteudo}</p>
+                </div>
+            `;
+            
+            containerMensagens.appendChild(div);
+            containerMensagens.scrollTop = containerMensagens.scrollHeight;
+        }
+
+        function salvarMensagem(msg) {
+            let historico = JSON.parse(localStorage.getItem('chat_historico_pt')) || [];
+            historico.push(msg);
+            localStorage.setItem('chat_historico_pt', JSON.stringify(historico));
+        }
+
+        function carregarMensagens() {
+            let historico = JSON.parse(localStorage.getItem('chat_historico_pt')) || [];
+            historico.forEach(msg => adicionarMensagemDOM(msg));
+        }
+
+        // Enviar com Enter
+        inputMensagem.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') enviarMensagem();
+        });
+    </script>
 
 </body>
 </html>

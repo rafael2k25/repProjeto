@@ -3,296 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - SummitRacing.com.br</title>
-
+    <title>Login e Cadastro</title>
     <style>
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #29292c 0%, #29292c 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
+body {
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
 
-        .login-card {
-            background: white;
-            width: 100%;
-            max-width: 430px;
-            padding: 45px 40px;
-            border-radius: 25px;
-            box-shadow: 0 10px 35px rgba(0,0,0,0.25);
-            animation: fadeIn 0.5s ease;
-        }
+.container {
+    background-color: white;
+    display: flex;
+    max-width: 900px;
+    width: 95%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+/* Lado Esquerdo */
+.login-side {
+    padding: 40px;
+    flex: 1;
+    text-align: center;
+}
 
-        h2 {
-            text-align: center;
-            color: #1743d1;
-            font-size: 32px;
-            margin-bottom: 30px;
-            font-weight: bold;
-        }
+.login-side h2 {
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+    color: #333;
+}
 
-        .social-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 25px;
-        }
+.btn-social {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    background: white;
+    border: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
 
-        .social-btn {
-            width: 100%;
-            background: #000;
-            color: #fff;
-            padding: 12px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            justify-content: center;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
-            transition: 0.2s;
-        }
+.divider {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+}
 
-        .social-btn:hover {
-            background: #111;
-        }
+.divider::before, .divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #20337a;
+}
 
-        .social-btn img {
-            width: 22px;
-            height: 22px;
-        }
+.divider span {
+    padding: 0 15px;
+    font-weight: bold;
+}
 
-        .divider {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin: 20px 0;
-        }
+.login-form input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #333;
+}
 
-        .divider span {
-            color: #666;
-            font-size: 14px;
-            font-weight: 600;
-        }
+.forgot-password {
+    font-size: 0.9rem;
+}
 
-        .divider hr {
-            flex: 1;
-            border: none;
-            height: 1px;
-            background: #ddd;
-        }
+.forgot-password a {
+    color: #20337a;
+    font-weight: bold;
+}
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+/* Lado Direito */
+.signup-side {
+    background-color: #20337a;
+    color: white;
+    padding: 40px;
+    flex: 1;
+}
 
-        label {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 8px;
-            display: block;
-            font-size: 14px;
-        }
+.signup-side h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
 
-        input {
-            width: 100%;
-            padding: 13px 15px;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            font-size: 15px;
-            transition: all 0.3s;
-        }
+.signup-form input, .signup-form select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: none;
+}
 
-        input:focus {
-            border-color: #1743d1;
-            box-shadow: 0 0 0 3px rgba(27, 23, 233, 0.35);
-            outline: none;
-        }
+.dob-group {
+    display: flex;
+    gap: 10px;
+}
 
-        .btn-login {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #1743d1 0%, #5557f5 100%);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 10px;
-        }
+.gender-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
 
-        .btn-login:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(27, 23, 233, 0.35);
-        }
+.gender-box {
+    background: white;
+    color: #333;
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4px;
+}
 
-        .links {
-            text-align: center;
-            margin-top: 20px;
-        }
+.terms {
+    font-size: 0.7rem;
+    margin: 20px 0;
+    line-height: 1.4;
+}
 
-        .links a {
-            color: #1743d1;
-            text-decoration: none;
-            font-size: 14px;
-        }
+.terms a {
+    color: #ccc;
+}
 
-        .links a:hover {
-            text-decoration: underline;
-        }
+.btn-submit {
+    width: 100%;
+    padding: 15px;
+    background: white;
+    color: #20337a;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+}
 
-        .btn-voltar {
-            display: block;
-            margin: 25px auto 0 auto;
-            background: transparent;
-            border: 2px solid #1743d1;
-            padding: 10px 25px;
-            color: #1743d1;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-weight: bold;
-        }
+.btn-login {
+    width: 100%;
+    padding: 15px;
+    background: #20337a;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    transition: opacity 0.2s;
+    }
 
-        .btn-voltar:hover {
-            background: #1743d1;
-            color: white;
-        }
+.btn-login:hover {
+    opacity: 0.9;
+    }
 
-        .notif {
-            position: fixed;
-            top: 25px;
-            right: 25px;
-            background: linear-gradient(135deg, #1743d1, #5557f5);
-            padding: 15px 22px;
-            border-radius: 15px;
-            color: white;
-            font-weight: 600;
-            font-size: 15px;
-            box-shadow: 0 10px 25px rgba(27, 23, 233, 0.35);
-            opacity: 0;
-            transform: translateY(-20px);
-            transition: all 0.4s ease;
-            z-index: 9999;
-            pointer-events: none;
-        }
-
-        .notif.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+}
     </style>
 </head>
-
 <body>
-
-    <div class="login-card">
-        <h2>Entrar</h2>
-
-        <!-- LOGIN SOCIAL -->
-        <div class="social-buttons">
-            <button class="social-btn" onclick="loginSocial('Google')">
-                <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google">
-                Entrar com Google
-            </button>
-
-            <button class="social-btn" onclick="loginSocial('Apple')">
-                <ion-icon name="logo-apple"></ion-icon>
-                Entrar com Apple
-            </button>
-        </div>
-
-        <div class="divider">
-            <hr>
-            <span>ou</span>
-            <hr>
-        </div>
-
-        <!-- FORM -->
-        <form onsubmit="fazerLogin(event)">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="seu@email.com" required>
+    <div class="container">
+        <section class="login-side">
+            <h2>BEM-VINDO DE VOLTA!</h2>
+            
+            <div class="social-login">
+                <button class="btn-social"><img src="https://img.icons8.com/color/24/google-logo.png" alt="Google"> Fazer login com Google</button>
+                <button class="btn-social"><img src="https://img.icons8.com/ios-filled/24/000000/mac-os.png" alt="Apple"> Fazer login com Apple</button>
             </div>
 
-            <div class="form-group">
-                <label for="senha">Senha</label>
-                <input type="password" id="senha" placeholder="sua senha" required>
+            <div class="divider">
+                <span>OU</span>
             </div>
 
-            <button type="submit" class="btn-login">Entrar</button>
+            <form class="login-form">
+                <input type="text" placeholder="E-mail">
+                <input type="password" placeholder="Senha">
+                <button type="submit" class="btn-login">ENTRAR</button>
+                <p class="forgot-password">Esqueceu sua senha? <br> Clique <a href="#">aqui</a>.</p>
+            </form>
 
-            <div class="links">
-                <a href="#">Esqueci minha senha</a>
-            </div>
-        </form>
+        </section>
 
-        <button class="btn-voltar" onclick="window.location.href='index.html'">← Voltar</button>
+        <section class="signup-side">
+            <h2>CADASTRA-SE AQUI</h2>
+            <form class="signup-form">
+                <input type="text" placeholder="Nome completo">
+                <input type="email" placeholder="Celular ou e-mail">
+                <input type="password" placeholder="Senha">
+
+                <label>Data de nascimento:</label>
+                <div class="dob-group">
+                    <select><option>6</option></select>
+                    <select><option>Janeiro</option></select>
+                    <select><option>2023</option></select>
+                </div>
+
+                <label>Gênero:</label>
+                <div class="gender-group">
+                    <label class="gender-box">Feminino<input type="radio" name="gender"></label>
+                    <label class="gender-box">Masculino<input type="radio" name="gender"></label>
+                </div>
+
+                <p class="terms">
+                    Ao clicar em Cadastre-se, você concorda com nossos <a href="#">Termos</a>, <a href="#">Política de Privacidade</a> e <a href="#">Política de Cookies</a>.
+                </p>
+
+                <button type="submit" class="btn-submit">CADASTRA-SE</button>
+            </form>
+        </section>
     </div>
-
-    <!-- NOTIFICAÇÃO DE LOGIN -->
-    <div id="notif" class="notif">
-        <span id="notif-text"></span>
-    </div>
-
-    <!-- ICONES -->
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-    <!-- SCRIPT -->
-    <script>
-        function mostrarNotif(msg) {
-            const n = document.getElementById("notif");
-            const text = document.getElementById("notif-text");
-
-            text.textContent = msg;
-            n.classList.add("show");
-
-            setTimeout(() => {
-                n.classList.remove("show");
-            }, 3000);
-        }
-
-        function fazerLogin(event) {
-            event.preventDefault();
-
-            const email = document.getElementById("email").value.trim();
-            const senha = document.getElementById("senha").value.trim();
-
-            if (email === "admin@teste.com" && senha === "1234") {
-                mostrarNotif("Login realizado com sucesso! Redirecionando...");
-                setTimeout(() => {
-                    window.location.href = "perfil.html";
-                }, 2000);
-            } else {
-                mostrarNotif("Email ou senha incorretos.");
-            }
-        }
-
-        function loginSocial(tipo) {
-            mostrarNotif(`Entrando com ${tipo}...`);
-            setTimeout(() => {
-                window.location.href = "perfil.html";
-            }, 2000);
-        }
-    </script>
-
 </body>
 </html>

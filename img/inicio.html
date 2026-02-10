@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFTT - Portal de Comunicação</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <style>
+        /* RESET & BASICS */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f6f8; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+
+        /* HEADER PRINCIPAL (Substitui a sidebar de navegação) */
+        .main-header {
+            background-color: #1a4da3;
+            color: white;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 10;
+            flex-shrink: 0;
+        }
+
+        .header-left { display: flex; align-items: center; gap: 20px; }
+        .logo-text { font-weight: 800; font-size: 18px; letter-spacing: 0.5px; }
+        
+        /* Navegação Horizontal */
+        .main-nav { display: flex; gap: 5px; margin-left: 20px; }
+        .nav-item { 
+            color: rgba(255,255,255,0.8); 
+            text-decoration: none; 
+            font-size: 14px; 
+            font-weight: 600; 
+            padding: 8px 12px; 
+            border-radius: 4px; 
+            transition: 0.2s; 
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .nav-item:hover { background-color: rgba(255,255,255,0.1); color: white; }
+        .nav-item.active { background-color: rgba(255,255,255,0.2); color: white; }
+
+        /* Perfil no Header */
+        .header-right { display: flex; align-items: center; gap: 20px; }
+        .search-btn { font-size: 20px; cursor: pointer; opacity: 0.8; }
+        .user-profile { display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 5px 10px; border-radius: 20px; transition: 0.2s; }
+        .user-profile:hover { background-color: rgba(255,255,255,0.1); }
+        .avatar { width: 32px; height: 32px; background-color: #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #1a4da3; font-weight: bold; font-size: 12px; border: 2px solid rgba(255,255,255,0.5); }
+        .user-info { text-align: right; line-height: 1.2; }
+        .user-name { font-size: 13px; font-weight: bold; display: block; }
+        .user-role { font-size: 11px; opacity: 0.7; }
+
+        /* CONTEÚDO PRINCIPAL */
+        .app-body {
+            display: flex;
+            flex: 1;
+            overflow: hidden; /* Previne scroll duplo */
+        }
+
+        /* Server Rail (Opcional - mantive pois parece ser navegação entre apps da empresa) */
+        .server-rail { 
+            width: 70px; 
+            background-color: white; 
+            border-right: 1px solid #e0e0e0;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            padding: 15px 0; 
+            gap: 12px; 
+            flex-shrink: 0;
+            z-index: 5;
+        }
+        .server-icon { 
+            width: 44px; height: 44px; 
+            background-color: #f0f2f5; 
+            border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 22px; color: #5c5e64; 
+            cursor: pointer; transition: 0.2s; 
+            position: relative;
+        }
+        .server-icon:hover { border-radius: 12px; background-color: #1a4da3; color: white; }
+        .server-icon.active { border-radius: 12px; background-color: #1a4da3; color: white; }
+        .separator { width: 32px; height: 2px; background: #e0e0e0; margin: 4px 0; }
+
+        /* Área de Rolagem do Conteúdo */
+        .content-scroll-area {
+            flex: 1;
+            overflow-y: auto;
+            background-color: #f4f6f8;
+            padding: 30px;
+        }
+
+        /* Container Centralizado das Notícias */
+        .news-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .page-title-area {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .page-title { color: #1a4da3; font-size: 24px; font-weight: 700; text-transform: uppercase; }
+        .current-date { color: #666; font-size: 14px; }
+
+        /* GRID DE NOTÍCIAS */
+        .news-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 30px; }
+
+        /* Destaque Principal */
+        .featured-card { 
+            background: white; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .featured-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .featured-img-container { height: 350px; overflow: hidden; position: relative; }
+        .featured-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .featured-card:hover .featured-img { transform: scale(1.05); }
+        
+        .featured-content { padding: 25px; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+        .tag { background: #e3f2fd; color: #1565c0; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: bold; display: inline-block; margin-bottom: 10px; width: fit-content; }
+        .featured-title { color: #1a4da3; font-size: 22px; margin-bottom: 12px; line-height: 1.3; }
+        .featured-desc { color: #555; font-size: 15px; line-height: 1.6; margin-bottom: 15px; }
+        .meta-info { font-size: 12px; color: #999; display: flex; align-items: center; gap: 5px; margin-top: auto; }
+
+        /* Lista Lateral */
+        .side-list { display: flex; flex-direction: column; gap: 20px; }
+        .side-item { 
+            display: flex; 
+            gap: 15px; 
+            background: white; 
+            padding: 15px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04); 
+            cursor: pointer; 
+            transition: 0.2s; 
+        }
+        .side-item:hover { transform: translateX(5px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-left: 3px solid #1a4da3; }
+        .side-img { width: 120px; height: 90px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
+        .side-content { display: flex; flex-direction: column; justify-content: space-between; }
+        .side-title { color: #333; font-size: 14px; font-weight: 600; line-height: 1.4; }
+        
+        /* Botão */
+        .actions-row { text-align: center; margin-top: 50px; margin-bottom: 30px; }
+        .btn-primary { 
+            background-color: #1a4da3; 
+            color: white; 
+            border: none; 
+            padding: 12px 35px; 
+            border-radius: 30px; 
+            font-weight: 600; 
+            font-size: 14px;
+            cursor: pointer; 
+            transition: 0.3s; 
+            box-shadow: 0 4px 10px rgba(26, 77, 163, 0.3);
+        }
+        .btn-primary:hover { background-color: #153d82; box-shadow: 0 6px 15px rgba(26, 77, 163, 0.4); transform: translateY(-1px); }
+
+        /* Responsividade Básica */
+        @media (max-width: 900px) {
+            .news-grid { grid-template-columns: 1fr; }
+            .server-rail { display: none; } /* Esconde a barra lateral no mobile */
+            .main-header { padding: 0 15px; }
+            .nav-item span { display: none; } /* Esconde texto do menu em telas muito pequenas */
+            .nav-item ion-icon { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO GLOBAL (Substitui a navegação lateral) -->
+    <header class="main-header">
+        <div class="header-left">
+            <div class="logo-text">IFTT</div>
+            <nav class="main-nav">
+                <a href="inicio.html" class="nav-item active">
+                    <ion-icon name="home-outline"></ion-icon> <span>Início</span>
+                </a>
+                <a href="cursos.html" class="nav-item">
+                    <ion-icon name="school-outline"></ion-icon> <span>Cursos</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="header-right">
+            <div class="search-btn"><ion-icon name="search-outline"></ion-icon></div>
+            <div class="user-profile">
+                <div class="user-info">
+                    <span class="user-name">Teste Usuário</span>
+                    <span class="user-role">Gestor de Projetos</span>
+                </div>
+                <div class="avatar">TU</div>
+                <ion-icon name="chevron-down-outline" style="font-size: 12px; color: rgba(255,255,255,0.7)"></ion-icon>
+            </div>
+        </div>
+    </header>
+
+    <div class="app-body">
+        <!-- SERVER RAIL (Mantido como "App Switcher" opcional) -->
+        <nav class="server-rail">
+            <div class="server-icon active" title="Comunicação Interna"><ion-icon name="newspaper-outline"></ion-icon></div>
+            <div class="separator"></div>
+            <div class="server-icon" title="RH"><ion-icon name="people-outline"></ion-icon></div>
+            <div class="server-icon" title="Manutenção"><ion-icon name="construct-outline"></ion-icon></div>
+            <div class="server-icon" title="Financeiro"><ion-icon name="wallet-outline"></ion-icon></div>
+        </nav>
+
+        <!-- ÁREA DE CONTEÚDO -->
+        <main class="content-scroll-area">
+            <div class="news-container">
+                
+                <div class="page-title-area">
+                    <h2 class="page-title">Destaques & Notícias</h2>
+                    <span class="current-date">Segunda-feira, 09 de Fevereiro de 2026</span>
+                </div>
+                
+                <div class="news-grid">
+                    <!-- Notícia Principal (Hero) -->
+                    <article class="featured-card">
+                        <div class="featured-img-container">
+                            <!-- Placeholder usado, substitua por css/img1.png no seu projeto -->
+                            <img src="css/industrial.avif" class="featured-img" alt="Indústria">
+                        </div>
+                        <div class="featured-content">
+                            <span class="tag">Economia Industrial</span>
+                            <h3 class="featured-title">Juros punitivos e baixa demanda seguraram crescimento da indústria em 2025</h3>
+                            <p class="featured-desc">Análise detalhada sobre o impacto econômico no setor industrial de Sergipe e as expectativas para o próximo semestre, com dados exclusivos da CNI.</p>
+                            <div class="meta-info">
+                                <ion-icon name="time-outline"></ion-icon> 06/02/2026 às 09:00
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Lista Lateral de Notícias -->
+                    <div class="side-list">
+                        <div class="side-item">
+                            <!-- Placeholder usado -->
+                            <img src="css/curso1.webp" class="side-img" alt="Construção">
+                            <div class="side-content">
+                                <h4 class="side-title">Programador Full-Stack <br>Duração: 670h<br>EAD</h4>
+                                <div class="meta-info">05/02/2026</div>
+                            </div>
+                        </div>
+
+                        <div class="side-item">
+                            <img src="css/curso2.jpg" class="side-img" alt="Tributos">
+                            <div class="side-content">
+                                <h4 class="side-title">Programador Front-End<br>Duração: 348h<br>EAD</h4>
+                                <div class="meta-info">15/02/2026</div>
+                            </div>
+                        </div>
+
+                        <div class="side-item">
+                            <img src="css/curso3.webp" class="side-img" alt="Economia Global">
+                            <div class="side-content">
+                                <h4 class="side-title">Introdução a IOT para Manutenção Industrial<br>Duração: 40h<br>EAD</h4>
+                                <div class="meta-info">21/02/2026</div>
+                            </div>
+                        </div>
+
+                        <div class="side-item">
+                            <img src="css/curso4.png" class="side-img" alt="Produção">
+                            <div class="side-content">
+                                <h4 class="side-title">Inspetor de Qualidade<br>Duração: 160h<br>EAD</h4>
+                                <div class="meta-info">01/03/2026</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="actions-row">
+                    <button class="btn-primary">VER TODAS AS NOTÍCIAS</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

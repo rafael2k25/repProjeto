@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFTT - Cursos Disponíveis</title>
+    <!-- Ícones -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <!-- Fonte Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* RESET & BÁSICO */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f6f8; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+
+        /* --- CABEÇALHO GLOBAL --- */
+        .cabecalho-principal {
+            background-color: #1a4da3;
+            color: white;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 10;
+            flex-shrink: 0;
+        }
+
+        .cabecalho-esquerda { display: flex; align-items: center; gap: 20px; }
+        .logo-texto { font-weight: 800; font-size: 18px; letter-spacing: 0.5px; }
+        
+        .navegacao-principal { display: flex; gap: 5px; margin-left: 20px; }
+        .item-navegacao { 
+            color: rgba(255,255,255,0.8); 
+            text-decoration: none; 
+            font-size: 14px; 
+            font-weight: 600; 
+            padding: 8px 12px; 
+            border-radius: 4px; 
+            transition: 0.2s; 
+            display: flex; align-items: center; gap: 6px;
+        }
+        .item-navegacao:hover { background-color: rgba(255,255,255,0.1); color: white; }
+        .item-navegacao.ativo { background-color: rgba(255,255,255,0.2); color: white; }
+
+        .cabecalho-direita { display: flex; align-items: center; gap: 20px; }
+        .botao-busca { font-size: 20px; cursor: pointer; opacity: 0.8; }
+        .perfil-usuario { display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 5px 10px; border-radius: 20px; transition: 0.2s; }
+        .perfil-usuario:hover { background-color: rgba(255,255,255,0.1); }
+        .avatar { width: 32px; height: 32px; background-color: #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #1a4da3; font-weight: bold; font-size: 12px; border: 2px solid rgba(255,255,255,0.5); }
+        .info-usuario { text-align: right; line-height: 1.2; }
+        .nome-usuario { font-size: 13px; font-weight: bold; display: block; }
+        .cargo-usuario { font-size: 11px; opacity: 0.7; }
+
+        /* --- LAYOUT DO CORPO --- */
+        .corpo-aplicacao { display: flex; flex: 1; overflow: hidden; }
+
+        .barra-lateral-icones { 
+            width: 70px; background-color: white; border-right: 1px solid #e0e0e0;
+            display: flex; flex-direction: column; align-items: center; padding: 15px 0; gap: 12px; flex-shrink: 0; z-index: 5;
+        }
+        .icone-lateral { 
+            width: 44px; height: 44px; background-color: #f0f2f5; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; font-size: 22px; color: #5c5e64; 
+            cursor: pointer; transition: 0.2s; 
+        }
+        .icone-lateral:hover, .icone-lateral.ativo { border-radius: 12px; background-color: #1a4da3; color: white; }
+        .separador { width: 32px; height: 2px; background: #e0e0e0; margin: 4px 0; }
+
+        /* --- ÁREA DE CONTEÚDO --- */
+        .area-conteudo {
+            flex: 1;
+            overflow-y: auto;
+            background-color: #fff;
+            padding: 40px 60px;
+        }
+
+        .cabecalho-secao-cursos { margin-bottom: 40px; }
+        .migalhas { font-size: 13px; color: #666; margin-bottom: 10px; }
+        .migalhas a { text-decoration: none; color: #1a4da3; font-weight: 600; }
+        
+        h1.titulo-principal-pagina { 
+            font-family: 'Poppins', sans-serif; 
+            font-size: 36px; 
+            color: #1a4da3; 
+            margin-bottom: 10px;
+        }
+        
+        .texto-intro { color: #666; font-size: 14px; max-width: 800px; line-height: 1.6; }
+
+        /* Seção de Categoria */
+        .secao-categoria { margin-top: 50px; }
+        .titulo-categoria { 
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px; 
+            color: #333; 
+            padding-bottom: 15px; 
+            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+        }
+
+        /* GRID DE CURSOS */
+        .grade-cursos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card-curso {
+            background: white;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            height: 100%;
+        }
+
+        .card-curso:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            border-color: #e0e0e0;
+        }
+
+        /* ÁREA DA IMAGEM */
+        .area-imagem-card {
+            height: 180px;
+            background-color: #e6f2ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .area-imagem-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Cores de Fundo */
+        .area-imagem-card.fundo-pfs { background-color: #e8eaff; }
+        .area-imagem-card.fundo-pfe { background-color: #ffebe6; }
+        .area-imagem-card.fundo-js { background-color: #fff9e6; }
+        .area-imagem-card.fundo-iot { background-color: #e6f2ff; }
+        .area-imagem-card.fundo-iq { background-color: #fff0e6; }
+        .area-imagem-card.fundo-sci { background-color: #fff9e6; } 
+        .area-imagem-card.fundo-proto { background-color: #ffebe6; }
+
+
+        .conteudo-card { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+        
+        .titulo-curso { 
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px; 
+            font-weight: 700; 
+            color: #333; 
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .carga-horaria { 
+            font-size: 11px; 
+            background: #eee; 
+            padding: 2px 6px; 
+            border-radius: 4px; 
+            color: #666; 
+            font-weight: normal; 
+            white-space: nowrap;
+            margin-left: 8px;
+            float: right;
+        }
+
+        .descricao-curso {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .botao-acessar {
+            margin-top: auto;
+            background-color: transparent;
+            border: 1px solid #1a4da3;
+            color: #1a4da3;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 12px;
+            cursor: pointer;
+            text-align: center;
+            transition: 0.2s;
+        }
+
+        .card-curso:hover .botao-acessar {
+            background-color: #1a4da3;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .area-conteudo { padding: 20px; }
+            .grade-cursos { grid-template-columns: 1fr; }
+            .barra-lateral-icones { display: none; }
+            .cabecalho-principal { padding: 0 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="cabecalho-principal">
+        <div class="cabecalho-esquerda">
+            <div class="logo-texto">IFTT</div>
+            <nav class="navegacao-principal">
+                <a href="inicio.html" class="item-navegacao">
+                    <ion-icon name="home-outline"></ion-icon> <span>Início</span>
+                </a>
+                <a href="cursos.html" class="item-navegacao ativo">
+                    <ion-icon name="school-outline"></ion-icon> <span>Cursos</span>
+                </a>
+                <a href="#" class="item-navegacao">
+                    <ion-icon name="megaphone-outline"></ion-icon> <span>Validação de Certificado</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="cabecalho-direita">
+            <div class="botao-busca"><ion-icon name="search-outline"></ion-icon></div>
+            <div class="perfil-usuario">
+                <div class="info-usuario">
+                    <span class="nome-usuario">Teste Usuário</span>
+                    <span class="cargo-usuario">Gestor de Projetos</span>
+                </div>
+                <div class="avatar">TU</div>
+                <ion-icon name="chevron-down-outline" style="font-size: 12px; color: rgba(255,255,255,0.7)"></ion-icon>
+            </div>
+        </div>
+    </header>
+
+    <div class="corpo-aplicacao">
+        <nav class="barra-lateral-icones">
+            <div class="icone-lateral ativo" title="Comunicação Interna"><ion-icon name="newspaper-outline"></ion-icon></div>
+            <div class="separador"></div>
+            <div class="icone-lateral" title="RH"><ion-icon name="people-outline"></ion-icon></div>
+            <div class="icone-lateral" title="Manutenção"><ion-icon name="construct-outline"></ion-icon></div>
+        </nav>
+
+        <main class="area-conteudo">
+            
+            <header class="cabecalho-secao-cursos">
+                <div class="migalhas">
+                    <a href="inicio.html">Início</a> » Cursos
+                </div>
+                <h1 class="titulo-principal-pagina">Cursos</h1>
+                <p class="texto-intro">
+                    Aprimore suas habilidades técnicas com nossa biblioteca de treinamentos internos. 
+                    Complete os cursos e explore novas áreas de conhecimento.
+                </p>
+            </header>
+
+            <section class="secao-categoria" style="margin-top: 20px;">
+                <h2 class="titulo-categoria">Cursos disponíveis</h2>
+                
+                <div class="grade-cursos">
+                    
+                    <!-- Card 1: Full-Stack -->
+                    <article class="card-curso">
+                        <div class="area-imagem-card">
+                            <img src="css/curso1.webp" alt="Full Stack">
+                        </div>
+                        <div class="conteudo-card">
+                            <h3 class="titulo-curso">Programador Full-Stack <span class="carga-horaria">670h</span></h3>
+                            <p class="descricao-curso">Este curso é ideal para iniciantes que desejam entrar na área de tecnologia da informação (TI), profissionais que buscam ampliar suas competências em desenvolvimento web, ou empreendedores que querem criar e gerenciar seus próprios sistemas.</p>
+                            <button class="botao-acessar">ACESSAR CURSO</button>
+                        </div>
+                    </article>
+                    <!-- Fim Card 1 -->
+
+                    <!-- Card 2: Front-End -->
+                    <article class="card-curso">
+                        <div class="area-imagem-card fundo-pfe">
+                            <img src="css/curso2.jpg" alt="Front End">
+                        </div>
+                        <div class="conteudo-card">
+                            <h3 class="titulo-curso">Programador Front-End <span class="carga-horaria">40h</span></h3>
+                            <p class="descricao-curso">Desenvolva sua carreira em uma das áreas que mais cresce no mercado e atue no ponto de contato entre o sistema e o usuário. Aprenda a criar interfaces sofisticadas e intuitivas que proporcionam uma ótima experiência online.</p>
+                            <button class="botao-acessar">ACESSAR CURSO</button>
+                        </div>
+                    </article>
+                    <!-- Fim Card 2 -->
+
+                    <!-- Card 3: IoT -->
+                    <article class="card-curso">
+                        <div class="area-imagem-card fundo-iot">
+                            <img src="css/curso3.webp" alt="IoT">
+                        </div>
+                        <div class="conteudo-card">
+                            <h3 class="titulo-curso">Introdução à IoT para Manutenção Industrial <span class="carga-horaria">40h</span></h3>
+                            <p class="descricao-curso">Aprenda os conceitos relevantes de conectividade em máquinas e equipamentos utilizando a tecnologia IoT (Internet Industrial das Coisas) para serem aplicados em serviços de manutenção na Indústria 4.0.</p>
+                            <button class="botao-acessar">ACESSAR CURSO</button>
+                        </div>
+                    </article>
+                    <!-- Fim Card 3 -->
+
+                    <!-- Card 4: Inspetor de Qualidade -->
+                    <article class="card-curso">
+                        <div class="area-imagem-card fundo-iq">
+                            <img src="css/curso4.png" alt="Qualidade">
+                        </div>
+                        <div class="conteudo-card">
+                            <h3 class="titulo-curso">Inspetor de Qualidade <span class="carga-horaria">40h</span></h3>
+                            <p class="descricao-curso">Torne-se um dos profissionais mais requisitados pela indústria. Aprenda a supervisionar a qualidade dos produtos em cada etapa do processo, garantindo que tudo esteja dentro dos padrões estabelecidos.</p>
+                            <button class="botao-acessar">ACESSAR CURSO</button>
+                        </div>
+                    </article>
+                    <!-- Fim Card 4 -->
+
+                    <!-- Card 5: Segurança Cibernética -->
+                    <article class="card-curso">
+                        <div class="area-imagem-card fundo-sci">
+                            <img src="css/curso5.webp" alt="Segurança">
+                        </div>
+                        <div class="conteudo-card">
+                            <h3 class="titulo-curso">Segurança Cibernética Aplicada à Indústria 4.0 <span class="carga-horaria">60h</span></h3>
+                            <p class="descricao-curso">Capacitar profissionais da indústria para planejar, controlar e programar os processos industriais, com base na aplicação dos conceitos de análise de dados, estatística e inteligência artificial, no contexto da Indústria 4.0.</p>
+                            <button class="botao-acessar">ACESSAR CURSO</button>
+                        </div>
+                    </article>
+                    <!-- Fim Card 5 -->
+
+                    <!-- Card 6: Prototipagem -->
+                    <article class="card-curso">
+                        <div class="area-imagem-card fundo-proto">
+                            <img src="css/curso6.png" alt="Prototipagem">
+                        </div>
+                        <div class="conteudo-card">
+                            <h3 class="titulo-curso">Prototipagem: Impressão 3D <span class="carga-horaria">30h</span></h3>
+                            <p class="descricao-curso">Capacite-se para a Indústria 4.0! Compreenda os conceitos, vantagens, tipos e a aplicabilidade da impressão 3D, um processo de fabricação em ascensão na indústria moderna.</p>
+                            <button class="botao-acessar">ACESSAR CURSO</button>
+                        </div>
+                    </article>
+                    <!-- Fim Card 6 -->
+
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>
