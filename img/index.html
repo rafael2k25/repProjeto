@@ -1,103 +1,312 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IFTT - Chat Corporativo</title>
-    
-    <!-- Ícones -->
+    <title>IFTT - Canais de</title>
+
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    
-    <!-- Fontes -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
-    
-    <style>
-        /* RESET & BÁSICO */
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #f4f6f8; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
 
-        /* --- CABEÇALHO GLOBAL (Idêntico aos outros) --- */
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Segoe+UI:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* RESET */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* === CONFIGURAÇÃO DE VARIÁVEIS (CORES) === */
+        :root {
+            /* Cores do Tema Claro */
+            --bg-body: #f4f6f8;
+            --bg-card: #ffffff;
+            --bg-sidebar: #f8f9fa;
+            /* Fundo da lista de conversas */
+            --bg-icon-bar: #ffffff;
+            /* Barra estreita de ícones */
+
+            --texto-primario: #333333;
+            --texto-secundario: #666666;
+            --border-color: #e0e0e0;
+
+            --header-bg: #1a4da3;
+            --header-text: #ffffff;
+
+            --msg-received-bg: #f0f2f5;
+            --msg-received-text: #333333;
+            --msg-sent-bg: #1a4da3;
+            --msg-sent-text: #ffffff;
+
+            --input-bg: #ffffff;
+            --hover-item: #eef2f6;
+        }
+
+        body.dark-mode {
+            /* Cores do Tema Escuro */
+            --bg-body: #121212;
+            --bg-card: #1e1e1e;
+            --bg-sidebar: #181818;
+            --bg-icon-bar: #181818;
+
+            --texto-primario: #e0e0e0;
+            --texto-secundario: #b0b0b0;
+            --border-color: #333333;
+
+            --header-bg: #0d2a5a;
+            --header-text: #e0e0e0;
+
+            --msg-received-bg: #2c2c2c;
+            --msg-received-text: #e0e0e0;
+            --msg-sent-bg: #153d82;
+            --msg-sent-text: #e0e0e0;
+
+            --input-bg: #2c2c2c;
+            --hover-item: #2a2a2a;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--texto-primario);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* --- CABEÇALHO GLOBAL --- */
         .cabecalho-principal {
-            background-color: #1a4da3;
-            color: white;
+            background-color: var(--header-bg);
+            color: var(--header-text);
             height: 60px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 30px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             z-index: 10;
             flex-shrink: 0;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .cabecalho-esquerda { display: flex; align-items: center; gap: 20px; }
-        .logo-texto { font-weight: 800; font-size: 18px; letter-spacing: 0.5px; }
-        
-        .navegacao-principal { display: flex; gap: 5px; margin-left: 20px; }
-        .item-navegacao { 
-            color: rgba(255,255,255,0.8); 
-            text-decoration: none; 
-            font-size: 14px; 
-            font-weight: 600; 
-            padding: 8px 12px; 
-            border-radius: 4px; 
-            transition: 0.2s; 
-            display: flex; align-items: center; gap: 6px;
+        .cabecalho-esquerda {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
-        .item-navegacao:hover { background-color: rgba(255,255,255,0.1); color: white; }
-        .item-navegacao.ativo { background-color: rgba(255,255,255,0.2); color: white; }
 
-        .cabecalho-direita { display: flex; align-items: center; gap: 20px; }
-        .botao-busca { font-size: 20px; cursor: pointer; opacity: 0.8; }
-        .perfil-usuario { display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 5px 10px; border-radius: 20px; transition: 0.2s; }
-        .perfil-usuario:hover { background-color: rgba(255,255,255,0.1); }
-        .avatar { width: 32px; height: 32px; background-color: #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #1a4da3; font-weight: bold; font-size: 12px; border: 2px solid rgba(255,255,255,0.5); }
-        .info-usuario { text-align: right; line-height: 1.2; }
-        .nome-usuario { font-size: 13px; font-weight: bold; display: block; }
-        .cargo-usuario { font-size: 11px; opacity: 0.7; }
+        .logo-texto {
+            font-weight: 800;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+        }
+
+        .navegacao-principal {
+            display: flex;
+            gap: 5px;
+            margin-left: 20px;
+        }
+
+        .item-navegacao {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .item-navegacao:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .cabecalho-direita {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .perfil-usuario {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 20px;
+            transition: 0.2s;
+        }
+
+        .perfil-usuario:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .avatar {
+            width: 32px;
+            height: 32px;
+            background-color: #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a4da3;
+            font-weight: bold;
+            font-size: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .info-usuario {
+            text-align: right;
+            line-height: 1.2;
+        }
+
+        .nome-usuario {
+            font-size: 13px;
+            font-weight: bold;
+            display: block;
+        }
+
+        .cargo-usuario {
+            font-size: 11px;
+            opacity: 0.7;
+        }
 
         /* --- ESTRUTURA DO CORPO --- */
-        .corpo-aplicacao { display: flex; flex: 1; overflow: hidden; }
-
-        /* Barra Lateral de Ícones (Rail) */
-        .barra-lateral-icones { 
-            width: 70px; background-color: white; border-right: 1px solid #e0e0e0;
-            display: flex; flex-direction: column; align-items: center; padding: 15px 0; gap: 12px; flex-shrink: 0; z-index: 5;
+        .corpo-aplicacao {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
         }
-        .icone-lateral { 
-            width: 44px; height: 44px; background-color: #f0f2f5; border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; font-size: 22px; color: #5c5e64; 
-            cursor: pointer; transition: 0.2s; position: relative;
-        }
-        .icone-lateral:hover, .icone-lateral.ativo { border-radius: 12px; background-color: #1a4da3; color: white; }
-        /* Notificação vermelha no ícone */
-        .notificacao-badge { position: absolute; top: -2px; right: -2px; background: #e44d26; color: white; font-size: 10px; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid white; font-weight: bold;}
-        .separador { width: 32px; height: 2px; background: #e0e0e0; margin: 4px 0; }
 
-        /* --- LAYOUT DO CHAT (Específico desta página) --- */
+        /* Barra Lateral de Ícones */
+        .barra-lateral-icones {
+            width: 70px;
+            background-color: var(--bg-icon-bar);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 0;
+            gap: 12px;
+            flex-shrink: 0;
+            z-index: 5;
+        }
+
+        .icone-lateral {
+            width: 44px;
+            height: 44px;
+            background-color: var(--bg-body);
+            /* Ajustado para usar var */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: var(--texto-secundario);
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+        }
+
+        .icone-lateral:hover,
+        .icone-lateral.ativo {
+            border-radius: 12px;
+            background-color: var(--header-bg);
+            color: white;
+        }
+
+        .notificacao-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background: #e44d26;
+            color: white;
+            font-size: 10px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--bg-card);
+            font-weight: bold;
+        }
+
+        .separador {
+            width: 32px;
+            height: 2px;
+            background: var(--border-color);
+            margin: 4px 0;
+        }
+
+        /* --- LAYOUT DO CHAT --- */
         .layout-chat {
             flex: 1;
             display: flex;
-            background-color: #fff;
+            background-color: var(--bg-card);
             overflow: hidden;
         }
 
         /* Coluna da Esquerda: Lista de Conversas */
         .painel-lista-conversas {
             width: 300px;
-            border-right: 1px solid #e0e0e0;
+            border-right: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
-            background-color: #f8f9fa;
+            background-color: var(--bg-sidebar);
         }
 
-        .cabecalho-lista { padding: 20px; border-bottom: 1px solid #e0e0e0; }
-        .titulo-painel { font-family: 'Poppins', sans-serif; font-size: 18px; color: #1a4da3; font-weight: 700; margin-bottom: 10px; }
-        .input-busca-chat { width: 100%; padding: 8px 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 13px; outline: none; }
-        .input-busca-chat:focus { border-color: #1a4da3; }
+        .cabecalho-lista {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
 
-        .lista-canais { flex: 1; overflow-y: auto; padding: 10px 0; }
+        .titulo-painel {
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            color: var(--header-bg);
+            /* Usa a cor de destaque */
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        /* Ajuste para o título em modo escuro */
+        body.dark-mode .titulo-painel {
+            color: var(--texto-primario);
+        }
+
+        .input-busca-chat {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 13px;
+            outline: none;
+            background-color: var(--input-bg);
+            color: var(--texto-primario);
+        }
+
+        .input-busca-chat:focus {
+            border-color: var(--header-bg);
+        }
+
+        .lista-canais {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px 0;
+        }
+
         .item-canal {
             padding: 12px 20px;
             display: flex;
@@ -107,35 +316,101 @@
             transition: 0.2s;
             border-left: 3px solid transparent;
         }
-        .item-canal:hover { background-color: #eef2f6; }
-        
-        .avatar-canal { width: 36px; height: 36px; background-color: #ccc; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 14px; flex-shrink: 0; }
-        .info-canal { flex: 1; overflow: hidden; }
-        .nome-canal { font-size: 14px; font-weight: 600; color: #333; display: block; margin-bottom: 2px; }
-        .preview-msg { font-size: 12px; color: #777; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
-        .status-online { width: 10px; height: 10px; background-color: #2ecc71; border-radius: 50%; border: 2px solid #f8f9fa; margin-left: auto; }
+
+        .item-canal:hover {
+            background-color: var(--hover-item);
+        }
+
+        .avatar-canal {
+            width: 36px;
+            height: 36px;
+            background-color: #ccc;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .info-canal {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .nome-canal {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--texto-primario);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .preview-msg {
+            font-size: 12px;
+            color: var(--texto-secundario);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+        }
+
+        .status-online {
+            width: 10px;
+            height: 10px;
+            background-color: #2ecc71;
+            border-radius: 50%;
+            border: 2px solid var(--bg-sidebar);
+            margin-left: auto;
+        }
 
         /* Coluna da Direita: Chat Ativo */
         .area-chat-principal {
             flex: 1;
             display: flex;
             flex-direction: column;
-            background-color: white;
+            background-color: var(--bg-card);
             position: relative;
         }
 
         .cabecalho-chat {
             height: 60px;
-            border-bottom: 1px solid #e0e0e0;
+            border-bottom: 1px solid var(--border-color);
             display: flex;
             align-items: center;
             padding: 0 20px;
             justify-content: space-between;
         }
-        .info-chat-ativo { display: flex; align-items: center; gap: 10px; }
-        .titulo-chat-ativo { font-weight: 700; color: #333; font-size: 16px; }
-        .subtitulo-chat { font-size: 12px; color: #2ecc71; display: flex; align-items: center; gap: 4px; }
-        .botoes-chat { font-size: 20px; color: #666; cursor: pointer; display: flex; gap: 15px; }
+
+        .info-chat-ativo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .titulo-chat-ativo {
+            font-weight: 700;
+            color: var(--texto-primario);
+            font-size: 16px;
+        }
+
+        .subtitulo-chat {
+            font-size: 12px;
+            color: #2ecc71;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .botoes-chat {
+            font-size: 20px;
+            color: var(--texto-secundario);
+            cursor: pointer;
+            display: flex;
+            gap: 15px;
+        }
 
         /* Área de Mensagens */
         .container-mensagens {
@@ -145,7 +420,7 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
-            background-color: #fff;
+            background-color: var(--bg-card);
         }
 
         .mensagem {
@@ -154,78 +429,156 @@
             max-width: 80%;
             animation: fadeIn 0.3s ease;
         }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .mensagem.minha { align-self: flex-end; flex-direction: row-reverse; }
-        
-        .avatar-msg { width: 32px; height: 32px; border-radius: 50%; background-color: #ddd; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: bold; flex-shrink: 0; }
-        .mensagem.minha .avatar-msg { background-color: #1a4da3; color: white; }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mensagem.minha {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+
+        .avatar-msg {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            flex-shrink: 0;
+            color: #333;
+        }
+
+        .mensagem.minha .avatar-msg {
+            background-color: var(--msg-sent-bg);
+            color: var(--msg-sent-text);
+        }
 
         .conteudo-msg {
-            background-color: #f0f2f5;
+            background-color: var(--msg-received-bg);
+            color: var(--msg-received-text);
             padding: 10px 15px;
             border-radius: 0 12px 12px 12px;
             position: relative;
         }
+
         .mensagem.minha .conteudo-msg {
-            background-color: #1a4da3;
-            color: white;
+            background-color: var(--msg-sent-bg);
+            color: var(--msg-sent-text);
             border-radius: 12px 0 12px 12px;
         }
 
-        .cabecalho-msg { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 4px; font-size: 11px; opacity: 0.7; }
-        .mensagem.minha .cabecalho-msg { flex-direction: row-reverse; color: rgba(255,255,255,0.9); }
-        
-        .texto-msg { font-size: 14px; line-height: 1.5; }
+        .cabecalho-msg {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 4px;
+            font-size: 11px;
+            opacity: 0.7;
+        }
+
+        .mensagem.minha .cabecalho-msg {
+            flex-direction: row-reverse;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .texto-msg {
+            font-size: 14px;
+            line-height: 1.5;
+        }
 
         /* Área de Input */
         .area-input {
             padding: 20px;
-            border-top: 1px solid #e0e0e0;
+            border-top: 1px solid var(--border-color);
             display: flex;
             gap: 10px;
             align-items: center;
-            background-color: white;
+            background-color: var(--bg-card);
         }
 
-        .botao-anexo { font-size: 24px; color: #666; cursor: pointer; padding: 5px; border-radius: 50%; transition: 0.2s; }
-        .botao-anexo:hover { background-color: #f0f0f0; color: #333; }
+        .botao-anexo {
+            font-size: 24px;
+            color: var(--texto-secundario);
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
+
+        .botao-anexo:hover {
+            background-color: var(--hover-item);
+            color: var(--texto-primario);
+        }
 
         .campo-texto-chat {
             flex: 1;
             padding: 12px 15px;
             border-radius: 25px;
-            border: 1px solid #ccc;
+            border: 1px solid var(--border-color);
             outline: none;
             font-size: 14px;
             transition: 0.2s;
+            background-color: var(--input-bg);
+            color: var(--texto-primario);
         }
-        .campo-texto-chat:focus { border-color: #1a4da3; box-shadow: 0 0 0 2px rgba(26, 77, 163, 0.1); }
+
+        .campo-texto-chat:focus {
+            border-color: var(--header-bg);
+            box-shadow: 0 0 0 2px rgba(26, 77, 163, 0.1);
+        }
 
         .botao-enviar {
-            width: 45px; height: 45px;
-            background-color: #1a4da3;
+            width: 45px;
+            height: 45px;
+            background-color: var(--header-bg);
             color: white;
             border: none;
             border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
             font-size: 20px;
             transition: 0.2s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
-        .botao-enviar:hover { transform: scale(1.05); background-color: #153d82; }
+
+        .botao-enviar:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
 
         @media (max-width: 768px) {
-            .painel-lista-conversas { display: none; } /* Esconde a lista no mobile para focar no chat */
-            .barra-lateral-icones { display: none; }
-            .cabecalho-principal { padding: 0 15px; }
+            .painel-lista-conversas {
+                display: none;
+            }
+
+            .barra-lateral-icones {
+                display: none;
+            }
+
+            .cabecalho-principal {
+                padding: 0 15px;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <!-- CABEÇALHO -->
     <header class="cabecalho-principal">
         <div class="cabecalho-esquerda">
             <div class="logo-texto">IFTT</div>
@@ -240,7 +593,11 @@
         </div>
 
         <div class="cabecalho-direita">
-            <div class="botao-busca"><ion-icon name="search-outline"></ion-icon></div>
+            <div id="theme-toggle"
+                style="cursor: pointer; font-size: 24px; margin-right: 15px; display: flex; align-items: center;">
+                <ion-icon name="moon-outline" id="theme-icon"></ion-icon>
+            </div>
+
             <div class="perfil-usuario">
                 <div class="info-usuario">
                     <span class="nome-usuario">Teste Usuário</span>
@@ -253,31 +610,29 @@
     </header>
 
     <div class="corpo-aplicacao">
-        
-        <!-- RAIL (Marcado o ícone de pessoas como ativo) -->
+
         <nav class="barra-lateral-icones">
-            <a href="inicio.html" class="icone-lateral" title="Notícias"><ion-icon name="newspaper-outline"></ion-icon></a>
+            <a href="inicio.html" class="icone-lateral" title="Início"><ion-icon
+                    name="newspaper-outline"></ion-icon></a>
             <div class="separador"></div>
-            <div class="icone-lateral ativo" title="Chat Interno">
+            <div class="icone-lateral ativo" title="Comunicação Interna">
                 <ion-icon name="people-outline"></ion-icon>
                 <div class="notificacao-badge">3</div>
             </div>
-            <div class="icone-lateral" title="Manutenção"><ion-icon name="construct-outline"></ion-icon></div>
+            <div class="icone-lateral" title="Configurações"><ion-icon name="construct-outline"></ion-icon></div>
         </nav>
 
-        <!-- LAYOUT DE CHAT -->
         <main class="layout-chat">
-            
-            <!-- Lista de Conversas (Esquerda) -->
+
             <aside class="painel-lista-conversas">
                 <div class="cabecalho-lista">
                     <h2 class="titulo-painel">Mensagens</h2>
                     <input type="text" class="input-busca-chat" placeholder="Buscar conversas...">
                 </div>
                 <div class="lista-canais">
-                    
+
                     <div class="item-canal ativo">
-                        <div class="avatar-canal" style="background: #1a4da3;">G</div>
+                        <div class="avatar-canal" style="background: var(--header-bg);">G</div>
                         <div class="info-canal">
                             <span class="nome-canal">Geral</span>
                             <span class="preview-msg">Aviso sobre o feriado...</span>
@@ -285,7 +640,7 @@
                     </div>
 
                     <div class="item-canal">
-                        <div class="avatar-canal" style="background: #e67e22;">M</div>
+                        <div class="avatar-canal" style="background: var(--header-bg);">M</div>
                         <div class="info-canal">
                             <span class="nome-canal">Manutenção</span>
                             <span class="preview-msg">Relatório do Técnico</span>
@@ -294,7 +649,7 @@
                     </div>
 
                     <div class="item-canal">
-                        <div class="avatar-canal" style="background: #27ae60;">S</div>
+                        <div class="avatar-canal" style="background: var(--header-bg);">S</div>
                         <div class="info-canal">
                             <span class="nome-canal">Segurança</span>
                             <span class="preview-msg"></span>
@@ -302,7 +657,7 @@
                     </div>
 
                     <div class="item-canal">
-                        <div class="avatar-canal" style="background: #8e44ad;">RH</div>
+                        <div class="avatar-canal" style="background: var(--header-bg);">RH</div>
                         <div class="info-canal">
                             <span class="nome-canal">Recursos Humanos</span>
                             <span class="preview-msg">Feliz aniversário, Teste Usuário!</span>
@@ -312,11 +667,11 @@
                 </div>
             </aside>
 
-            <!-- Área Principal do Chat (Direita) -->
             <section class="area-chat-principal">
                 <header class="cabecalho-chat">
                     <div class="info-chat-ativo">
-                        <div class="avatar-canal" style="background: #1a4da3; width: 32px; height: 32px; font-size: 12px;">G</div>
+                        <div class="avatar-canal"
+                            style="background: var(--header-bg); width: 32px; height: 32px; font-size: 12px;">G</div>
                         <div>
                             <div class="titulo-chat-ativo">Canal Geral</div>
                             <div class="subtitulo-chat"><ion-icon name="ellipse"></ion-icon> 42 membros online</div>
@@ -329,7 +684,6 @@
                 </header>
 
                 <div class="container-mensagens" id="containerMensagens">
-                    <!-- Mensagens iniciais de exemplo -->
                     <div class="mensagem">
                         <div class="avatar-msg">RH</div>
                         <div class="conteudo-msg">
@@ -353,7 +707,6 @@
         </main>
     </div>
 
-    <!-- Funcionalidade do Chat  -->
     <script>
         const inputMensagem = document.getElementById('inputMensagem');
         const containerMensagens = document.getElementById('containerMensagens');
@@ -379,12 +732,8 @@
 
         function adicionarMensagemDOM(msg) {
             const div = document.createElement('div');
-
-            // Se for minha mensagem, adiciona a classe 'minha'
             div.className = `mensagem ${msg.tipo === 'minha' ? 'minha' : ''}`;
-            
-            // Avatar (Lógica simples para iniciais)
-            const iniciais = msg.tipo === 'minha' ? 'TU' : msg.usuario.substring(0,2).toUpperCase();
+            const iniciais = msg.tipo === 'minha' ? 'TU' : msg.usuario.substring(0, 2).toUpperCase();
 
             div.innerHTML = `
                 <div class="avatar-msg">${iniciais}</div>
@@ -396,7 +745,7 @@
                     <p class="texto-msg">${msg.conteudo}</p>
                 </div>
             `;
-            
+
             containerMensagens.appendChild(div);
             containerMensagens.scrollTop = containerMensagens.scrollHeight;
         }
@@ -412,11 +761,30 @@
             historico.forEach(msg => adicionarMensagemDOM(msg));
         }
 
-        // Enviar com Enter
         inputMensagem.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') enviarMensagem();
         });
+
+        // === TESTE TEMA ESCURO ===
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const body = document.body;
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeIcon.setAttribute('name', 'sunny-outline');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            themeIcon.setAttribute('name', isDark ? 'sunny-outline' : 'moon-outline');
+        });
+        // === FIM TESTE TEMA ESCURO ===
     </script>
 
 </body>
+
 </html>
