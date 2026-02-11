@@ -14,7 +14,7 @@
         rel="stylesheet">
 
         <style>
-            /* RESET & BÁSICO */
+            /* RESET */
             * {
                 box-sizing: border-box;
                 margin: 0;
@@ -22,9 +22,9 @@
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             }
     
-            /* === VARIÁVEIS DE TEMA (O SEGREDO DO DARK MODE) === */
+            /* === VARIÁVEIS DE TEMA === */
             :root {
-                /* Cores do Tema Claro (Padrão) */
+                /* Cores do Tema Claro */
                 --bg-body: #f4f6f8;
                 --bg-container: #ffffff;
                 --bg-sidebar: #ffffff;
@@ -36,12 +36,12 @@
                 --border-color: #e0e0e0;
                 --shadow-card: 0 2px 5px rgba(0, 0, 0, 0.05);
                 
-                /* Cores que não mudam muito ou são de destaque */
+                /* Cores de destaque */
                 --header-blue: #1a4da3;
                 --hover-item: rgba(0, 0, 0, 0.05);
             }
     
-            /* Cores do Tema Escuro (Substituem as de cima quando a classe .dark-mode existe) */
+            /* Cores do Tema Escuro */
             body.dark-mode {
                 --bg-body: #121212;
                 --bg-container: #181818;
@@ -54,7 +54,7 @@
                 --border-color: #333333;
                 --shadow-card: 0 2px 5px rgba(0, 0, 0, 0.5);
                 
-                --header-blue: #0d2a5a; /* Um azul mais profundo para o cabeçalho */
+                --header-blue: #0d2a5a; 
                 --hover-item: rgba(255, 255, 255, 0.1);
             }
     
@@ -175,7 +175,6 @@
                 opacity: 0.7;
             }
     
-            /* --- LAYOUT DO CORPO --- */
             .corpo-aplicacao {
                 display: flex;
                 flex: 1;
@@ -184,7 +183,6 @@
     
             .barra-lateral-icones {
                 width: 70px;
-                /* CORRIGIDO: Usa variáveis para fundo e borda */
                 background-color: var(--bg-sidebar);
                 border-right: 1px solid var(--border-color);
                 display: flex;
@@ -206,7 +204,6 @@
                 align-items: center;
                 justify-content: center;
                 font-size: 22px;
-                /* CORRIGIDO: Cor do ícone adaptável */
                 color: var(--texto-secundario);
                 cursor: pointer;
                 transition: 0.2s;
@@ -230,11 +227,9 @@
                 margin: 4px 0;
             }
     
-            /* --- ÁREA DE CONTEÚDO --- */
             .area-conteudo {
                 flex: 1;
                 overflow-y: auto;
-                /* CORRIGIDO: Fundo da área principal */
                 background-color: var(--bg-container);
                 padding: 40px 60px;
                 transition: background-color 0.3s;
@@ -256,7 +251,6 @@
                 font-weight: 600;
             }
             
-            /* Pequeno ajuste para link legível no escuro */
             body.dark-mode .migalhas a {
                 color: #5c9aff;
             }
@@ -288,7 +282,6 @@
                 font-size: 24px;
                 color: var(--texto-primario);
                 padding-bottom: 15px;
-                /* CORRIGIDO: Borda adaptável */
                 border-bottom: 1px solid var(--border-color);
                 margin-bottom: 30px;
             }
@@ -301,7 +294,6 @@
             }
     
             .card-curso {
-                /* CORRIGIDO: Fundo, Borda e Sombra adaptáveis */
                 background: var(--bg-card);
                 border: 1px solid var(--border-color);
                 box-shadow: var(--shadow-card);
@@ -323,7 +315,6 @@
     
             .area-imagem-card {
                 height: 180px;
-                /* Cores de fundo mantidas, mas com leve ajuste de brilho no dark mode via CSS */
                 background-color: #e6f2ff; 
                 display: flex;
                 align-items: center;
@@ -332,7 +323,6 @@
                 overflow: hidden;
             }
             
-            /* Escurece levemente a área da imagem no modo escuro para não ofuscar */
             body.dark-mode .area-imagem-card {
                 filter: brightness(0.8);
             }
@@ -344,7 +334,6 @@
                 display: block;
             }
     
-            /* Classes de cores específicas para os cards (Mantidas) */
             .area-imagem-card.fundo-pfs { background-color: #e8eaff; }
             .area-imagem-card.fundo-pfe { background-color: #ffebe6; }
             .area-imagem-card.fundo-js { background-color: #fff9e6; }
@@ -364,7 +353,6 @@
                 font-family: 'Poppins', sans-serif;
                 font-size: 16px;
                 font-weight: 700;
-                /* CORRIGIDO: Cor do título */
                 color: var(--texto-primario);
                 margin-bottom: 10px;
                 line-height: 1.4;
@@ -372,7 +360,6 @@
     
             .carga-horaria {
                 font-size: 11px;
-                /* CORRIGIDO: Fundo da etiqueta de horas */
                 background: var(--border-color);
                 padding: 2px 6px;
                 border-radius: 4px;
@@ -385,7 +372,6 @@
     
             .descricao-curso {
                 font-size: 13px;
-                /* CORRIGIDO: Cor da descrição */
                 color: var(--texto-secundario);
                 line-height: 1.5;
                 margin-bottom: 20px;
@@ -410,6 +396,59 @@
                 border-color: #5c9aff;
                 color: #5c9aff;
             }
+
+            .app-body {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .server-rail {
+            width: 70px;
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 0;
+            gap: 12px;
+            flex-shrink: 0;
+            z-index: 5;
+        }
+
+        .server-icon {
+            width: 44px;
+            height: 44px;
+            background-color: var(--icon-bg); /* Corrigido */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: var(--icon-color); /* Corrigido */
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+        }
+
+        .server-icon:hover {
+            border-radius: 12px;
+            background-color: var(--icon-hover-bg);
+            color: var(--icon-hover-text);
+        }
+
+        .server-icon.active {
+            border-radius: 12px;
+            background-color: var(--header-bg);
+            color: white;
+        }
+
+        .separator {
+            width: 32px;
+            height: 2px;
+            background: var(--border-color);
+            margin: 4px 0;
+        }
     
             .card-curso:hover .botao-acessar {
                 background-color: var(--header-blue);
@@ -474,12 +513,14 @@
         </div>
     </header>
 
-    <div class="corpo-aplicacao">
-        <nav class="barra-lateral-icones">
-            <div class="icone-lateral ativo" title="Cursos"><ion-icon name="school-outline"></ion-icon></div>
-            <div class="separador"></div>
-            <div class="icone-lateral" title="Comunicação Interna"><ion-icon name="people-outline"></ion-icon></div>
-            <div class="icone-lateral" title="Configurações"><ion-icon name="construct-outline"></ion-icon></div>
+    <div class="app-body">
+        <!-- SERVER RAIL -->
+        <nav class="server-rail">
+            <div class="server-icon active" title="Início"><ion-icon name="newspaper-outline"></ion-icon></div>
+            <div class="separator"></div>
+            <!-- Linkando para o Chat -->
+            <a href="index.html" class="server-icon" title="Comunicação Interna" style="display:flex; text-decoration:none;"><ion-icon name="people-outline"></ion-icon></a>
+            <div class="server-icon" title="Configurações"><ion-icon name="construct-outline"></ion-icon></div>
         </nav>
 
         <main class="area-conteudo">
