@@ -6,181 +6,304 @@
     <title>Login e Cadastro</title>
     <style>
         * {
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-}
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-body {
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-.container {
-    background-color: white;
-    display: flex;
-    max-width: 900px;
-    width: 95%;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
+        .container {
+            background-color: white;
+            display: flex;
+            max-width: 900px;
+            width: 95%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
 
-/* Lado Esquerdo */
-.login-side {
-    padding: 40px;
-    flex: 1;
-    text-align: center;
-}
+        /* Lado Esquerdo */
+        .login-side {
+            padding: 40px;
+            flex: 1;
+            text-align: center;
+        }
 
-.login-side h2 {
-    margin-bottom: 30px;
-    font-size: 1.5rem;
-    color: #333;
-}
+        .login-side h2 {
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+            color: #333;
+        }
 
-.btn-social {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    background: white;
-    border: 1px solid #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    cursor: pointer;
-    font-weight: bold;
-}
+        .btn-social {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            background: white;
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
 
-.divider {
-    margin: 20px 0;
-    display: flex;
-    align-items: center;
-}
+        .divider {
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+        }
 
-.divider::before, .divider::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: #20337a;
-}
+        .divider::before, .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #20337a;
+        }
 
-.divider span {
-    padding: 0 15px;
-    font-weight: bold;
-}
+        .divider span {
+            padding: 0 15px;
+            font-weight: bold;
+        }
 
-.login-form input {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 15px;
-    border: 1px solid #333;
-}
+        /* Wrapper para Input de Senha + Ícone */
+        .password-container {
+            position: relative;
+            width: 100%;
+            margin-bottom: 15px;
+        }
 
-.forgot-password {
-    font-size: 0.9rem;
-}
+        .password-container input {
+            width: 100%;
+            padding: 15px;
+            padding-right: 40px; /* Espaço para o ícone */
+            border: 1px solid #333;
+            margin-bottom: 0 !important; 
+        }
 
-.forgot-password a {
-    color: #20337a;
-    font-weight: bold;
-}
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            opacity: 0.6;
+            transition: opacity 0.2s;
+        }
 
-/* Lado Direito */
-.signup-side {
-    background-color: #20337a;
-    color: white;
-    padding: 40px;
-    flex: 1;
-}
+        .toggle-password:hover {
+            opacity: 1;
+        }
 
-.signup-side h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    letter-spacing: 1px;
-}
+        /* Regra geral para inputs de texto no login */
+        .login-form input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #333;
+        }
 
-.signup-form input, .signup-form select {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border-radius: 4px;
-    border: none;
-}
+        .forgot-password {
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
 
-.dob-group {
-    display: flex;
-    gap: 10px;
-}
+        .forgot-password a {
+            color: #20337a;
+            font-weight: bold;
+        }
 
-.gender-group {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-}
+        /* Lado Direito */
+        .signup-side {
+            background-color: #20337a;
+            color: white;
+            padding: 40px;
+            flex: 1;
+        }
 
-.gender-box {
-    background: white;
-    color: #333;
-    flex: 1;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 4px;
-}
+        .signup-side h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
 
-.terms {
-    font-size: 0.7rem;
-    margin: 20px 0;
-    line-height: 1.4;
-}
+        /* Ajuste inputs do cadastro */
+        .signup-form input:not([type="radio"]), 
+        .signup-form select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: none;
+        }
 
-.terms a {
-    color: #ccc;
-}
+        .signup-form .password-container input {
+            margin-bottom: 0 !important;
+            border-radius: 4px;
+            border: none;
+        }
+        
+        .signup-form .password-container {
+            margin-bottom: 15px;
+        }
 
-.btn-submit {
-    width: 100%;
-    padding: 15px;
-    background: white;
-    color: #20337a;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 1rem;
-}
+        /* Ícone no fundo azul precisa de cor diferente */
+        .signup-form .toggle-password {
+            filter: invert(50%); /* Ajusta cor para visibilidade */
+        }
+        
+        .signup-form select:disabled {
+            background-color: #e0e0e0;
+            color: #888;
+            cursor: not-allowed;
+        }
 
-.btn-login {
-    width: 100%;
-    padding: 15px;
-    background: #20337a;
-    color: white;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-bottom: 15px;
-    transition: opacity 0.2s;
-    }
+        .location-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .location-group select {
+            margin-bottom: 0;
+        }
 
-.btn-login:hover {
-    opacity: 0.9;
-    }
+        .dob-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-}
+        .gender-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        /* Ajuste do Gênero (Alinhamento Reto) */
+        .gender-box {
+            background: white;
+            color: #333;
+            flex: 1;
+            padding: 10px 15px; /* Mais padding lateral */
+            display: flex;
+            justify-content: space-between; /* Texto na esq, bolinha na dir */
+            align-items: center; /* Centraliza verticalmente perfeitamente */
+            border-radius: 4px;
+            cursor: pointer;
+            height: 42px; /* Altura fixa para garantir alinhamento */
+        }
+
+        .gender-box input {
+            margin: 0; /* Remove margens padrão do navegador */
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            vertical-align: middle;
+        }
+
+        .terms {
+            font-size: 0.7rem;
+            margin: 20px 0;
+            line-height: 1.4;
+        }
+
+        .terms a {
+            color: #ccc;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            background: white;
+            color: #20337a;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 15px;
+            background: #20337a;
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%; /* Garante largura total */
+            transition: opacity 0.2s;
+        }
+
+        .btn-login:hover {
+            opacity: 0.9;
+        }
+
+        /* ESTILO DA NOTIFICAÇÃO (TOAST) */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #333; /* Cor padrão (será sobrescrita) */
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 30px;
+            font-size: 17px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.3s, top 0.3s;
+            font-weight: bold;
+        }
+
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+            top: 50px;
+        }
+
+        /* CORES DO TOAST */
+        #toast.success {
+            background-color: #4CAF50; /* Verde */
+        }
+
+        #toast.error {
+            background-color: #f44336; /* Vermelho */
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .location-group {
+                flex-direction: column;
+                gap: 0;
+            }
+            .location-group select {
+                margin-bottom: 15px;
+            }
+        }
     </style>
 </head>
 <body>
+    <div id="toast">Operação realizada!</div>
+
     <div class="container">
+        <!-- Lado Esquerdo (Login) -->
         <section class="login-side">
             <h2>BEM-VINDO DE VOLTA!</h2>
             
@@ -194,32 +317,78 @@ body {
             </div>
 
             <form class="login-form">
-                <input type="text" placeholder="E-mail">
-                <input type="password" placeholder="Senha">
+                <!-- ID adicionado ao input de email para facilitar validação -->
+                <input type="text" id="login-email" placeholder="E-mail (teste@gmail.com)" required>
+                
+                <!-- Senha com Olho (Login) -->
+                <div class="password-container">
+                    <input type="password" id="login-pass" placeholder="Senha (123456)" required>
+                    <svg class="toggle-password" onclick="togglePassword('login-pass')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </div>
+
                 <button type="submit" class="btn-login">ENTRAR</button>
                 <p class="forgot-password">Esqueceu sua senha? <br> Clique <a href="#">aqui</a>.</p>
             </form>
-
         </section>
 
+        <!-- Lado Direito (Cadastro) -->
         <section class="signup-side">
             <h2>CADASTRA-SE AQUI</h2>
             <form class="signup-form">
-                <input type="text" placeholder="Nome completo">
-                <input type="email" placeholder="Celular ou e-mail">
-                <input type="password" placeholder="Senha">
+                <input type="text" placeholder="Nome completo" required>
+                <!-- ADICIONEI ID AQUI PARA CAPTURAR O EMAIL -->
+                <input type="email" id="signup-email" placeholder="Celular ou e-mail" required>
+                
+                <!-- Senha com Olho (Cadastro) -->
+                <div class="password-container">
+                    <input type="password" id="signup-pass" placeholder="Senha" required>
+                    <svg class="toggle-password" onclick="togglePassword('signup-pass')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </div>
+
+                <label style="margin-bottom: 5px; display: block; font-size: 0.9rem;">Localização:</label>
+                <div class="location-group">
+                    <select id="continente" required>
+                        <option value="" disabled selected>Continente</option>
+                    </select>
+                    
+                    <select id="pais" disabled required>
+                        <option value="" disabled selected>País</option>
+                    </select>
+                </div>
 
                 <label>Data de nascimento:</label>
                 <div class="dob-group">
-                    <select><option>6</option></select>
-                    <select><option>Janeiro</option></select>
-                    <select><option>2023</option></select>
+                    <select id="dia" required>
+                        <option value="">Dia</option>
+                    </select>
+                    <select id="mes" required>
+                        <option value="">Mês</option>
+                        <option>Janeiro</option><option>Fevereiro</option><option>Março</option>
+                        <option>Abril</option><option>Maio</option><option>Junho</option>
+                        <option>Julho</option><option>Agosto</option><option>Setembro</option>
+                        <option>Outubro</option><option>Novembro</option><option>Dezembro</option>
+                    </select>
+                    <select id="ano" required>
+                        <option value="">Ano</option>
+                    </select>
                 </div>
 
                 <label>Gênero:</label>
                 <div class="gender-group">
-                    <label class="gender-box">Feminino<input type="radio" name="gender"></label>
-                    <label class="gender-box">Masculino<input type="radio" name="gender"></label>
+                    <label class="gender-box">
+                        <span>Feminino</span>
+                        <input type="radio" name="gender" required>
+                    </label>
+                    <label class="gender-box">
+                        <span>Masculino</span>
+                        <input type="radio" name="gender" required>
+                    </label>
                 </div>
 
                 <p class="terms">
@@ -230,5 +399,137 @@ body {
             </form>
         </section>
     </div>
+
+    <script>
+        // --- FUNÇÃO PARA MOSTRAR/ESCONDER SENHA ---
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            if (input.type === "password") {
+                input.type = "text";
+            } else {
+                input.type = "password";
+            }
+        }
+
+        // --- NOTIFICAÇÃO (TOAST) ---
+        // type pode ser 'success' (verde) ou 'error' (vermelho)
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById("toast");
+            toast.textContent = message;
+            
+            // Remove classes antigas e adiciona a nova
+            toast.className = "show";
+            toast.classList.add(type);
+            
+            setTimeout(function(){ 
+                toast.className = toast.className.replace("show", ""); 
+                // Remove a cor após esconder para resetar
+                setTimeout(() => toast.classList.remove(type), 300);
+            }, 3000);
+        }
+
+        // --- LOGIN (ATUALIZADO) ---
+        document.querySelector('.login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Pega os valores e remove espaços extras (trim)
+            const emailInput = document.getElementById('login-email');
+            const passwordInput = document.getElementById('login-pass');
+            
+            const email = emailInput.value.trim(); 
+            const password = passwordInput.value;
+
+            // 1. DADOS DE TESTE FIXOS
+            const validEmail = "teste@gmail.com";
+            const validPass = "123456";
+            
+            // 2. DADOS DO USUÁRIO CADASTRADO (LocalStorage)
+            const storedEmail = localStorage.getItem('userEmail');
+            const storedPass = localStorage.getItem('userPass');
+
+            // Verifica se bate com usuário de teste OU usuário cadastrado
+            const isTestUser = (email === validEmail && password === validPass);
+            const isStoredUser = (storedEmail && email === storedEmail && password === storedPass);
+
+            if (isTestUser || isStoredUser) {
+                showToast("Login realizado com sucesso!", "success");
+            } else {
+                showToast("E-mail ou senha incorretos!", "error");
+            }
+        });
+
+        // --- CADASTRO (ATUALIZADO) ---
+        const signupForm = document.querySelector('.signup-form');
+        signupForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('signup-email').value.trim();
+            const pass = document.getElementById('signup-pass').value;
+            
+            // Salva no navegador para permitir login em seguida
+            localStorage.setItem('userEmail', email);
+            localStorage.setItem('userPass', pass);
+
+            showToast("Cadastro realizado! Tente fazer login.", "success");
+            
+            // LIMPA O FORMULÁRIO APÓS CADASTRO
+            signupForm.reset();
+            
+            // Reseta o campo de país para desativado
+            document.getElementById('pais').innerHTML = '<option value="" disabled selected>País</option>';
+            document.getElementById('pais').disabled = true;
+        });
+
+        // --- DADOS DE LOCALIZAÇÃO ---
+        const locationData = {
+            "América do Sul": ["Brasil", "Argentina", "Chile", "Colômbia", "Peru", "Uruguai"],
+            "América do Norte": ["Estados Unidos", "Canadá", "México"],
+            "Europa": ["Portugal", "Espanha", "França", "Alemanha", "Itália", "Reino Unido"],
+            "Ásia": ["Japão", "China", "Índia", "Coreia do Sul", "Tailândia"],
+            "África": ["África do Sul", "Egito", "Nigéria", "Angola", "Moçambique"],
+            "Oceania": ["Austrália", "Nova Zelândia"]
+        };
+
+        const selectContinente = document.getElementById('continente');
+        const selectPais = document.getElementById('pais');
+
+        for (const continent in locationData) {
+            const option = document.createElement('option');
+            option.value = continent;
+            option.textContent = continent;
+            selectContinente.appendChild(option);
+        }
+
+        selectContinente.addEventListener('change', function() {
+            const selectedContinent = this.value;
+            selectPais.innerHTML = '<option value="" disabled selected>País</option>';
+            if (selectedContinent) {
+                selectPais.disabled = false;
+                locationData[selectedContinent].forEach(country => {
+                    const option = document.createElement('option');
+                    option.value = country;
+                    option.textContent = country;
+                    selectPais.appendChild(option);
+                });
+            } else {
+                selectPais.disabled = true;
+            }
+        });
+
+        // --- DATAS ---
+        const selectDia = document.getElementById("dia");
+        for (let i = 1; i <= 31; i++) {
+            let opt = document.createElement("option");
+            opt.value = i; opt.text = i;
+            selectDia.appendChild(opt);
+        }
+
+        const selectAno = document.getElementById("ano");
+        for (let i = 2026; i >= 1950; i--) {
+            let opt = document.createElement("option");
+            opt.value = i; opt.text = i;
+            selectAno.appendChild(opt);
+        }
+    </script>
 </body>
 </html>
