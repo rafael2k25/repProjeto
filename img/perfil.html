@@ -1,260 +1,545 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Perfil - SummitRacing.com.br</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #fff;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
+        .container {
+            background-color: white;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 40px;
+            border-radius: 4px;
+        }
 
-.profile-card {
-    background: white;
-    width: 100%;
-    max-width: 500px;
-    padding: 45px 40px;
-    border-radius: 25px;
-    box-shadow: 0 10px 35px rgba(0,0,0,0.25);
-    animation: fadeIn 0.5s ease;
-}
+        h2 {
+            text-align: center;
+            color: #20337a;
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+        /* --- FOTO DE PERFIL (CORRIGIDO TAMANHO FIXO) --- */
+        .profile-photo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
 
-h2 {
-    text-align: center;
-    color: #1b3785;
-    font-size: 30px;
-    margin-bottom: 25px;
-}
+        .profile-photo {
+            position: relative;
+            width: 120px;  /* Largura Fixa */
+            height: 120px; /* Altura Fixa */
+            min-width: 120px; /* Impede encolhimento */
+            min-height: 120px; /* Impede encolhimento */
+            border-radius: 50%;
+            border: 4px solid #20337a;
+            overflow: hidden; /* Garante que a imagem não vaze */
+            background-color: #eee; /* Fundo caso a imagem falhe */
+            flex-shrink: 0; /* Impede achatamento em telas pequenas */
+        }
 
-.profile-photo {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 25px;
-}
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Essencial: corta a imagem para preencher sem esticar */
+            display: block;
+        }
 
-.profile-photo img {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    border: 4px solid #1b3785;
-    object-fit: cover;
-}
+        /* Ícone da câmera posicionado fora do overflow hidden */
+        .camera-wrapper {
+            position: relative;
+            width: 120px;
+            height: 120px;
+        }
 
-.camera-icon {
-    position: absolute;
-    bottom: 0;
-    right: calc(50% - 55px);
-    background: #1b3785;
-    border-radius: 50%;
-    padding: 8px;
-    cursor: pointer;
-    border: 3px solid white;
-}
+        .camera-icon {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: #20337a;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 3px solid white;
+            transition: transform 0.2s;
+            z-index: 10; /* Garante que fique acima da foto */
+        }
 
-.camera-icon ion-icon {
-    color: white;
-    font-size: 20px;
-}
+        .camera-icon:hover {
+            transform: scale(1.1);
+        }
 
-#inputFoto { display: none; }
+        .camera-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
 
-.form-group {
-    margin-bottom: 16px;
-}
+        #inputFoto { display: none; }
 
-label {
-    font-weight: 600;
-    font-size: 14px;
-    margin-bottom: 6px;
-    display: block;
-}
+        /* --- FORMULÁRIO --- */
+        .form-group {
+            margin-bottom: 15px;
+        }
 
-input {
-    width: 100%;
-    padding: 12px 15px;
-    border: 2px solid #ddd;
-    border-radius: 10px;
-    font-size: 15px;
-}
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
 
-input:focus {
-    border-color: #1b3785;
-    outline: none;
-}
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #333;
+        }
 
-.btn-salvar {
-    width: 100%;
-    padding: 14px;
-    background: #1b3785;
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 10px;
-}
+        input:focus, select:focus {
+            border-color: #20337a;
+            outline: none;
+        }
 
-.btn-sair {
-    display: block;
-    margin: 25px auto 0;
-    background: transparent;
-    border: 2px solid #1b3785;
-    padding: 10px 25px;
-    color: #1b3785;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: bold;
-}
+        .password-container {
+            position: relative;
+            width: 100%;
+        }
 
-.notif {
-    position: fixed;
-    top: 25px;
-    right: 25px;
-    background: linear-gradient(135deg, #1b3785, #5557f5);
-    padding: 15px 22px;
-    border-radius: 15px;
-    color: white;
-    font-weight: 600;
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: 0.4s;
-}
+        .password-container input {
+            width: 100%;
+            padding: 12px;
+            padding-right: 40px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
 
-.notif.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-</style>
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            opacity: 0.6;
+            transition: opacity 0.2s;
+            color: #333;
+        }
+
+        .toggle-password:hover {
+            opacity: 1;
+        }
+
+        select:disabled {
+            background-color: #e0e0e0;
+            color: #888;
+            cursor: not-allowed;
+        }
+
+        .location-group, .dob-group {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .location-group select, .dob-group select {
+            flex: 1;
+        }
+
+        .gender-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .gender-box {
+            background: white;
+            border: 1px solid #ccc;
+            color: #333;
+            flex: 1;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .gender-box:hover {
+            border-color: #20337a;
+        }
+
+        .gender-box input {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        /* --- BOTÕES --- */
+        .btn-salvar {
+            width: 100%;
+            padding: 15px;
+            background: #20337a;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: opacity 0.2s;
+        }
+
+        .btn-salvar:hover {
+            opacity: 0.9;
+        }
+
+        .btn-sair {
+            display: block;
+            width: 100%;
+            margin-top: 15px;
+            background: transparent;
+            border: 2px solid #20337a;
+            padding: 12px;
+            color: #20337a;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            text-align: center;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .btn-sair:hover {
+            background: #20337a;
+            color: white;
+        }
+
+        /* --- TOAST --- */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 30px;
+            font-size: 17px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.3s, top 0.3s;
+            font-weight: bold;
+        }
+
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+            top: 50px;
+        }
+        #toast.success { background-color: #4CAF50; }
+        #toast.error { background-color: #f44336; }
+
+        @media (max-width: 600px) {
+            .location-group, .dob-group, .gender-group {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="profile-card">
-<h2>Meu Perfil</h2>
+    <div id="toast">Notificação</div>
 
-<div class="profile-photo">
-<img id="fotoPerfil" src="perfil1.jpg">
-<div class="camera-icon" onclick="inputFoto.click()">
-<ion-icon name="camera-outline"></ion-icon>
-</div>
-<input type="file" id="inputFoto" accept="image/*">
-</div>
+    <div class="container">
+        <h2>Editar Perfil</h2>
 
-<form id="formPerfil">
-<div class="form-group">
-<label>Nome Completo</label>
-<input id="nome" required>
-</div>
+        <!-- FOTO COM ESTRUTURA AJUSTADA -->
+        <div class="profile-photo-section">
+            <div class="camera-wrapper">
+                <div class="profile-photo">
+                    <img id="fotoPerfil" src="https://via.placeholder.com/150" alt="">
+                </div>
+                
+                <div class="camera-icon" onclick="document.getElementById('inputFoto').click()">
+                    <!-- SVG Camera Icon -->
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </div>
+                <input type="file" id="inputFoto" accept="image/*">
+            </div>
+        </div>
 
-<div class="form-group">
-<label>Email</label>
-<input id="email" type="email" required>
-</div>
+        <form id="formPerfil">
+            
+            <!-- NOME -->
+            <div class="form-group">
+                <label>Nome Completo</label>
+                <input type="text" id="nome" placeholder="Seu nome" required>
+            </div>
 
-<div class="form-group">
-<label>Telefone</label>
-<input id="telefone" placeholder="(79) 99999-9999">
-</div>
+            <!-- EMAIL -->
+            <div class="form-group">
+                <label>Email / Usuário</label>
+                <input type="email" id="email" placeholder="seu@email.com" required>
+            </div>
 
-<div class="form-group">
-<label>CPF</label>
-<input id="cpf" placeholder="Ex: 000.000.000-00">
-</div>
+            <!-- SENHA -->
+            <div class="form-group">
+                <label>Senha</label>
+                <div class="password-container">
+                    <input type="password" id="senha" placeholder="Sua senha" required>
+                    <svg class="toggle-password" onclick="togglePassword('senha')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </div>
+            </div>
 
-<div class="form-group">
-<label>Data de Nascimento</label>
-<input id="datanascimento" placeholder="Ex: 00/00/0000">
-</div>
+            <!-- LOCALIZAÇÃO -->
+            <div class="form-group">
+                <label>Localização</label>
+                <div class="location-group">
+                    <select id="continente" required>
+                        <option value="" disabled selected>Continente</option>
+                    </select>
+                    <select id="pais" disabled required>
+                        <option value="" disabled selected>País</option>
+                    </select>
+                </div>
+            </div>
 
-<button class="btn-salvar">Salvar Alterações</button>
-</form>
+            <!-- DATA DE NASCIMENTO -->
+            <div class="form-group">
+                <label>Data de Nascimento</label>
+                <div class="dob-group">
+                    <select id="dia" required>
+                        <option value="">Dia</option>
+                    </select>
+                    <select id="mes" required>
+                        <option value="">Mês</option>
+                        <option>Janeiro</option><option>Fevereiro</option><option>Março</option>
+                        <option>Abril</option><option>Maio</option><option>Junho</option>
+                        <option>Julho</option><option>Agosto</option><option>Setembro</option>
+                        <option>Outubro</option><option>Novembro</option><option>Dezembro</option>
+                    </select>
+                    <select id="ano" required>
+                        <option value="">Ano</option>
+                    </select>
+                </div>
+            </div>
 
-<button class="btn-sair" onclick="sair()">← Voltar</button>
-</div>
+            <!-- GÊNERO -->
+            <div class="form-group">
+                <label>Gênero</label>
+                <div class="gender-group">
+                    <label class="gender-box">
+                        <span>Feminino</span>
+                        <input type="radio" name="gender" value="Feminino" required>
+                    </label>
+                    <label class="gender-box">
+                        <span>Masculino</span>
+                        <input type="radio" name="gender" value="Masculino" required>
+                    </label>
+                </div>
+            </div>
 
-<div class="notif" id="notif"><span id="notifText"></span></div>
+            <button type="submit" class="btn-salvar">SALVAR ALTERAÇÕES</button>
+        </form>
 
-<script>
-const campos = ["nome", "email", "telefone", "cpf", "datanascimento"];
+        <button class="btn-sair" onclick="sair()">SAIR</button>
+    </div>
 
-function mostrarNotif(msg) {
-    const n = document.getElementById("notif");
-    document.getElementById("notifText").textContent = msg;
-    n.classList.add("show");
-    setTimeout(() => n.classList.remove("show"), 3000);
-}
+    <script>
+        // --- DADOS E UTILITÁRIOS ---
+        const locationData = {
+            "América do Sul": ["Brasil", "Argentina", "Chile", "Colômbia", "Peru", "Uruguai"],
+            "América do Norte": ["Estados Unidos", "Canadá", "México"],
+            "Europa": ["Portugal", "Espanha", "França", "Alemanha", "Itália", "Reino Unido"],
+            "Ásia": ["Japão", "China", "Índia", "Coreia do Sul", "Tailândia"],
+            "África": ["África do Sul", "Egito", "Nigéria", "Angola", "Moçambique"],
+            "Oceania": ["Austrália", "Nova Zelândia"]
+        };
 
-/* ====== CARREGAR DADOS (FRONTEND) ====== */
-function carregarPerfil() {
-    campos.forEach(id => {
-        const valor = localStorage.getItem(id);
-        if (valor) document.getElementById(id).value = valor;
-    });
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById("toast");
+            toast.textContent = message;
+            toast.className = "show " + type;
+            setTimeout(() => { 
+                toast.className = toast.className.replace("show", ""); 
+            }, 3000);
+        }
 
-    const foto = localStorage.getItem("fotoPerfil");
-    if (foto) document.getElementById("fotoPerfil").src = foto;
+        function togglePassword(id) {
+            const input = document.getElementById(id);
+            input.type = input.type === "password" ? "text" : "password";
+        }
 
-    // 🔌 GANCHO BACKEND FUTURO
-    // fetch("/api/perfil").then(...)
-}
+        function sair() {
+            window.location.href = "login.html";
+        }
 
-/* ====== SALVAR DADOS ====== */
-document.getElementById("formPerfil").addEventListener("submit", e => {
-    e.preventDefault();
+        // --- INICIALIZAÇÃO DOS CAMPOS (DROPDOWNS) ---
+        function initDropdowns() {
+            // Continentes
+            const selectContinente = document.getElementById('continente');
+            const selectPais = document.getElementById('pais');
 
-    campos.forEach(id => {
-        localStorage.setItem(id, document.getElementById(id).value);
-    });
+            for (const continent in locationData) {
+                const option = document.createElement('option');
+                option.value = continent;
+                option.textContent = continent;
+                selectContinente.appendChild(option);
+            }
 
-    mostrarNotif("Perfil salvo com sucesso!");
+            selectContinente.addEventListener('change', function() {
+                updateCountries(this.value);
+            });
 
-    // 🔌 GANCHO BACKEND FUTURO
-    // fetch("/api/perfil", { method: "POST", body: JSON.stringify(...) })
-});
+            // Datas
+            const selectDia = document.getElementById("dia");
+            for (let i = 1; i <= 31; i++) {
+                let opt = document.createElement("option");
+                opt.value = i; opt.text = i;
+                selectDia.appendChild(opt);
+            }
 
-/* ====== FOTO ====== */
-inputFoto.addEventListener("change", e => {
-    const file = e.target.files[0];
-    if (!file) return;
+            const selectAno = document.getElementById("ano");
+            for (let i = 2026; i >= 1950; i--) {
+                let opt = document.createElement("option");
+                opt.value = i; opt.text = i;
+                selectAno.appendChild(opt);
+            }
+        }
 
-    const reader = new FileReader();
-    reader.onload = () => {
-        fotoPerfil.src = reader.result;
-        localStorage.setItem("fotoPerfil", reader.result);
-        mostrarNotif("Foto atualizada!");
-    };
-    reader.readAsDataURL(file);
-});
+        function updateCountries(continent, selectedCountry = null) {
+            const selectPais = document.getElementById('pais');
+            selectPais.innerHTML = '<option value="" disabled selected>País</option>';
+            
+            if (continent && locationData[continent]) {
+                selectPais.disabled = false;
+                locationData[continent].forEach(country => {
+                    const option = document.createElement('option');
+                    option.value = country;
+                    option.textContent = country;
+                    if(selectedCountry === country) option.selected = true;
+                    selectPais.appendChild(option);
+                });
+            } else {
+                selectPais.disabled = true;
+            }
+        }
 
-function sair() {
-    window.location.href = "index.html";
-}
+        // --- CARREGAR DADOS DO LOCALSTORAGE ---
+        function loadProfile() {
+            // Tenta pegar dados do login e do perfil
+            const loginEmail = localStorage.getItem('userEmail');
+            const loginPass = localStorage.getItem('userPass');
+            
+            if(loginEmail) document.getElementById('email').value = loginEmail;
+            if(loginPass) document.getElementById('senha').value = loginPass;
 
-carregarPerfil();
-</script>
+            const savedData = JSON.parse(localStorage.getItem('userProfileData')) || {};
 
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+            if(savedData.nome) document.getElementById('nome').value = savedData.nome;
+            if(savedData.email) document.getElementById('email').value = savedData.email;
+            if(savedData.senha) document.getElementById('senha').value = savedData.senha; 
+            if(savedData.dia) document.getElementById('dia').value = savedData.dia;
+            if(savedData.mes) document.getElementById('mes').value = savedData.mes;
+            if(savedData.ano) document.getElementById('ano').value = savedData.ano;
 
+            if(savedData.continente) {
+                document.getElementById('continente').value = savedData.continente;
+                updateCountries(savedData.continente, savedData.pais);
+            }
+
+            if(savedData.genero) {
+                const radio = document.querySelector(`input[name="gender"][value="${savedData.genero}"]`);
+                if(radio) radio.checked = true;
+            }
+
+            // Carrega Foto
+            const foto = localStorage.getItem("fotoPerfil");
+            if (foto) document.getElementById("fotoPerfil").src = foto;
+        }
+
+        // --- SALVAR DADOS ---
+        document.getElementById('formPerfil').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const data = {
+                nome: document.getElementById('nome').value,
+                email: document.getElementById('email').value,
+                senha: document.getElementById('senha').value,
+                continente: document.getElementById('continente').value,
+                pais: document.getElementById('pais').value,
+                dia: document.getElementById('dia').value,
+                mes: document.getElementById('mes').value,
+                ano: document.getElementById('ano').value,
+                genero: document.querySelector('input[name="gender"]:checked')?.value
+            };
+
+            localStorage.setItem('userProfileData', JSON.stringify(data));
+            localStorage.setItem('userEmail', data.email);
+            localStorage.setItem('userPass', data.senha);
+
+            showToast("Perfil atualizado com sucesso!", "success");
+        });
+
+        // --- FOTO UPLOAD ---
+        document.getElementById('inputFoto').addEventListener("change", e => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = () => {
+                document.getElementById('fotoPerfil').src = reader.result;
+                localStorage.setItem("fotoPerfil", reader.result);
+                showToast("Foto atualizada!", "success");
+            };
+            reader.readAsDataURL(file);
+        });
+
+        initDropdowns();
+        loadProfile();
+
+    </script>
 </body>
 </html>
