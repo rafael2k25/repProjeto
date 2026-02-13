@@ -20,28 +20,29 @@
             min-height: 100vh;
         }
 
-        .container {
+        .container-principal {
             background-color: white;
             display: flex;
             max-width: 900px;
             width: 95%;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: relative;
         }
 
-        /* Lado Esquerdo */
-        .login-side {
+        /* LOGIN */
+        .secao-login {
             padding: 40px;
             flex: 1;
             text-align: center;
         }
 
-        .login-side h2 {
+        .secao-login h2 {
             margin-bottom: 30px;
             font-size: 1.5rem;
             color: #333;
         }
 
-        .btn-social {
+        .botao-social {
             width: 100%;
             padding: 12px;
             margin-bottom: 15px;
@@ -55,40 +56,39 @@
             font-weight: bold;
         }
 
-        .divider {
+        .divisor {
             margin: 20px 0;
             display: flex;
             align-items: center;
         }
 
-        .divider::before, .divider::after {
+        .divisor::before, .divisor::after {
             content: "";
             flex: 1;
             height: 1px;
             background: #20337a;
         }
 
-        .divider span {
+        .divisor span {
             padding: 0 15px;
             font-weight: bold;
         }
 
-        /* Wrapper para Input de Senha + Ícone */
-        .password-container {
+        .container-senha {
             position: relative;
             width: 100%;
             margin-bottom: 15px;
         }
 
-        .password-container input {
+        .container-senha input {
             width: 100%;
             padding: 15px;
-            padding-right: 40px; /* Espaço para o ícone */
+            padding-right: 40px;
             border: 1px solid #333;
             margin-bottom: 0 !important; 
         }
 
-        .toggle-password {
+        .alternar-senha {
             position: absolute;
             right: 15px;
             top: 50%;
@@ -100,45 +100,43 @@
             transition: opacity 0.2s;
         }
 
-        .toggle-password:hover {
+        .alternar-senha:hover {
             opacity: 1;
         }
 
-        /* Regra geral para inputs de texto no login */
-        .login-form input[type="text"] {
+        .formulario-login input[type="text"] {
             width: 100%;
             padding: 15px;
             margin-bottom: 15px;
             border: 1px solid #333;
         }
 
-        .forgot-password {
+        .esqueci-senha {
             font-size: 0.9rem;
             margin-top: 15px;
         }
 
-        .forgot-password a {
+        .esqueci-senha a {
             color: #20337a;
             font-weight: bold;
         }
 
-        /* Lado Direito */
-        .signup-side {
+        /* CADASTRO */
+        .secao-cadastro {
             background-color: #20337a;
             color: white;
             padding: 40px;
             flex: 1;
         }
 
-        .signup-side h2 {
+        .secao-cadastro h2 {
             text-align: center;
             margin-bottom: 30px;
             letter-spacing: 1px;
         }
 
-        /* Ajuste inputs do cadastro */
-        .signup-form input:not([type="radio"]), 
-        .signup-form select {
+        .formulario-cadastro input:not([type="radio"]), 
+        .formulario-cadastro select {
             width: 100%;
             padding: 12px;
             margin-bottom: 15px;
@@ -146,82 +144,80 @@
             border: none;
         }
 
-        .signup-form .password-container input {
+        .formulario-cadastro .container-senha input {
             margin-bottom: 0 !important;
             border-radius: 4px;
             border: none;
         }
         
-        .signup-form .password-container {
+        .formulario-cadastro .container-senha {
             margin-bottom: 15px;
         }
 
-        /* Ícone no fundo azul precisa de cor diferente */
-        .signup-form .toggle-password {
-            filter: invert(50%); /* Ajusta cor para visibilidade */
+        .formulario-cadastro .alternar-senha {
+            filter: invert(50%);
         }
         
-        .signup-form select:disabled {
+        .formulario-cadastro select:disabled {
             background-color: #e0e0e0;
             color: #888;
             cursor: not-allowed;
         }
 
-        .location-group {
+        .grupo-localizacao {
             display: flex;
             gap: 10px;
             margin-bottom: 15px;
         }
         
-        .location-group select {
+        .grupo-localizacao select {
             margin-bottom: 0;
         }
 
-        .dob-group {
+        .grupo-nascimento {
             display: flex;
             gap: 10px;
             margin-bottom: 15px;
         }
 
-        .gender-group {
+        .grupo-genero {
             display: flex;
             gap: 10px;
             margin-top: 10px;
         }
 
-        /* Ajuste do Gênero (Alinhamento Reto) */
-        .gender-box {
+        .caixa-genero {
             background: white;
             color: #333;
             flex: 1;
-            padding: 10px 15px; /* Mais padding lateral */
+            padding: 10px 15px;
             display: flex;
-            justify-content: space-between; /* Texto na esq, bolinha na dir */
-            align-items: center; /* Centraliza verticalmente perfeitamente */
+            justify-content: space-between;
+            align-items: center;
             border-radius: 4px;
             cursor: pointer;
-            height: 42px; /* Altura fixa para garantir alinhamento */
+            height: 42px;
         }
 
-        .gender-box input {
-            margin: 0; /* Remove margens padrão do navegador */
+        .caixa-genero input {
+            margin: 0;
             width: 16px;
             height: 16px;
             cursor: pointer;
             vertical-align: middle;
         }
 
-        .terms {
+        .termos {
             font-size: 0.7rem;
             margin: 20px 0;
             line-height: 1.4;
         }
 
-        .terms a {
+        .termos a {
             color: #ccc;
         }
 
-        .btn-submit {
+        .botao-cadastrar {
             width: 100%;
             padding: 15px;
             background: white;
@@ -232,7 +228,7 @@
             font-size: 1rem;
         }
 
-        .btn-login {
+        .botao-entrar {
             width: 100%;
             padding: 15px;
             background: #20337a;
@@ -241,25 +237,25 @@
             font-weight: bold;
             cursor: pointer;
             font-size: 1rem;
-            width: 100%; /* Garante largura total */
+            width: 100%;
             transition: opacity 0.2s;
         }
 
-        .btn-login:hover {
+        .botao-entrar:hover {
             opacity: 0.9;
         }
 
-        /* ESTILO DA NOTIFICAÇÃO (TOAST) */
-        #toast {
+        /* NOTIFICAÇÃO */
+        #notificacao {
             visibility: hidden;
             min-width: 250px;
-            background-color: #333; /* Cor padrão (será sobrescrita) */
+            background-color: #333;
             color: #fff;
             text-align: center;
             border-radius: 4px;
             padding: 16px;
             position: fixed;
-            z-index: 1000;
+            z-index: 3000;
             left: 50%;
             transform: translateX(-50%);
             top: 30px;
@@ -270,89 +266,155 @@
             font-weight: bold;
         }
 
-        #toast.show {
+        #notificacao.visivel {
             visibility: visible;
             opacity: 1;
             top: 50px;
         }
 
-        /* CORES DO TOAST */
-        #toast.success {
-            background-color: #4CAF50; /* Verde */
+        #notificacao.sucesso { background-color: #4CAF50; }
+        #notificacao.erro { background-color: #f44336; }
+
+        /* MODAL DE VERIFICAÇÃO */
+        .modal-fundo {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            animation: aparecer 0.3s;
         }
 
-        #toast.error {
-            background-color: #f44336; /* Vermelho */
+        .conteudo-modal {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .conteudo-modal h3 {
+            color: #20337a;
+            margin-bottom: 15px;
+        }
+
+        .conteudo-modal p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .entrada-codigo {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.5rem;
+            text-align: center;
+            letter-spacing: 8px;
+            border: 2px solid #20337a;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            outline: none;
+        }
+
+        .botao-cancelar {
+            background: none;
+            border: none;
+            color: #777;
+            margin-top: 15px;
+            cursor: pointer;
+            text-decoration: underline;
+            font-size: 0.9rem;
+        }
+
+        @keyframes aparecer {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @media (max-width: 768px) {
-            .container {
+            .container-principal {
                 flex-direction: column;
             }
-            .location-group {
+            .grupo-localizacao {
                 flex-direction: column;
                 gap: 0;
             }
-            .location-group select {
+            .grupo-localizacao select {
                 margin-bottom: 15px;
             }
         }
     </style>
 </head>
 <body>
-    <div id="toast">Operação realizada!</div>
+    <div id="notificacao">Operação realizada!</div>
 
-    <div class="container">
-        <!-- Lado Esquerdo (Login) -->
-        <section class="login-side">
+    <!-- --- TELA DE VERIFICAÇÃO --- -->
+    <div id="modal-verificacao" class="modal-fundo">
+        <div class="conteudo-modal">
+            <h3>Verificação de Segurança</h3>
+            <p>Para proteger sua conta, enviamos um código para o seu e-mail cadastrado. Insira-o abaixo para entrar.</p>
+            
+            <input type="text" id="codigo-verificacao" class="entrada-codigo" placeholder="000000" maxlength="6">
+            
+            <button onclick="verificarCodigoLogin()" class="botao-entrar" style="width: 100%;">VALIDAR E ENTRAR</button>
+            <button onclick="fecharModal()" class="botao-cancelar">Cancelar</button>
+        </div>
+    </div>
+
+    <div class="container-principal">
+        <!-- --- LOGIN --- -->
+        <section class="secao-login">
             <h2>BEM-VINDO DE VOLTA!</h2>
             
-            <div class="social-login">
-                <button class="btn-social"><img src="https://img.icons8.com/color/24/google-logo.png" alt="Google"> Fazer login com Google</button>
-                <button class="btn-social"><img src="https://img.icons8.com/ios-filled/24/000000/mac-os.png" alt="Apple"> Fazer login com Apple</button>
+            <div class="login-social">
+                <button class="botao-social"><img src="https://img.icons8.com/color/24/google-logo.png" alt="Google"> Fazer login com Google</button>
+                <button class="botao-social"><img src="https://img.icons8.com/ios-filled/24/000000/mac-os.png" alt="Apple"> Fazer login com Apple</button>
             </div>
 
-            <div class="divider">
+            <div class="divisor">
                 <span>OU</span>
             </div>
 
-            <form class="login-form">
-                <!-- ID adicionado ao input de email para facilitar validação -->
-                <input type="text" id="login-email" placeholder="E-mail (teste@gmail.com)" required>
+            <form class="formulario-login">
+                <input type="text" id="login-email" placeholder="E-mail" required>
                 
-                <!-- Senha com Olho (Login) -->
-                <div class="password-container">
-                    <input type="password" id="login-pass" placeholder="Senha (123456)" required>
-                    <svg class="toggle-password" onclick="togglePassword('login-pass')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <div class="container-senha">
+                    <input type="password" id="login-senha" placeholder="Senha" required>
+                    <svg class="alternar-senha" onclick="alternarVisibilidadeSenha('login-senha')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                         <circle cx="12" cy="12" r="3"></circle>
                     </svg>
                 </div>
 
-                <button type="submit" class="btn-login">ENTRAR</button>
-                <p class="forgot-password">Esqueceu sua senha? <br> Clique <a href="#">aqui</a>.</p>
+                <button type="submit" class="botao-entrar">ENTRAR</button>
+                <p class="esqueci-senha">Esqueceu sua senha? <br> Clique <a href="#">aqui</a>.</p>
             </form>
         </section>
 
-        <!-- Lado Direito (Cadastro) -->
-        <section class="signup-side">
+        <!-- --- CADASTRO --- -->
+        <section class="secao-cadastro">
             <h2>CADASTRA-SE AQUI</h2>
-            <form class="signup-form">
+            <form class="formulario-cadastro">
                 <input type="text" placeholder="Nome completo" required>
-                <!-- ADICIONEI ID AQUI PARA CAPTURAR O EMAIL -->
-                <input type="email" id="signup-email" placeholder="Celular ou e-mail" required>
+                <input type="email" id="cadastro-email" placeholder="E-mail" required>
                 
-                <!-- Senha com Olho (Cadastro) -->
-                <div class="password-container">
-                    <input type="password" id="signup-pass" placeholder="Senha" required>
-                    <svg class="toggle-password" onclick="togglePassword('signup-pass')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <div class="container-senha">
+                    <input type="password" id="cadastro-senha" placeholder="Senha" required>
+                    <svg class="alternar-senha" onclick="alternarVisibilidadeSenha('cadastro-senha')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                         <circle cx="12" cy="12" r="3"></circle>
                     </svg>
                 </div>
 
                 <label style="margin-bottom: 5px; display: block; font-size: 0.9rem;">Localização:</label>
-                <div class="location-group">
+                <div class="grupo-localizacao">
                     <select id="continente" required>
                         <option value="" disabled selected>Continente</option>
                     </select>
@@ -363,7 +425,7 @@
                 </div>
 
                 <label>Data de nascimento:</label>
-                <div class="dob-group">
+                <div class="grupo-nascimento">
                     <select id="dia" required>
                         <option value="">Dia</option>
                     </select>
@@ -380,29 +442,32 @@
                 </div>
 
                 <label>Gênero:</label>
-                <div class="gender-group">
-                    <label class="gender-box">
+                <div class="grupo-genero">
+                    <label class="caixa-genero">
                         <span>Feminino</span>
-                        <input type="radio" name="gender" required>
+                        <input type="radio" name="genero" required>
                     </label>
-                    <label class="gender-box">
+                    <label class="caixa-genero">
                         <span>Masculino</span>
-                        <input type="radio" name="gender" required>
+                        <input type="radio" name="genero" required>
                     </label>
                 </div>
 
-                <p class="terms">
+                <p class="termos">
                     Ao clicar em Cadastre-se, você concorda com nossos <a href="#">Termos</a>, <a href="#">Política de Privacidade</a> e <a href="#">Política de Cookies</a>.
                 </p>
 
-                <button type="submit" class="btn-submit">CADASTRA-SE</button>
+                <button type="submit" class="botao-cadastrar">CADASTRA-SE</button>
             </form>
         </section>
     </div>
 
     <script>
-        // --- FUNÇÃO PARA MOSTRAR/ESCONDER SENHA ---
-        function togglePassword(inputId) {
+        // --- VARIÁVEIS GLOBAIS DO CÓDIGO DE LOGIN ---
+        let codigoGerado = "";
+
+        // --- MOSTRAR/ESCONDER SENHA ---
+        function alternarVisibilidadeSenha(inputId) {
             const input = document.getElementById(inputId);
             if (input.type === "password") {
                 input.type = "text";
@@ -411,77 +476,97 @@
             }
         }
 
-        // --- NOTIFICAÇÃO (TOAST) ---
-        // type pode ser 'success' (verde) ou 'error' (vermelho)
-        function showToast(message, type = 'success') {
-            const toast = document.getElementById("toast");
-            toast.textContent = message;
+        // --- NOTIFICAÇÃO ---
+        function exibirNotificacao(mensagem, tipo = 'sucesso') {
+            const notificacao = document.getElementById("notificacao");
+            notificacao.textContent = mensagem;
             
-            // Remove classes antigas e adiciona a nova
-            toast.className = "show";
-            toast.classList.add(type);
+            notificacao.className = "visivel";
+            notificacao.classList.add(tipo);
             
             setTimeout(function(){ 
-                toast.className = toast.className.replace("show", ""); 
-                // Remove a cor após esconder para resetar
-                setTimeout(() => toast.classList.remove(type), 300);
+                notificacao.className = notificacao.className.replace("visivel", ""); 
+                setTimeout(() => notificacao.classList.remove(tipo), 300);
             }, 3000);
         }
 
-        // --- LOGIN (ATUALIZADO) ---
-        document.querySelector('.login-form').addEventListener('submit', function(event) {
+        // --- CADASTRO ---
+        const formularioCadastro = document.querySelector('.formulario-cadastro');
+        formularioCadastro.addEventListener('submit', function(event) {
             event.preventDefault();
             
-            // Pega os valores e remove espaços extras (trim)
-            const emailInput = document.getElementById('login-email');
-            const passwordInput = document.getElementById('login-pass');
-            
-            const email = emailInput.value.trim(); 
-            const password = passwordInput.value;
+            // SALVA LOGIN
+            const email = document.getElementById('cadastro-email').value.trim();
+            const senha = document.getElementById('cadastro-senha').value;
 
-            // 1. DADOS DE TESTE FIXOS
-            const validEmail = "teste@gmail.com";
-            const validPass = "123456";
-            
-            // 2. DADOS DO USUÁRIO CADASTRADO (LocalStorage)
-            const storedEmail = localStorage.getItem('userEmail');
-            const storedPass = localStorage.getItem('userPass');
+            localStorage.setItem('emailUsuario', email);
+            localStorage.setItem('senhaUsuario', senha);
 
-            // Verifica se bate com usuário de teste OU usuário cadastrado
-            const isTestUser = (email === validEmail && password === validPass);
-            const isStoredUser = (storedEmail && email === storedEmail && password === storedPass);
-
-            if (isTestUser || isStoredUser) {
-                showToast("Login realizado com sucesso!", "success");
-            } else {
-                showToast("E-mail ou senha incorretos!", "error");
-            }
-        });
-
-        // --- CADASTRO (ATUALIZADO) ---
-        const signupForm = document.querySelector('.signup-form');
-        signupForm.addEventListener('submit', function(event) {
-            event.preventDefault();
+            exibirNotificacao("Cadastro realizado com sucesso!", "sucesso");
+            formularioCadastro.reset();
             
-            const email = document.getElementById('signup-email').value.trim();
-            const pass = document.getElementById('signup-pass').value;
-            
-            // Salva no navegador para permitir login em seguida
-            localStorage.setItem('userEmail', email);
-            localStorage.setItem('userPass', pass);
-
-            showToast("Cadastro realizado! Tente fazer login.", "success");
-            
-            // LIMPA O FORMULÁRIO APÓS CADASTRO
-            signupForm.reset();
-            
-            // Reseta o campo de país para desativado
+            // RESET INTERFACE
             document.getElementById('pais').innerHTML = '<option value="" disabled selected>País</option>';
             document.getElementById('pais').disabled = true;
         });
 
-        // --- DADOS DE LOCALIZAÇÃO ---
-        const locationData = {
+        // --- VERIFICAÇÃO DE 2 FATORES ---
+        document.querySelector('.formulario-login').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const emailInput = document.getElementById('login-email');
+            const senhaInput = document.getElementById('login-senha');
+            
+            const email = emailInput.value.trim(); 
+            const senha = senhaInput.value;
+
+            const emailValido = "teste@gmail.com";
+            const senhaValida = "123456";
+            
+            const emailArmazenado = localStorage.getItem('emailUsuario');
+            const senhaArmazenada = localStorage.getItem('senhaUsuario');
+
+            // --- VERIFICAÇÃO DA SENHA ---
+            const isUsuarioTeste = (email === emailValido && senha === senhaValida);
+            const isUsuarioArmazenado = (emailArmazenado && email === emailArmazenado && senha === senhaArmazenada);
+
+            if (isUsuarioTeste || isUsuarioArmazenado) {
+                // --- SENHA CORRETA ---
+                codigoGerado = Math.floor(100000 + Math.random() * 900000).toString();
+                console.log("CÓDIGO DE LOGIN: " + codigoGerado); // (F12)
+
+                exibirNotificacao("Senha correta! Código enviado ao e-mail.", "sucesso");
+                abrirModal();
+            } else {
+                // --- SENHA INCORRETA --- 
+                exibirNotificacao("E-mail ou senha incorretos!", "erro");
+            }
+        });
+
+        // --- FUNÇÕES DA VERIFICAÇÃO ---
+        function abrirModal() {
+            document.getElementById('modal-verificacao').style.display = 'flex';
+            document.getElementById('codigo-verificacao').focus();
+        }
+
+        function fecharModal() {
+            document.getElementById('modal-verificacao').style.display = 'none';
+            document.getElementById('codigo-verificacao').value = '';
+        }
+
+        function verificarCodigoLogin() {
+            const codigoInserido = document.getElementById('codigo-verificacao').value;
+
+            if (codigoInserido === codigoGerado) {
+                exibirNotificacao("Login efetuado com sucesso! Redirecionando...", "sucesso");
+                fecharModal();
+            } else {
+                exibirNotificacao("Código inválido. Tente novamente.", "erro");
+            }
+        }
+
+        // --- DADOS DE LOCALIZAÇÃO E DATAS ---
+        const dadosLocalizacao = {
             "América do Sul": ["Brasil", "Argentina", "Chile", "Colômbia", "Peru", "Uruguai"],
             "América do Norte": ["Estados Unidos", "Canadá", "México"],
             "Europa": ["Portugal", "Espanha", "França", "Alemanha", "Itália", "Reino Unido"],
@@ -493,30 +578,29 @@
         const selectContinente = document.getElementById('continente');
         const selectPais = document.getElementById('pais');
 
-        for (const continent in locationData) {
-            const option = document.createElement('option');
-            option.value = continent;
-            option.textContent = continent;
-            selectContinente.appendChild(option);
+        for (const continente in dadosLocalizacao) {
+            const opcao = document.createElement('option');
+            opcao.value = continente;
+            opcao.textContent = continente;
+            selectContinente.appendChild(opcao);
         }
 
         selectContinente.addEventListener('change', function() {
-            const selectedContinent = this.value;
+            const continenteSelecionado = this.value;
             selectPais.innerHTML = '<option value="" disabled selected>País</option>';
-            if (selectedContinent) {
+            if (continenteSelecionado) {
                 selectPais.disabled = false;
-                locationData[selectedContinent].forEach(country => {
-                    const option = document.createElement('option');
-                    option.value = country;
-                    option.textContent = country;
-                    selectPais.appendChild(option);
+                dadosLocalizacao[continenteSelecionado].forEach(pais => {
+                    const opcao = document.createElement('option');
+                    opcao.value = pais;
+                    opcao.textContent = pais;
+                    selectPais.appendChild(opcao);
                 });
             } else {
                 selectPais.disabled = true;
             }
         });
 
-        // --- DATAS ---
         const selectDia = document.getElementById("dia");
         for (let i = 1; i <= 31; i++) {
             let opt = document.createElement("option");
