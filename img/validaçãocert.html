@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFTT - Validação de Certificado</title>
+    <!-- Ícones -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <!-- Fonte Google -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Segoe+UI:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* REUTILIZANDO O CSS BASE DO SEU PROJETO PARA MANTER CONSISTÊNCIA */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            /* Cores do Tema Claro */
+            --bg-body: #f4f6f8;
+            --bg-container: #ffffff;
+            --bg-sidebar: #ffffff;
+            --bg-card: #ffffff;
+            
+            --texto-primario: #333333;
+            --texto-secundario: #666666;
+            
+            --border-color: #e0e0e0;
+            --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.08);
+            
+            --header-blue: #1a4da3;
+            --hover-item: rgba(0, 0, 0, 0.05);
+
+            --success-color: #2ecc71;
+            --error-color: #e74c3c;
+        }
+
+        body.dark-mode {
+            --bg-body: #121212;
+            --bg-container: #181818;
+            --bg-sidebar: #181818;
+            --bg-card: #1e1e1e;
+            
+            --texto-primario: #e0e0e0;
+            --texto-secundario: #b0b0b0;
+            
+            --border-color: #333333;
+            --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.4);
+            
+            --header-blue: #0d2a5a; 
+            --hover-item: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--texto-primario);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* --- CABEÇALHO (Igual aos outros arquivos) --- */
+        .cabecalho-principal {
+            background-color: var(--header-blue);
+            color: white;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            flex-shrink: 0;
+        }
+
+        .cabecalho-esquerda { display: flex; align-items: center; gap: 20px; }
+        .logo-texto { font-weight: 800; font-size: 18px; letter-spacing: 0.5px; }
+        .navegacao-principal { display: flex; gap: 5px; margin-left: 20px; }
+        
+        .item-navegacao {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .item-navegacao:hover, .item-navegacao.ativo { background-color: rgba(255, 255, 255, 0.1); color: white; }
+
+        .cabecalho-direita { display: flex; align-items: center; gap: 20px; }
+        .perfil-usuario { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+        .avatar { width: 32px; height: 32px; background-color: #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #1a4da3; font-weight: bold; font-size: 12px; border: 2px solid rgba(255, 255, 255, 0.5); }
+        .info-usuario { text-align: right; line-height: 1.2; }
+        .nome-usuario { font-size: 13px; font-weight: bold; display: block; }
+        .cargo-usuario { font-size: 11px; opacity: 0.7; }
+
+        /* --- CORPO E BARRA LATERAL --- */
+        .app-body { display: flex; flex: 1; overflow: hidden; }
+        
+        .server-rail {
+            width: 70px;
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 0;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+        
+        .server-icon {
+            width: 44px; height: 44px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 22px; color: var(--texto-secundario); cursor: pointer; transition: 0.2s;
+        }
+        .server-icon:hover { background-color: var(--hover-item); border-radius: 12px; }
+        .separator { width: 32px; height: 2px; background: var(--border-color); margin: 4px 0; }
+
+        /* --- ÁREA ESPECÍFICA DE VALIDAÇÃO --- */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            background-color: var(--bg-body);
+            overflow-y: auto;
+        }
+
+        .validation-container {
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .page-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 32px;
+            color: var(--header-blue);
+            margin-bottom: 10px;
+        }
+        
+        body.dark-mode .page-title { color: #5c9aff; }
+
+        .page-subtitle {
+            color: var(--texto-secundario);
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+
+        .search-box {
+            background-color: var(--bg-card);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .input-group {
+            position: relative;
+            text-align: left;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--texto-primario);
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+            background-color: var(--bg-body);
+            color: var(--texto-primario);
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .input-field:focus {
+            border-color: var(--header-blue);
+        }
+        
+        body.dark-mode .input-field:focus { border-color: #5c9aff; }
+
+        .btn-validate {
+            background-color: var(--header-blue);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-validate:hover { opacity: 0.9; transform: translateY(-2px); }
+        body.dark-mode .btn-validate { background-color: #5c9aff; color: #121212; }
+
+        /* RESULTADO */
+        .result-area {
+            margin-top: 30px;
+            display: none; /* Escondido por padrão */
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .result-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            text-align: left;
+        }
+
+        .result-header {
+            padding: 20px;
+            background-color: var(--success-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .result-header.invalid { background-color: var(--error-color); }
+
+        .status-icon { font-size: 32px; }
+        .status-text { font-weight: 700; font-size: 18px; }
+
+        .result-body { padding: 30px; }
+        
+        .certificate-info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .info-label { font-size: 12px; color: var(--texto-secundario); text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 5px; }
+        .info-value { font-size: 16px; color: var(--texto-primario); font-weight: 500; }
+
+        .security-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background-color: rgba(46, 204, 113, 0.15);
+            color: #27ae60;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .cabecalho-principal { padding: 0 15px; }
+            .server-rail { display: none; }
+            .main-content { padding: 20px; }
+            .search-box { padding: 20px; }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header class="cabecalho-principal">
+        <div class="cabecalho-esquerda">
+            <div class="logo-texto">IFTT</div>
+            <nav class="navegacao-principal">
+                <a href="inicio.html" class="item-navegacao">
+                    <ion-icon name="home-outline"></ion-icon> <span>Início</span>
+                </a>
+                <a href="cursos.html" class="item-navegacao">
+                    <ion-icon name="school-outline"></ion-icon> <span>Cursos</span>
+                </a>
+                <a href="validacao.html" class="item-navegacao ativo">
+                    <ion-icon name="checkmark-circle-outline"></ion-icon> <span>Validação de Certificado</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="cabecalho-direita">
+            <div id="theme-toggle" style="cursor: pointer; font-size: 24px; margin-right: 15px; display: flex; align-items: center;">
+                <ion-icon name="moon-outline" id="theme-icon"></ion-icon>
+            </div>
+            <div class="perfil-usuario">
+                <div class="info-usuario">
+                    <span class="nome-usuario">Teste Usuário</span>
+                    <span class="cargo-usuario">Gestor de Projetos</span>
+                </div>
+                <div class="avatar">TU</div>
+                <ion-icon name="chevron-down-outline" style="font-size: 12px; color: rgba(255,255,255,0.7)"></ion-icon>
+            </div>
+        </div>
+    </header>
+
+    <div class="app-body">
+        <nav class="server-rail">
+            <a href="inicio.html" class="server-icon" title="Início"><ion-icon name="newspaper-outline"></ion-icon></a>
+            <div class="separator"></div>
+            <a href="index.html" class="server-icon" title="Comunicação Interna" style="display:flex; text-decoration:none;"><ion-icon name="people-outline"></ion-icon></a>
+            <div class="server-icon" title="Configurações"><ion-icon name="construct-outline"></ion-icon></div>
+        </nav>
+
+        <main class="main-content">
+            <div class="validation-container">
+                <ion-icon name="shield-checkmark-outline" style="font-size: 64px; color: var(--header-blue); margin-bottom: 20px;"></ion-icon>
+                <h1 class="page-title">Validação de Autenticidade</h1>
+                <p class="page-subtitle">Insira o código presente no verso do certificado para confirmar sua validade e visualizar os detalhes técnicos.</p>
+
+                <div class="search-box">
+                    <div class="input-group">
+                        <label class="input-label">CÓDIGO DE AUTENTICAÇÃO</label>
+                        <input type="text" id="certInput" class="input-field" placeholder="EX: IFTT-2024-X89Z" maxlength="20">
+                    </div>
+                    <button class="btn-validate" onclick="validarCertificado()">
+                        <ion-icon name="search-outline"></ion-icon> CONSULTAR BASE DE DADOS
+                    </button>
+                </div>
+
+                <!-- === RESULTADO VÁLIDO === -->
+                <div id="resultadoValido" class="result-area">
+                    <div class="result-card">
+                        <div class="result-header">
+                            <ion-icon name="checkmark-circle" class="status-icon"></ion-icon>
+                            <span class="status-text">CERTIFICADO VÁLIDO</span>
+                        </div>
+                        <div class="result-body">
+                            <div class="certificate-info-row">
+                                <div>
+                                    <span class="info-label">Aluno Certificado</span>
+                                    <div class="info-value">Carlos Eduardo da Silva</div>
+                                </div>
+                                <div>
+                                    <span class="info-label">Conclusão</span>
+                                    <div class="info-value">12/12/2025</div>
+                                </div>
+                            </div>
+
+                            <div class="certificate-info-row">
+                                <div>
+                                    <span class="info-label">Curso/Qualificação</span>
+                                    <div class="info-value">Programador Full-Stack (670h)</div>
+                                </div>
+                            </div>
+
+                            <div class="certificate-info-row" style="border: none; padding-bottom: 0;">
+                                <div>
+                                    <span class="info-label">Status Institucional</span>
+                                    <div class="security-badge">
+                                        <ion-icon name="lock-closed"></ion-icon> Assinado Digitalmente pela IFTT
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- === RESULTADO INVÁLIDO === -->
+                <div id="resultadoInvalido" class="result-area">
+                    <div class="result-card">
+                        <div class="result-header invalid">
+                            <ion-icon name="alert-circle" class="status-icon"></ion-icon>
+                            <span class="status-text">REGISTRO NÃO ENCONTRADO</span>
+                        </div>
+                        <div class="result-body">
+                            <p style="color: var(--texto-secundario); font-size: 14px;">
+                                O código informado não consta em nossa base de dados oficial. Verifique se digitou corretamente ou entre em contato com a secretaria acadêmica.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // === TEMA ESCURO ===
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const body = document.body;
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeIcon.setAttribute('name', 'sunny-outline');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            themeIcon.setAttribute('name', isDark ? 'sunny-outline' : 'moon-outline');
+        });
+
+        // === VALIDAÇÃO ===
+        function validarCertificado() {
+            const codigo = document.getElementById('certInput').value.trim().toUpperCase();
+            const resValido = document.getElementById('resultadoValido');
+            const resInvalido = document.getElementById('resultadoInvalido');
+            
+            // === RESET DA VISUALIZAÇÃO ===
+            resValido.style.display = 'none';
+            resInvalido.style.display = 'none';
+
+            if(codigo === "") {
+                alert("Por favor, digite um código.");
+                return;
+            }
+
+            // === LOADING ===
+            const btn = document.querySelector('.btn-validate');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<ion-icon name="refresh-outline" class="spin"></ion-icon> VERIFICANDO...';
+            btn.style.opacity = '0.7';
+
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.opacity = '1';
+
+                // === SE O CÓDIGO TIVER IFTT, É VÁLIDO ===
+                if (codigo.includes('IFTT')) {
+                    resValido.style.display = 'block';
+                } else {
+                    resInvalido.style.display = 'block';
+                }
+            }, 800);
+        }
+    </script>
+</body>
+</html>
