@@ -248,6 +248,23 @@
             margin: 4px 0;
         }
 
+        .notificacao-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background: #e44d26;
+            color: white;
+            font-size: 10px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--bg-body);
+            font-weight: bold;
+        }
+
         /* Área de Rolagem do Conteúdo */
         .content-scroll-area {
             flex: 1;
@@ -524,11 +541,26 @@
     <div class="app-body">
         <!-- SERVER RAIL -->
         <nav class="server-rail">
-            <div class="server-icon active" title="Início"><ion-icon name="newspaper-outline"></ion-icon></div>
+            <a href="inicio.html" class="server-icon active" title="Início" style="display:flex; text-decoration:none;">
+                <ion-icon name="newspaper-outline"></ion-icon>
+            </a>
             <div class="separator"></div>
-            <!-- Linkando para o Chat -->
-            <a href="index.html" class="server-icon" title="Comunicação Interna" style="display:flex; text-decoration:none;"><ion-icon name="people-outline"></ion-icon></a>
-            <div class="server-icon" title="Configurações"><ion-icon name="construct-outline"></ion-icon></div>
+            
+            <a href="index.html" class="server-icon" title="Comunicação Interna" style="display:flex; text-decoration:none;">
+                <ion-icon name="people-outline"></ion-icon>
+                <div class="notificacao-badge">3</div>
+            </a>
+            
+            <a href="calendario.html" class="server-icon" title="Calendário de Eventos" style="display:flex; text-decoration:none;">
+                <ion-icon name="calendar-outline"></ion-icon>
+                <div class="notificacao-badge">2</div>
+            </a>
+            
+            <div class="separator"></div>
+            
+            <div class="server-icon" title="Configurações">
+                <ion-icon name="construct-outline"></ion-icon>
+            </div>
         </nav>
 
         <!-- ÁREA DE CONTEÚDO -->
