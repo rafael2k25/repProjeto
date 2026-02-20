@@ -13,391 +13,411 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Segoe+UI:wght@400;600&display=swap"
         rel="stylesheet">
 
-        <style>
-            /* RESET */
-            * {
-                box-sizing: border-box;
-                margin: 0;
-                padding: 0;
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            }
-    
-            /* === VARIÁVEIS DE TEMA === */
-            :root {
-                /* Cores do Tema Claro */
-                --bg-body: #f4f6f8;
-                --bg-container: #ffffff;
-                --bg-sidebar: #ffffff;
-                --bg-card: #ffffff;
-                
-                --texto-primario: #333333;
-                --texto-secundario: #666666;
-                
-                --border-color: #e0e0e0;
-                --shadow-card: 0 2px 5px rgba(0, 0, 0, 0.05);
-                
-                /* Cores de destaque */
-                --header-blue: #1a4da3;
-                --hover-item: rgba(0, 0, 0, 0.05);
-            }
-    
-            /* Cores do Tema Escuro */
-            body.dark-mode {
-                --bg-body: #121212;
-                --bg-container: #181818;
-                --bg-sidebar: #181818;
-                --bg-card: #1e1e1e;
-                
-                --texto-primario: #e0e0e0;
-                --texto-secundario: #b0b0b0;
-                
-                --border-color: #333333;
-                --shadow-card: 0 2px 5px rgba(0, 0, 0, 0.5);
-                
-                --header-blue: #0d2a5a; 
-                --hover-item: rgba(255, 255, 255, 0.1);
-            }
-    
-            body {
-                /* APLICAÇÃO DA VARIÁVEL DE FUNDO */
-                background-color: var(--bg-body);
-                color: var(--texto-primario);
-                height: 100vh;
-                display: flex;
-                flex-direction: column;
-                overflow: hidden;
-                transition: background-color 0.3s, color 0.3s;
-            }
-    
-            /* --- CABEÇALHO GLOBAL --- */
-            .cabecalho-principal {
-                background-color: var(--header-blue);
-                color: white;
-                height: 60px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 0 30px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                z-index: 10;
-                flex-shrink: 0;
-                transition: background-color 0.3s;
-            }
-    
-            .cabecalho-esquerda {
-                display: flex;
-                align-items: center;
-                gap: 20px;
-            }
-    
-            .logo-texto {
-                font-weight: 800;
-                font-size: 18px;
-                letter-spacing: 0.5px;
-            }
-    
-            .navegacao-principal {
-                display: flex;
-                gap: 5px;
-                margin-left: 20px;
-            }
-    
-            .item-navegacao {
-                color: rgba(255, 255, 255, 0.8);
-                text-decoration: none;
-                font-size: 14px;
-                font-weight: 600;
-                padding: 8px 12px;
-                border-radius: 4px;
-                transition: 0.2s;
-                display: flex;
-                align-items: center;
-                gap: 6px;
-            }
-    
-            .item-navegacao:hover {
-                background-color: rgba(255, 255, 255, 0.1);
-                color: white;
-            }
-    
-            .item-navegacao.ativo {
-                background-color: rgba(255, 255, 255, 0.2);
-                color: white;
-            }
-    
-            .cabecalho-direita {
-                display: flex;
-                align-items: center;
-                gap: 20px;
-            }
-    
-            .perfil-usuario {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                cursor: pointer;
-                padding: 5px 10px;
-                border-radius: 20px;
-                transition: 0.2s;
-            }
-    
-            .perfil-usuario:hover {
-                background-color: rgba(255, 255, 255, 0.1);
-            }
-    
-            .avatar {
-                width: 32px;
-                height: 32px;
-                background-color: #ddd;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: #1a4da3;
-                font-weight: bold;
-                font-size: 12px;
-                border: 2px solid rgba(255, 255, 255, 0.5);
-            }
-    
-            .info-usuario {
-                text-align: right;
-                line-height: 1.2;
-            }
-    
-            .nome-usuario {
-                font-size: 13px;
-                font-weight: bold;
-                display: block;
-            }
-    
-            .cargo-usuario {
-                font-size: 11px;
-                opacity: 0.7;
-            }
-    
-            .corpo-aplicacao {
-                display: flex;
-                flex: 1;
-                overflow: hidden;
-            }
-    
-            .barra-lateral-icones {
-                width: 70px;
-                background-color: var(--bg-sidebar);
-                border-right: 1px solid var(--border-color);
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                padding: 15px 0;
-                gap: 12px;
-                flex-shrink: 0;
-                z-index: 5;
-                transition: background-color 0.3s, border-color 0.3s;
-            }
-    
-            .icone-lateral {
-                width: 44px;
-                height: 44px;
-                background-color: transparent;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 22px;
-                color: var(--texto-secundario);
-                cursor: pointer;
-                transition: 0.2s;
-            }
-    
-            .icone-lateral:hover {
-                background-color: var(--hover-item);
-                border-radius: 12px;
-            }
-    
-            .icone-lateral.ativo {
-                border-radius: 12px;
-                background-color: var(--header-blue);
-                color: white;
-            }
-    
-            .separador {
-                width: 32px;
-                height: 2px;
-                background: var(--border-color);
-                margin: 4px 0;
-            }
-    
-            .area-conteudo {
-                flex: 1;
-                overflow-y: auto;
-                background-color: var(--bg-container);
-                padding: 40px 60px;
-                transition: background-color 0.3s;
-            }
-    
-            .cabecalho-secao-cursos {
-                margin-bottom: 40px;
-            }
-    
-            .migalhas {
-                font-size: 13px;
-                color: var(--texto-secundario);
-                margin-bottom: 10px;
-            }
-    
-            .migalhas a {
-                text-decoration: none;
-                color: var(--header-blue);
-                font-weight: 600;
-            }
-            
-            body.dark-mode .migalhas a {
-                color: #5c9aff;
-            }
-    
-            h1.titulo-principal-pagina {
-                font-family: 'Poppins', sans-serif;
-                font-size: 36px;
-                color: var(--header-blue);
-                margin-bottom: 10px;
-            }
-            
-            body.dark-mode h1.titulo-principal-pagina {
-                color: #5c9aff;
-            }
-    
-            .texto-intro {
-                color: var(--texto-secundario);
-                font-size: 14px;
-                max-width: 800px;
-                line-height: 1.6;
-            }
-    
-            .secao-categoria {
-                margin-top: 50px;
-            }
-    
-            .titulo-categoria {
-                font-family: 'Poppins', sans-serif;
-                font-size: 24px;
-                color: var(--texto-primario);
-                padding-bottom: 15px;
-                border-bottom: 1px solid var(--border-color);
-                margin-bottom: 30px;
-            }
-    
-            /* GRID DE CURSOS */
-            .grade-cursos {
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-                gap: 30px;
-            }
-    
-            .card-curso {
-                background: var(--bg-card);
-                border: 1px solid var(--border-color);
-                box-shadow: var(--shadow-card);
-                
-                border-radius: 8px;
-                overflow: hidden;
-                transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s, border-color 0.3s;
-                display: flex;
-                flex-direction: column;
-                cursor: pointer;
-                height: 100%;
-            }
-    
-            .card-curso:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-                border-color: var(--border-color);
-            }
-    
-            .area-imagem-card {
-                height: 180px;
-                background-color: #e6f2ff; 
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                position: relative;
-                overflow: hidden;
-            }
-            
-            body.dark-mode .area-imagem-card {
-                filter: brightness(0.8);
-            }
-    
-            .area-imagem-card img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                display: block;
-            }
-    
-            .area-imagem-card.fundo-pfs { background-color: #e8eaff; }
-            .area-imagem-card.fundo-pfe { background-color: #ffebe6; }
-            .area-imagem-card.fundo-js { background-color: #fff9e6; }
-            .area-imagem-card.fundo-iot { background-color: #e6f2ff; }
-            .area-imagem-card.fundo-iq { background-color: #fff0e6; }
-            .area-imagem-card.fundo-sci { background-color: #fff9e6; }
-            .area-imagem-card.fundo-proto { background-color: #ffebe6; }
-    
-            .conteudo-card {
-                padding: 20px;
-                flex: 1;
-                display: flex;
-                flex-direction: column;
-            }
-    
-            .titulo-curso {
-                font-family: 'Poppins', sans-serif;
-                font-size: 16px;
-                font-weight: 700;
-                color: var(--texto-primario);
-                margin-bottom: 10px;
-                line-height: 1.4;
-            }
-    
-            .carga-horaria {
-                font-size: 11px;
-                background: var(--border-color);
-                padding: 2px 6px;
-                border-radius: 4px;
-                color: var(--texto-secundario);
-                font-weight: normal;
-                white-space: nowrap;
-                margin-left: 8px;
-                float: right;
-            }
-    
-            .descricao-curso {
-                font-size: 13px;
-                color: var(--texto-secundario);
-                line-height: 1.5;
-                margin-bottom: 20px;
-                flex: 1;
-            }
-    
-            .botao-acessar {
-                margin-top: auto;
-                background-color: transparent;
-                border: 1px solid var(--header-blue);
-                color: var(--header-blue);
-                padding: 8px;
-                border-radius: 4px;
-                font-weight: 600;
-                font-size: 12px;
-                cursor: pointer;
-                text-align: center;
-                transition: 0.2s;
-            }
-            
-            body.dark-mode .botao-acessar {
-                border-color: #5c9aff;
-                color: #5c9aff;
-            }
+    <style>
+        /* RESET */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-            .app-body {
+        /* === VARIÁVEIS DE TEMA === */
+        :root {
+            /* Cores do Tema Claro */
+            --bg-body: #f4f6f8;
+            --bg-container: #ffffff;
+            --bg-sidebar: #ffffff;
+            --bg-card: #ffffff;
+
+            --texto-primario: #333333;
+            --texto-secundario: #666666;
+
+            --border-color: #e0e0e0;
+            --shadow-card: 0 2px 5px rgba(0, 0, 0, 0.05);
+
+            /* Cores de destaque */
+            --header-blue: #1a4da3;
+            --hover-item: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Cores do Tema Escuro */
+        body.dark-mode {
+            --bg-body: #121212;
+            --bg-container: #181818;
+            --bg-sidebar: #181818;
+            --bg-card: #1e1e1e;
+
+            --texto-primario: #e0e0e0;
+            --texto-secundario: #b0b0b0;
+
+            --border-color: #333333;
+            --shadow-card: 0 2px 5px rgba(0, 0, 0, 0.5);
+
+            --header-blue: #0d2a5a;
+            --hover-item: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            /* APLICAÇÃO DA VARIÁVEL DE FUNDO */
+            background-color: var(--bg-body);
+            color: var(--texto-primario);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* --- CABEÇALHO GLOBAL --- */
+        .cabecalho-principal {
+            background-color: var(--header-blue);
+            color: white;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            flex-shrink: 0;
+            transition: background-color 0.3s;
+        }
+
+        .cabecalho-esquerda {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-texto {
+            font-weight: 800;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+        }
+
+        .navegacao-principal {
+            display: flex;
+            gap: 5px;
+            margin-left: 20px;
+        }
+
+        .item-navegacao {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .item-navegacao:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .item-navegacao.ativo {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .cabecalho-direita {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .perfil-usuario {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 20px;
+            transition: 0.2s;
+        }
+
+        .perfil-usuario:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .avatar {
+            width: 32px;
+            height: 32px;
+            background-color: #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a4da3;
+            font-weight: bold;
+            font-size: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .info-usuario {
+            text-align: right;
+            line-height: 1.2;
+        }
+
+        .nome-usuario {
+            font-size: 13px;
+            font-weight: bold;
+            display: block;
+        }
+
+        .cargo-usuario {
+            font-size: 11px;
+            opacity: 0.7;
+        }
+
+        .corpo-aplicacao {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .barra-lateral-icones {
+            width: 70px;
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 0;
+            gap: 12px;
+            flex-shrink: 0;
+            z-index: 5;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .icone-lateral {
+            width: 44px;
+            height: 44px;
+            background-color: transparent;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: var(--texto-secundario);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .icone-lateral:hover {
+            background-color: var(--hover-item);
+            border-radius: 12px;
+        }
+
+        .icone-lateral.ativo {
+            border-radius: 12px;
+            background-color: var(--header-blue);
+            color: white;
+        }
+
+        .separador {
+            width: 32px;
+            height: 2px;
+            background: var(--border-color);
+            margin: 4px 0;
+        }
+
+        .area-conteudo {
+            flex: 1;
+            overflow-y: auto;
+            background-color: var(--bg-container);
+            padding: 40px 60px;
+            transition: background-color 0.3s;
+        }
+
+        .cabecalho-secao-cursos {
+            margin-bottom: 40px;
+        }
+
+        .migalhas {
+            font-size: 13px;
+            color: var(--texto-secundario);
+            margin-bottom: 10px;
+        }
+
+        .migalhas a {
+            text-decoration: none;
+            color: var(--header-blue);
+            font-weight: 600;
+        }
+
+        body.dark-mode .migalhas a {
+            color: #5c9aff;
+        }
+
+        h1.titulo-principal-pagina {
+            font-family: 'Poppins', sans-serif;
+            font-size: 36px;
+            color: var(--header-blue);
+            margin-bottom: 10px;
+        }
+
+        body.dark-mode h1.titulo-principal-pagina {
+            color: #5c9aff;
+        }
+
+        .texto-intro {
+            color: var(--texto-secundario);
+            font-size: 14px;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+
+        .secao-categoria {
+            margin-top: 50px;
+        }
+
+        .titulo-categoria {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            color: var(--texto-primario);
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+
+        /* GRID DE CURSOS */
+        .grade-cursos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card-curso {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-card);
+
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            height: 100%;
+        }
+
+        .card-curso:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            border-color: var(--border-color);
+        }
+
+        .area-imagem-card {
+            height: 180px;
+            background-color: #e6f2ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.dark-mode .area-imagem-card {
+            filter: brightness(0.8);
+        }
+
+        .area-imagem-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .area-imagem-card.fundo-pfs {
+            background-color: #e8eaff;
+        }
+
+        .area-imagem-card.fundo-pfe {
+            background-color: #ffebe6;
+        }
+
+        .area-imagem-card.fundo-js {
+            background-color: #fff9e6;
+        }
+
+        .area-imagem-card.fundo-iot {
+            background-color: #e6f2ff;
+        }
+
+        .area-imagem-card.fundo-iq {
+            background-color: #fff0e6;
+        }
+
+        .area-imagem-card.fundo-sci {
+            background-color: #fff9e6;
+        }
+
+        .area-imagem-card.fundo-proto {
+            background-color: #ffebe6;
+        }
+
+        .conteudo-card {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .titulo-curso {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--texto-primario);
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .carga-horaria {
+            font-size: 11px;
+            background: var(--border-color);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--texto-secundario);
+            font-weight: normal;
+            white-space: nowrap;
+            margin-left: 8px;
+            float: right;
+        }
+
+        .descricao-curso {
+            font-size: 13px;
+            color: var(--texto-secundario);
+            line-height: 1.5;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .botao-acessar {
+            margin-top: auto;
+            background-color: transparent;
+            border: 1px solid var(--header-blue);
+            color: var(--header-blue);
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 12px;
+            cursor: pointer;
+            text-align: center;
+            transition: 0.2s;
+        }
+
+        body.dark-mode .botao-acessar {
+            border-color: #5c9aff;
+            color: #5c9aff;
+        }
+
+        .app-body {
             display: flex;
             flex: 1;
             overflow: hidden;
@@ -419,13 +439,15 @@
         .server-icon {
             width: 44px;
             height: 44px;
-            background-color: var(--icon-bg); /* Corrigido */
+            background-color: var(--icon-bg);
+            /* Corrigido */
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 22px;
-            color: var(--icon-color); /* Corrigido */
+            color: var(--icon-color);
+            /* Corrigido */
             cursor: pointer;
             transition: 0.2s;
             position: relative;
@@ -443,38 +465,103 @@
             color: white;
         }
 
+        .notificacao-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background: #e44d26;
+            color: white;
+            font-size: 10px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--bg-card);
+            font-weight: bold;
+        }
+
         .separator {
             width: 32px;
             height: 2px;
             background: var(--border-color);
             margin: 4px 0;
         }
-    
-            .card-curso:hover .botao-acessar {
-                background-color: var(--header-blue);
-                color: white;
+
+        .card-curso:hover .botao-acessar {
+            background-color: var(--header-blue);
+            color: white;
+        }
+
+        body.dark-mode .card-curso:hover .botao-acessar {
+            background-color: #5c9aff;
+            color: #121212;
+        }
+
+        /* ===== BUSCA E FILTROS ===== */
+
+        .area-filtros {
+            display: flex;
+            gap: 15px;
+            margin: 25px 0 10px 0;
+            flex-wrap: wrap;
+        }
+
+        .campo-busca {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            align-items: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 8px 12px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .campo-busca ion-icon {
+            font-size: 18px;
+            color: var(--texto-secundario);
+            margin-right: 8px;
+        }
+
+        .campo-busca input {
+            border: none;
+            outline: none;
+            background: transparent;
+            width: 100%;
+            color: var(--texto-primario);
+            font-size: 14px;
+        }
+
+        #filtroCarga {
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--texto-primario);
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .area-conteudo {
+                padding: 20px;
             }
-            
-            body.dark-mode .card-curso:hover .botao-acessar {
-                background-color: #5c9aff;
-                color: #121212;
+
+            .grade-cursos {
+                grid-template-columns: 1fr;
             }
-    
-            @media (max-width: 768px) {
-                .area-conteudo {
-                    padding: 20px;
-                }
-                .grade-cursos {
-                    grid-template-columns: 1fr;
-                }
-                .barra-lateral-icones {
-                    display: none;
-                }
-                .cabecalho-principal {
-                    padding: 0 15px;
-                }
+
+            .barra-lateral-icones {
+                display: none;
             }
-        </style>
+
+            .cabecalho-principal {
+                padding: 0 15px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -515,152 +602,230 @@
 
     <div class="app-body">
         <!-- SERVER RAIL -->
-        <nav class="server-rail">
-            <div class="server-icon active" title="Início"><ion-icon name="newspaper-outline"></ion-icon></div>
-            <div class="separator"></div>
-            <!-- Linkando para o Chat -->
-            <a href="index.html" class="server-icon" title="Comunicação Interna" style="display:flex; text-decoration:none;"><ion-icon name="people-outline"></ion-icon></a>
-            <div class="server-icon" title="Configurações"><ion-icon name="construct-outline"></ion-icon></div>
-        </nav>
+        <div class="corpo-aplicacao">
 
-        <main class="area-conteudo">
-
-            <header class="cabecalho-secao-cursos">
-                <div class="migalhas">
-                    <a href="inicio.html">Início</a> » Cursos
+            <nav class="barra-lateral-icones">
+                <a href="inicio.html" class="icone-lateral" title="Início"><ion-icon
+                        name="newspaper-outline"></ion-icon></a>
+                <div class="separador"></div>
+                <div class="icone-lateral ativo" title="Comunicação Interna">
+                    <ion-icon name="people-outline"></ion-icon>
+                    <div class="notificacao-badge">3</div>
                 </div>
-                <h1 class="titulo-principal-pagina">Cursos</h1>
-                <p class="texto-intro">
-                    Aprimore suas habilidades técnicas com nossa biblioteca de treinamentos internos.
-                    Complete os cursos e explore novas áreas de conhecimento.
-                </p>
-            </header>
+                <div class="icone-lateral" title="Configurações"><ion-icon name="construct-outline"></ion-icon></div>
+            </nav>
 
-            <section class="secao-categoria" style="margin-top: 20px;">
-                <h2 class="titulo-categoria">Cursos disponíveis</h2>
+            <main class="area-conteudo">
 
-                <div class="grade-cursos">
+                <header class="cabecalho-secao-cursos">
+                    <div class="migalhas">
+                        <a href="inicio.html">Início</a> » Cursos
+                    </div>
+                    <h1 class="titulo-principal-pagina">Cursos</h1>
+                    <p class="texto-intro">
+                        Aprimore suas habilidades técnicas com nossa biblioteca de treinamentos internos.
+                        Complete os cursos e explore novas áreas de conhecimento.
+                    </p>
+                </header>
 
-                    <!-- Card 1: Full-Stack -->
-                    <article class="card-curso">
-                        <div class="area-imagem-card">
-                            <img src="css/curso1.webp" alt="Full Stack">
-                        </div>
-                        <div class="conteudo-card">
-                            <h3 class="titulo-curso">Programador Full-Stack <span class="carga-horaria">670h</span></h3>
-                            <p class="descricao-curso">Este curso é ideal para iniciantes que desejam entrar na área de
-                                tecnologia da informação (TI), profissionais que buscam ampliar suas competências em
-                                desenvolvimento web, ou empreendedores que querem criar e gerenciar seus próprios
-                                sistemas.</p>
-                            <button class="botao-acessar">ACESSAR CURSO</button>
-                        </div>
-                    </article>
-                    <!-- Fim Card 1 -->
+                <!-- ===== BUSCA E FILTROS ===== -->
+                <div class="area-filtros">
 
-                    <!-- Card 2: Front-End -->
-                    <article class="card-curso">
-                        <div class="area-imagem-card fundo-pfe">
-                            <img src="css/curso2.jpg" alt="Front End">
-                        </div>
-                        <div class="conteudo-card">
-                            <h3 class="titulo-curso">Programador Front-End <span class="carga-horaria">40h</span></h3>
-                            <p class="descricao-curso">Desenvolva sua carreira em uma das áreas que mais cresce no
-                                mercado e atue no ponto de contato entre o sistema e o usuário. Aprenda a criar
-                                interfaces sofisticadas e intuitivas que proporcionam uma ótima experiência online.</p>
-                            <button class="botao-acessar">ACESSAR CURSO</button>
-                        </div>
-                    </article>
-                    <!-- Fim Card 2 -->
+                    <div class="campo-busca">
+                        <ion-icon name="search-outline"></ion-icon>
+                        <input type="text" id="pesquisaCurso" placeholder="Pesquisar cursos...">
+                    </div>
 
-                    <!-- Card 3: IoT -->
-                    <article class="card-curso">
-                        <div class="area-imagem-card fundo-iot">
-                            <img src="css/curso3.webp" alt="IoT">
-                        </div>
-                        <div class="conteudo-card">
-                            <h3 class="titulo-curso">Introdução à IoT para Manutenção Industrial <span
-                                    class="carga-horaria">40h</span></h3>
-                            <p class="descricao-curso">Aprenda os conceitos relevantes de conectividade em máquinas e
-                                equipamentos utilizando a tecnologia IoT (Internet Industrial das Coisas) para serem
-                                aplicados em serviços de manutenção na Indústria 4.0.</p>
-                            <button class="botao-acessar">ACESSAR CURSO</button>
-                        </div>
-                    </article>
-                    <!-- Fim Card 3 -->
-
-                    <!-- Card 4: Inspetor de Qualidade -->
-                    <article class="card-curso">
-                        <div class="area-imagem-card fundo-iq">
-                            <img src="css/curso4.png" alt="Qualidade">
-                        </div>
-                        <div class="conteudo-card">
-                            <h3 class="titulo-curso">Inspetor de Qualidade <span class="carga-horaria">40h</span></h3>
-                            <p class="descricao-curso">Torne-se um dos profissionais mais requisitados pela indústria.
-                                Aprenda a supervisionar a qualidade dos produtos em cada etapa do processo, garantindo
-                                que tudo esteja dentro dos padrões estabelecidos.</p>
-                            <button class="botao-acessar">ACESSAR CURSO</button>
-                        </div>
-                    </article>
-                    <!-- Fim Card 4 -->
-
-                    <!-- Card 5: Segurança Cibernética -->
-                    <article class="card-curso">
-                        <div class="area-imagem-card fundo-sci">
-                            <img src="css/curso5.webp" alt="Segurança">
-                        </div>
-                        <div class="conteudo-card">
-                            <h3 class="titulo-curso">Segurança Cibernética Aplicada à Indústria 4.0 <span
-                                    class="carga-horaria">60h</span></h3>
-                            <p class="descricao-curso">Capacitar profissionais da indústria para planejar, controlar e
-                                programar os processos industriais, com base na aplicação dos conceitos de análise de
-                                dados, estatística e inteligência artificial, no contexto da Indústria 4.0.</p>
-                            <button class="botao-acessar">ACESSAR CURSO</button>
-                        </div>
-                    </article>
-                    <!-- Fim Card 5 -->
-
-                    <!-- Card 6: Prototipagem -->
-                    <article class="card-curso">
-                        <div class="area-imagem-card fundo-proto">
-                            <img src="css/curso6.png" alt="Prototipagem">
-                        </div>
-                        <div class="conteudo-card">
-                            <h3 class="titulo-curso">Prototipagem: Impressão 3D <span class="carga-horaria">30h</span>
-                            </h3>
-                            <p class="descricao-curso">Capacite-se para a Indústria 4.0! Compreenda os conceitos,
-                                vantagens, tipos e a aplicabilidade da impressão 3D, um processo de fabricação em
-                                ascensão na indústria moderna.</p>
-                            <button class="botao-acessar">ACESSAR CURSO</button>
-                        </div>
-                    </article>
-                    <!-- Fim Card 6 -->
+                    <select id="filtroCarga">
+                        <option value="todos">Todas as cargas horárias</option>
+                        <option value="30">Até 30h</option>
+                        <option value="40">Até 40h</option>
+                        <option value="60">Até 60h</option>
+                        <option value="600">Cursos longos (600h+)</option>
+                    </select>
 
                 </div>
-            </section>
-        </main>
-    </div>
-    <script>
+                <!-- ===== FIM BUSCA E FILTROS ===== -->
 
-        // === LÓGICA TEMA ESCURO ===
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const body = document.body;
+                <section class="secao-categoria" style="margin-top: 20px;">
+                    <h2 class="titulo-categoria">Cursos disponíveis</h2>
 
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            body.classList.add('dark-mode');
-            themeIcon.setAttribute('name', 'sunny-outline');
-        }
+                    <div class="grade-cursos">
 
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            const isDark = body.classList.contains('dark-mode');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            themeIcon.setAttribute('name', isDark ? 'sunny-outline' : 'moon-outline');
-        });
-// === FIM TESTE TEMA ESCURO ===
+                        <!-- Card 1: Full-Stack -->
+                        <article class="card-curso">
+                            <div class="area-imagem-card">
+                                <img src="css/curso1.webp" alt="Full Stack">
+                            </div>
+                            <div class="conteudo-card">
+                                <h3 class="titulo-curso">Programador Full-Stack <span class="carga-horaria">670h</span>
+                                </h3>
+                                <p class="descricao-curso">Este curso é ideal para iniciantes que desejam entrar na área
+                                    de
+                                    tecnologia da informação (TI), profissionais que buscam ampliar suas competências em
+                                    desenvolvimento web, ou empreendedores que querem criar e gerenciar seus próprios
+                                    sistemas.</p>
+                                <button class="botao-acessar">ACESSAR CURSO</button>
+                            </div>
+                        </article>
+                        <!-- Fim Card 1 -->
 
-    </script>
+                        <!-- Card 2: Front-End -->
+                        <article class="card-curso">
+                            <div class="area-imagem-card fundo-pfe">
+                                <img src="css/curso2.jpg" alt="Front End">
+                            </div>
+                            <div class="conteudo-card">
+                                <h3 class="titulo-curso">Programador Front-End <span class="carga-horaria">40h</span>
+                                </h3>
+                                <p class="descricao-curso">Desenvolva sua carreira em uma das áreas que mais cresce no
+                                    mercado e atue no ponto de contato entre o sistema e o usuário. Aprenda a criar
+                                    interfaces sofisticadas e intuitivas que proporcionam uma ótima experiência online.
+                                </p>
+                                <button class="botao-acessar">ACESSAR CURSO</button>
+                            </div>
+                        </article>
+                        <!-- Fim Card 2 -->
+
+                        <!-- Card 3: IoT -->
+                        <article class="card-curso">
+                            <div class="area-imagem-card fundo-iot">
+                                <img src="css/curso3.webp" alt="IoT">
+                            </div>
+                            <div class="conteudo-card">
+                                <h3 class="titulo-curso">Introdução à IoT para Manutenção Industrial <span
+                                        class="carga-horaria">40h</span></h3>
+                                <p class="descricao-curso">Aprenda os conceitos relevantes de conectividade em máquinas
+                                    e
+                                    equipamentos utilizando a tecnologia IoT (Internet Industrial das Coisas) para serem
+                                    aplicados em serviços de manutenção na Indústria 4.0.</p>
+                                <button class="botao-acessar">ACESSAR CURSO</button>
+                            </div>
+                        </article>
+                        <!-- Fim Card 3 -->
+
+                        <!-- Card 4: Inspetor de Qualidade -->
+                        <article class="card-curso">
+                            <div class="area-imagem-card fundo-iq">
+                                <img src="css/curso4.png" alt="Qualidade">
+                            </div>
+                            <div class="conteudo-card">
+                                <h3 class="titulo-curso">Inspetor de Qualidade <span class="carga-horaria">40h</span>
+                                </h3>
+                                <p class="descricao-curso">Torne-se um dos profissionais mais requisitados pela
+                                    indústria.
+                                    Aprenda a supervisionar a qualidade dos produtos em cada etapa do processo,
+                                    garantindo
+                                    que tudo esteja dentro dos padrões estabelecidos.</p>
+                                <button class="botao-acessar">ACESSAR CURSO</button>
+                            </div>
+                        </article>
+                        <!-- Fim Card 4 -->
+
+                        <!-- Card 5: Segurança Cibernética -->
+                        <article class="card-curso">
+                            <div class="area-imagem-card fundo-sci">
+                                <img src="css/curso5.webp" alt="Segurança">
+                            </div>
+                            <div class="conteudo-card">
+                                <h3 class="titulo-curso">Segurança Cibernética Aplicada à Indústria 4.0 <span
+                                        class="carga-horaria">60h</span></h3>
+                                <p class="descricao-curso">Capacitar profissionais da indústria para planejar, controlar
+                                    e
+                                    programar os processos industriais, com base na aplicação dos conceitos de análise
+                                    de
+                                    dados, estatística e inteligência artificial, no contexto da Indústria 4.0.</p>
+                                <button class="botao-acessar">ACESSAR CURSO</button>
+                            </div>
+                        </article>
+                        <!-- Fim Card 5 -->
+
+                        <!-- Card 6: Prototipagem -->
+                        <article class="card-curso">
+                            <div class="area-imagem-card fundo-proto">
+                                <img src="css/curso6.png" alt="Prototipagem">
+                            </div>
+                            <div class="conteudo-card">
+                                <h3 class="titulo-curso">Prototipagem: Impressão 3D <span
+                                        class="carga-horaria">30h</span>
+                                </h3>
+                                <p class="descricao-curso">Capacite-se para a Indústria 4.0! Compreenda os conceitos,
+                                    vantagens, tipos e a aplicabilidade da impressão 3D, um processo de fabricação em
+                                    ascensão na indústria moderna.</p>
+                                <button class="botao-acessar">ACESSAR CURSO</button>
+                            </div>
+                        </article>
+                        <!-- Fim Card 6 -->
+
+                    </div>
+                </section>
+            </main>
+        </div>
+        <script>
+
+            // === LÓGICA TEMA ESCURO ===
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const body = document.body;
+
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                body.classList.add('dark-mode');
+                themeIcon.setAttribute('name', 'sunny-outline');
+            }
+
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+                const isDark = body.classList.contains('dark-mode');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                themeIcon.setAttribute('name', isDark ? 'sunny-outline' : 'moon-outline');
+            });
+            // === FIM TESTE TEMA ESCURO ===
+
+            // === BUSCA E FILTROS ===
+
+            // ===== PESQUISA E FILTRO DE CURSOS =====
+
+            const inputPesquisa = document.getElementById("pesquisaCurso");
+            const filtroCarga = document.getElementById("filtroCarga");
+            const cursos = document.querySelectorAll(".card-curso");
+
+            function filtrarCursos() {
+
+                const textoBusca = inputPesquisa.value.toLowerCase();
+                const cargaSelecionada = filtroCarga.value;
+
+                cursos.forEach(curso => {
+
+                    const titulo = curso.querySelector(".titulo-curso")
+                        .innerText.toLowerCase();
+
+                    const cargaTexto = curso.querySelector(".carga-horaria")
+                        .innerText.replace("h", "");
+
+                    const carga = parseInt(cargaTexto);
+
+                    let correspondeBusca = titulo.includes(textoBusca);
+                    let correspondeFiltro = true;
+
+                    if (cargaSelecionada !== "todos") {
+                        correspondeFiltro = carga <= parseInt(cargaSelecionada);
+                    }
+
+                    if (correspondeBusca && correspondeFiltro) {
+                        curso.style.display = "flex";
+                    } else {
+                        curso.style.display = "none";
+                    }
+                });
+            }
+
+            // eventos
+            inputPesquisa.addEventListener("input", filtrarCursos);
+            filtroCarga.addEventListener("change", filtrarCursos);
+
+// === FIM BUSCA E FILTROS ===
+        </script>
 </body>
 
 </html>
