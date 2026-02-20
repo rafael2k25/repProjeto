@@ -38,7 +38,7 @@
 
             /* Cores de destaque */
             --header-blue: #1a4da3;
-            --hover-item: rgba(0, 0, 0, 0.05);
+            --hover-item: rgba(0, 0, 0, 0.61);
         }
 
         /* Cores do Tema Escuro */
@@ -209,9 +209,11 @@
             transition: 0.2s;
         }
 
-        .icone-lateral:hover {
-            background-color: var(--hover-item);
+        .icone-lateral:hover,
+        .icone-lateral.ativo {
             border-radius: 12px;
+            background-color: var(--header-blue);
+            color: white;
         }
 
         .icone-lateral.ativo {
