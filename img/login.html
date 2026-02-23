@@ -333,6 +333,24 @@
             font-size: 0.9rem;
         }
 
+        .botao-social {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #000;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .botao-social:hover {
+            background: #f2f2f2;
+        }
+
         @keyframes aparecer {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -374,8 +392,15 @@
             <h2>BEM-VINDO DE VOLTA!</h2>
             
             <div class="login-social">
-                <button class="botao-social"><img src="https://img.icons8.com/color/24/google-logo.png" alt="Google"> Fazer login com Google</button>
-                <button class="botao-social"><img src="https://img.icons8.com/ios-filled/24/000000/mac-os.png" alt="Apple"> Fazer login com Apple</button>
+                <a href="inicio.html" class="botao-social">
+                    <img src="https://img.icons8.com/color/24/google-logo.png" alt="Google">
+                    Fazer login com Google
+                </a>
+            
+                <a href="inicio.html" class="botao-social">
+                    <img src="https://img.icons8.com/ios-filled/24/000000/mac-os.png" alt="Apple">
+                    Fazer login com Apple
+                </a>          
             </div>
 
             <div class="divisor">

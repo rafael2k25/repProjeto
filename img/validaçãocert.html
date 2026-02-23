@@ -28,18 +28,24 @@
             --bg-container: #ffffff;
             --bg-sidebar: #ffffff;
             --bg-card: #ffffff;
-            
+
             --texto-primario: #333333;
             --texto-secundario: #666666;
-            
+
             --border-color: #e0e0e0;
             --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.08);
-            
+
             --header-blue: #1a4da3;
             --hover-item: rgba(0, 0, 0, 0.05);
 
             --success-color: #2ecc71;
             --error-color: #e74c3c;
+
+            --icon-bg: #f0f2f5;
+            --icon-color: #5c5e64;
+            --icon-hover-bg: #1a4da3;
+            --icon-hover-text: #ffffff;
+
         }
 
         body.dark-mode {
@@ -47,15 +53,21 @@
             --bg-container: #181818;
             --bg-sidebar: #181818;
             --bg-card: #1e1e1e;
-            
+
             --texto-primario: #e0e0e0;
             --texto-secundario: #b0b0b0;
-            
+
             --border-color: #333333;
             --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.4);
-            
-            --header-blue: #0d2a5a; 
+
+            --header-blue: #1a4da3;
             --hover-item: rgba(255, 255, 255, 0.1);
+
+            --icon-bg: #2c2c2c;
+            --icon-color: #e0e0e0;
+            --icon-hover-bg: #1a4da3;
+            --icon-hover-text: #ffffff;
+
         }
 
         body {
@@ -82,10 +94,24 @@
             flex-shrink: 0;
         }
 
-        .cabecalho-esquerda { display: flex; align-items: center; gap: 20px; }
-        .logo-texto { font-weight: 800; font-size: 18px; letter-spacing: 0.5px; }
-        .navegacao-principal { display: flex; gap: 5px; margin-left: 20px; }
-        
+        .cabecalho-esquerda {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-texto {
+            font-weight: 800;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+        }
+
+        .navegacao-principal {
+            display: flex;
+            gap: 5px;
+            margin-left: 20px;
+        }
+
         .item-navegacao {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
@@ -98,18 +124,63 @@
             align-items: center;
             gap: 6px;
         }
-        .item-navegacao:hover, .item-navegacao.ativo { background-color: rgba(255, 255, 255, 0.1); color: white; }
 
-        .cabecalho-direita { display: flex; align-items: center; gap: 20px; }
-        .perfil-usuario { display: flex; align-items: center; gap: 10px; cursor: pointer; }
-        .avatar { width: 32px; height: 32px; background-color: #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #1a4da3; font-weight: bold; font-size: 12px; border: 2px solid rgba(255, 255, 255, 0.5); }
-        .info-usuario { text-align: right; line-height: 1.2; }
-        .nome-usuario { font-size: 13px; font-weight: bold; display: block; }
-        .cargo-usuario { font-size: 11px; opacity: 0.7; }
+        .item-navegacao:hover,
+        .item-navegacao.ativo {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .cabecalho-direita {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .perfil-usuario {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .avatar {
+            width: 32px;
+            height: 32px;
+            background-color: #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a4da3;
+            font-weight: bold;
+            font-size: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .info-usuario {
+            text-align: right;
+            line-height: 1.2;
+        }
+
+        .nome-usuario {
+            font-size: 13px;
+            font-weight: bold;
+            display: block;
+        }
+
+        .cargo-usuario {
+            font-size: 11px;
+            opacity: 0.7;
+        }
 
         /* --- CORPO E BARRA LATERAL --- */
-        .app-body { display: flex; flex: 1; overflow: hidden; }
-        
+        .app-body {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
         .server-rail {
             width: 70px;
             background-color: var(--bg-sidebar);
@@ -120,17 +191,38 @@
             padding: 15px 0;
             gap: 12px;
             flex-shrink: 0;
+            z-index: 5;
         }
-        
-        .server-icon {
-            width: 44px; height: 44px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 22px; color: var(--texto-secundario); cursor: pointer; transition: 0.2s;
-        }
-        .server-icon:hover { background-color: var(--hover-item); border-radius: 12px; }
-        .separator { width: 32px; height: 2px; background: var(--border-color); margin: 4px 0; }
 
-        /* --- ÁREA ESPECÍFICA DE VALIDAÇÃO --- */
+        .server-icon {
+            width: 44px;
+            height: 44px;
+            background-color: var(--icon-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: var(--icon-color);
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+        }
+
+        .server-icon:hover {
+            border-radius: 12px;
+            background-color: var(--icon-hover-bg);
+            color: var(--icon-hover-text);
+        }
+
+        .separator {
+            width: 32px;
+            height: 2px;
+            background: var(--border-color);
+            margin: 4px 0;
+        }
+
+        /* === ÁREA DE VALIDAÇÃO === */
         .main-content {
             flex: 1;
             display: flex;
@@ -154,8 +246,10 @@
             color: var(--header-blue);
             margin-bottom: 10px;
         }
-        
-        body.dark-mode .page-title { color: #5c9aff; }
+
+        body.dark-mode .page-title {
+            color: #5c9aff;
+        }
 
         .page-subtitle {
             color: var(--texto-secundario);
@@ -207,8 +301,10 @@
         .input-field:focus {
             border-color: var(--header-blue);
         }
-        
-        body.dark-mode .input-field:focus { border-color: #5c9aff; }
+
+        body.dark-mode .input-field:focus {
+            border-color: #5c9aff;
+        }
 
         .btn-validate {
             background-color: var(--header-blue);
@@ -226,17 +322,35 @@
             gap: 10px;
         }
 
-        .btn-validate:hover { opacity: 0.9; transform: translateY(-2px); }
-        body.dark-mode .btn-validate { background-color: #5c9aff; color: #121212; }
+        .btn-validate:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        body.dark-mode .btn-validate {
+            background-color: #5c9aff;
+            color: #121212;
+        }
 
         /* RESULTADO */
         .result-area {
             margin-top: 30px;
-            display: none; /* Escondido por padrão */
+            display: none;
+            /* Escondido por padrão */
             animation: fadeIn 0.4s ease;
         }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         .result-card {
             background-color: var(--bg-card);
@@ -255,14 +369,24 @@
             align-items: center;
             gap: 15px;
         }
-        
-        .result-header.invalid { background-color: var(--error-color); }
 
-        .status-icon { font-size: 32px; }
-        .status-text { font-weight: 700; font-size: 18px; }
+        .result-header.invalid {
+            background-color: var(--error-color);
+        }
 
-        .result-body { padding: 30px; }
-        
+        .status-icon {
+            font-size: 32px;
+        }
+
+        .status-text {
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .result-body {
+            padding: 30px;
+        }
+
         .certificate-info-row {
             display: flex;
             justify-content: space-between;
@@ -271,8 +395,20 @@
             padding-bottom: 10px;
         }
 
-        .info-label { font-size: 12px; color: var(--texto-secundario); text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 5px; }
-        .info-value { font-size: 16px; color: var(--texto-primario); font-weight: 500; }
+        .info-label {
+            font-size: 12px;
+            color: var(--texto-secundario);
+            text-transform: uppercase;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-size: 16px;
+            color: var(--texto-primario);
+            font-weight: 500;
+        }
 
         .security-badge {
             display: inline-flex;
@@ -287,19 +423,70 @@
             margin-top: 10px;
         }
 
+        .server-icon.active {
+            border-radius: 12px;
+            background-color: var(--header-blue);
+            color: white;
+        }
+
+        .server-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: var(--texto-secundario);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .server-icon:hover {
+            background-color: var(--hover-item);
+            border-radius: 12px;
+        }
+
+        .notificacao-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background: #e44d26;
+            color: white;
+            font-size: 10px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--bg-body);
+            font-weight: bold;
+        }
+
         .link-perfil {
             text-decoration: none;
             color: inherit;
-            display: block;            
+            display: block;
         }
 
         @media (max-width: 768px) {
-            .cabecalho-principal { padding: 0 15px; }
-            .server-rail { display: none; }
-            .main-content { padding: 20px; }
-            .search-box { padding: 20px; }
-        }
+            .cabecalho-principal {
+                padding: 0 15px;
+            }
 
+            .server-rail {
+                display: none;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+
+            .search-box {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 
@@ -315,16 +502,19 @@
                 <a href="cursos.html" class="item-navegacao">
                     <ion-icon name="school-outline"></ion-icon> <span>Cursos</span>
                 </a>
-                <a href="validacao.html" class="item-navegacao ativo">
-                    <ion-icon name="checkmark-circle-outline"></ion-icon> <span>Validação de Certificado</span>
+                <a href="validaçãocert.html" class="item-navegacao">
+                    <ion-icon name="megaphone-outline"></ion-icon> <span>Validação de Certificado</span>
                 </a>
             </nav>
         </div>
 
         <div class="cabecalho-direita">
-            <div id="theme-toggle" style="cursor: pointer; font-size: 24px; margin-right: 15px; display: flex; align-items: center;">
+
+            <div id="theme-toggle"
+                style="cursor: pointer; font-size: 24px; margin-right: 15px; display: flex; align-items: center;">
                 <ion-icon name="moon-outline" id="theme-icon"></ion-icon>
             </div>
+
             <a href="perfil.html" class="link-perfil">
                 <div class="perfil-usuario">
                     <div class="info-usuario">
@@ -339,30 +529,52 @@
         </div>
     </header>
 
+    <!-- SERVER RAIL -->
     <div class="app-body">
         <nav class="server-rail">
-            <a href="inicio.html" class="server-icon" title="Início"><ion-icon name="newspaper-outline"></ion-icon></a>
+            <a href="inicio.html" class="server-icon active" title="Início" style="display:flex; text-decoration:none;">
+                <ion-icon name="newspaper-outline"></ion-icon>
+            </a>
             <div class="separator"></div>
-            <a href="index.html" class="server-icon" title="Comunicação Interna" style="display:flex; text-decoration:none;"><ion-icon name="people-outline"></ion-icon></a>
-            <div class="server-icon" title="Configurações"><ion-icon name="construct-outline"></ion-icon></div>
+    
+            <a href="index.html" class="server-icon" title="Comunicação Interna"
+                style="display:flex; text-decoration:none;">
+                <ion-icon name="people-outline"></ion-icon>
+                <div class="notificacao-badge">3</div>
+            </a>
+    
+            <a href="calendario.html" class="server-icon" title="Calendário de Eventos"
+                style="display:flex; text-decoration:none;">
+                <ion-icon name="calendar-outline"></ion-icon>
+                <div class="notificacao-badge">2</div>
+            </a>
+    
+            <div class="separator"></div>
+    
+            <div class="server-icon" title="Configurações">
+                <ion-icon name="construct-outline"></ion-icon>
+            </div>
         </nav>
-
+    
         <main class="main-content">
             <div class="validation-container">
-                <ion-icon name="shield-checkmark-outline" style="font-size: 64px; color: var(--header-blue); margin-bottom: 20px;"></ion-icon>
+                <ion-icon name="shield-checkmark-outline"
+                    style="font-size: 64px; color: var(--header-blue); margin-bottom: 20px;"></ion-icon>
                 <h1 class="page-title">Validação de Autenticidade</h1>
-                <p class="page-subtitle">Insira o código presente no verso do certificado para confirmar sua validade e visualizar os detalhes técnicos.</p>
-
+                <p class="page-subtitle">Insira o código presente no verso do certificado para confirmar sua validade e
+                    visualizar os detalhes técnicos.</p>
+    
                 <div class="search-box">
                     <div class="input-group">
                         <label class="input-label">CÓDIGO DE AUTENTICAÇÃO</label>
-                        <input type="text" id="certInput" class="input-field" placeholder="EX: IFTT-2024-X89Z" maxlength="20">
+                        <input type="text" id="certInput" class="input-field" placeholder="EX: IFTT-2024-X89Z"
+                            maxlength="20">
                     </div>
                     <button class="btn-validate" onclick="validarCertificado()">
                         <ion-icon name="search-outline"></ion-icon> CONSULTAR BASE DE DADOS
                     </button>
                 </div>
-
+    
                 <!-- === RESULTADO VÁLIDO === -->
                 <div id="resultadoValido" class="result-area">
                     <div class="result-card">
@@ -381,14 +593,14 @@
                                     <div class="info-value">12/12/2025</div>
                                 </div>
                             </div>
-
+    
                             <div class="certificate-info-row">
                                 <div>
                                     <span class="info-label">Curso/Qualificação</span>
                                     <div class="info-value">Programador Full-Stack (670h)</div>
                                 </div>
                             </div>
-
+    
                             <div class="certificate-info-row" style="border: none; padding-bottom: 0;">
                                 <div>
                                     <span class="info-label">Status Institucional</span>
@@ -400,7 +612,7 @@
                         </div>
                     </div>
                 </div>
-
+    
                 <!-- === RESULTADO INVÁLIDO === -->
                 <div id="resultadoInvalido" class="result-area">
                     <div class="result-card">
@@ -410,15 +622,19 @@
                         </div>
                         <div class="result-body">
                             <p style="color: var(--texto-secundario); font-size: 14px;">
-                                O código informado não consta em nossa base de dados oficial. Verifique se digitou corretamente ou entre em contato com a secretaria acadêmica.
+                                O código informado não consta em nossa base de dados oficial. Verifique se digitou
+                                corretamente ou entre em contato com a secretaria acadêmica.
                             </p>
                         </div>
                     </div>
                 </div>
-
+    
             </div>
         </main>
     </div>
+
+    
+    
 
     <script>
         // === TEMA ESCURO ===
@@ -444,12 +660,12 @@
             const codigo = document.getElementById('certInput').value.trim().toUpperCase();
             const resValido = document.getElementById('resultadoValido');
             const resInvalido = document.getElementById('resultadoInvalido');
-            
+
             // === RESET DA VISUALIZAÇÃO ===
             resValido.style.display = 'none';
             resInvalido.style.display = 'none';
 
-            if(codigo === "") {
+            if (codigo === "") {
                 alert("Por favor, digite um código.");
                 return;
             }
@@ -474,4 +690,5 @@
         }
     </script>
 </body>
+
 </html>

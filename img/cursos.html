@@ -54,7 +54,7 @@
             --border-color: #333333;
             --shadow-card: 0 2px 5px rgba(0, 0, 0, 0.5);
 
-            --header-blue: #0d2a5a;
+            --header-blue: #1a4da3;
             --hover-item: rgba(255, 255, 255, 0.1);
         }
 
@@ -549,10 +549,27 @@
             cursor: pointer;
         }
 
+        .notificacao-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background: #e44d26;
+            color: white;
+            font-size: 10px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--bg-body);
+            font-weight: bold;
+        }
+
         .link-perfil {
             text-decoration: none;
             color: inherit;
-            display: block;            
+            display: block;
         }
 
         @media (max-width: 768px) {
@@ -619,13 +636,22 @@
         <div class="corpo-aplicacao">
 
             <nav class="barra-lateral-icones">
-                <a href="inicio.html" class="icone-lateral" title="Início"><ion-icon
-                        name="newspaper-outline"></ion-icon></a>
+                <a href="inicio.html" class="icone-lateral" title="Início">
+                    <ion-icon name="newspaper-outline"></ion-icon>
+                </a>
+
                 <div class="separador"></div>
+
                 <div class="icone-lateral ativo" title="Comunicação Interna">
                     <ion-icon name="people-outline"></ion-icon>
                     <div class="notificacao-badge">3</div>
                 </div>
+
+                <a href="calendario.html" class="server-icon" title="Calendário de Eventos" style="display:flex; text-decoration:none;">
+                    <ion-icon name="calendar-outline"></ion-icon>
+                    <div class="notificacao-badge">2</div>
+                </a>
+
                 <div class="icone-lateral" title="Configurações"><ion-icon name="construct-outline"></ion-icon></div>
             </nav>
 
