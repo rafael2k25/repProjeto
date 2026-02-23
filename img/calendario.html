@@ -9,7 +9,9 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Segoe+UI:wght@400;600&display=swap"
+        rel="stylesheet">
 
     <style>
         /* RESET */
@@ -690,6 +692,12 @@
             background-color: var(--border-color);
         }
 
+        .link-perfil {
+            text-decoration: none;
+            color: inherit;
+            display: block;            
+        }
+
         @media (max-width: 768px) {
             .painel-lista-calendarios {
                 display: none;
@@ -728,22 +736,29 @@
                 <a href="cursos.html" class="item-navegacao">
                     <ion-icon name="school-outline"></ion-icon> <span>Cursos</span>
                 </a>
+                <a href="validaçãocert.html" class="item-navegacao">
+                    <ion-icon name="megaphone-outline"></ion-icon> <span>Validação de Certificado</span>
+                </a>
             </nav>
         </div>
 
         <div class="cabecalho-direita">
-            <div id="theme-toggle" style="cursor: pointer; font-size: 24px; margin-right: 15px; display: flex; align-items: center;">
+            <div id="theme-toggle"
+                style="cursor: pointer; font-size: 24px; margin-right: 15px; display: flex; align-items: center;">
                 <ion-icon name="moon-outline" id="theme-icon"></ion-icon>
             </div>
 
-            <div class="perfil-usuario">
-                <div class="info-usuario">
-                    <span class="nome-usuario">Teste Usuário</span>
-                    <span class="cargo-usuario">Gestor de Projetos</span>
+            <a href="perfil.html" class="link-perfil">
+                <div class="perfil-usuario">
+                    <div class="info-usuario">
+                        <span class="nome-usuario">Teste Usuário</span>
+                        <span class="cargo-usuario">Gestor de Projetos</span>
+                    </div>
+                    <div class="avatar">TU</div>
+                    <ion-icon name="chevron-down-outline" style="font-size: 12px; color: rgba(255,255,255,0.7)">
+                    </ion-icon>
                 </div>
-                <div class="avatar">TU</div>
-                <ion-icon name="chevron-down-outline" style="font-size: 12px; color: rgba(255,255,255,0.7)"></ion-icon>
-            </div>
+            </a>
         </div>
     </header>
 
@@ -754,19 +769,19 @@
                 <ion-icon name="newspaper-outline"></ion-icon>
             </a>
             <div class="separador"></div>
-            
+
             <a href="index.html" class="icone-lateral" title="Comunicação Interna">
                 <ion-icon name="people-outline"></ion-icon>
                 <div class="notificacao-badge">3</div>
             </a>
-            
+
             <a href="calendario.html" class="icone-lateral ativo" title="Calendário de Eventos">
                 <ion-icon name="calendar-outline"></ion-icon>
                 <div class="notificacao-badge">2</div>
             </a>
-            
+
             <div class="separador"></div>
-            
+
             <div class="icone-lateral" title="Configurações">
                 <ion-icon name="construct-outline"></ion-icon>
             </div>
@@ -830,9 +845,11 @@
             <section class="area-calendario-principal">
                 <header class="cabecalho-calendario">
                     <div class="navegacao-mes">
-                        <button class="btn-nav-mes" onclick="navegarMes(-1)"><ion-icon name="chevron-back-outline"></ion-icon></button>
+                        <button class="btn-nav-mes" onclick="navegarMes(-1)"><ion-icon
+                                name="chevron-back-outline"></ion-icon></button>
                         <span class="mes-ano" id="mesAno">Fevereiro 2026</span>
-                        <button class="btn-nav-mes" onclick="navegarMes(1)"><ion-icon name="chevron-forward-outline"></ion-icon></button>
+                        <button class="btn-nav-mes" onclick="navegarMes(1)"><ion-icon
+                                name="chevron-forward-outline"></ion-icon></button>
                     </div>
                     <div class="botoes-calendario">
                         <button class="btn-acao" onclick="irParaHoje()">Hoje</button>
@@ -851,7 +868,7 @@
                         <div class="dia-semana">Sáb</div>
                     </div>
                     <div class="dias-mes" id="diasMes">
-                        </div>
+                    </div>
 
                     <div class="lista-eventos" id="listaEventos">
                         <h3 class="titulo-lista-eventos">Eventos de Hoje</h3>
@@ -861,7 +878,8 @@
                                 <div class="evento-titulo">Workshop IoT para Manutenção Industrial</div>
                                 <div class="evento-data"><ion-icon name="time-outline"></ion-icon> 14:00 - 17:00</div>
                                 <div class="evento-descricao">Introdução prática à Internet das Coisas</div>
-                                <div class="evento-local"><ion-icon name="location-outline"></ion-icon> Lab. de Automação</div>
+                                <div class="evento-local"><ion-icon name="location-outline"></ion-icon> Lab. de
+                                    Automação</div>
                             </div>
                         </div>
 
@@ -892,7 +910,8 @@
                 <p><strong>Data:</strong> <span id="modalData">19/02/2026</span></p>
                 <p><strong>Horário:</strong> <span id="modalHorario">14:00 - 17:00</span></p>
                 <p><strong>Local:</strong> <span id="modalLocal">Lab. de Automação</span></p>
-                <p><strong>Descrição:</strong> <span id="modalDescricao">Workshop prático sobre Internet das Coisas aplicada à manutenção industrial. Trazer notebook.</span></p>
+                <p><strong>Descrição:</strong> <span id="modalDescricao">Workshop prático sobre Internet das Coisas
+                        aplicada à manutenção industrial. Trazer notebook.</span></p>
                 <p><strong>Organizador:</strong> <span id="modalOrganizador">Prof. Carlos Silva</span></p>
             </div>
             <div class="modal-rodape">
@@ -909,30 +928,46 @@
                 <span class="modal-fechar" onclick="fecharModalNovo()">&times;</span>
             </div>
             <div class="modal-corpo">
-                <form id="formNovoEvento" style="display: flex; flex-direction: column; gap: 15px;" onsubmit="salvarNovoEvento(event)">
+                <form id="formNovoEvento" style="display: flex; flex-direction: column; gap: 15px;"
+                    onsubmit="salvarNovoEvento(event)">
                     <div>
-                        <label style="display: block; margin-bottom: 5px; font-size: 13px; color: var(--texto-secundario);">Título</label>
-                        <input type="text" style="width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--input-bg); color: var(--texto-primario);" placeholder="Título do evento" required>
+                        <label
+                            style="display: block; margin-bottom: 5px; font-size: 13px; color: var(--texto-secundario);">Título</label>
+                        <input type="text"
+                            style="width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--input-bg); color: var(--texto-primario);"
+                            placeholder="Título do evento" required>
                     </div>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                         <div>
-                            <label style="display: block; margin-bottom: 5px; font-size: 13px; color: var(--texto-secundario);">Data</label>
-                            <input type="date" style="width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--input-bg); color: var(--texto-primario);" required>
+                            <label
+                                style="display: block; margin-bottom: 5px; font-size: 13px; color: var(--texto-secundario);">Data</label>
+                            <input type="date"
+                                style="width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--input-bg); color: var(--texto-primario);"
+                                required>
                         </div>
                         <div>
-                            <label style="display: block; margin-bottom: 5px; font-size: 13px; color: var(--texto-secundario);">Horário</label>
-                            <input type="time" style="width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--input-bg); color: var(--texto-primario);" required>
+                            <label
+                                style="display: block; margin-bottom: 5px; font-size: 13px; color: var(--texto-secundario);">Horário</label>
+                            <input type="time"
+                                style="width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--input-bg); color: var(--texto-primario);"
+                                required>
                         </div>
                     </div>
                     <div>
-                        <label style="display: block; margin-bottom: 5px; font-size: 13px; color: var(--texto-secundario);">Local</label>
-                        <input type="text" style="width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--input-bg); color: var(--texto-primario);" placeholder="Local do evento">
+                        <label
+                            style="display: block; margin-bottom: 5px; font-size: 13px; color: var(--texto-secundario);">Local</label>
+                        <input type="text"
+                            style="width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--input-bg); color: var(--texto-primario);"
+                            placeholder="Local do evento">
                     </div>
                     <div>
-                        <label style="display: block; margin-bottom: 5px; font-size: 13px; color: var(--texto-secundario);">Descrição</label>
-                        <textarea style="width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--input-bg); color: var(--texto-primario); resize: vertical;" rows="3" placeholder="Detalhes do evento"></textarea>
+                        <label
+                            style="display: block; margin-bottom: 5px; font-size: 13px; color: var(--texto-secundario);">Descrição</label>
+                        <textarea
+                            style="width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--input-bg); color: var(--texto-primario); resize: vertical;"
+                            rows="3" placeholder="Detalhes do evento"></textarea>
                     </div>
-                    
+
                     <div class="modal-rodape" style="padding: 20px 0 0 0; margin-top: 10px;">
                         <button type="submit" class="btn-modal btn-participar">Salvar Evento</button>
                         <button type="button" class="btn-modal btn-fechar" onclick="fecharModalNovo()">Cancelar</button>
@@ -946,10 +981,10 @@
         // === CONTROLE DO TEMA ===
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
-        
+
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
-            if(document.body.classList.contains('dark-mode')) {
+            if (document.body.classList.contains('dark-mode')) {
                 themeIcon.setAttribute('name', 'sunny-outline');
             } else {
                 themeIcon.setAttribute('name', 'moon-outline');
@@ -987,23 +1022,23 @@
         function gerarCalendario() {
             const diasMesContainer = document.getElementById('diasMes');
             diasMesContainer.innerHTML = ''; // Limpa antes de gerar
-            
+
             // Dias do mês
-            for(let i = 1; i <= 35; i++) {
+            for (let i = 1; i <= 35; i++) {
                 let divDia = document.createElement('div');
                 divDia.className = 'dia';
-                
-                if(i <= 3) {
+
+                if (i <= 3) {
                     divDia.classList.add('outro-mes');
                     divDia.innerHTML = `<span class="numero-dia">${28 + i}</span>`;
-                } else if(i > 31) {
+                } else if (i > 31) {
                     divDia.classList.add('outro-mes');
                     divDia.innerHTML = `<span class="numero-dia">${i - 31}</span>`;
                 } else {
                     let diaAtual = i - 3;
                     divDia.innerHTML = `<span class="numero-dia">${diaAtual}</span>`;
-                    
-                    if(diaAtual === 19) {
+
+                    if (diaAtual === 19) {
                         divDia.classList.add('tem-evento');
                         divDia.innerHTML += `
                             <div class="eventos-dia">
@@ -1026,8 +1061,9 @@
             alert('Voltando para o mês atual...');
         }
 
-      
+
         window.onload = gerarCalendario;
     </script>
 </body>
+
 </html>

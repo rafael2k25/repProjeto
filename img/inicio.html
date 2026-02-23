@@ -474,7 +474,43 @@
                 color: white;
             }
 
-        /* Responsividade Básica */
+            .perfil-usuario {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 20px;
+            transition: 0.2s;
+        }
+
+        .perfil-usuario:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .info-usuario {
+            text-align: right;
+            line-height: 1.2;
+        }
+
+        .nome-usuario {
+            font-size: 13px;
+            font-weight: bold;
+            display: block;
+        }
+
+        .cargo-usuario {
+            font-size: 11px;
+            opacity: 0.7;
+        }
+
+        .link-perfil {
+            text-decoration: none;
+            color: inherit;
+            display: block;            
+        }
+
+        /* === Responsividade === */
         @media (max-width: 900px) {
             .news-grid {
                 grid-template-columns: 1fr;
@@ -511,7 +547,7 @@
                 <a href="cursos.html" class="nav-item">
                     <ion-icon name="school-outline"></ion-icon> <span>Cursos</span>
                 </a>
-                <a href="#" class="item-navegacao">
+                <a href="validaçãocert.html" class="item-navegacao">
                     <ion-icon name="megaphone-outline"></ion-icon> <span>Validação de Certificado</span>
                 </a>
             </nav>
@@ -525,17 +561,18 @@
                 <ion-icon name="moon-outline" id="theme-icon"></ion-icon>
             </div>
 
-            <div class="user-profile">
-                <div class="user-info">
-                    <span class="user-name">Teste Usuário</span>
-                    <span class="user-role">Gestor de Projetos</span>
+            <a href="perfil.html" class="link-perfil">
+                <div class="perfil-usuario">
+                    <div class="info-usuario">
+                        <span class="nome-usuario">Teste Usuário</span>
+                        <span class="cargo-usuario">Gestor de Projetos</span>
+                    </div>
+                    <div class="avatar">TU</div>
+                    <ion-icon name="chevron-down-outline" style="font-size: 12px; color: rgba(255,255,255,0.7)">
+                    </ion-icon>
                 </div>
-                <div class="avatar">TU</div>
-                <ion-icon name="chevron-down-outline" style="font-size: 12px; color: rgba(255,255,255,0.7)"></ion-icon>
-            </div>
-
+            </a>
         </div>
-
     </header>
 
     <div class="app-body">

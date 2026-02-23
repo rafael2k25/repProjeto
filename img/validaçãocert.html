@@ -287,6 +287,12 @@
             margin-top: 10px;
         }
 
+        .link-perfil {
+            text-decoration: none;
+            color: inherit;
+            display: block;            
+        }
+
         @media (max-width: 768px) {
             .cabecalho-principal { padding: 0 15px; }
             .server-rail { display: none; }
@@ -319,14 +325,17 @@
             <div id="theme-toggle" style="cursor: pointer; font-size: 24px; margin-right: 15px; display: flex; align-items: center;">
                 <ion-icon name="moon-outline" id="theme-icon"></ion-icon>
             </div>
-            <div class="perfil-usuario">
-                <div class="info-usuario">
-                    <span class="nome-usuario">Teste Usuário</span>
-                    <span class="cargo-usuario">Gestor de Projetos</span>
+            <a href="perfil.html" class="link-perfil">
+                <div class="perfil-usuario">
+                    <div class="info-usuario">
+                        <span class="nome-usuario">Teste Usuário</span>
+                        <span class="cargo-usuario">Gestor de Projetos</span>
+                    </div>
+                    <div class="avatar">TU</div>
+                    <ion-icon name="chevron-down-outline" style="font-size: 12px; color: rgba(255,255,255,0.7)">
+                    </ion-icon>
                 </div>
-                <div class="avatar">TU</div>
-                <ion-icon name="chevron-down-outline" style="font-size: 12px; color: rgba(255,255,255,0.7)"></ion-icon>
-            </div>
+            </a>
         </div>
     </header>
 
