@@ -39,6 +39,12 @@
             /* Cores de destaque */
             --header-blue: #1a4da3;
             --hover-item: rgba(0, 0, 0, 0.61);
+
+            --icon-bg: #f0f2f5;
+            --icon-color: #5c5e64;
+            --icon-hover-bg: #1a4da3;
+            --icon-hover-text: #ffffff;
+
         }
 
         /* Cores do Tema Escuro */
@@ -56,6 +62,11 @@
 
             --header-blue: #1a4da3;
             --hover-item: rgba(255, 255, 255, 0.1);
+
+            --icon-bg: #2c2c2c;    
+            --icon-color: #e0e0e0;
+            --icon-hover-bg: #1a4da3;
+            --icon-hover-text: #ffffff;
         }
 
         body {
@@ -198,7 +209,7 @@
         .icone-lateral {
             width: 44px;
             height: 44px;
-            background-color: transparent;
+            background-color: var(--icon-bg);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -443,14 +454,12 @@
             width: 44px;
             height: 44px;
             background-color: var(--icon-bg);
-            /* Corrigido */
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 22px;
             color: var(--icon-color);
-            /* Corrigido */
             cursor: pointer;
             transition: 0.2s;
             position: relative;
@@ -463,9 +472,9 @@
         }
 
         .server-icon.active {
-            border-radius: 12px;
-            background-color: var(--header-bg);
+            background-color: var(--header-blue);
             color: white;
+            border-radius: 12px;
         }
 
         .notificacao-badge {
@@ -636,21 +645,23 @@
         <div class="corpo-aplicacao">
 
             <nav class="barra-lateral-icones">
-                <a href="inicio.html" class="icone-lateral" title="Início">
+                <a href="inicio.html" class="icone-lateral ativo" title="Início">
                     <ion-icon name="newspaper-outline"></ion-icon>
                 </a>
 
                 <div class="separador"></div>
 
-                <div class="icone-lateral ativo" title="Comunicação Interna">
+                <div class="icone-lateral" title="Comunicação Interna">
                     <ion-icon name="people-outline"></ion-icon>
                     <div class="notificacao-badge">3</div>
                 </div>
 
-                <a href="calendario.html" class="server-icon" title="Calendário de Eventos" style="display:flex; text-decoration:none;">
+                <a href="calendario.html" class="icone-lateral" title="Calendário de Eventos" style="display:flex; text-decoration:none;">
                     <ion-icon name="calendar-outline"></ion-icon>
                     <div class="notificacao-badge">2</div>
                 </a>
+
+                <div class="separador"></div>
 
                 <div class="icone-lateral" title="Configurações"><ion-icon name="construct-outline"></ion-icon></div>
             </nav>
