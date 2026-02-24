@@ -555,7 +555,7 @@
         .link-perfil {
             text-decoration: none;
             color: inherit;
-            display: block;            
+            display: block;
         }
 
         @media (max-width: 768px) {
@@ -573,8 +573,8 @@
         }
 
         .item-canal {
-            text-decoration: none;           
-            color: inherit;          
+            text-decoration: none;
+            color: inherit;
             display: flex;
         }
 
@@ -634,19 +634,19 @@
                 <ion-icon name="newspaper-outline"></ion-icon>
             </a>
             <div class="separador"></div>
-            
+
             <a href="index.html" class="icone-lateral ativo" title="Comunicação Interna">
                 <ion-icon name="people-outline"></ion-icon>
                 <div class="notificacao-badge">3</div>
             </a>
-            
+
             <a href="calendario.html" class="icone-lateral" title="Calendário de Eventos">
                 <ion-icon name="calendar-outline"></ion-icon>
                 <div class="notificacao-badge">2</div>
             </a>
-            
+
             <div class="separador"></div>
-            
+
             <div class="icone-lateral" title="Configurações">
                 <ion-icon name="construct-outline"></ion-icon>
             </div>
@@ -721,7 +721,8 @@
                                 <span class="nome-usuario-msg">Ricardo Guilherme</span>
                                 <span class="horario-msg">15:30</span>
                             </div>
-                            <p class="texto-msg">Boa tarde, o problema com o vazamento de água no refeitório foi resolvido.</p>
+                            <p class="texto-msg">Boa tarde, o problema com o vazamento de água no refeitório foi
+                                resolvido.</p>
                         </div>
                     </div>
 
@@ -814,27 +815,112 @@
         });
         // === FIM TEMA ESCURO ===
 
-          /*
+        /*
+
         ========= BASE DA API =========
+        const API_BASE = "http://LINK";
         ========= BASE DA API =========
 
-        ========= CARREGAR E RENDERIZAR NOTICIAS =========
-        ========= CARREGAR E RENDERIZAR NOTICIAS =========
+        ========= GET - CARREGAR E BUSCAR AS MENSAGENS =========
+            async function carregarMensagens() {
+                try {
+                    const response = await fetch(`${API_BASE}/mensagens`);
+                    const mensagens = await response.json();
 
-        ========= GET =========
-        ========= GET =========
+                    containerMensagens.innerHTML = "";
 
-        ========= ID =========
-        ========= ID =========
+                    mensagens.forEach(msg => adicionarMensagemDOM(msg));
 
-        ========= GET =========
-        ========= GET =========
+                } catch (error) {
+                    console.error("Erro ao carregar mensagens:", error);
+                }
+            }
 
-        ========= GET =========
-        ========= GET =========
+        async function buscarMensagemPorId(id) {
+            try {
+                const response = await fetch(`${API_BASE}/mensagens/${id}`);
+                const mensagem = await response.json();
+                console.log("Mensagem encontrada:", mensagem);
+            } catch (error) {
+                console.error("Erro ao buscar mensagem:", error);
+            }
+        }
+        ========= GET - CARREGAR E BUSCAR AS MENSAGENS =========
 
-        ========= GET =========
-        ========= GET =========
+        ========= POST =========
+            async function salvarMensagem(msg) {
+                try {
+                    const response = await fetch(`${API_BASE}/mensagens`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(msg)
+                    });
+
+                    const data = await response.json();
+                    console.log("Mensagem salva:", data);
+
+                } catch (error) {
+                    console.error("Erro ao salvar mensagem:", error);
+                }
+            }
+        ========= POST =========
+
+        ========= PUT =========
+            async function atualizarMensagem(id, novaMensagem) {
+                try {
+                    const response = await fetch(`${API_BASE}/mensagens/${id}`, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(novaMensagem)
+                    });
+
+                    const data = await response.json();
+                    console.log("Mensagem atualizada (PUT):", data);
+
+                } catch (error) {
+                    console.error("Erro ao atualizar mensagem:", error);
+                }
+            }
+        ========= PUT =========
+
+        ========= PATCH =========
+            async function atualizarParcialMensagem(id, dadosParciais) {
+                try {
+                    const response = await fetch(`${API_BASE}/mensagens/${id}`, {
+                        method: "PATCH",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(dadosParciais)
+                    });
+
+                    const data = await response.json();
+                    console.log("Mensagem atualizada (PATCH):", data);
+
+                } catch (error) {
+                    console.error("Erro ao atualizar parcialmente:", error);
+                }
+            }
+        ========= PATCH =========
+
+        ========= DELETE =========
+            async function deletarMensagem(id) {
+                try {
+                    await fetch(`${API_BASE}/mensagens/${id}`, {
+                        method: "DELETE"
+                    });
+
+                    console.log("Mensagem deletada com sucesso");
+
+                } catch (error) {
+                    console.error("Erro ao deletar mensagem:", error);
+                }
+            }
+        ========= DELETE =========
 
         */
     </script>

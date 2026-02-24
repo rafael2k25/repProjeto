@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +26,7 @@
             background-color: white;
             width: 100%;
             max-width: 600px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             padding: 40px;
             border-radius: 4px;
         }
@@ -50,15 +51,15 @@
 
         .profile-photo {
             position: relative;
-            width: 120px;  
+            width: 120px;
             height: 120px;
-            min-width: 120px; 
-            min-height: 120px; 
+            min-width: 120px;
+            min-height: 120px;
             border-radius: 50%;
             border: 4px solid #1a4da3;
             overflow: hidden;
-            background-color: #eee; 
-            flex-shrink: 0; 
+            background-color: #eee;
+            flex-shrink: 0;
         }
 
         .profile-photo img {
@@ -68,7 +69,7 @@
             display: block;
         }
 
-        
+
         .camera-wrapper {
             position: relative;
             width: 120px;
@@ -89,7 +90,7 @@
             cursor: pointer;
             border: 3px solid white;
             transition: transform 0.2s;
-            z-index: 10; 
+            z-index: 10;
         }
 
         .camera-icon:hover {
@@ -102,7 +103,9 @@
             fill: white;
         }
 
-        #inputFoto { display: none; }
+        #inputFoto {
+            display: none;
+        }
 
         /* === FORMULÁRIO === */
         .form-group {
@@ -128,7 +131,8 @@
             color: #333;
         }
 
-        input:focus, select:focus {
+        input:focus,
+        select:focus {
             border-color: #1a4da3;
             outline: none;
         }
@@ -169,12 +173,14 @@
             cursor: not-allowed;
         }
 
-        .location-group, .dob-group {
+        .location-group,
+        .dob-group {
             display: flex;
             gap: 10px;
         }
-        
-        .location-group select, .dob-group select {
+
+        .location-group select,
+        .dob-group select {
             flex: 1;
         }
 
@@ -261,7 +267,7 @@
             transform: translateX(-50%);
             top: 30px;
             font-size: 17px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             opacity: 0;
             transition: opacity 0.3s, top 0.3s;
             font-weight: bold;
@@ -272,17 +278,27 @@
             opacity: 1;
             top: 50px;
         }
-        #toast.success { background-color: #4CAF50; }
-        #toast.error { background-color: #f44336; }
+
+        #toast.success {
+            background-color: #4CAF50;
+        }
+
+        #toast.error {
+            background-color: #f44336;
+        }
 
         @media (max-width: 600px) {
-            .location-group, .dob-group, .gender-group {
+
+            .location-group,
+            .dob-group,
+            .gender-group {
                 flex-direction: column;
                 gap: 15px;
             }
         }
     </style>
 </head>
+
 <body>
 
     <div id="toast">Notificação</div>
@@ -296,11 +312,12 @@
                 <div class="profile-photo">
                     <img id="fotoPerfil" src="https://via.placeholder.com/150" alt="">
                 </div>
-                
+
                 <div class="camera-icon" onclick="document.getElementById('inputFoto').click()">
                     <!-- === ÍCONE CÂMERA === -->
                     <svg viewBox="0 0 24 24">
-                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        <path
+                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                     </svg>
                 </div>
                 <input type="file" id="inputFoto" accept="image/*">
@@ -308,7 +325,7 @@
         </div>
 
         <form id="formPerfil">
-            
+
             <!-- === NOME === -->
             <div class="form-group">
                 <label>Nome Completo</label>
@@ -326,7 +343,9 @@
                 <label>Senha</label>
                 <div class="password-container">
                     <input type="password" id="senha" placeholder="Sua senha" required>
-                    <svg class="toggle-password" onclick="togglePassword('senha')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="toggle-password" onclick="togglePassword('senha')" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                         <circle cx="12" cy="12" r="3"></circle>
                     </svg>
@@ -355,10 +374,18 @@
                     </select>
                     <select id="mes" required>
                         <option value="">Mês</option>
-                        <option>Janeiro</option><option>Fevereiro</option><option>Março</option>
-                        <option>Abril</option><option>Maio</option><option>Junho</option>
-                        <option>Julho</option><option>Agosto</option><option>Setembro</option>
-                        <option>Outubro</option><option>Novembro</option><option>Dezembro</option>
+                        <option>Janeiro</option>
+                        <option>Fevereiro</option>
+                        <option>Março</option>
+                        <option>Abril</option>
+                        <option>Maio</option>
+                        <option>Junho</option>
+                        <option>Julho</option>
+                        <option>Agosto</option>
+                        <option>Setembro</option>
+                        <option>Outubro</option>
+                        <option>Novembro</option>
+                        <option>Dezembro</option>
                     </select>
                     <select id="ano" required>
                         <option value="">Ano</option>
@@ -402,8 +429,8 @@
             const toast = document.getElementById("toast");
             toast.textContent = message;
             toast.className = "show " + type;
-            setTimeout(() => { 
-                toast.className = toast.className.replace("show", ""); 
+            setTimeout(() => {
+                toast.className = toast.className.replace("show", "");
             }, 3000);
         }
 
@@ -429,7 +456,7 @@
                 selectContinente.appendChild(option);
             }
 
-            selectContinente.addEventListener('change', function() {
+            selectContinente.addEventListener('change', function () {
                 updateCountries(this.value);
             });
 
@@ -452,14 +479,14 @@
         function updateCountries(continent, selectedCountry = null) {
             const selectPais = document.getElementById('pais');
             selectPais.innerHTML = '<option value="" disabled selected>País</option>';
-            
+
             if (continent && locationData[continent]) {
                 selectPais.disabled = false;
                 locationData[continent].forEach(country => {
                     const option = document.createElement('option');
                     option.value = country;
                     option.textContent = country;
-                    if(selectedCountry === country) option.selected = true;
+                    if (selectedCountry === country) option.selected = true;
                     selectPais.appendChild(option);
                 });
             } else {
@@ -472,27 +499,27 @@
             // === PEGAR DADOS DO LOGIN E DO PERFIL ===
             const loginEmail = localStorage.getItem('userEmail');
             const loginPass = localStorage.getItem('userPass');
-            
-            if(loginEmail) document.getElementById('email').value = loginEmail;
-            if(loginPass) document.getElementById('senha').value = loginPass;
+
+            if (loginEmail) document.getElementById('email').value = loginEmail;
+            if (loginPass) document.getElementById('senha').value = loginPass;
 
             const savedData = JSON.parse(localStorage.getItem('userProfileData')) || {};
 
-            if(savedData.nome) document.getElementById('nome').value = savedData.nome;
-            if(savedData.email) document.getElementById('email').value = savedData.email;
-            if(savedData.senha) document.getElementById('senha').value = savedData.senha; 
-            if(savedData.dia) document.getElementById('dia').value = savedData.dia;
-            if(savedData.mes) document.getElementById('mes').value = savedData.mes;
-            if(savedData.ano) document.getElementById('ano').value = savedData.ano;
+            if (savedData.nome) document.getElementById('nome').value = savedData.nome;
+            if (savedData.email) document.getElementById('email').value = savedData.email;
+            if (savedData.senha) document.getElementById('senha').value = savedData.senha;
+            if (savedData.dia) document.getElementById('dia').value = savedData.dia;
+            if (savedData.mes) document.getElementById('mes').value = savedData.mes;
+            if (savedData.ano) document.getElementById('ano').value = savedData.ano;
 
-            if(savedData.continente) {
+            if (savedData.continente) {
                 document.getElementById('continente').value = savedData.continente;
                 updateCountries(savedData.continente, savedData.pais);
             }
 
-            if(savedData.genero) {
+            if (savedData.genero) {
                 const radio = document.querySelector(`input[name="gender"][value="${savedData.genero}"]`);
-                if(radio) radio.checked = true;
+                if (radio) radio.checked = true;
             }
 
             // === CARREGAR FOTO ===
@@ -501,7 +528,7 @@
         }
 
         // === SALVAR DADOS ===
-        document.getElementById('formPerfil').addEventListener('submit', function(e) {
+        document.getElementById('formPerfil').addEventListener('submit', function (e) {
             e.preventDefault();
 
             const data = {
@@ -540,30 +567,173 @@
         initDropdowns();
         loadProfile();
 
-          /*
-        ========= BASE DA API =========
-        ========= BASE DA API =========
+        /*
 
-        ========= CARREGAR E RENDERIZAR NOTICIAS =========
-        ========= CARREGAR E RENDERIZAR NOTICIAS =========
+        ========= BASE DA API =========
+        const API_BASE = "http://LINK";
+        ========= BASE DA API =========
 
         ========= GET =========
+            async function loadProfile() {
+                try {
+                    const userId = 1; // LOGIN/TOKEN
+
+                    const response = await fetch(`${API_BASE}/usuarios/${userId}`);
+                    const data = await response.json();
+
+                    document.getElementById('nome').value = data.nome || "";
+                    document.getElementById('email').value = data.email || "";
+                    document.getElementById('senha').value = data.senha || "";
+                    document.getElementById('dia').value = data.dia || "";
+                    document.getElementById('mes').value = data.mes || "";
+                    document.getElementById('ano').value = data.ano || "";
+
+                    if (data.continente) {
+                        document.getElementById('continente').value = data.continente;
+                        updateCountries(data.continente, data.pais);
+                    }
+
+                    if (data.genero) {
+                        const radio = document.querySelector(`input[name="gender"][value="${data.genero}"]`);
+                        if (radio) radio.checked = true;
+                    }
+
+                    if (data.foto) {
+                        document.getElementById("fotoPerfil").src = data.foto;
+                    }
+
+                } catch (error) {
+                    console.error("Erro ao carregar perfil:", error);
+                }
+            }
         ========= GET =========
 
         ========= ID =========
+            async function buscarUsuarioPorId(id) {
+                try {
+                    const response = await fetch(`${API_BASE}/usuarios/${id}`);
+                    const usuario = await response.json();
+                    console.log("Usuário encontrado:", usuario);
+                } catch (error) {
+                    console.error("Erro ao buscar usuário:", error);
+                }
+            }
         ========= ID =========
 
-        ========= GET =========
-        ========= GET =========
+        ========= POST =========
+            async function criarPerfil(data) {
+                try {
+                    const response = await fetch(`${API_BASE}/usuarios`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(data)
+                    });
 
-        ========= GET =========
-        ========= GET =========
+                    const novoUsuario = await response.json();
+                    console.log("Usuário criado:", novoUsuario);
 
-        ========= GET =========
-        ========= GET =========
+                } catch (error) {
+                    console.error("Erro ao criar perfil:", error);
+                }
+            }
+        ========= POST =========
+
+        ========= PUT =========
+            document.getElementById('formPerfil').addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                const userId = 1; // futuramente virá do login
+
+                const data = {
+                    nome: document.getElementById('nome').value,
+                    email: document.getElementById('email').value,
+                    senha: document.getElementById('senha').value,
+                    continente: document.getElementById('continente').value,
+                    pais: document.getElementById('pais').value,
+                    dia: document.getElementById('dia').value,
+                    mes: document.getElementById('mes').value,
+                    ano: document.getElementById('ano').value,
+                    genero: document.querySelector('input[name="gender"]:checked')?.value
+                };
+
+                try {
+                    const response = await fetch(`${API_BASE}/usuarios/${userId}`, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    const updatedUser = await response.json();
+                    console.log("Perfil atualizado:", updatedUser);
+
+                    showToast("Perfil atualizado com sucesso!", "success");
+
+                } catch (error) {
+                    console.error("Erro ao atualizar perfil:", error);
+                    showToast("Erro ao atualizar perfil", "error");
+                }
+            });
+        ========= PUT =========
+
+        ========= PATCH - ATUALIZAR E FAZER UPLOAD DE USUÁRIO =========
+            async function atualizarParcialUsuario(id, dadosParciais) {
+                try {
+                    const response = await fetch(`${API_BASE}/usuarios/${id}`, {
+                        method: "PATCH",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(dadosParciais)
+                    });
+
+                    const usuarioAtualizado = await response.json();
+                    console.log("Atualização parcial:", usuarioAtualizado);
+
+                } catch (error) {
+                    console.error("Erro no PATCH:", error);
+                }
+            }
+
+        document.getElementById('inputFoto').addEventListener("change", async e => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = async () => {
+                const base64 = reader.result;
+
+                document.getElementById('fotoPerfil').src = base64;
+
+                await atualizarParcialUsuario(1, { foto: base64 });
+
+                showToast("Foto atualizada!", "success");
+            };
+            reader.readAsDataURL(file);
+        });
+        ========= PATCH - ATUALIZAR E FAZER UPLOAD DE USUÁRIO =========
+
+        ========= DELETE =========
+            async function deletarUsuario(id) {
+                try {
+                    await fetch(`${API_BASE}/usuarios/${id}`, {
+                        method: "DELETE"
+                    });
+
+                    showToast("Conta excluída com sucesso!", "success");
+
+                } catch (error) {
+                    console.error("Erro ao deletar usuário:", error);
+                }
+            }
+        ========= DELETE =========
 
         */
 
     </script>
 </body>
+
 </html>

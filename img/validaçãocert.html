@@ -531,26 +531,26 @@
                 <ion-icon name="newspaper-outline"></ion-icon>
             </a>
             <div class="separator"></div>
-    
+
             <a href="index.html" class="server-icon" title="Comunicação Interna"
                 style="display:flex; text-decoration:none;">
                 <ion-icon name="people-outline"></ion-icon>
                 <div class="notificacao-badge">3</div>
             </a>
-    
+
             <a href="calendario.html" class="server-icon" title="Calendário de Eventos"
                 style="display:flex; text-decoration:none;">
                 <ion-icon name="calendar-outline"></ion-icon>
                 <div class="notificacao-badge">2</div>
             </a>
-    
+
             <div class="separator"></div>
-    
+
             <div class="server-icon" title="Configurações">
                 <ion-icon name="construct-outline"></ion-icon>
             </div>
         </nav>
-    
+
         <main class="main-content">
             <div class="validation-container">
                 <ion-icon name="shield-checkmark-outline"
@@ -558,7 +558,7 @@
                 <h1 class="page-title">Validação de Autenticidade</h1>
                 <p class="page-subtitle">Insira o código presente no verso do certificado para confirmar sua validade e
                     visualizar os detalhes técnicos.</p>
-    
+
                 <div class="search-box">
                     <div class="input-group">
                         <label class="input-label">CÓDIGO DE AUTENTICAÇÃO</label>
@@ -569,7 +569,7 @@
                         <ion-icon name="search-outline"></ion-icon> CONSULTAR BASE DE DADOS
                     </button>
                 </div>
-    
+
                 <!-- === RESULTADO VÁLIDO === -->
                 <div id="resultadoValido" class="result-area">
                     <div class="result-card">
@@ -588,14 +588,14 @@
                                     <div class="info-value">12/12/2025</div>
                                 </div>
                             </div>
-    
+
                             <div class="certificate-info-row">
                                 <div>
                                     <span class="info-label">Curso/Qualificação</span>
                                     <div class="info-value">Programador Full-Stack (670h)</div>
                                 </div>
                             </div>
-    
+
                             <div class="certificate-info-row" style="border: none; padding-bottom: 0;">
                                 <div>
                                     <span class="info-label">Status Institucional</span>
@@ -607,7 +607,7 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <!-- === RESULTADO INVÁLIDO === -->
                 <div id="resultadoInvalido" class="result-area">
                     <div class="result-card">
@@ -623,13 +623,13 @@
                         </div>
                     </div>
                 </div>
-    
+
             </div>
         </main>
     </div>
 
-    
-    
+
+
 
     <script>
         // === TEMA ESCURO ===
@@ -687,25 +687,137 @@
         /*
 
         ========= BASE DA API =========
+        const API_BASE = "http://LINK";
         ========= BASE DA API =========
 
-        ========= CARREGAR E RENDERIZAR NOTICIAS =========
-        ========= CARREGAR E RENDERIZAR NOTICIAS =========
+        ========= GET - VALIDAR E BUSCAR CERTIFICADO =========
+            async function validarCertificado() {
+                const codigo = document.getElementById('certInput').value.trim().toUpperCase();
+                const resValido = document.getElementById('resultadoValido');
+                const resInvalido = document.getElementById('resultadoInvalido');
 
-        ========= GET =========
-        ========= GET =========
+                resValido.style.display = 'none';
+                resInvalido.style.display = 'none';
 
-        ========= ID =========
-        ========= ID =========
+                if (codigo === "") {
+                    alert("Por favor, digite um código.");
+                    return;
+                }
 
-        ========= GET =========
-        ========= GET =========
+                const btn = document.querySelector('.btn-validate');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<ion-icon name="refresh-outline"></ion-icon> VERIFICANDO...';
+                btn.style.opacity = '0.7';
 
-        ========= GET =========
-        ========= GET =========
+                try {
+                    const response = await fetch(`${API_BASE}/certificados/codigo/${codigo}`);
 
-        ========= GET =========
-        ========= GET =========
+                    if (!response.ok) {
+                        throw new Error("Certificado não encontrado");
+                    }
+
+                    const certificado = await response.json();
+
+                    // Atualiza os dados na tela dinamicamente
+                    document.querySelectorAll('.info-value')[0].textContent = certificado.aluno;
+                    document.querySelectorAll('.info-value')[1].textContent = certificado.conclusao;
+                    document.querySelectorAll('.info-value')[2].textContent = certificado.curso;
+
+                    resValido.style.display = 'block';
+
+                } catch (error) {
+                    resInvalido.style.display = 'block';
+                } finally {
+                    btn.innerHTML = originalText;
+                    btn.style.opacity = '1';
+                }
+            }
+
+        async function buscarCertificadoPorId(id) {
+            try {
+                const response = await fetch(`${API_BASE}/certificados/${id}`);
+                const certificado = await response.json();
+                console.log(certificado);
+            } catch (error) {
+                console.error("Erro ao buscar certificado:", error);
+            }
+        }
+        ========= GET - VALIDAR E BUSCAR CERTIFICADO =========
+
+        ========= POST =========
+            async function criarCertificado(dados) {
+                try {
+                    const response = await fetch(`${API_BASE}/certificados`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(dados)
+                    });
+
+                    const novoCertificado = await response.json();
+                    console.log("Certificado criado:", novoCertificado);
+
+                } catch (error) {
+                    console.error("Erro ao criar certificado:", error);
+                }
+            }
+        ========= POST =========
+
+        ========= PUT =========
+            async function atualizarCertificado(id, dadosAtualizados) {
+                try {
+                    const response = await fetch(`${API_BASE}/certificados/${id}`, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(dadosAtualizados)
+                    });
+
+                    const atualizado = await response.json();
+                    console.log("Certificado atualizado:", atualizado);
+
+                } catch (error) {
+                    console.error("Erro no PUT:", error);
+                }
+            }
+        ========= PUT =========
+
+        ========= PATCH =========
+            async function atualizarParcialCertificado(id, dadosParciais) {
+                try {
+                    const response = await fetch(`${API_BASE}/certificados/${id}`, {
+                        method: "PATCH",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(dadosParciais)
+                    });
+
+                    const atualizado = await response.json();
+                    console.log("Atualização parcial:", atualizado);
+
+                } catch (error) {
+                    console.error("Erro no PATCH:", error);
+                }
+            }
+        ========= PATCH =========
+
+        ========= DELETE =========
+            async function deletarCertificado(id) {
+                try {
+                    await fetch(`${API_BASE}/certificados/${id}`, {
+                        method: "DELETE"
+                    });
+
+                    console.log("Certificado deletado");
+
+                } catch (error) {
+                    console.error("Erro ao deletar certificado:", error);
+                }
+            }
+        ========= DELETE =========
 
         */
 
