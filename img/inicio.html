@@ -22,19 +22,21 @@
             --bg-body: #f4f6f8;
             --bg-card: #ffffff;
             --bg-sidebar: #ffffff;
-            
+
             --texto-primario: #333333;
-            --texto-secundario: #666666; /* Descrições e datas */
-            --texto-destaque: #1a4da3; /* Títulos em azul */
-            
+            --texto-secundario: #666666;
+            /* Descrições e datas */
+            --texto-destaque: #1a4da3;
+            /* Títulos em azul */
+
             --border-color: #e0e0e0;
-            
+
             --header-bg: #1a4da3;
             --header-text: #ffffff;
-            
+
             --btn-bg: #1a4da3;
             --btn-text: #ffffff;
-            
+
             --icon-bg: #f0f2f5;
             --icon-color: #5c5e64;
             --icon-hover-bg: #1a4da3;
@@ -42,7 +44,7 @@
 
             --tag-bg: #e3f2fd;
             --tag-text: #1565c0;
-            
+
             --shadow-card: rgba(0, 0, 0, 0.05);
         }
 
@@ -51,19 +53,19 @@
             --bg-body: #121212;
             --bg-card: #1e1e1e;
             --bg-sidebar: #181818;
-            
+
             --texto-primario: #e0e0e0;
             --texto-secundario: #b0b0b0;
             --texto-destaque: #64b5f6;
-            
+
             --border-color: #333333;
-            
+
             --header-bg: #1a4da3;
             --header-text: #e0e0e0;
-            
+
             --btn-bg: #1a4da3;
             --btn-text: #e0e0e0;
-            
+
             --icon-bg: #2c2c2c;
             --icon-color: #e0e0e0;
             --icon-hover-bg: #1a4da3;
@@ -71,7 +73,7 @@
 
             --tag-bg: #1a4da3;
             --tag-text: #90caf9;
-            
+
             --shadow-card: rgba(0, 0, 0, 0.3);
         }
 
@@ -87,8 +89,10 @@
 
         /* HEADER PRINCIPAL */
         .main-header {
-            background-color: var(--header-bg); /* Corrigido: usa variável */
-            color: var(--header-text); /* Corrigido: usa variável */
+            background-color: var(--header-bg);
+            /* Corrigido: usa variável */
+            color: var(--header-text);
+            /* Corrigido: usa variável */
             height: 60px;
             display: flex;
             align-items: center;
@@ -203,7 +207,7 @@
         /* Server Rail */
         .server-rail {
             width: 70px;
-            background-color: var(--bg-sidebar); 
+            background-color: var(--bg-sidebar);
             border-right: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
@@ -217,13 +221,15 @@
         .server-icon {
             width: 44px;
             height: 44px;
-            background-color: var(--icon-bg); /* Corrigido */
+            background-color: var(--icon-bg);
+            /* Corrigido */
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 22px;
-            color: var(--icon-color); /* Corrigido */
+            color: var(--icon-color);
+            /* Corrigido */
             cursor: pointer;
             transition: 0.2s;
             position: relative;
@@ -269,7 +275,8 @@
         .content-scroll-area {
             flex: 1;
             overflow-y: auto;
-            background-color: var(--bg-body); /* Corrigido */
+            background-color: var(--bg-body);
+            /* Corrigido */
             padding: 30px;
         }
 
@@ -290,14 +297,16 @@
         }
 
         .page-title {
-            color: var(--texto-destaque); /* Corrigido */
+            color: var(--texto-destaque);
+            /* Corrigido */
             font-size: 24px;
             font-weight: 700;
             text-transform: uppercase;
         }
 
         .current-date {
-            color: var(--texto-secundario); /* Corrigido */
+            color: var(--texto-secundario);
+            /* Corrigido */
             font-size: 14px;
         }
 
@@ -310,7 +319,8 @@
 
         /* Destaque Principal */
         .featured-card {
-            background: var(--bg-card); /* Corrigido */
+            background: var(--bg-card);
+            /* Corrigido */
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 15px var(--shadow-card);
@@ -363,14 +373,16 @@
         }
 
         .featured-title {
-            color: var(--texto-destaque); /* Corrigido */
+            color: var(--texto-destaque);
+            /* Corrigido */
             font-size: 22px;
             margin-bottom: 12px;
             line-height: 1.3;
         }
 
         .featured-desc {
-            color: var(--texto-secundario); /* Corrigido */
+            color: var(--texto-secundario);
+            /* Corrigido */
             font-size: 15px;
             line-height: 1.6;
             margin-bottom: 15px;
@@ -378,7 +390,8 @@
 
         .meta-info {
             font-size: 12px;
-            color: var(--texto-secundario); /* Corrigido */
+            color: var(--texto-secundario);
+            /* Corrigido */
             display: flex;
             align-items: center;
             gap: 5px;
@@ -395,13 +408,15 @@
         .side-item {
             display: flex;
             gap: 15px;
-            background: var(--bg-card); /* Corrigido */
+            background: var(--bg-card);
+            /* Corrigido */
             padding: 15px;
             border-radius: 8px;
             box-shadow: 0 2px 8px var(--shadow-card);
             cursor: pointer;
             transition: 0.2s;
-            border: 1px solid var(--border-color); /* Corrigido */
+            border: 1px solid var(--border-color);
+            /* Corrigido */
         }
 
         .side-item:hover {
@@ -425,7 +440,8 @@
         }
 
         .side-title {
-            color: var(--texto-primario); /* Corrigido: Estava #333 fixo */
+            color: var(--texto-primario);
+            /* Corrigido: Estava #333 fixo */
             font-size: 14px;
             font-weight: 600;
             line-height: 1.4;
@@ -439,8 +455,10 @@
         }
 
         .btn-primary {
-            background-color: var(--btn-bg); /* Corrigido */
-            color: var(--btn-text); /* Corrigido */
+            background-color: var(--btn-bg);
+            /* Corrigido */
+            color: var(--btn-text);
+            /* Corrigido */
             border: none;
             padding: 12px 35px;
             border-radius: 30px;
@@ -457,24 +475,24 @@
         }
 
         .item-navegacao {
-                color: rgba(255, 255, 255, 0.8);
-                text-decoration: none;
-                font-size: 14px;
-                font-weight: 600;
-                padding: 8px 12px;
-                border-radius: 4px;
-                transition: 0.2s;
-                display: flex;
-                align-items: center;
-                gap: 6px;
-            }
-    
-            .item-navegacao:hover {
-                background-color: rgba(255, 255, 255, 0.1);
-                color: white;
-            }
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
 
-            .perfil-usuario {
+        .item-navegacao:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .perfil-usuario {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -507,7 +525,7 @@
         .link-perfil {
             text-decoration: none;
             color: inherit;
-            display: block;            
+            display: block;
         }
 
         /* === Responsividade === */
@@ -534,6 +552,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- CABEÇALHO GLOBAL -->
@@ -582,19 +601,21 @@
                 <ion-icon name="newspaper-outline"></ion-icon>
             </a>
             <div class="separator"></div>
-            
-            <a href="index.html" class="server-icon" title="Comunicação Interna" style="display:flex; text-decoration:none;">
+
+            <a href="index.html" class="server-icon" title="Comunicação Interna"
+                style="display:flex; text-decoration:none;">
                 <ion-icon name="people-outline"></ion-icon>
                 <div class="notificacao-badge">3</div>
             </a>
-            
-            <a href="calendario.html" class="server-icon" title="Calendário de Eventos" style="display:flex; text-decoration:none;">
+
+            <a href="calendario.html" class="server-icon" title="Calendário de Eventos"
+                style="display:flex; text-decoration:none;">
                 <ion-icon name="calendar-outline"></ion-icon>
                 <div class="notificacao-badge">2</div>
             </a>
-            
+
             <div class="separator"></div>
-            
+
             <div class="server-icon" title="Configurações">
                 <ion-icon name="construct-outline"></ion-icon>
             </div>
@@ -670,7 +691,7 @@
             </div>
         </main>
     </div>
-    
+
     <script>
         // === LÓGICA TEMA ESCURO ===
         const themeToggle = document.getElementById('theme-toggle');
@@ -689,7 +710,159 @@
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
             themeIcon.setAttribute('name', isDark ? 'sunny-outline' : 'moon-outline');
         });
+
+        /*
+
+        ========= BASE DA API =========
+        let noticias = [];
+        const API_URL = "http://LINK";
+        ========= BASE DA API =========
+
+        ========= CARREGAR E RENDERIZAR NOTICIAS =========
+            function renderizarNoticias(lista) {
+
+                const featuredContainer = document.getElementById("featuredContainer");
+                const sideList = document.getElementById("sideList");
+
+                featuredContainer.innerHTML = "";
+                sideList.innerHTML = "";
+
+                if (lista.length === 0) return;
+
+                // Primeira notícia = destaque
+                const destaque = lista[0];
+
+                featuredContainer.innerHTML = `
+        <article class="featured-card">
+            <div class="featured-img-container">
+                <img src="${destaque.imagem}" class="featured-img">
+            </div>
+            <div class="featured-content">
+                <span class="tag">${destaque.categoria}</span>
+                <h3 class="featured-title">${destaque.titulo}</h3>
+                <p class="featured-desc">${destaque.descricao}</p>
+                <div class="meta-info">
+                    ${destaque.data}
+                </div>
+                <button onclick="deletarNoticia(${destaque.id})"
+                    style="margin-top:10px; background:red; color:white; border:none; padding:6px 10px; border-radius:4px;">
+                    EXCLUIR
+                </button>
+            </div>
+        </article>
+    `;
+
+                lista.slice(1).forEach(noticia => {
+                    sideList.innerHTML += `
+            <div class="side-item">
+                <img src="${noticia.imagem}" class="side-img">
+                <div class="side-content">
+                    <h4 class="side-title">${noticia.titulo}</h4>
+                    <div class="meta-info">${noticia.data}</div>
+                    <button onclick="deletarNoticia(${noticia.id})"
+                        style="margin-top:5px; background:red; color:white; border:none; padding:4px 8px; border-radius:4px;">
+                        EXCLUIR
+                    </button>
+                </div>
+            </div>
+        `;
+                });
+            }
+
+        const API_URL = "http://";
+        let noticias = [];
+
+        document.addEventListener("DOMContentLoaded", carregarNoticias);
+
+        async function carregarNoticias() {
+            try {
+                const response = await fetch(API_URL);
+                noticias = await response.json();
+                renderizarNoticias(noticias);
+            } catch (error) {
+                console.error("Erro ao carregar notícias:", error);
+            }
+        }
+        ========= CARREGAR E RENDERIZAR NOTICIAS =========
+
+        ========= POST =========
+            async function criarNoticia(novaNoticia) {
+                try {
+                    const response = await fetch(API_URL, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(novaNoticia)
+                    });
+
+                    await carregarNoticias();
+                } catch (error) {
+                    console.error("Erro ao criar notícia:", error);
+                }
+            }
+        ========= POST =========
+
+        ========= ID =========
+            async function buscarNoticiaPorId(id) {
+                try {
+                    const response = await fetch(`${API_URL}/${id}`);
+                    const noticia = await response.json();
+                    console.log(noticia);
+                } catch (error) {
+                    console.error("Erro ao buscar notícia:", error);
+                }
+            }
+        ========= ID =========
+
+        ========= PUT =========
+            async function atualizarNoticiaCompleta(id, dadosAtualizados) {
+                try {
+                    await fetch(`${API_URL}/${id}`, {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(dadosAtualizados)
+                    });
+
+                    await carregarNoticias();
+                } catch (error) {
+                    console.error("Erro no PUT:", error);
+                }
+            }
+        ========= PUT =========
+
+        ========= PATCH =========
+            async function atualizarNoticiaParcial(id, dadosParciais) {
+                try {
+                    await fetch(`${API_URL}/${id}`, {
+                        method: "PATCH",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(dadosParciais)
+                    });
+
+                    await carregarNoticias();
+                } catch (error) {
+                    console.error("Erro no PATCH:", error);
+                }
+            }
+        ========= PATCH =========
+
+        ========= DELETE =========
+            async function deletarNoticia(id) {
+                try {
+                    await fetch(`${API_URL}/${id}`, {
+                        method: "DELETE"
+                    });
+
+                    noticias = noticias.filter(n => n.id !== id);
+                    renderizarNoticias(noticias);
+                } catch (error) {
+                    console.error("Erro ao deletar notícia:", error);
+                }
+            }
+        ========= DELETE =========
+
+        */
     </script>
 
 </body>
+
 </html>

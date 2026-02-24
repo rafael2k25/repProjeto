@@ -564,7 +564,7 @@
         .link-perfil {
             text-decoration: none;
             color: inherit;
-            display: block;            
+            display: block;
         }
 
         @media (max-width: 768px) {
@@ -582,8 +582,8 @@
         }
 
         .item-canal {
-            text-decoration: none;           
-            color: inherit;          
+            text-decoration: none;
+            color: inherit;
             display: flex;
         }
     </style>
@@ -634,19 +634,19 @@
                 <ion-icon name="newspaper-outline"></ion-icon>
             </a>
             <div class="separador"></div>
-            
+
             <a href="index.html" class="icone-lateral ativo" title="Comunicação Interna">
                 <ion-icon name="people-outline"></ion-icon>
                 <div class="notificacao-badge">3</div>
             </a>
-            
+
             <a href="calendario.html" class="icone-lateral" title="Calendário de Eventos">
                 <ion-icon name="calendar-outline"></ion-icon>
                 <div class="notificacao-badge">2</div>
             </a>
-            
+
             <div class="separador"></div>
-            
+
             <div class="icone-lateral" title="Configurações">
                 <ion-icon name="construct-outline"></ion-icon>
             </div>
@@ -741,7 +741,7 @@
         const inputMensagem = document.getElementById('inputMensagem');
         const containerMensagens = document.getElementById('containerMensagens');
 
-        // Carregar mensagens ao iniciar
+        // === CARREGAR MENSAGENS ===
         document.addEventListener('DOMContentLoaded', carregarMensagens);
 
         function enviarMensagem() {
@@ -795,7 +795,7 @@
             if (e.key === 'Enter') enviarMensagem();
         });
 
-        // === TESTE TEMA ESCURO ===
+        // === INICIO TEMA ESCURO ===
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
         const body = document.body;
@@ -812,7 +812,126 @@
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
             themeIcon.setAttribute('name', isDark ? 'sunny-outline' : 'moon-outline');
         });
-        // === FIM TESTE TEMA ESCURO ===
+        // === FIM TEMA ESCURO ===
+
+        /*
+
+        ========= BASE DA API =========
+        let mensagens = [];
+        const API_URL = "http://LINK";
+        ========= BASE DA API =========
+
+        ========= GET =========
+            document.addEventListener('DOMContentLoaded', carregarMensagens);
+
+        async function carregarMensagens() {
+            try {
+                const response = await fetch(API_URL);
+                mensagens = await response.json();
+
+                containerMensagens.innerHTML = "";
+                mensagens.forEach(msg => adicionarMensagemDOM(msg));
+
+            } catch (error) {
+                console.error("Erro ao carregar mensagens:", error);
+            }
+        }           
+        ========= GET =========
+
+        ========= POST =========
+            async function enviarMensagem() {
+                const texto = inputMensagem.value.trim();
+                if (texto === "") return;
+
+                const novaMensagem = {
+                    usuario: "Teste Usuário",
+                    conteudo: texto,
+                    horario: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+                    tipo: "minha"
+                };
+
+                try {
+                    const response = await fetch(API_URL, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(novaMensagem)
+                    });
+
+                    const mensagemCriada = await response.json();
+
+                    adicionarMensagemDOM(mensagemCriada);
+                    inputMensagem.value = "";
+
+                } catch (error) {
+                    console.error("Erro ao enviar mensagem:", error);
+                }
+            }
+        ========= POST =========
+
+        ========= ID =========
+            async function buscarMensagemPorId(id) {
+                try {
+                    const response = await fetch(`${API_URL}/${id}`);
+                    const mensagem = await response.json();
+                    console.log(mensagem);
+                } catch (error) {
+                    console.error("Erro ao buscar mensagem:", error);
+                }
+            }
+        ========= ID =========
+
+        ========= PUT =========
+            async function atualizarMensagemCompleta(id, dadosAtualizados) {
+                try {
+                    await fetch(`${API_URL}/${id}`, {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(dadosAtualizados)
+                    });
+
+                    await carregarMensagens();
+
+                } catch (error) {
+                    console.error("Erro no PUT:", error);
+                }
+            }
+        ========= PUT =========
+
+        ========= PATCH =========
+            async function atualizarMensagemParcial(id, dadosParciais) {
+                try {
+                    await fetch(`${API_URL}/${id}`, {
+                        method: "PATCH",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(dadosParciais)
+                    });
+
+                    await carregarMensagens();
+
+                } catch (error) {
+                    console.error("Erro no PATCH:", error);
+                }
+            }
+        ========= PATCH =========
+
+        ========= DELETE =========
+            async function deletarMensagem(id) {
+                try {
+                    await fetch(`${API_URL}/${id}`, {
+                        method: "DELETE"
+                    });
+
+                    mensagens = mensagens.filter(msg => msg.id !== id);
+                    containerMensagens.innerHTML = "";
+                    mensagens.forEach(msg => adicionarMensagemDOM(msg));
+
+                } catch (error) {
+                    console.error("Erro ao deletar mensagem:", error);
+                }
+            }
+        ========= DELETE =========
+
+        */
     </script>
 
 </body>
