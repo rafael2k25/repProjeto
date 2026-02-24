@@ -695,7 +695,7 @@
         .link-perfil {
             text-decoration: none;
             color: inherit;
-            display: block;            
+            display: block;
         }
 
         @media (max-width: 768px) {
@@ -1002,6 +1002,7 @@
 
         function mostrarDetalheEvento(id) {
             document.getElementById('modalEvento').classList.add('ativo');
+
         }
 
         function fecharModal() {
@@ -1014,14 +1015,15 @@
         }
 
         function salvarNovoEvento(event) {
-            event.preventDefault(); // Evita recarregar a página
+            event.preventDefault();
             alert('Evento salvo com sucesso!');
             fecharModalNovo();
+
         }
 
         function gerarCalendario() {
             const diasMesContainer = document.getElementById('diasMes');
-            diasMesContainer.innerHTML = ''; // Limpa antes de gerar
+            diasMesContainer.innerHTML = '';
 
             // Dias do mês
             for (let i = 1; i <= 35; i++) {
@@ -1049,11 +1051,12 @@
                     }
                 }
                 diasMesContainer.appendChild(divDia);
+
             }
         }
 
         function navegarMes(direcao) {
-            // Lógica fictícia, apenas para o botão funcionar visualmente
+            // apenas para o botão funcionar visualmente
             alert('Navegação de mês não implementada completamente. Apenas interface.');
         }
 
@@ -1063,6 +1066,121 @@
 
 
         window.onload = gerarCalendario;
+       
+        /*
+
+            ========= GET =========
+            async function carregarEventos() {
+                try {
+                    const response = await fetch(API_URL);
+                    eventos = await response.json();
+                    gerarCalendario();
+                } catch (error) {
+                    console.error("Erro ao buscar eventos:", error);
+                }
+            }
+            ========= GET =========
+
+            ========= ID =========
+            async function buscarEventoPorId(id) {
+                try {
+                    const response = await fetch(`${API_URL}/${id}`);
+                    return await response.json();
+                } catch (error) {
+                    console.error("Erro ao buscar evento:", error);
+                }
+            }
+            ========= ID =========
+
+            ====== POST ======
+            async function salvarNovoEvento(event) {
+                event.preventDefault();
+
+                const form = event.target;
+                const inputs = form.querySelectorAll("input, textarea");
+
+                const novoEvento = {
+                    titulo: inputs[0].value,
+                    data: inputs[1].value,
+                    horario: inputs[2].value,
+                    local: inputs[3].value,
+                    descricao: inputs[4].value,
+                    organizador: "Usuário Logado",
+                    cor: "#3498db"
+                };
+
+                try {
+                    const response = await fetch(API_URL, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(novoEvento)
+                    });
+
+                    const eventoCriado = await response.json();
+                    eventos.push(eventoCriado);
+
+                    gerarCalendario();
+                    fecharModalNovo();
+                } catch (error) {
+                    console.error("Erro ao criar evento:", error);
+                }
+            }
+            ========= POST =========
+
+            ========= PUT =========
+            async function atualizarEventoCompleto(id, dadosAtualizados) {
+                try {
+                    const response = await fetch(`${API_URL}/${id}`, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(dadosAtualizados)
+                    });
+
+                    return await response.json();
+                } catch (error) {
+                    console.error("Erro ao atualizar evento (PUT):", error);
+                }
+            }
+            ========= PUT =========
+
+            ========= PATCH =========
+            async function atualizarEventoParcial(id, dadosParciais) {
+                try {
+                    const response = await fetch(`${API_URL}/${id}`, {
+                        method: "PATCH",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(dadosParciais)
+                    });
+
+                    return await response.json();
+                } catch (error) {
+                    console.error("Erro ao atualizar evento (PATCH):", error);
+                }
+            }
+            ========= PATCH =========
+
+            ========= DELETE =========
+            async function deletarEvento(id) {
+                try {
+                    await fetch(`${API_URL}/${id}`, {
+                        method: "DELETE"
+                    });
+
+                    eventos = eventos.filter(evento => evento.id !== id);
+                    gerarCalendario();
+                } catch (error) {
+                    console.error("Erro ao deletar evento:", error);
+                }
+            }
+            ========= DELETE =========
+
+        */
     </script>
 </body>
 
