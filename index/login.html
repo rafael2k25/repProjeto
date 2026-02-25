@@ -572,12 +572,12 @@
             const emailArmazenado = localStorage.getItem('emailUsuario');
             const senhaArmazenada = localStorage.getItem('senhaUsuario');
 
-            // --- VERIFICAÇÃO DA SENHA ---
+            // === VERIFICAÇÃO DA SENHA ===
             const isUsuarioTeste = (email === emailValido && senha === senhaValida);
             const isUsuarioArmazenado = (emailArmazenado && email === emailArmazenado && senha === senhaArmazenada);
 
             if (isUsuarioTeste || isUsuarioArmazenado) {
-                // --- SENHA CORRETA ---
+                // === SENHA CORRETA ===
                 codigoGerado = Math.floor(100000 + Math.random() * 900000).toString();
                 console.log("CÓDIGO DE LOGIN: " + codigoGerado); // (F12)
 
