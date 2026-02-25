@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFTT - Gestão de Avisos</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <style>
+        /* RESET & BASICS */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* === CONFIGURAÇÃO DE VARIÁVEIS (CORES) === */
+        :root {
+            /* TEMA CLARO */
+            --bg-body: #f4f6f8;
+            --bg-card: #ffffff;
+            --bg-sidebar: #ffffff;
+
+            --texto-primario: #333333;
+            --texto-secundario: #666666;
+            --texto-destaque: #1a4da3;
+
+            --border-color: #e0e0e0;
+
+            --header-bg: #1a4da3;
+            --header-text: #ffffff;
+
+            --btn-bg: #1a4da3;
+            --btn-text: #ffffff;
+            --btn-danger: #e53935;
+            --btn-edit: #fb8c00;
+
+            --icon-bg: #f0f2f5;
+            --icon-color: #5c5e64;
+            --icon-hover-bg: #1a4da3;
+            --icon-hover-text: #ffffff;
+
+            --tag-bg: #e3f2fd;
+            --tag-text: #1565c0;
+
+            --shadow-card: rgba(0, 0, 0, 0.05);
+        }
+
+        body.dark-mode {
+            /* TEMA ESCURO */
+            --bg-body: #121212;
+            --bg-card: #1e1e1e;
+            --bg-sidebar: #181818;
+
+            --texto-primario: #e0e0e0;
+            --texto-secundario: #b0b0b0;
+            --texto-destaque: #64b5f6;
+
+            --border-color: #333333;
+
+            --header-bg: #1a4da3;
+            --header-text: #e0e0e0;
+
+            --btn-bg: #1a4da3;
+            --btn-text: #e0e0e0;
+
+            --icon-bg: #2c2c2c;
+            --icon-color: #e0e0e0;
+            --icon-hover-bg: #1a4da3;
+            --icon-hover-text: #ffffff;
+
+            --tag-bg: #1a4da3;
+            --tag-text: #90caf9;
+
+            --shadow-card: rgba(0, 0, 0, 0.3);
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--texto-primario);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* HEADER PRINCIPAL */
+        .main-header {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            flex-shrink: 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-left { display: flex; align-items: center; gap: 20px; }
+        .logo-text { font-weight: 800; font-size: 18px; letter-spacing: 0.5px; }
+        .main-nav { display: flex; gap: 5px; margin-left: 20px; }
+        
+        .nav-item, .item-navegacao {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-item:hover, .item-navegacao:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        .nav-item.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .header-right { display: flex; align-items: center; gap: 20px; }
+        
+        .perfil-usuario {
+            display: flex; align-items: center; gap: 10px; cursor: pointer;
+            padding: 5px 10px; border-radius: 20px; transition: 0.2s;
+        }
+        .perfil-usuario:hover { background-color: rgba(255, 255, 255, 0.1); }
+        .avatar {
+            width: 32px; height: 32px; background-color: #ddd; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: #1a4da3; font-weight: bold; font-size: 12px; border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+        .info-usuario { text-align: right; line-height: 1.2; }
+        .nome-usuario { font-size: 13px; font-weight: bold; display: block; color: white;}
+        .cargo-usuario { font-size: 11px; opacity: 0.7; color: white; }
+        .link-perfil { text-decoration: none; display: block; }
+
+        /* CONTEÚDO PRINCIPAL */
+        .app-body { display: flex; flex: 1; overflow: hidden; }
+
+        /* Server Rail */
+        .server-rail {
+            width: 70px; background-color: var(--bg-sidebar); border-right: 1px solid var(--border-color);
+            display: flex; flex-direction: column; align-items: center; padding: 15px 0; gap: 12px;
+            flex-shrink: 0; z-index: 5;
+        }
+        .server-icon {
+            width: 44px; height: 44px; background-color: var(--icon-bg); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 22px;
+            color: var(--icon-color); cursor: pointer; transition: 0.2s; position: relative; text-decoration: none;
+        }
+        .server-icon:hover { border-radius: 12px; background-color: var(--icon-hover-bg); color: var(--icon-hover-text); }
+        .server-icon.active { border-radius: 12px; background-color: var(--header-bg); color: white; }
+        .separator { width: 32px; height: 2px; background: var(--border-color); margin: 4px 0; }
+        .notificacao-badge {
+            position: absolute; top: -2px; right: -2px; background: #e44d26; color: white;
+            font-size: 10px; width: 18px; height: 18px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; border: 2px solid var(--bg-body); font-weight: bold;
+        }
+
+        /* Área de Rolagem do Conteúdo */
+        .content-scroll-area { flex: 1; overflow-y: auto; background-color: var(--bg-body); padding: 30px; }
+        .admin-container { max-width: 1200px; margin: 0 auto; width: 100%; }
+
+        .page-title-area {
+            margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px;
+        }
+        .page-title { color: var(--texto-destaque); font-size: 24px; font-weight: 700; text-transform: uppercase; }
+
+        /* GRELHA DE ADMINISTRAÇÃO (Formulário e Lista) */
+        .admin-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .admin-card {
+            background: var(--bg-card);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 15px var(--shadow-card);
+            border: 1px solid var(--border-color);
+        }
+
+        .admin-card h3 {
+            color: var(--texto-destaque);
+            margin-bottom: 20px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        /* ESTILOS DO FORMULÁRIO */
+        .form-group { margin-bottom: 15px; }
+        .form-group label {
+            display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--texto-secundario);
+        }
+        .form-control {
+            width: 100%; padding: 10px 12px; border: 1px solid var(--border-color);
+            border-radius: 6px; background-color: var(--bg-body); color: var(--texto-primario);
+            font-size: 14px; transition: border-color 0.2s;
+        }
+        .form-control:focus { outline: none; border-color: var(--header-bg); }
+        textarea.form-control { resize: vertical; min-height: 100px; }
+
+        .btn-submit {
+            background-color: var(--btn-bg); color: var(--btn-text);
+            border: none; padding: 12px 20px; border-radius: 6px; font-weight: 600; font-size: 14px;
+            cursor: pointer; width: 100%; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .btn-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn-submit.editing { background-color: var(--btn-edit); color: #fff; }
+
+        /* LISTA DE AVISOS */
+        .notice-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        
+        .notice-item {
+            background-color: var(--bg-body);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+        .notice-item:hover { transform: translateX(5px); border-left: 3px solid var(--header-bg); }
+        
+        .notice-info { display: flex; flex-direction: column; gap: 5px; }
+        .notice-title { font-weight: 600; font-size: 15px; color: var(--texto-primario); }
+        .notice-meta { font-size: 12px; color: var(--texto-secundario); display: flex; gap: 10px; align-items: center;}
+        
+        .badge {
+            padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: bold; color: white; text-transform: uppercase;
+        }
+        .badge.baixa { background-color: #4caf50; }
+        .badge.media { background-color: #ff9800; }
+        .badge.alta { background-color: #f44336; }
+
+        .notice-actions { display: flex; gap: 8px; }
+        .btn-action {
+            border: none; padding: 6px 10px; border-radius: 4px; font-size: 12px;
+            cursor: pointer; font-weight: 600; transition: 0.2s;
+            display: flex; align-items: center; gap: 4px; color: white;
+        }
+        .btn-edit { background-color: var(--btn-edit); }
+        .btn-delete { background-color: var(--btn-danger); }
+        .btn-action:hover { opacity: 0.8; }
+        .empty-message { text-align: center; color: var(--texto-secundario); font-size: 14px; padding: 20px; font-style: italic; }
+
+        @media (max-width: 900px) {
+            .admin-grid { grid-template-columns: 1fr; }
+            .server-rail { display: none; }
+            .main-header { padding: 0 15px; }
+            .nav-item span { display: none; }
+            .notice-item { flex-direction: column; align-items: flex-start; gap: 15px; }
+            .notice-actions { width: 100%; justify-content: flex-end; border-top: 1px solid var(--border-color); padding-top: 10px;}
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO GLOBAL -->
+    <header class="main-header">
+        <div class="header-left">
+            <div class="logo-text">IFTT</div>
+            <nav class="main-nav">
+                <a href="inicio.html" class="nav-item">
+                    <ion-icon name="home-outline"></ion-icon> <span>Início</span>
+                </a>
+                <a href="cursos.html" class="nav-item">
+                    <ion-icon name="school-outline"></ion-icon> <span>Cursos</span>
+                </a>
+                <a href="avisos.html" class="item-navegacao active">
+                    <ion-icon name="megaphone-outline"></ion-icon> <span>Lançamento de Avisos</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="header-right">
+            <!-- Botão de Tema -->
+            <div id="theme-toggle" style="cursor: pointer; font-size: 24px; margin-right: 15px; display: flex; align-items: center;">
+                <ion-icon name="moon-outline" id="theme-icon"></ion-icon>
+            </div>
+
+            <a href="perfil.html" class="link-perfil">
+                <div class="perfil-usuario">
+                    <div class="info-usuario">
+                        <span class="nome-usuario">Teste Usuário</span>
+                        <span class="cargo-usuario">Diretor</span>
+                    </div>
+                    <div class="avatar">TU</div>
+                    <ion-icon name="chevron-down-outline" style="font-size: 12px; color: rgba(255,255,255,0.7)"></ion-icon>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <div class="app-body">
+        <!-- SERVER RAIL -->
+        <nav class="server-rail">
+            <a href="inicio.html" class="server-icon" title="Início">
+                <ion-icon name="newspaper-outline"></ion-icon>
+            </a>
+            <div class="separator"></div>
+
+            <a href="index.html" class="server-icon active" title="Comunicação Interna">
+                <ion-icon name="megaphone-outline"></ion-icon>
+                <div class="notificacao-badge">3</div>
+            </a>
+
+            <a href="calendario.html" class="server-icon" title="Calendário de Eventos">
+                <ion-icon name="calendar-outline"></ion-icon>
+            </a>
+
+            <div class="separator"></div>
+
+            <div class="server-icon" title="Configurações">
+                <ion-icon name="construct-outline"></ion-icon>
+            </div>
+        </nav>
+
+        <!-- ÁREA DE CONTEÚDO -->
+        <main class="content-scroll-area">
+            <div class="admin-container">
+
+                <div class="page-title-area">
+                    <h2 class="page-title">Gestão e Lançamento de Avisos</h2>
+                </div>
+
+                <div class="admin-grid">
+                    
+                    <!-- FORMULÁRIO DE CRIAÇÃO/EDIÇÃO -->
+                    <div class="admin-card">
+                        <h3 id="formTitle"><ion-icon name="add-circle-outline"></ion-icon> Criar Novo Aviso</h3>
+                        
+                        <form id="avisoForm">
+                            <input type="hidden" id="avisoId">
+                            
+                            <div class="form-group">
+                                <label for="titulo">Título do Aviso</label>
+                                <input type="text" id="titulo" class="form-control" placeholder="Ex: Reunião Geral" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="categoria">Categoria</label>
+                                <select id="categoria" class="form-control" required>
+                                    <option value="">Selecione a categoria...</option>
+                                    <option value="Recursos Humanos">Recursos Humanos</option>
+                                    <option value="Operacional">Operacional</option>
+                                    <option value="Eventos">Eventos</option>
+                                    <option value="Urgente">Urgente</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="descricao">Descrição</label>
+                                <textarea id="descricao" class="form-control" placeholder="Insira o texto detalhado do aviso aqui..." required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="imagem">URL da Imagem (Opcional)</label>
+                                <input type="url" id="imagem" class="form-control" placeholder="https://exemplo.com/imagem.jpg">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="prioridade">Prioridade</label>
+                                <select id="prioridade" class="form-control" required>
+                                    <option value="baixa">Baixa</option>
+                                    <option value="media">Média</option>
+                                    <option value="alta">Alta</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dataPub">Data de Publicação</label>
+                                <input type="date" id="dataPub" class="form-control" required>
+                            </div>
+
+                            <button type="submit" class="btn-submit" id="btnSubmit">
+                                <ion-icon name="send-outline"></ion-icon> Publicar Aviso
+                            </button>
+                            
+                            <button type="button" class="btn-submit" id="btnCancel" style="display:none; background-color: var(--texto-secundario); margin-top: 10px;">
+                                Cancelar Edição
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- LISTA DE AVISOS -->
+                    <div class="admin-card">
+                        <h3><ion-icon name="list-outline"></ion-icon> Avisos Publicados</h3>
+                        <ul class="notice-list" id="noticeList">
+                            <!-- Os itens serão gerados dinamicamente via JavaScript -->
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // === TEMA ESCURO ===
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const body = document.body;
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeIcon.setAttribute('name', 'sunny-outline');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            themeIcon.setAttribute('name', isDark ? 'sunny-outline' : 'moon-outline');
+        });
+
+        // === GESTÃO DE AVISOS ===
+        const form = document.getElementById('avisoForm');
+        const noticeList = document.getElementById('noticeList');
+        const btnSubmit = document.getElementById('btnSubmit');
+        const btnCancel = document.getElementById('btnCancel');
+        const formTitle = document.getElementById('formTitle');
+
+        // === DADOS SIMULADOS ===
+        let avisos = [
+            {
+                id: 1,
+                titulo: "Manutenção do Servidor Central",
+                categoria: "Operacional",
+                descricao: "O servidor estará inativo neste fim de semana para melhorias.",
+                imagem: "",
+                prioridade: "alta",
+                data: "2026-02-14"
+            },
+            {
+                id: 2,
+                titulo: "Abertura de Inscrições para Cursos",
+                categoria: "Eventos",
+                descricao: "As inscrições para os cursos do segundo trimestre estão abertas.",
+                imagem: "",
+                prioridade: "media",
+                data: "2026-02-10"
+            }
+        ];
+
+        // === FORMATAR DATA PARA EXIBIÇÃO ===
+        function formatarData(dataStr) {
+            const partes = dataStr.split('-');
+            return `${partes[2]}/${partes[1]}/${partes[0]}`;
+        }
+
+        // === RENDERIZAR A LISTA ===
+        function renderizarAvisos() {
+            noticeList.innerHTML = '';
+            
+            if (avisos.length === 0) {
+                noticeList.innerHTML = '<li class="empty-message">Nenhum aviso publicado no momento.</li>';
+                return;
+            }
+
+            avisos.forEach(aviso => {
+                const li = document.createElement('li');
+                li.className = 'notice-item';
+                li.innerHTML = `
+                    <div class="notice-info">
+                        <span class="notice-title">${aviso.titulo}</span>
+                        <div class="notice-meta">
+                            <span class="badge ${aviso.prioridade}">${aviso.prioridade}</span>
+                            <span><ion-icon name="folder-outline"></ion-icon> ${aviso.categoria}</span>
+                            <span><ion-icon name="calendar-outline"></ion-icon> ${formatarData(aviso.data)}</span>
+                        </div>
+                    </div>
+                    <div class="notice-actions">
+                        <button class="btn-action btn-edit" onclick="editarAviso(${aviso.id})">
+                            <ion-icon name="create-outline"></ion-icon> Editar
+                        </button>
+                        <button class="btn-action btn-delete" onclick="excluirAviso(${aviso.id})">
+                            <ion-icon name="trash-outline"></ion-icon> Excluir
+                        </button>
+                    </div>
+                `;
+                noticeList.appendChild(li);
+            });
+        }
+
+        // Adicionar / Atualizar Aviso
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const idAtual = document.getElementById('avisoId').value;
+            const novoAviso = {
+                id: idAtual ? parseInt(idAtual) : Date.now(),
+                titulo: document.getElementById('titulo').value,
+                categoria: document.getElementById('categoria').value,
+                descricao: document.getElementById('descricao').value,
+                imagem: document.getElementById('imagem').value,
+                prioridade: document.getElementById('prioridade').value,
+                data: document.getElementById('dataPub').value
+            };
+
+            if (idAtual) {
+                // Atualizar existente
+                avisos = avisos.map(aviso => aviso.id === novoAviso.id ? novoAviso : aviso);
+                resetarFormulario();
+            } else {
+                // Criar novo
+                avisos.unshift(novoAviso); // Adiciona no início da lista
+            }
+
+            form.reset();
+            renderizarAvisos();
+        });
+
+        // Excluir Aviso
+        window.excluirAviso = function(id) {
+            if(confirm("Tem a certeza que deseja excluir este aviso?")) {
+                avisos = avisos.filter(aviso => aviso.id !== id);
+                renderizarAvisos();
+            }
+        }
+
+        // Editar Aviso
+        window.editarAviso = function(id) {
+            const aviso = avisos.find(a => a.id === id);
+            if (!aviso) return;
+
+            document.getElementById('avisoId').value = aviso.id;
+            document.getElementById('titulo').value = aviso.titulo;
+            document.getElementById('categoria').value = aviso.categoria;
+            document.getElementById('descricao').value = aviso.descricao;
+            document.getElementById('imagem').value = aviso.imagem;
+            document.getElementById('prioridade').value = aviso.prioridade;
+            document.getElementById('dataPub').value = aviso.data;
+
+            // Alterar visual do formulário
+            formTitle.innerHTML = '<ion-icon name="create-outline"></ion-icon> Editar Aviso';
+            btnSubmit.innerHTML = '<ion-icon name="save-outline"></ion-icon> Atualizar Aviso';
+            btnSubmit.classList.add('editing');
+            btnCancel.style.display = 'block';
+            
+            // Focar no título suavemente
+            document.getElementById('titulo').focus();
+        }
+
+        // Cancelar Edição
+        btnCancel.addEventListener('click', resetarFormulario);
+
+        function resetarFormulario() {
+            form.reset();
+            document.getElementById('avisoId').value = '';
+            formTitle.innerHTML = '<ion-icon name="add-circle-outline"></ion-icon> Criar Novo Aviso';
+            btnSubmit.innerHTML = '<ion-icon name="send-outline"></ion-icon> Publicar Aviso';
+            btnSubmit.classList.remove('editing');
+            btnCancel.style.display = 'none';
+        }
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', () => {
+            // Define a data de hoje como padrão no input
+            document.getElementById('dataPub').valueAsDate = new Date();
+            renderizarAvisos();
+        });
+
+    </script>
+</body>
+</html>
