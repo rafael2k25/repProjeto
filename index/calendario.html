@@ -752,7 +752,7 @@
                 <div class="perfil-usuario">
                     <div class="info-usuario">
                         <span class="nome-usuario">Teste Usuário</span>
-                        <span class="cargo-usuario">Gestor de Projetos</span>
+                        <span class="cargo-usuario">Diretor</span>
                     </div>
                     <div class="avatar">TU</div>
                     <ion-icon name="chevron-down-outline" style="font-size: 12px; color: rgba(255,255,255,0.7)">
@@ -799,7 +799,7 @@
                         <div class="cor-calendario" style="background: var(--evento-1);"></div>
                         <div class="info-calendario">
                             <span class="nome-calendario">Todos os eventos</span>
-                            <span class="contagem-eventos">12 eventos</span>
+                            <span class="contagem-eventos">1 eventos</span>
                         </div>
                         <input type="checkbox" class="checkbox-calendario" checked>
                     </div>
@@ -808,7 +808,7 @@
                         <div class="cor-calendario" style="background: var(--evento-1);"></div>
                         <div class="info-calendario">
                             <span class="nome-calendario">Cursos & Treinamentos</span>
-                            <span class="contagem-eventos">5 eventos</span>
+                            <span class="contagem-eventos">0 eventos</span>
                         </div>
                         <input type="checkbox" class="checkbox-calendario" checked>
                     </div>
@@ -817,7 +817,7 @@
                         <div class="cor-calendario" style="background: var(--evento-2);"></div>
                         <div class="info-calendario">
                             <span class="nome-calendario">Reuniões</span>
-                            <span class="contagem-eventos">3 eventos</span>
+                            <span class="contagem-eventos">0 eventos</span>
                         </div>
                         <input type="checkbox" class="checkbox-calendario" checked>
                     </div>
@@ -826,7 +826,7 @@
                         <div class="cor-calendario" style="background: var(--evento-3);"></div>
                         <div class="info-calendario">
                             <span class="nome-calendario">Prazos</span>
-                            <span class="contagem-eventos">2 eventos</span>
+                            <span class="contagem-eventos">0 eventos</span>
                         </div>
                         <input type="checkbox" class="checkbox-calendario" checked>
                     </div>
@@ -835,7 +835,7 @@
                         <div class="cor-calendario" style="background: var(--evento-4);"></div>
                         <div class="info-calendario">
                             <span class="nome-calendario">Eventos Sociais</span>
-                            <span class="contagem-eventos">2 eventos</span>
+                            <span class="contagem-eventos">1 eventos</span>
                         </div>
                         <input type="checkbox" class="checkbox-calendario" checked>
                     </div>
@@ -875,47 +875,35 @@
                         <div class="evento-item" onclick="mostrarDetalheEvento(1)">
                             <div class="evento-cor" style="background: var(--evento-1);"></div>
                             <div class="evento-info">
-                                <div class="evento-titulo">Workshop IoT para Manutenção Industrial</div>
+                                <div class="evento-titulo">Apresentação de projetos</div>
                                 <div class="evento-data"><ion-icon name="time-outline"></ion-icon> 14:00 - 17:00</div>
-                                <div class="evento-descricao">Introdução prática à Internet das Coisas</div>
-                                <div class="evento-local"><ion-icon name="location-outline"></ion-icon> Lab. de
-                                    Automação</div>
+                                <div class="evento-descricao">Os grupos do curso de Técnico em Informática para Internet
+                                    irão apresentar seus projetos.
+                                </div>
+                                <div class="evento-local"><ion-icon name="location-outline"></ion-icon>Auditório</div>
                             </div>
                         </div>
-
-                        <div class="evento-item" onclick="mostrarDetalheEvento(2)">
-                            <div class="evento-cor" style="background: var(--evento-2);"></div>
-                            <div class="evento-info">
-                                <div class="evento-titulo">Reunião de Planejamento</div>
-                                <div class="evento-data"><ion-icon name="time-outline"></ion-icon> 10:00 - 11:30</div>
-                                <div class="evento-descricao">Revisão do cronograma do projeto</div>
-                                <div class="evento-local"><ion-icon name="location-outline"></ion-icon> Sala 204</div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </section>
-
         </main>
     </div>
 
     <div class="modal" id="modalEvento">
         <div class="modal-conteudo">
             <div class="modal-cabecalho">
-                <h3 class="modal-titulo" id="modalTitulo">Workshop IoT</h3>
+                <h3 class="modal-titulo" id="modalTitulo">Apresentação de projetos</h3>
                 <span class="modal-fechar" onclick="fecharModal()">&times;</span>
             </div>
             <div class="modal-corpo" id="modalCorpo">
-                <p><strong>Data:</strong> <span id="modalData">19/02/2026</span></p>
+                <p><strong>Data:</strong> <span id="modalData">06/03/2026</span></p>
                 <p><strong>Horário:</strong> <span id="modalHorario">14:00 - 17:00</span></p>
-                <p><strong>Local:</strong> <span id="modalLocal">Lab. de Automação</span></p>
-                <p><strong>Descrição:</strong> <span id="modalDescricao">Workshop prático sobre Internet das Coisas
-                        aplicada à manutenção industrial. Trazer notebook.</span></p>
-                <p><strong>Organizador:</strong> <span id="modalOrganizador">Prof. Carlos Silva</span></p>
+                <p><strong>Local:</strong> <span id="modalLocal">Auditório</span></p>
+                <p><strong>Descrição:</strong> <span id="modalDescricao">Os grupos do curso de Técnico em Informática para Internet
+                    irão apresentar seus projetos.</span></p>
+                <p><strong>Organizador:</strong> <span id="modalOrganizador">Prof. Andre Teixeira</span></p>
             </div>
             <div class="modal-rodape">
-                <button class="btn-modal btn-participar" onclick="participarEvento()">Participar</button>
                 <button class="btn-modal btn-fechar" onclick="fecharModal()">Fechar</button>
             </div>
         </div>
@@ -959,6 +947,13 @@
                         <input type="text"
                             style="width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--input-bg); color: var(--texto-primario);"
                             placeholder="Local do evento">
+                    </div>
+                    <div>
+                        <label
+                            style="display: block; margin-bottom: 5px; font-size: 13px; color: var(--texto-secundario);">Organizador</label>
+                        <input type="text"
+                            style="width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--input-bg); color: var(--texto-primario);"
+                            placeholder="Nome do Organizador">
                     </div>
                     <div>
                         <label
@@ -1044,8 +1039,7 @@
                         divDia.classList.add('tem-evento');
                         divDia.innerHTML += `
                             <div class="eventos-dia">
-                                <div class="evento-mini" style="background: var(--evento-1)">Workshop IoT</div>
-                                <div class="evento-mini" style="background: var(--evento-2)">Reunião</div>
+                                <div class="evento-mini" style="background: var(--evento-1)">Apresentação de Projetos</div>
                             </div>
                         `;
                     }
@@ -1056,7 +1050,7 @@
         }
 
         function navegarMes(direcao) {
-            // apenas para o botão funcionar visualmente
+            // APENAS VISUAL
             alert('Navegação de mês não implementada completamente. Apenas interface.');
         }
 
