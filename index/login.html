@@ -176,16 +176,25 @@
             margin-bottom: 0;
         }
 
+        
+        .formulario-cadastro > label {
+            display: block;
+            text-align: left;
+            margin-bottom: 10px; 
+            margin-top: 5px; 
+            font-size: 0.95rem;
+        }
+        
         .grupo-nascimento {
             display: flex;
-            gap: 10px;
+            gap: 5px;
             margin-bottom: 15px;
         }
 
         .grupo-genero {
             display: flex;
             gap: 10px;
-            margin-top: 10px;
+            margin-bottom: 40px;
         }
 
         .caixa-genero {
@@ -458,9 +467,6 @@
                     </svg>
                 </div>
 
-              
-                
-
                 <label>Data de nascimento:</label>
                 <div class="grupo-nascimento">
                     <select id="dia" required>
@@ -552,8 +558,11 @@
             formularioCadastro.reset();
 
             // RESET INTERFACE
-            document.getElementById('pais').innerHTML = '<option value="" disabled selected>País</option>';
-            document.getElementById('pais').disabled = true;
+            const paisSelect = document.getElementById('pais');
+            if (paisSelect) {
+                paisSelect.innerHTML = '<option value="" disabled selected>País</option>';
+                paisSelect.disabled = true;
+            }
         });
 
         // --- VERIFICAÇÃO DE 2 FATORES ---
@@ -572,12 +581,24 @@
             const emailArmazenado = localStorage.getItem('emailUsuario');
             const senhaArmazenada = localStorage.getItem('senhaUsuario');
 
-            // === VERIFICAÇÃO DA SENHA ===
-            const isUsuarioTeste = (email === emailValido && senha === senhaValida);
-            const isUsuarioArmazenado = (emailArmazenado && email === emailArmazenado && senha === senhaArmazenada);
+            // --- VERIFICAÇÃO DA SENHA ---
+            let loginValido = false;
 
-            if (isUsuarioTeste || isUsuarioArmazenado) {
-                // === SENHA CORRETA ===
+            if (email === emailValido && senha === senhaValida) {
+                // Usuário padrão de teste
+                loginValido = true;
+            } else if (emailArmazenado && email === emailArmazenado) {
+                // Usuário cadastrado no localStorage
+                if (senha === senhaArmazenada) {
+                    loginValido = true;
+                } else {
+                    // Se o email existir mas a senha estiver errada, bloqueia!
+                    loginValido = false; 
+                }
+            }
+
+            if (loginValido) {
+                // --- SENHA CORRETA ---
                 codigoGerado = Math.floor(100000 + Math.random() * 900000).toString();
                 console.log("CÓDIGO DE LOGIN: " + codigoGerado); // (F12)
 
@@ -606,12 +627,15 @@
             if (codigoInserido === codigoGerado) {
                 exibirNotificacao("Login efetuado com sucesso! Redirecionando...", "sucesso");
                 fecharModal();
+                
+                // Aguarda 1,5 segundos e redireciona o usuário para a tela inicial
+                setTimeout(() => {
+                    window.location.href = "inicio.html";
+                }, 1500);
             } else {
                 exibirNotificacao("Código inválido. Tente novamente.", "erro");
             }
         }
-
-       
 
         const selectDia = document.getElementById("dia");
         for (let i = 1; i <= 31; i++) {
@@ -626,160 +650,6 @@
             opt.value = i; opt.text = i;
             selectAno.appendChild(opt);
         }
-
-        /*
-
-        ========= BASE DA API =========
-        const API_URL = "http://LINK";
-        ========= BASE DA API =========
-
-        ========= GET - LISTAR USUARIO E BUSCAR POR ID =========
-            async function listarUsuarios() {
-                const response = await fetch(API_URL);
-                const usuarios = await response.json();
-                console.log(usuarios);
-            }
-
-        async function buscarUsuarioPorId(id) {
-            const response = await fetch(`${API_URL}/${id}`);
-            const usuario = await response.json();
-            console.log(usuario);
-        }
-        ========= GET - LISTAR USUARIO E BUSCAR POR ID =========       
-
-        ========= POST - CADASTRO, LOGIN E VERIFICAÇÃO =========
-            formularioCadastro.addEventListener('submit', async function (event) {
-                event.preventDefault();
-
-                const nome = this.querySelector('input[type="text"]').value;
-                const email = document.getElementById('cadastro-email').value.trim();
-                const senha = document.getElementById('cadastro-senha').value;
-
-                const novoUsuario = {
-                    nome,
-                    email,
-                    senha,
-                    continente: selectContinente.value,
-                    pais: selectPais.value,
-                    nascimento: {
-                        dia: selectDia.value,
-                        mes: document.getElementById('mes').value,
-                        ano: selectAno.value
-                    },
-                    genero: document.querySelector('input[name="genero"]:checked')?.value
-                };
-
-                try {
-                    const response = await fetch(API_URL, {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(novoUsuario)
-                    });
-
-                    if (!response.ok) throw new Error();
-
-                    exibirNotificacao("Cadastro realizado com sucesso!", "sucesso");
-                    formularioCadastro.reset();
-
-                } catch (error) {
-                    exibirNotificacao("Erro ao cadastrar usuário", "erro");
-                }
-            });
-
-        document.querySelector('.formulario-login')
-            .addEventListener('submit', async function (event) {
-                event.preventDefault();
-
-                const email = document.getElementById('login-email').value.trim();
-                const senha = document.getElementById('login-senha').value;
-
-                try {
-                    const response = await fetch("http://LINK", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ email, senha })
-                    });
-
-                    const data = await response.json();
-
-                    if (!response.ok) {
-                        exibirNotificacao(data.mensagem || "Login inválido", "erro");
-                        return;
-                    }
-
-                    exibirNotificacao("Senha correta! Código enviado.", "sucesso");
-
-                    codigoGerado = data.codigo2FA; // backend envia
-                    abrirModal();
-
-                } catch (error) {
-                    exibirNotificacao("Erro ao conectar ao servidor", "erro");
-                }
-            });
-
-        async function verificarCodigoLogin() {
-
-            const codigoInserido = document.getElementById('codigo-verificacao').value;
-
-            try {
-                const response = await fetch("http://LINK", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ codigo: codigoInserido })
-                });
-
-                const data = await response.json();
-
-                if (!response.ok) {
-                    exibirNotificacao("Código inválido", "erro");
-                    return;
-                }
-
-                exibirNotificacao("Login efetuado com sucesso!", "sucesso");
-                fecharModal();
-
-                // Exemplo: salvar token
-                localStorage.setItem("token", data.token);
-
-                setTimeout(() => {
-                    window.location.href = "inicio.html";
-                }, 1500);
-
-            } catch (error) {
-                exibirNotificacao("Erro ao validar código", "erro");
-            }
-        }
-        ========= POST - CADASTRO, LOGIN E VERIFICAÇÃO =========
-
-        ========= PUT =========
-            async function atualizarUsuarioCompleto(id, dadosAtualizados) {
-                await fetch(`${API_URL}/${id}`, {
-                    method: "PUT",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(dadosAtualizados)
-                });
-            }
-        ========= PUT =========
-
-        ========= PATCH =========
-            async function atualizarUsuarioParcial(id, dadosParciais) {
-                await fetch(`${API_URL}/${id}`, {
-                    method: "PATCH",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(dadosParciais)
-                });
-            }
-        ========= PATCH =========
-
-        ========= DELETE =========
-            async function deletarUsuario(id) {
-                await fetch(`${API_URL}/${id}`, {
-                    method: "DELETE"
-                });
-            }
-        ========= DELETE =========
-
-        */
     </script>
 </body>
 
