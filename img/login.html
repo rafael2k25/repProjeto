@@ -458,16 +458,8 @@
                     </svg>
                 </div>
 
-                <label style="margin-bottom: 5px; display: block; font-size: 0.9rem;">Localização:</label>
-                <div class="grupo-localizacao">
-                    <select id="continente" required>
-                        <option value="" disabled selected>Continente</option>
-                    </select>
-
-                    <select id="pais" disabled required>
-                        <option value="" disabled selected>País</option>
-                    </select>
-                </div>
+              
+                
 
                 <label>Data de nascimento:</label>
                 <div class="grupo-nascimento">
@@ -619,41 +611,7 @@
             }
         }
 
-        // --- DADOS DE LOCALIZAÇÃO E DATAS ---
-        const dadosLocalizacao = {
-            "América do Sul": ["Brasil", "Argentina", "Chile", "Colômbia", "Peru", "Uruguai"],
-            "América do Norte": ["Estados Unidos", "Canadá", "México"],
-            "Europa": ["Portugal", "Espanha", "França", "Alemanha", "Itália", "Reino Unido"],
-            "Ásia": ["Japão", "China", "Índia", "Coreia do Sul", "Tailândia"],
-            "África": ["África do Sul", "Egito", "Nigéria", "Angola", "Moçambique"],
-            "Oceania": ["Austrália", "Nova Zelândia"]
-        };
-
-        const selectContinente = document.getElementById('continente');
-        const selectPais = document.getElementById('pais');
-
-        for (const continente in dadosLocalizacao) {
-            const opcao = document.createElement('option');
-            opcao.value = continente;
-            opcao.textContent = continente;
-            selectContinente.appendChild(opcao);
-        }
-
-        selectContinente.addEventListener('change', function () {
-            const continenteSelecionado = this.value;
-            selectPais.innerHTML = '<option value="" disabled selected>País</option>';
-            if (continenteSelecionado) {
-                selectPais.disabled = false;
-                dadosLocalizacao[continenteSelecionado].forEach(pais => {
-                    const opcao = document.createElement('option');
-                    opcao.value = pais;
-                    opcao.textContent = pais;
-                    selectPais.appendChild(opcao);
-                });
-            } else {
-                selectPais.disabled = true;
-            }
-        });
+       
 
         const selectDia = document.getElementById("dia");
         for (let i = 1; i <= 31; i++) {
