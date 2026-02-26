@@ -8,7 +8,7 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <style>
-        /* RESET & BASICS */
+        /* === ITENS BÁSICOS === */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -18,7 +18,7 @@
 
         /* === CONFIGURAÇÃO DE VARIÁVEIS (CORES) === */
         :root {
-            /* TEMA CLARO */
+            /* === TEMA CLARO === */
             --bg-body: #f4f6f8;
             --bg-card: #ffffff;
             --bg-sidebar: #ffffff;
@@ -49,7 +49,7 @@
         }
 
         body.dark-mode {
-            /* TEMA ESCURO */
+            /* === TEMA ESCURO === */
             --bg-body: #121212;
             --bg-card: #1e1e1e;
             --bg-sidebar: #181818;
@@ -87,7 +87,7 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-        /* HEADER PRINCIPAL */
+        /* === HEADER PRINCIPAL === */
         .main-header {
             background-color: var(--header-bg);
             color: var(--header-text);
@@ -146,10 +146,10 @@
         .cargo-usuario { font-size: 11px; opacity: 0.7; color: white; }
         .link-perfil { text-decoration: none; display: block; }
 
-        /* CONTEÚDO PRINCIPAL */
+        /* === CONTEÚDO PRINCIPAL === */
         .app-body { display: flex; flex: 1; overflow: hidden; }
 
-        /* Server Rail */
+        /* === SERVER RAIL === */
         .server-rail {
             width: 70px; background-color: var(--bg-sidebar); border-right: 1px solid var(--border-color);
             display: flex; flex-direction: column; align-items: center; padding: 15px 0; gap: 12px;
@@ -169,7 +169,7 @@
             display: flex; align-items: center; justify-content: center; border: 2px solid var(--bg-body); font-weight: bold;
         }
 
-        /* Área de Rolagem do Conteúdo */
+        /* === ROLAGEM DO CONTEÚDO === */
         .content-scroll-area { flex: 1; overflow-y: auto; background-color: var(--bg-body); padding: 30px; }
         .admin-container { max-width: 1200px; margin: 0 auto; width: 100%; }
 
@@ -178,7 +178,7 @@
         }
         .page-title { color: var(--texto-destaque); font-size: 24px; font-weight: 700; text-transform: uppercase; }
 
-        /* GRELHA DE ADMINISTRAÇÃO (Formulário e Lista) */
+        /* === ADMINISTRAÇÃO (FORMULÁRIO E LISTA) === */
         .admin-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -205,7 +205,7 @@
             padding-bottom: 10px;
         }
 
-        /* ESTILOS DO FORMULÁRIO */
+        /* === ESTILOS DO FORMULÁRIO === */
         .form-group { margin-bottom: 15px; }
         .form-group label {
             display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--texto-secundario);
@@ -227,7 +227,7 @@
         .btn-submit:hover { opacity: 0.9; transform: translateY(-1px); }
         .btn-submit.editing { background-color: var(--btn-edit); color: #fff; }
 
-        /* LISTA DE AVISOS */
+        /* === LISTA DE AVISOS === */
         .notice-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
         
         .notice-item {
@@ -277,7 +277,7 @@
 
 <body>
 
-    <!-- CABEÇALHO GLOBAL -->
+    <!-- === CABEÇALHO === -->
     <header class="main-header">
         <div class="header-left">
             <div class="logo-text">IFTT</div>
@@ -288,14 +288,14 @@
                 <a href="cursos.html" class="nav-item">
                     <ion-icon name="school-outline"></ion-icon> <span>Cursos</span>
                 </a>
-                <a href="avisos.html" class="item-navegacao active">
-                    <ion-icon name="megaphone-outline"></ion-icon> <span>Lançamento de Avisos</span>
+                <a href="validaçãocert.html" class="item-navegacao active">
+                    <ion-icon name="megaphone-outline"></ion-icon> <span>Validação de certificado</span>
                 </a>
             </nav>
         </div>
 
         <div class="header-right">
-            <!-- Botão de Tema -->
+            <!-- === TEMA DA PÁGINA === -->
             <div id="theme-toggle" style="cursor: pointer; font-size: 24px; margin-right: 15px; display: flex; align-items: center;">
                 <ion-icon name="moon-outline" id="theme-icon"></ion-icon>
             </div>
@@ -314,30 +314,28 @@
     </header>
 
     <div class="app-body">
-        <!-- SERVER RAIL -->
+        <!-- === SERVER RAIL === -->
         <nav class="server-rail">
             <a href="inicio.html" class="server-icon" title="Início">
                 <ion-icon name="newspaper-outline"></ion-icon>
             </a>
             <div class="separator"></div>
 
-            <a href="index.html" class="server-icon active" title="Comunicação Interna">
-                <ion-icon name="megaphone-outline"></ion-icon>
-                <div class="notificacao-badge">3</div>
+            <a href="index.html" class="server-icon" title="Comunicação Interna">
+                <ion-icon name="people-outline"></ion-icon>
+                <div class="notificacao-badge">4</div>
             </a>
 
             <a href="calendario.html" class="server-icon" title="Calendário de Eventos">
                 <ion-icon name="calendar-outline"></ion-icon>
             </a>
 
-            <div class="separator"></div>
-
-            <div class="server-icon" title="Configurações">
-                <ion-icon name="construct-outline"></ion-icon>
-            </div>
+            <a href="avisos.html" class="server-icon active" title="Avisos">
+                <ion-icon name="megaphone-outline"></ion-icon>
+            </a>
         </nav>
 
-        <!-- ÁREA DE CONTEÚDO -->
+        <!-- === ÁREA DE CONTEÚDO === -->
         <main class="content-scroll-area">
             <div class="admin-container">
 
@@ -347,7 +345,7 @@
 
                 <div class="admin-grid">
                     
-                    <!-- FORMULÁRIO DE CRIAÇÃO/EDIÇÃO -->
+                    <!-- === FORMULÁRIO DE CRIAÇÃO E EDIÇÃO === -->
                     <div class="admin-card">
                         <h3 id="formTitle"><ion-icon name="add-circle-outline"></ion-icon> Criar Novo Aviso</h3>
                         
@@ -360,31 +358,19 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="categoria">Categoria</label>
-                                <select id="categoria" class="form-control" required>
-                                    <option value="">Selecione a categoria...</option>
-                                    <option value="Recursos Humanos">Recursos Humanos</option>
-                                    <option value="Operacional">Operacional</option>
-                                    <option value="Eventos">Eventos</option>
-                                    <option value="Urgente">Urgente</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
                                 <label for="descricao">Descrição</label>
                                 <textarea id="descricao" class="form-control" placeholder="Insira o texto detalhado do aviso aqui..." required></textarea>
                             </div>
 
                             <div class="form-group">
-                                <label for="imagem">URL da Imagem (Opcional)</label>
-                                <input type="url" id="imagem" class="form-control" placeholder="https://exemplo.com/imagem.jpg">
+                                <label for="imagem">URL da Imagem </label>
+                                <input type="url" id="imagem" class="form-control" placeholder="Ex. imagem.jpg">
                             </div>
 
                             <div class="form-group">
                                 <label for="prioridade">Prioridade</label>
                                 <select id="prioridade" class="form-control" required>
                                     <option value="baixa">Baixa</option>
-                                    <option value="media">Média</option>
                                     <option value="alta">Alta</option>
                                 </select>
                             </div>
@@ -404,11 +390,11 @@
                         </form>
                     </div>
 
-                    <!-- LISTA DE AVISOS -->
+                    <!-- === LISTA DE AVISOS === -->
                     <div class="admin-card">
                         <h3><ion-icon name="list-outline"></ion-icon> Avisos Publicados</h3>
                         <ul class="notice-list" id="noticeList">
-                            <!-- Os itens serão gerados dinamicamente via JavaScript -->
+                            <!-- OS ITENS SERÃO GERADOS PELO JavaScript -->
                         </ul>
                     </div>
 
@@ -447,29 +433,49 @@
         let avisos = [
             {
                 id: 1,
-                titulo: "Manutenção do Servidor Central",
-                categoria: "Operacional",
-                descricao: "O servidor estará inativo neste fim de semana para melhorias.",
+                titulo: "Juros punitivos e baixa demanda seguraram crescimento da indústria em 2025",
+                descricao: "Análise detalhada sobre o impacto econômico no setor industrial de Sergipe e as expectativas para o próximo semestre, com dados exclusivos da CNI.",
                 imagem: "",
                 prioridade: "alta",
-                data: "2026-02-14"
+                data: "06/02/2026"
             },
+
             {
                 id: 2,
-                titulo: "Abertura de Inscrições para Cursos",
-                categoria: "Eventos",
-                descricao: "As inscrições para os cursos do segundo trimestre estão abertas.",
+                titulo: "Programador Full-Stack Duração: 670h Presencial",
+                descricao: "As inscrições para o curso estão abertas.",
                 imagem: "",
                 prioridade: "media",
-                data: "2026-02-10"
-            }
-        ];
+                data: "05/02/2026"
+            },
 
-        // === FORMATAR DATA PARA EXIBIÇÃO ===
-        function formatarData(dataStr) {
-            const partes = dataStr.split('-');
-            return `${partes[2]}/${partes[1]}/${partes[0]}`;
-        }
+            {
+                id: 3,
+                titulo: "Programador Front-End Duração: 348h Presencial",
+                descricao: "As inscrições para o curso estão abertas.",
+                imagem: "",
+                prioridade: "media",
+                data: "15/02/2026"
+            },
+
+             {
+                id: 4,
+                titulo: "Introdução a IoT para Manutenção Industrial Duração: 40h Presencial",
+                descricao: "As inscrições para o curso estão abertas.",
+                imagem: "",
+                prioridade: "media",
+                data: "21/02/2026"
+            },
+
+             {
+                id: 5,
+                titulo: "Inspetor de Qualidade Duração: 160h Presencial",
+                descricao: "As inscrições para o curso estão abertas.",
+                imagem: "",
+                prioridade: "media",
+                data: "01/03/2026"
+            },
+        ];
 
         // === RENDERIZAR A LISTA ===
         function renderizarAvisos() {
@@ -488,8 +494,7 @@
                         <span class="notice-title">${aviso.titulo}</span>
                         <div class="notice-meta">
                             <span class="badge ${aviso.prioridade}">${aviso.prioridade}</span>
-                            <span><ion-icon name="folder-outline"></ion-icon> ${aviso.categoria}</span>
-                            <span><ion-icon name="calendar-outline"></ion-icon> ${formatarData(aviso.data)}</span>
+                           <span><ion-icon name="calendar-outline"></ion-icon> ${aviso.data}</span>
                         </div>
                     </div>
                     <div class="notice-actions">
@@ -505,7 +510,7 @@
             });
         }
 
-        // Adicionar / Atualizar Aviso
+        // === ADICIONAR OU ATUALIZAR AVISO ===
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             
@@ -513,7 +518,6 @@
             const novoAviso = {
                 id: idAtual ? parseInt(idAtual) : Date.now(),
                 titulo: document.getElementById('titulo').value,
-                categoria: document.getElementById('categoria').value,
                 descricao: document.getElementById('descricao').value,
                 imagem: document.getElementById('imagem').value,
                 prioridade: document.getElementById('prioridade').value,
@@ -521,27 +525,27 @@
             };
 
             if (idAtual) {
-                // Atualizar existente
+                // === ATUALIZAR EXISTENTE ===
                 avisos = avisos.map(aviso => aviso.id === novoAviso.id ? novoAviso : aviso);
                 resetarFormulario();
             } else {
-                // Criar novo
-                avisos.unshift(novoAviso); // Adiciona no início da lista
+                // === CRIAR NOVO ===
+                avisos.unshift(novoAviso);
             }
 
             form.reset();
             renderizarAvisos();
         });
 
-        // Excluir Aviso
+        // === EXCLUIR AVISO ===
         window.excluirAviso = function(id) {
-            if(confirm("Tem a certeza que deseja excluir este aviso?")) {
+            if(confirm("Tem certeza que deseja excluir este aviso?")) {
                 avisos = avisos.filter(aviso => aviso.id !== id);
                 renderizarAvisos();
             }
         }
 
-        // Editar Aviso
+        // === EDITAR AVISO ===
         window.editarAviso = function(id) {
             const aviso = avisos.find(a => a.id === id);
             if (!aviso) return;
@@ -554,17 +558,17 @@
             document.getElementById('prioridade').value = aviso.prioridade;
             document.getElementById('dataPub').value = aviso.data;
 
-            // Alterar visual do formulário
+            // === ALTERAR FORMULÁRIO ===
             formTitle.innerHTML = '<ion-icon name="create-outline"></ion-icon> Editar Aviso';
             btnSubmit.innerHTML = '<ion-icon name="save-outline"></ion-icon> Atualizar Aviso';
             btnSubmit.classList.add('editing');
             btnCancel.style.display = 'block';
             
-            // Focar no título suavemente
+            // === FOCAR NO TÍTULO ===
             document.getElementById('titulo').focus();
         }
 
-        // Cancelar Edição
+        // === CANCELAR EDIÇÃO ===
         btnCancel.addEventListener('click', resetarFormulario);
 
         function resetarFormulario() {
@@ -576,9 +580,10 @@
             btnCancel.style.display = 'none';
         }
 
-        // Inicialização
+        // === INICIALIZAÇÃO ===
         document.addEventListener('DOMContentLoaded', () => {
-            // Define a data de hoje como padrão no input
+
+        // === DEFINE A DATA DE HOJE COMO PADRÃO NO INPUT ===
             document.getElementById('dataPub').valueAsDate = new Date();
             renderizarAvisos();
         });
