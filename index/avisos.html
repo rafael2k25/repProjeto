@@ -48,6 +48,75 @@
             --shadow-card: rgba(0, 0, 0, 0.05);
         }
 
+        /* === NOTIFICAÇÃO === */
+        #notificacao {
+            visibility: hidden;
+            min-width: 280px;
+            max-width: 420px;
+
+            background-color: var(--bg-card);
+            color: var(--texto-primario);
+
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--header-bg);
+
+            text-align: center;
+            border-radius: 8px;
+            padding: 16px 18px;
+
+            position: fixed;
+            z-index: 9999;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
+            opacity: 0;
+            transition: all 0.3s ease;
+
+            box-shadow: 0 6px 20px var(--shadow-card);
+            font-size: 14px;
+        }
+
+        #notificacao.visivel {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .toast-actions {
+            margin-top: 14px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .toast-btn {
+            border: none;
+            padding: 7px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 12px;
+            transition: 0.2s;
+        }
+
+        /* confirmar */
+        .toast-confirm {
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+        }
+
+        /* cancelar */
+        .toast-cancel {
+            background-color: var(--icon-bg);
+            color: var(--texto-primario);
+        }
+
+        .toast-btn:hover {
+            transform: translateY(-1px);
+            opacity: 0.9;
+        }
+
+        /* === TEMA ESCURO === */
         body.dark-mode {
             /* === TEMA ESCURO === */
             --bg-body: #121212;
@@ -102,11 +171,26 @@
             border-bottom: 1px solid var(--border-color);
         }
 
-        .header-left { display: flex; align-items: center; gap: 20px; }
-        .logo-text { font-weight: 800; font-size: 18px; letter-spacing: 0.5px; }
-        .main-nav { display: flex; gap: 5px; margin-left: 20px; }
-        
-        .nav-item, .item-navegacao {
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-text {
+            font-weight: 800;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 5px;
+            margin-left: 20px;
+        }
+
+        .nav-item,
+        .item-navegacao {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             font-size: 14px;
@@ -119,64 +203,173 @@
             gap: 6px;
         }
 
-        .nav-item:hover, .item-navegacao:hover {
+        .nav-item:hover,
+        .item-navegacao:hover {
             background-color: rgba(255, 255, 255, 0.1);
             color: white;
         }
-        
+
         .nav-item.active {
             background-color: rgba(255, 255, 255, 0.2);
             color: white;
         }
 
-        .header-right { display: flex; align-items: center; gap: 20px; }
-        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
         .perfil-usuario {
-            display: flex; align-items: center; gap: 10px; cursor: pointer;
-            padding: 5px 10px; border-radius: 20px; transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 20px;
+            transition: 0.2s;
         }
-        .perfil-usuario:hover { background-color: rgba(255, 255, 255, 0.1); }
+
+        .perfil-usuario:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
         .avatar {
-            width: 32px; height: 32px; background-color: #ddd; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: #1a4da3; font-weight: bold; font-size: 12px; border: 2px solid rgba(255, 255, 255, 0.5);
+            width: 32px;
+            height: 32px;
+            background-color: #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a4da3;
+            font-weight: bold;
+            font-size: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
         }
-        .info-usuario { text-align: right; line-height: 1.2; }
-        .nome-usuario { font-size: 13px; font-weight: bold; display: block; color: white;}
-        .cargo-usuario { font-size: 11px; opacity: 0.7; color: white; }
-        .link-perfil { text-decoration: none; display: block; }
+
+        .info-usuario {
+            text-align: right;
+            line-height: 1.2;
+        }
+
+        .nome-usuario {
+            font-size: 13px;
+            font-weight: bold;
+            display: block;
+            color: white;
+        }
+
+        .cargo-usuario {
+            font-size: 11px;
+            opacity: 0.7;
+            color: white;
+        }
+
+        .link-perfil {
+            text-decoration: none;
+            display: block;
+        }
 
         /* === CONTEÚDO PRINCIPAL === */
-        .app-body { display: flex; flex: 1; overflow: hidden; }
+        .app-body {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
 
         /* === SERVER RAIL === */
         .server-rail {
-            width: 70px; background-color: var(--bg-sidebar); border-right: 1px solid var(--border-color);
-            display: flex; flex-direction: column; align-items: center; padding: 15px 0; gap: 12px;
-            flex-shrink: 0; z-index: 5;
+            width: 70px;
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 0;
+            gap: 12px;
+            flex-shrink: 0;
+            z-index: 5;
         }
+
         .server-icon {
-            width: 44px; height: 44px; background-color: var(--icon-bg); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; font-size: 22px;
-            color: var(--icon-color); cursor: pointer; transition: 0.2s; position: relative; text-decoration: none;
+            width: 44px;
+            height: 44px;
+            background-color: var(--icon-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: var(--icon-color);
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+            text-decoration: none;
         }
-        .server-icon:hover { border-radius: 12px; background-color: var(--icon-hover-bg); color: var(--icon-hover-text); }
-        .server-icon.active { border-radius: 12px; background-color: var(--header-bg); color: white; }
-        .separator { width: 32px; height: 2px; background: var(--border-color); margin: 4px 0; }
+
+        .server-icon:hover {
+            border-radius: 12px;
+            background-color: var(--icon-hover-bg);
+            color: var(--icon-hover-text);
+        }
+
+        .server-icon.active {
+            border-radius: 12px;
+            background-color: var(--header-bg);
+            color: white;
+        }
+
+        .separator {
+            width: 32px;
+            height: 2px;
+            background: var(--border-color);
+            margin: 4px 0;
+        }
+
         .notificacao-badge {
-            position: absolute; top: -2px; right: -2px; background: #e44d26; color: white;
-            font-size: 10px; width: 18px; height: 18px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; border: 2px solid var(--bg-body); font-weight: bold;
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background: #e44d26;
+            color: white;
+            font-size: 10px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--bg-body);
+            font-weight: bold;
         }
 
         /* === ROLAGEM DO CONTEÚDO === */
-        .content-scroll-area { flex: 1; overflow-y: auto; background-color: var(--bg-body); padding: 30px; }
-        .admin-container { max-width: 1200px; margin: 0 auto; width: 100%; }
+        .content-scroll-area {
+            flex: 1;
+            overflow-y: auto;
+            background-color: var(--bg-body);
+            padding: 30px;
+        }
+
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
 
         .page-title-area {
-            margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
         }
-        .page-title { color: var(--texto-destaque); font-size: 24px; font-weight: 700; text-transform: uppercase; }
+
+        .page-title {
+            color: var(--texto-destaque);
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
 
         /* === ADMINISTRAÇÃO (FORMULÁRIO E LISTA) === */
         .admin-grid {
@@ -206,30 +399,74 @@
         }
 
         /* === ESTILOS DO FORMULÁRIO === */
-        .form-group { margin-bottom: 15px; }
+        .form-group {
+            margin-bottom: 15px;
+        }
+
         .form-group label {
-            display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--texto-secundario);
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--texto-secundario);
         }
+
         .form-control {
-            width: 100%; padding: 10px 12px; border: 1px solid var(--border-color);
-            border-radius: 6px; background-color: var(--bg-body); color: var(--texto-primario);
-            font-size: 14px; transition: border-color 0.2s;
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: var(--bg-body);
+            color: var(--texto-primario);
+            font-size: 14px;
+            transition: border-color 0.2s;
         }
-        .form-control:focus { outline: none; border-color: var(--header-bg); }
-        textarea.form-control { resize: vertical; min-height: 100px; }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--header-bg);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+        }
 
         .btn-submit {
-            background-color: var(--btn-bg); color: var(--btn-text);
-            border: none; padding: 12px 20px; border-radius: 6px; font-weight: 600; font-size: 14px;
-            cursor: pointer; width: 100%; transition: 0.3s;
-            display: flex; align-items: center; justify-content: center; gap: 8px;
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
-        .btn-submit:hover { opacity: 0.9; transform: translateY(-1px); }
-        .btn-submit.editing { background-color: var(--btn-edit); color: #fff; }
+
+        .btn-submit:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .btn-submit.editing {
+            background-color: var(--btn-edit);
+            color: #fff;
+        }
 
         /* === LISTA DE AVISOS === */
-        .notice-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-        
+        .notice-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
         .notice-item {
             background-color: var(--bg-body);
             border: 1px solid var(--border-color);
@@ -240,37 +477,121 @@
             align-items: center;
             transition: transform 0.2s;
         }
-        .notice-item:hover { transform: translateX(5px); border-left: 3px solid var(--header-bg); }
-        
-        .notice-info { display: flex; flex-direction: column; gap: 5px; }
-        .notice-title { font-weight: 600; font-size: 15px; color: var(--texto-primario); }
-        .notice-meta { font-size: 12px; color: var(--texto-secundario); display: flex; gap: 10px; align-items: center;}
-        
-        .badge {
-            padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: bold; color: white; text-transform: uppercase;
-        }
-        .badge.baixa { background-color: #4caf50; }
-        .badge.media { background-color: #ff9800; }
-        .badge.alta { background-color: #f44336; }
 
-        .notice-actions { display: flex; gap: 8px; }
-        .btn-action {
-            border: none; padding: 6px 10px; border-radius: 4px; font-size: 12px;
-            cursor: pointer; font-weight: 600; transition: 0.2s;
-            display: flex; align-items: center; gap: 4px; color: white;
+        .notice-item:hover {
+            transform: translateX(5px);
+            border-left: 3px solid var(--header-bg);
         }
-        .btn-edit { background-color: var(--btn-edit); }
-        .btn-delete { background-color: var(--btn-danger); }
-        .btn-action:hover { opacity: 0.8; }
-        .empty-message { text-align: center; color: var(--texto-secundario); font-size: 14px; padding: 20px; font-style: italic; }
+
+        .notice-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .notice-title {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--texto-primario);
+        }
+
+        .notice-meta {
+            font-size: 12px;
+            color: var(--texto-secundario);
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .badge {
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .badge.baixa {
+            background-color: #4caf50;
+        }
+
+        .badge.media {
+            background-color: #ff9800;
+        }
+
+        .badge.alta {
+            background-color: #f44336;
+        }
+
+        .notice-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-action {
+            border: none;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: white;
+        }
+
+        .btn-edit {
+            background-color: var(--btn-edit);
+        }
+
+        .btn-delete {
+            background-color: var(--btn-danger);
+        }
+
+        .btn-action:hover {
+            opacity: 0.8;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: var(--texto-secundario);
+            font-size: 14px;
+            padding: 20px;
+            font-style: italic;
+        }
 
         @media (max-width: 900px) {
-            .admin-grid { grid-template-columns: 1fr; }
-            .server-rail { display: none; }
-            .main-header { padding: 0 15px; }
-            .nav-item span { display: none; }
-            .notice-item { flex-direction: column; align-items: flex-start; gap: 15px; }
-            .notice-actions { width: 100%; justify-content: flex-end; border-top: 1px solid var(--border-color); padding-top: 10px;}
+            .admin-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .server-rail {
+                display: none;
+            }
+
+            .main-header {
+                padding: 0 15px;
+            }
+
+            .nav-item span {
+                display: none;
+            }
+
+            .notice-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .notice-actions {
+                width: 100%;
+                justify-content: flex-end;
+                border-top: 1px solid var(--border-color);
+                padding-top: 10px;
+            }
         }
     </style>
 </head>
@@ -296,7 +617,8 @@
 
         <div class="header-right">
             <!-- === TEMA DA PÁGINA === -->
-            <div id="theme-toggle" style="cursor: pointer; font-size: 24px; margin-right: 15px; display: flex; align-items: center;">
+            <div id="theme-toggle"
+                style="cursor: pointer; font-size: 24px; margin-right: 15px; display: flex; align-items: center;">
                 <ion-icon name="moon-outline" id="theme-icon"></ion-icon>
             </div>
 
@@ -307,7 +629,8 @@
                         <span class="cargo-usuario">Diretor</span>
                     </div>
                     <div class="avatar">TU</div>
-                    <ion-icon name="chevron-down-outline" style="font-size: 12px; color: rgba(255,255,255,0.7)"></ion-icon>
+                    <ion-icon name="chevron-down-outline"
+                        style="font-size: 12px; color: rgba(255,255,255,0.7)"></ion-icon>
                 </div>
             </a>
         </div>
@@ -344,22 +667,24 @@
                 </div>
 
                 <div class="admin-grid">
-                    
+
                     <!-- === FORMULÁRIO DE CRIAÇÃO E EDIÇÃO === -->
                     <div class="admin-card">
                         <h3 id="formTitle"><ion-icon name="add-circle-outline"></ion-icon> Criar Novo Aviso</h3>
-                        
+
                         <form id="avisoForm">
                             <input type="hidden" id="avisoId">
-                            
+
                             <div class="form-group">
                                 <label for="titulo">Título do Aviso</label>
-                                <input type="text" id="titulo" class="form-control" placeholder="Ex: Reunião Geral" required>
+                                <input type="text" id="titulo" class="form-control" placeholder="Ex: Reunião Geral"
+                                    required>
                             </div>
 
                             <div class="form-group">
                                 <label for="descricao">Descrição</label>
-                                <textarea id="descricao" class="form-control" placeholder="Insira o texto detalhado do aviso aqui..." required></textarea>
+                                <textarea id="descricao" class="form-control"
+                                    placeholder="Insira o texto detalhado do aviso aqui..." required></textarea>
                             </div>
 
                             <div class="form-group">
@@ -371,6 +696,7 @@
                                 <label for="prioridade">Prioridade</label>
                                 <select id="prioridade" class="form-control" required>
                                     <option value="baixa">Baixa</option>
+                                    <option value="media">Media</option>
                                     <option value="alta">Alta</option>
                                 </select>
                             </div>
@@ -383,12 +709,15 @@
                             <button type="submit" class="btn-submit" id="btnSubmit">
                                 <ion-icon name="send-outline"></ion-icon> Publicar Aviso
                             </button>
-                            
-                            <button type="button" class="btn-submit" id="btnCancel" style="display:none; background-color: var(--texto-secundario); margin-top: 10px;">
+
+                            <button type="button" class="btn-submit" id="btnCancel"
+                                style="display:none; background-color: var(--texto-secundario); margin-top: 10px;">
                                 Cancelar Edição
                             </button>
                         </form>
                     </div>
+                    <!-- === NOTIFICAÇÕES === -->
+                    <div id="notificacao"></div>
 
                     <!-- === LISTA DE AVISOS === -->
                     <div class="admin-card">
@@ -404,6 +733,46 @@
     </div>
 
     <script>
+        // === NOTIFICAÇÃO ===
+        function showToast(message, type = "sucesso", duration = 3000) {
+
+            const toast = document.getElementById("notificacao");
+
+            toast.className = "";
+            toast.innerHTML = `<div>${message}</div>`;
+
+            toast.classList.add("visivel", type);
+
+            setTimeout(() => {
+                toast.classList.remove("visivel");
+            }, duration);
+        }
+
+        function showConfirmToast(message, onConfirm) {
+
+            const toast = document.getElementById("notificacao");
+
+            toast.innerHTML = `
+    <div>${message}</div>
+    <div class="toast-actions">
+        <button class="toast-btn toast-confirm">Confirmar</button>
+        <button class="toast-btn toast-cancel">Cancelar</button>
+    </div>
+`;
+
+            toast.className = "visivel";
+
+            toast.querySelector(".toast-confirm").onclick = () => {
+                toast.classList.remove("visivel");
+                onConfirm();
+                showToast("Aviso excluído com sucesso!");
+            };
+
+            toast.querySelector(".toast-cancel").onclick = () => {
+                toast.classList.remove("visivel");
+                showToast("Exclusão cancelada.");
+            };
+        }
         // === TEMA ESCURO ===
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
@@ -458,7 +827,7 @@
                 data: "15/02/2026"
             },
 
-             {
+            {
                 id: 4,
                 titulo: "Introdução a IoT para Manutenção Industrial Duração: 40h Presencial",
                 descricao: "As inscrições para o curso estão abertas.",
@@ -467,7 +836,7 @@
                 data: "21/02/2026"
             },
 
-             {
+            {
                 id: 5,
                 titulo: "Inspetor de Qualidade Duração: 160h Presencial",
                 descricao: "As inscrições para o curso estão abertas.",
@@ -480,7 +849,7 @@
         // === RENDERIZAR A LISTA ===
         function renderizarAvisos() {
             noticeList.innerHTML = '';
-            
+
             if (avisos.length === 0) {
                 noticeList.innerHTML = '<li class="empty-message">Nenhum aviso publicado no momento.</li>';
                 return;
@@ -513,7 +882,7 @@
         // === ADICIONAR OU ATUALIZAR AVISO ===
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             const idAtual = document.getElementById('avisoId').value;
             const novoAviso = {
                 id: idAtual ? parseInt(idAtual) : Date.now(),
@@ -538,21 +907,24 @@
         });
 
         // === EXCLUIR AVISO ===
-        window.excluirAviso = function(id) {
-            if(confirm("Tem certeza que deseja excluir este aviso?")) {
-                avisos = avisos.filter(aviso => aviso.id !== id);
-                renderizarAvisos();
-            }
-        }
+        window.excluirAviso = function (id) {
 
+            showConfirmToast(
+                "Deseja realmente excluir este aviso?",
+                () => {
+                    avisos = avisos.filter(aviso => aviso.id !== id);
+                    renderizarAvisos();
+                }
+            );
+
+        }
         // === EDITAR AVISO ===
-        window.editarAviso = function(id) {
+        window.editarAviso = function (id) {
             const aviso = avisos.find(a => a.id === id);
             if (!aviso) return;
 
             document.getElementById('avisoId').value = aviso.id;
             document.getElementById('titulo').value = aviso.titulo;
-            document.getElementById('categoria').value = aviso.categoria;
             document.getElementById('descricao').value = aviso.descricao;
             document.getElementById('imagem').value = aviso.imagem;
             document.getElementById('prioridade').value = aviso.prioridade;
@@ -563,7 +935,7 @@
             btnSubmit.innerHTML = '<ion-icon name="save-outline"></ion-icon> Atualizar Aviso';
             btnSubmit.classList.add('editing');
             btnCancel.style.display = 'block';
-            
+
             // === FOCAR NO TÍTULO ===
             document.getElementById('titulo').focus();
         }
@@ -583,11 +955,12 @@
         // === INICIALIZAÇÃO ===
         document.addEventListener('DOMContentLoaded', () => {
 
-        // === DEFINE A DATA DE HOJE COMO PADRÃO NO INPUT ===
+            // === DEFINE A DATA DE HOJE COMO PADRÃO NO INPUT ===
             document.getElementById('dataPub').valueAsDate = new Date();
             renderizarAvisos();
         });
 
     </script>
 </body>
+
 </html>
