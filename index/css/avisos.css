@@ -1,0 +1,587 @@
+/* ======================= INÍCIO CSS DA PÁGINA DE AVISOS [AVISOS.HTML] ======================= */
+ /* === ITENS BÁSICOS === */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* === CONFIGURAÇÃO DE VARIÁVEIS (CORES) === */
+        :root {
+            /* === TEMA CLARO === */
+            --bg-body: #f4f6f8;
+            --bg-card: #ffffff;
+            --bg-sidebar: #ffffff;
+
+            --texto-primario: #333333;
+            --texto-secundario: #666666;
+            --texto-destaque: #1a4da3;
+
+            --border-color: #e0e0e0;
+
+            --header-bg: #1a4da3;
+            --header-text: #ffffff;
+
+            --btn-bg: #1a4da3;
+            --btn-text: #ffffff;
+            --btn-danger: #e53935;
+            --btn-edit: #fb8c00;
+
+            --icon-bg: #f0f2f5;
+            --icon-color: #5c5e64;
+            --icon-hover-bg: #1a4da3;
+            --icon-hover-text: #ffffff;
+
+            --tag-bg: #e3f2fd;
+            --tag-text: #1565c0;
+
+            --shadow-card: rgba(0, 0, 0, 0.05);
+        }
+
+        /* === NOTIFICAÇÃO === */
+        #notificacao {
+            visibility: hidden;
+            min-width: 280px;
+            max-width: 420px;
+
+            background-color: var(--bg-card);
+            color: var(--texto-primario);
+
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--header-bg);
+
+            text-align: center;
+            border-radius: 8px;
+            padding: 16px 18px;
+
+            position: fixed;
+            z-index: 9999;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
+            opacity: 0;
+            transition: all 0.3s ease;
+
+            box-shadow: 0 6px 20px var(--shadow-card);
+            font-size: 14px;
+        }
+
+        #notificacao.visivel {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .toast-actions {
+            margin-top: 14px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .toast-btn {
+            border: none;
+            padding: 7px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 12px;
+            transition: 0.2s;
+        }
+
+        /* confirmar */
+        .toast-confirm {
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+        }
+
+        /* cancelar */
+        .toast-cancel {
+            background-color: var(--icon-bg);
+            color: var(--texto-primario);
+        }
+
+        .toast-btn:hover {
+            transform: translateY(-1px);
+            opacity: 0.9;
+        }
+
+        /* === TEMA ESCURO === */
+        body.dark-mode {
+            /* === TEMA ESCURO === */
+            --bg-body: #121212;
+            --bg-card: #1e1e1e;
+            --bg-sidebar: #181818;
+
+            --texto-primario: #e0e0e0;
+            --texto-secundario: #b0b0b0;
+            --texto-destaque: #64b5f6;
+
+            --border-color: #333333;
+
+            --header-bg: #1a4da3;
+            --header-text: #e0e0e0;
+
+            --btn-bg: #1a4da3;
+            --btn-text: #e0e0e0;
+
+            --icon-bg: #2c2c2c;
+            --icon-color: #e0e0e0;
+            --icon-hover-bg: #1a4da3;
+            --icon-hover-text: #ffffff;
+
+            --tag-bg: #1a4da3;
+            --tag-text: #90caf9;
+
+            --shadow-card: rgba(0, 0, 0, 0.3);
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--texto-primario);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* === HEADER PRINCIPAL === */
+        .main-header {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            flex-shrink: 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-text {
+            font-weight: 800;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 5px;
+            margin-left: 20px;
+        }
+
+        .nav-item,
+        .item-navegacao {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-item:hover,
+        .item-navegacao:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .nav-item.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .perfil-usuario {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 20px;
+            transition: 0.2s;
+        }
+
+        .perfil-usuario:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .avatar {
+            width: 32px;
+            height: 32px;
+            background-color: #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a4da3;
+            font-weight: bold;
+            font-size: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .info-usuario {
+            text-align: right;
+            line-height: 1.2;
+        }
+
+        .nome-usuario {
+            font-size: 13px;
+            font-weight: bold;
+            display: block;
+            color: white;
+        }
+
+        .cargo-usuario {
+            font-size: 11px;
+            opacity: 0.7;
+            color: white;
+        }
+
+        .link-perfil {
+            text-decoration: none;
+            display: block;
+        }
+
+        /* === CONTEÚDO PRINCIPAL === */
+        .app-body {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* === SERVER RAIL === */
+        .server-rail {
+            width: 70px;
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 0;
+            gap: 12px;
+            flex-shrink: 0;
+            z-index: 5;
+        }
+
+        .server-icon {
+            width: 44px;
+            height: 44px;
+            background-color: var(--icon-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: var(--icon-color);
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+            text-decoration: none;
+        }
+
+        .server-icon:hover {
+            border-radius: 12px;
+            background-color: var(--icon-hover-bg);
+            color: var(--icon-hover-text);
+        }
+
+        .server-icon.active {
+            border-radius: 12px;
+            background-color: var(--header-bg);
+            color: white;
+        }
+
+        .separator {
+            width: 32px;
+            height: 2px;
+            background: var(--border-color);
+            margin: 4px 0;
+        }
+
+        .notificacao-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background: #e44d26;
+            color: white;
+            font-size: 10px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--bg-body);
+            font-weight: bold;
+        }
+
+        /* === ROLAGEM DO CONTEÚDO === */
+        .content-scroll-area {
+            flex: 1;
+            overflow-y: auto;
+            background-color: var(--bg-body);
+            padding: 30px;
+        }
+
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .page-title-area {
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .page-title {
+            color: var(--texto-destaque);
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* === ADMINISTRAÇÃO (FORMULÁRIO E LISTA) === */
+        .admin-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .admin-card {
+            background: var(--bg-card);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 15px var(--shadow-card);
+            border: 1px solid var(--border-color);
+        }
+
+        .admin-card h3 {
+            color: var(--texto-destaque);
+            margin-bottom: 20px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        /* === ESTILOS DO FORMULÁRIO === */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--texto-secundario);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: var(--bg-body);
+            color: var(--texto-primario);
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--header-bg);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn-submit {
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-submit:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .btn-submit.editing {
+            background-color: var(--btn-edit);
+            color: #fff;
+        }
+
+        /* === LISTA DE AVISOS === */
+        .notice-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .notice-item {
+            background-color: var(--bg-body);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+
+        .notice-item:hover {
+            transform: translateX(5px);
+            border-left: 3px solid var(--header-bg);
+        }
+
+        .notice-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .notice-title {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--texto-primario);
+        }
+
+        .notice-meta {
+            font-size: 12px;
+            color: var(--texto-secundario);
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .badge {
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .badge.baixa {
+            background-color: #4caf50;
+        }
+
+        .badge.media {
+            background-color: #ff9800;
+        }
+
+        .badge.alta {
+            background-color: #f44336;
+        }
+
+        .notice-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-action {
+            border: none;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: white;
+        }
+
+        .btn-edit {
+            background-color: var(--btn-edit);
+        }
+
+        .btn-delete {
+            background-color: var(--btn-danger);
+        }
+
+        .btn-action:hover {
+            opacity: 0.8;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: var(--texto-secundario);
+            font-size: 14px;
+            padding: 20px;
+            font-style: italic;
+        }
+
+        @media (max-width: 900px) {
+            .admin-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .server-rail {
+                display: none;
+            }
+
+            .main-header {
+                padding: 0 15px;
+            }
+
+            .nav-item span {
+                display: none;
+            }
+
+            .notice-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .notice-actions {
+                width: 100%;
+                justify-content: flex-end;
+                border-top: 1px solid var(--border-color);
+                padding-top: 10px;
+            }
+        }
+/* ======================= FIM CSS DA PÁGINA DE AVISOS [AVISOS.HTML] ======================= */
