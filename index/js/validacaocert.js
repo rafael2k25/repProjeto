@@ -42,7 +42,7 @@ function validarCertificado() {
         btn.innerHTML = originalText;
         btn.style.opacity = '1';
 
-        // === SE O CÓDIGO TIVER IFTT, É VÁLIDO ===
+    // === SE O CÓDIGO TIVER IFTT, É VÁLIDO ===
         if (codigo.includes('IFTT')) {
             resValido.style.display = 'block';
         } else {
