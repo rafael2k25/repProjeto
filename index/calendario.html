@@ -11,6 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Segoe+UI:wght@400;600&display=swap">
     <link rel="stylesheet" href="css/calendario.css">
 </head>
+
 <body>
 
     <!-- === CABEÇALHO === -->
@@ -137,7 +138,7 @@
                                 name="chevron-forward-outline"></ion-icon></button>
                     </div>
                     <div class="botoes-calendario">
-                       
+
                         <button class="btn-acao" onclick="mostrarModalNovoEvento()">+ Novo Evento</button>
                     </div>
                 </header>
@@ -154,18 +155,24 @@
                     </div>
                     <div class="dias-mes" id="diasMes">
                     </div>
-
                     <div class="lista-eventos" id="listaEventos">
                         <h3 class="titulo-lista-eventos">Eventos de Hoje</h3>
-                        <div class="evento-item" onclick="mostrarDetalheEvento(1)">
+                        <div class="evento-item">
                             <div class="evento-cor" style="background: var(--evento-1);"></div>
-                            <div class="evento-info">
+                            <div class="evento-info" onclick="mostrarDetalheEvento(1)">
                                 <div class="evento-titulo">Apresentação de projetos</div>
-                                <div class="evento-data"><ion-icon name="time-outline"></ion-icon> 14:00 - 17:00</div>
-                                <div class="evento-descricao">Os grupos do curso de Técnico em Informática para Internet
-                                    irão apresentar seus projetos.
+                                <div class="evento-data">
+                                    <ion-icon name="time-outline"></ion-icon> 14:00 - 17:00
                                 </div>
-                                <div class="evento-local"><ion-icon name="location-outline"></ion-icon>Auditório</div>
+                                <div class="evento-descricao"> Os grupos do curso de Técnico em Informática para Internet irão apresentar seus projetos.</div>
+                                <div class="evento-local">
+                                    <ion-icon name="location-outline"></ion-icon>Auditório
+                                </div>
+                            </div>
+                            <div class="evento-acoes">
+                                <button id="btnExcluirEvento" class="btn-evento btn-excluir">
+                                    Excluir
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -184,8 +191,9 @@
                 <p><strong>Data:</strong> <span id="modalData">19/02/2026</span></p>
                 <p><strong>Horário:</strong> <span id="modalHorario">14:00 - 17:00</span></p>
                 <p><strong>Local:</strong> <span id="modalLocal">Auditório</span></p>
-                <p><strong>Descrição:</strong> <span id="modalDescricao">Os grupos do curso de Técnico em Informática para Internet
-                    irão apresentar seus projetos.</span></p>
+                <p><strong>Descrição:</strong> <span id="modalDescricao">Os grupos do curso de Técnico em Informática
+                        para Internet
+                        irão apresentar seus projetos.</span></p>
                 <p><strong>Organizador:</strong> <span id="modalOrganizador">Prof. João da Silva</span></p>
             </div>
             <div class="modal-rodape">
@@ -256,9 +264,11 @@
             </div>
         </div>
     </div>
-<div id="notificacao"></div>
 
-<script src="js/calendario.js"></script>
+    <div id="notificacao"></div>
+
+    <script src="js/calendario.js"></script>
 
 </body>
+
 </html>

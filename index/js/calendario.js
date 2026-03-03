@@ -76,6 +76,23 @@ function gerarCalendario() {
 
 window.onload = gerarCalendario;
 
+window.addEventListener("DOMContentLoaded", () => {
+    const btnExcluir = document.getElementById("btnExcluirEvento");
+
+    if (btnExcluir) {
+        btnExcluir.addEventListener("click", function (event) {
+            event.stopPropagation(); // impede abrir o modal
+
+            const eventoItem = this.closest(".evento-item");
+            if (eventoItem) {
+                eventoItem.remove();
+            }
+
+            mostrarNotificacao("Evento excluído com sucesso!", "sucesso");
+        });
+    }
+});
+
 /* === SISTEMA DE NOTIFICAÇÕES === */
 
 function mostrarNotificacao(mensagem, tipo = "sucesso") {

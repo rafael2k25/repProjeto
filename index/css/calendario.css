@@ -7,9 +7,8 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* === CONFIGURAÇÃO DE CORES === */
+/* ====== CORES TEMA CLARO ====== */
 :root {
-    /* Cores do Tema Claro */
     --bg-body: #f4f6f8;
     --bg-card: #ffffff;
     --bg-sidebar: #f8f9fa;
@@ -32,8 +31,9 @@
     --hover-item: #eef2f6;
 }
 
+/* ====== CORES TEMA ESCURO ====== */
 body.dark-mode {
-    /* Cores do Tema Escuro */
+    
     --bg-body: #121212;
     --bg-card: #1e1e1e;
     --bg-sidebar: #181818;
@@ -66,7 +66,7 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* --- CABEÇALHO GLOBAL --- */
+/* ====== CABEÇALHO ====== */
 .cabecalho-principal {
     background-color: var(--header-bg);
     color: var(--header-text);
@@ -167,14 +167,14 @@ body {
     opacity: 0.7;
 }
 
-/* --- ESTRUTURA DO CORPO --- */
+/* ====== ESTRUTURA CORPO === */
 .corpo-aplicacao {
     display: flex;
     flex: 1;
     overflow: hidden;
 }
 
-/* Barra Lateral de Ícones */
+/* ====== BARRA LATERAL DE ÍCONES ====== */
 .barra-lateral-icones {
     width: 70px;
     background-color: var(--bg-icon-bar);
@@ -235,7 +235,7 @@ body {
     margin: 4px 0;
 }
 
-/* --- LAYOUT DO CALENDÁRIO --- */
+/* ====== LAYOUT DO CALENDÁRIO ====== */
 .layout-calendario {
     flex: 1;
     display: flex;
@@ -243,7 +243,7 @@ body {
     overflow: hidden;
 }
 
-/* Coluna da Esquerda do Calendário */
+/* ====== COLUNA ESQUERDA CALENDÁRIO ====== */
 .painel-lista-calendarios {
     width: 300px;
     border-right: 1px solid var(--border-color);
@@ -343,7 +343,7 @@ body.dark-mode .titulo-painel {
     accent-color: var(--header-bg);
 }
 
-/* Coluna da Direita do Calendário */
+/* ====== COLUNA DIREITA CALENDÁRIO ====== */
 .area-calendario-principal {
     flex: 1;
     display: flex;
@@ -414,7 +414,7 @@ body.dark-mode .titulo-painel {
     border-color: var(--header-bg);
 }
 
-/* Grade do Calendário */
+/* ====== GRADE DO CALENDÁRIO ====== */
 .container-calendario {
     flex: 1;
     padding: 20px;
@@ -507,7 +507,7 @@ body.dark-mode .titulo-painel {
     opacity: 0.9;
 }
 
-/* Lista de Eventos */
+/* ====== LISTA EVENTOS ====== */
 .lista-eventos {
     padding: 20px;
     border-top: 1px solid var(--border-color);
@@ -707,6 +707,7 @@ body.dark-mode .titulo-painel {
     }
 }
 
+/* ====== NOTIFICAÇÃO ====== */
 #notificacao {
     position: fixed;
     top: 70px;
@@ -751,6 +752,42 @@ body.dark-mode .titulo-painel {
     opacity: 1;
     animation: aparecerNotif 0.3s ease;
 }
+
+/* ====== EXCLUIR EVENTO ====== */
+.evento-acoes {
+    display: flex;
+    align-items: flex-start;
+}
+
+/* BOTÃO */
+.btn-evento {
+    width: 50px; /* LARGURA */
+    height: 34px; /* ALTURA */
+    border: none;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--texto-secundario);
+    transition: all 0.2s ease;
+}
+
+/* EXCLUIR */
+.btn-excluir {
+    background-color: var(--evento-2);
+    color: white;
+}
+
+.btn-excluir:hover {
+    filter: brightness(0.9);
+    transform: scale(1.05);
+}
+
+.btn-excluir:active {
+    transform: scale(0.95);
+}
+/* =============== */
 
 @keyframes aparecerNotif {
     from {
