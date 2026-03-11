@@ -1,32 +1,32 @@
 /* ======================= INÍCIO JS DA PÁGINA DE CANAIS [CANAIS.HTML] ======================= */
- const inputMensagem = document.getElementById('inputMensagem');
-        const containerMensagens = document.getElementById('containerMensagens');
+const inputMensagem = document.getElementById('inputMensagem');
+const containerMensagens = document.getElementById('containerMensagens');
 
-        // === CARREGAR MENSAGENS ===
-        document.addEventListener('DOMContentLoaded', carregarMensagens);
+// === CARREGAR MENSAGENS ===
+document.addEventListener('DOMContentLoaded', carregarMensagens);
 
-        function enviarMensagem() {
-            const texto = inputMensagem.value.trim();
-            if (texto === "") return;
+function enviarMensagem() {
+    const texto = inputMensagem.value.trim();
+    if (texto === "") return;
 
-            const msgObj = {
-                usuario: "Teste Usuário",
-                conteudo: texto,
-                horario: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-                tipo: 'minha'
-            };
+    const msgObj = {
+        usuario: "Teste Usuário",
+        conteudo: texto,
+        horario: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        tipo: 'minha'
+    };
 
-            adicionarMensagemDOM(msgObj);
-            salvarMensagem(msgObj);
-            inputMensagem.value = "";
-        }
+    adicionarMensagemDOM(msgObj);
+    salvarMensagem(msgObj);
+    inputMensagem.value = "";
+}
 
-        function adicionarMensagemDOM(msg) {
-            const div = document.createElement('div');
-            div.className = `mensagem ${msg.tipo === 'minha' ? 'minha' : ''}`;
-            const iniciais = msg.tipo === 'minha' ? 'TU' : msg.usuario.substring(0, 2).toUpperCase();
+function adicionarMensagemDOM(msg) {
+    const div = document.createElement('div');
+    div.className = `mensagem ${msg.tipo === 'minha' ? 'minha' : ''}`;
+    const iniciais = msg.tipo === 'minha' ? 'TU' : msg.usuario.substring(0, 2).toUpperCase();
 
-            div.innerHTML = `
+    div.innerHTML = `
                 <div class="avatar-msg">${iniciais}</div>
                 <div class="conteudo-msg">
                     <div class="cabecalho-msg">
@@ -37,160 +37,160 @@
                 </div>
             `;
 
-            containerMensagens.appendChild(div);
-            containerMensagens.scrollTop = containerMensagens.scrollHeight;
+    containerMensagens.appendChild(div);
+    containerMensagens.scrollTop = containerMensagens.scrollHeight;
+}
+
+function salvarMensagem(msg) {
+    let historico = JSON.parse(localStorage.getItem('chat_historico_pt')) || [];
+    historico.push(msg);
+    localStorage.setItem('chat_historico_pt', JSON.stringify(historico));
+}
+
+function carregarMensagens() {
+    let historico = JSON.parse(localStorage.getItem('chat_historico_pt')) || [];
+    historico.forEach(msg => adicionarMensagemDOM(msg));
+}
+
+inputMensagem.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') enviarMensagem();
+});
+
+// === INICIO TEMA ESCURO ===
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+const body = document.body;
+
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+    body.classList.add('dark-mode');
+    themeIcon.setAttribute('name', 'sunny-outline');
+}
+
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    const isDark = body.classList.contains('dark-mode');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    themeIcon.setAttribute('name', isDark ? 'sunny-outline' : 'moon-outline');
+});
+// === FIM TEMA ESCURO ===
+
+/*
+
+========= BASE DA API =========
+let mensagens = [];
+const API_URL = "http://LINK";
+========= BASE DA API =========
+
+========= GET =========
+    document.addEventListener('DOMContentLoaded', carregarMensagens);
+
+async function carregarMensagens() {
+    try {
+        const response = await fetch(API_URL);
+        mensagens = await response.json();
+
+        containerMensagens.innerHTML = "";
+        mensagens.forEach(msg => adicionarMensagemDOM(msg));
+
+    } catch (error) {
+        console.error("Erro ao carregar mensagens:", error);
+    }
+}           
+========= GET =========
+
+========= POST =========
+    async function enviarMensagem() {
+        const texto = inputMensagem.value.trim();
+        if (texto === "") return;
+
+        const novaMensagem = {
+            usuario: "Teste Usuário",
+            conteudo: texto,
+            horario: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+            tipo: "minha"
+        };
+
+        try {
+            const response = await fetch(API_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(novaMensagem)
+            });
+
+            const mensagemCriada = await response.json();
+
+            adicionarMensagemDOM(mensagemCriada);
+            inputMensagem.value = "";
+
+        } catch (error) {
+            console.error("Erro ao enviar mensagem:", error);
         }
+    }
+========= POST =========
 
-        function salvarMensagem(msg) {
-            let historico = JSON.parse(localStorage.getItem('chat_historico_pt')) || [];
-            historico.push(msg);
-            localStorage.setItem('chat_historico_pt', JSON.stringify(historico));
+========= ID =========
+    async function buscarMensagemPorId(id) {
+        try {
+            const response = await fetch(`${API_URL}/${id}`);
+            const mensagem = await response.json();
+            console.log(mensagem);
+        } catch (error) {
+            console.error("Erro ao buscar mensagem:", error);
         }
+    }
+========= ID =========
 
-        function carregarMensagens() {
-            let historico = JSON.parse(localStorage.getItem('chat_historico_pt')) || [];
-            historico.forEach(msg => adicionarMensagemDOM(msg));
+========= PUT =========
+    async function atualizarMensagemCompleta(id, dadosAtualizados) {
+        try {
+            await fetch(`${API_URL}/${id}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(dadosAtualizados)
+            });
+
+            await carregarMensagens();
+
+        } catch (error) {
+            console.error("Erro no PUT:", error);
         }
+    }
+========= PUT =========
 
-        inputMensagem.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') enviarMensagem();
-        });
+========= PATCH =========
+    async function atualizarMensagemParcial(id, dadosParciais) {
+        try {
+            await fetch(`${API_URL}/${id}`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(dadosParciais)
+            });
 
-        // === INICIO TEMA ESCURO ===
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const body = document.body;
+            await carregarMensagens();
 
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            body.classList.add('dark-mode');
-            themeIcon.setAttribute('name', 'sunny-outline');
+        } catch (error) {
+            console.error("Erro no PATCH:", error);
         }
+    }
+========= PATCH =========
 
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            const isDark = body.classList.contains('dark-mode');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            themeIcon.setAttribute('name', isDark ? 'sunny-outline' : 'moon-outline');
-        });
-        // === FIM TEMA ESCURO ===
+========= DELETE =========
+    async function deletarMensagem(id) {
+        try {
+            await fetch(`${API_URL}/${id}`, {
+                method: "DELETE"
+            });
 
-        /*
+            mensagens = mensagens.filter(msg => msg.id !== id);
+            containerMensagens.innerHTML = "";
+            mensagens.forEach(msg => adicionarMensagemDOM(msg));
 
-        ========= BASE DA API =========
-        let mensagens = [];
-        const API_URL = "http://LINK";
-        ========= BASE DA API =========
+        } catch (error) {
+            console.error("Erro ao deletar mensagem:", error);
+        }
+    }
+========= DELETE =========
 
-        ========= GET =========
-            document.addEventListener('DOMContentLoaded', carregarMensagens);
-
-        async function carregarMensagens() {
-            try {
-                const response = await fetch(API_URL);
-                mensagens = await response.json();
-
-                containerMensagens.innerHTML = "";
-                mensagens.forEach(msg => adicionarMensagemDOM(msg));
-
-            } catch (error) {
-                console.error("Erro ao carregar mensagens:", error);
-            }
-        }           
-        ========= GET =========
-
-        ========= POST =========
-            async function enviarMensagem() {
-                const texto = inputMensagem.value.trim();
-                if (texto === "") return;
-
-                const novaMensagem = {
-                    usuario: "Teste Usuário",
-                    conteudo: texto,
-                    horario: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-                    tipo: "minha"
-                };
-
-                try {
-                    const response = await fetch(API_URL, {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(novaMensagem)
-                    });
-
-                    const mensagemCriada = await response.json();
-
-                    adicionarMensagemDOM(mensagemCriada);
-                    inputMensagem.value = "";
-
-                } catch (error) {
-                    console.error("Erro ao enviar mensagem:", error);
-                }
-            }
-        ========= POST =========
-
-        ========= ID =========
-            async function buscarMensagemPorId(id) {
-                try {
-                    const response = await fetch(`${API_URL}/${id}`);
-                    const mensagem = await response.json();
-                    console.log(mensagem);
-                } catch (error) {
-                    console.error("Erro ao buscar mensagem:", error);
-                }
-            }
-        ========= ID =========
-
-        ========= PUT =========
-            async function atualizarMensagemCompleta(id, dadosAtualizados) {
-                try {
-                    await fetch(`${API_URL}/${id}`, {
-                        method: "PUT",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(dadosAtualizados)
-                    });
-
-                    await carregarMensagens();
-
-                } catch (error) {
-                    console.error("Erro no PUT:", error);
-                }
-            }
-        ========= PUT =========
-
-        ========= PATCH =========
-            async function atualizarMensagemParcial(id, dadosParciais) {
-                try {
-                    await fetch(`${API_URL}/${id}`, {
-                        method: "PATCH",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(dadosParciais)
-                    });
-
-                    await carregarMensagens();
-
-                } catch (error) {
-                    console.error("Erro no PATCH:", error);
-                }
-            }
-        ========= PATCH =========
-
-        ========= DELETE =========
-            async function deletarMensagem(id) {
-                try {
-                    await fetch(`${API_URL}/${id}`, {
-                        method: "DELETE"
-                    });
-
-                    mensagens = mensagens.filter(msg => msg.id !== id);
-                    containerMensagens.innerHTML = "";
-                    mensagens.forEach(msg => adicionarMensagemDOM(msg));
-
-                } catch (error) {
-                    console.error("Erro ao deletar mensagem:", error);
-                }
-            }
-        ========= DELETE =========
-
-        */
+*/
 /* ======================= FIM JS DA PÁGINA DE CANAIS [CANAIS.HTML] ======================= */

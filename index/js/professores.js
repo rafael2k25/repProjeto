@@ -1,32 +1,32 @@
 /* ======================= INÍCIO JS DA PÁGINA DE PROFESSORES [PROFESSORES.HTML] ======================= */
-  const inputMensagem = document.getElementById('inputMensagem');
-        const containerMensagens = document.getElementById('containerMensagens');
+const inputMensagem = document.getElementById('inputMensagem');
+const containerMensagens = document.getElementById('containerMensagens');
 
-        // === CARREGAR AS MENSAGENS ===
-        document.addEventListener('DOMContentLoaded', carregarMensagens);
+// === CARREGAR AS MENSAGENS ===
+document.addEventListener('DOMContentLoaded', carregarMensagens);
 
-        function enviarMensagem() {
-            const texto = inputMensagem.value.trim();
-            if (texto === "") return;
+function enviarMensagem() {
+    const texto = inputMensagem.value.trim();
+    if (texto === "") return;
 
-            const msgObj = {
-                usuario: "Teste Usuário",
-                conteudo: texto,
-                horario: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-                tipo: 'minha'
-            };
+    const msgObj = {
+        usuario: "Teste Usuário",
+        conteudo: texto,
+        horario: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        tipo: 'minha'
+    };
 
-            adicionarMensagemDOM(msgObj);
-            salvarMensagem(msgObj);
-            inputMensagem.value = "";
-        }
+    adicionarMensagemDOM(msgObj);
+    salvarMensagem(msgObj);
+    inputMensagem.value = "";
+}
 
-        function adicionarMensagemDOM(msg) {
-            const div = document.createElement('div');
-            div.className = `mensagem ${msg.tipo === 'minha' ? 'minha' : ''}`;
-            const iniciais = msg.tipo === 'minha' ? 'TU' : msg.usuario.substring(0, 2).toUpperCase();
+function adicionarMensagemDOM(msg) {
+    const div = document.createElement('div');
+    div.className = `mensagem ${msg.tipo === 'minha' ? 'minha' : ''}`;
+    const iniciais = msg.tipo === 'minha' ? 'TU' : msg.usuario.substring(0, 2).toUpperCase();
 
-            div.innerHTML = `
+    div.innerHTML = `
                 <div class="avatar-msg">${iniciais}</div>
                 <div class="conteudo-msg">
                     <div class="cabecalho-msg">
@@ -37,173 +37,173 @@
                 </div>
             `;
 
-            containerMensagens.appendChild(div);
-            containerMensagens.scrollTop = containerMensagens.scrollHeight;
-        }
+    containerMensagens.appendChild(div);
+    containerMensagens.scrollTop = containerMensagens.scrollHeight;
+}
 
-        function salvarMensagem(msg) {
-            let historico = JSON.parse(localStorage.getItem('chat_historico_pt')) || [];
-            historico.push(msg);
-            localStorage.setItem('chat_historico_pt', JSON.stringify(historico));
-        }
+function salvarMensagem(msg) {
+    let historico = JSON.parse(localStorage.getItem('chat_historico_pt')) || [];
+    historico.push(msg);
+    localStorage.setItem('chat_historico_pt', JSON.stringify(historico));
+}
 
-        function carregarMensagens() {
-            let historico = JSON.parse(localStorage.getItem('chat_historico_pt')) || [];
-            historico.forEach(msg => adicionarMensagemDOM(msg));
-        }
+function carregarMensagens() {
+    let historico = JSON.parse(localStorage.getItem('chat_historico_pt')) || [];
+    historico.forEach(msg => adicionarMensagemDOM(msg));
+}
 
-        inputMensagem.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') enviarMensagem();
-        });
+inputMensagem.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') enviarMensagem();
+});
 
-        // === TEMA ESCURO ===
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const body = document.body;
+// === TEMA ESCURO ===
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+const body = document.body;
 
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            body.classList.add('dark-mode');
-            themeIcon.setAttribute('name', 'sunny-outline');
-        }
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+    body.classList.add('dark-mode');
+    themeIcon.setAttribute('name', 'sunny-outline');
+}
 
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            const isDark = body.classList.contains('dark-mode');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            themeIcon.setAttribute('name', isDark ? 'sunny-outline' : 'moon-outline');
-        });
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    const isDark = body.classList.contains('dark-mode');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    themeIcon.setAttribute('name', isDark ? 'sunny-outline' : 'moon-outline');
+});
         // === FIM TEMA ESCURO ===
 
-        /*
+/*
 
-        ========= BASE DA API =========
-        const CANAL_ID = 4;
-        const API_BASE = "http://LINK";
-        ========= BASE DA API =========
+========= BASE DA API =========
+const CANAL_ID = 4;
+const API_BASE = "http://LINK";
+========= BASE DA API =========
 
-        ========= GET - CARREGAR E BUSCAR MENSAGENS =========
-            async function carregarMensagens() {
-                try {
-                    const response = await fetch(`${API_BASE}/canais/${CANAL_ID}/mensagens`);
-                    const mensagens = await response.json();
+========= GET - CARREGAR E BUSCAR MENSAGENS =========
+    async function carregarMensagens() {
+        try {
+            const response = await fetch(`${API_BASE}/canais/${CANAL_ID}/mensagens`);
+            const mensagens = await response.json();
 
-                    containerMensagens.innerHTML = "";
+            containerMensagens.innerHTML = "";
 
-                    mensagens.forEach(msg => adicionarMensagemDOM(msg));
+            mensagens.forEach(msg => adicionarMensagemDOM(msg));
 
-                } catch (error) {
-                    console.error("Erro ao carregar mensagens:", error);
-                }
-            }
-
-        async function buscarMensagemPorId(id) {
-            try {
-                const response = await fetch(`${API_BASE}/mensagens/${id}`);
-                const mensagem = await response.json();
-                console.log("Mensagem encontrada:", mensagem);
-            } catch (error) {
-                console.error("Erro ao buscar mensagem:", error);
-            }
+        } catch (error) {
+            console.error("Erro ao carregar mensagens:", error);
         }
+    }
 
-        // AJUSTE PRA ENVIAR MENSAGEM
-        function enviarMensagem() {
-            const texto = inputMensagem.value.trim();
-            if (texto === "") return;
+async function buscarMensagemPorId(id) {
+    try {
+        const response = await fetch(`${API_BASE}/mensagens/${id}`);
+        const mensagem = await response.json();
+        console.log("Mensagem encontrada:", mensagem);
+    } catch (error) {
+        console.error("Erro ao buscar mensagem:", error);
+    }
+}
 
-            const msgObj = {
-                usuario: "Teste Usuário",
-                conteudo: texto,
-                horario: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-                tipo: 'minha'
-            };
+// AJUSTE PRA ENVIAR MENSAGEM
+function enviarMensagem() {
+    const texto = inputMensagem.value.trim();
+    if (texto === "") return;
 
-            adicionarMensagemDOM(msgObj);
-            salvarMensagem(msgObj);
-            inputMensagem.value = "";
+    const msgObj = {
+        usuario: "Teste Usuário",
+        conteudo: texto,
+        horario: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        tipo: 'minha'
+    };
+
+    adicionarMensagemDOM(msgObj);
+    salvarMensagem(msgObj);
+    inputMensagem.value = "";
+}
+// AJUSTE PRA ENVIAR MENSAGEM
+
+========= GET - CARREGAR E BUSCAR MENSAGENS =========
+
+========= POST =========
+    async function salvarMensagem(msg) {
+        try {
+            const response = await fetch(`${API_BASE}/mensagens`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    ...msg,
+                    canalId: CANAL_ID
+                })
+            });
+
+            const novaMensagem = await response.json();
+            console.log("Mensagem salva:", novaMensagem);
+
+        } catch (error) {
+            console.error("Erro ao salvar mensagem:", error);
         }
-        // AJUSTE PRA ENVIAR MENSAGEM
+    }
+========= POST =========
 
-        ========= GET - CARREGAR E BUSCAR MENSAGENS =========
+========= PUT =========
+    async function atualizarMensagem(id, novaMensagem) {
+        try {
+            const response = await fetch(`${API_BASE}/mensagens/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(novaMensagem)
+            });
 
-        ========= POST =========
-            async function salvarMensagem(msg) {
-                try {
-                    const response = await fetch(`${API_BASE}/mensagens`, {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({
-                            ...msg,
-                            canalId: CANAL_ID
-                        })
-                    });
+            const data = await response.json();
+            console.log("Mensagem atualizada:", data);
 
-                    const novaMensagem = await response.json();
-                    console.log("Mensagem salva:", novaMensagem);
+        } catch (error) {
+            console.error("Erro no PUT:", error);
+        }
+    }
+========= PUT =========
 
-                } catch (error) {
-                    console.error("Erro ao salvar mensagem:", error);
-                }
-            }
-        ========= POST =========
+========= PATCH =========
+    async function atualizarParcialMensagem(id, dadosParciais) {
+        try {
+            const response = await fetch(`${API_BASE}/mensagens/${id}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(dadosParciais)
+            });
 
-        ========= PUT =========
-            async function atualizarMensagem(id, novaMensagem) {
-                try {
-                    const response = await fetch(`${API_BASE}/mensagens/${id}`, {
-                        method: "PUT",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify(novaMensagem)
-                    });
+            const data = await response.json();
+            console.log("Mensagem atualizada parcialmente:", data);
 
-                    const data = await response.json();
-                    console.log("Mensagem atualizada:", data);
+        } catch (error) {
+            console.error("Erro no PATCH:", error);
+        }
+    }
+========= PATCH =========
 
-                } catch (error) {
-                    console.error("Erro no PUT:", error);
-                }
-            }
-        ========= PUT =========
+========= DELETE =========
+    async function deletarMensagem(id) {
+        try {
+            await fetch(`${API_BASE}/mensagens/${id}`, {
+                method: "DELETE"
+            });
 
-        ========= PATCH =========
-            async function atualizarParcialMensagem(id, dadosParciais) {
-                try {
-                    const response = await fetch(`${API_BASE}/mensagens/${id}`, {
-                        method: "PATCH",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify(dadosParciais)
-                    });
+            console.log("Mensagem deletada");
 
-                    const data = await response.json();
-                    console.log("Mensagem atualizada parcialmente:", data);
+        } catch (error) {
+            console.error("Erro ao deletar:", error);
+        }
+    }
+========= DELETE =========
 
-                } catch (error) {
-                    console.error("Erro no PATCH:", error);
-                }
-            }
-        ========= PATCH =========
-
-        ========= DELETE =========
-            async function deletarMensagem(id) {
-                try {
-                    await fetch(`${API_BASE}/mensagens/${id}`, {
-                        method: "DELETE"
-                    });
-
-                    console.log("Mensagem deletada");
-
-                } catch (error) {
-                    console.error("Erro ao deletar:", error);
-                }
-            }
-        ========= DELETE =========
-
-        */
+*/
 /* ======================= FIM JS DA PÁGINA DE PROFESSORES [PROFESSORES.HTML] ======================= */
