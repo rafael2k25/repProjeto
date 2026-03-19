@@ -80,7 +80,7 @@ let avisos = [
         titulo: "Programador Full-Stack Duração: 670h Presencial",
         descricao: "As inscrições para o curso estão abertas.",
         imagem: "",
-        prioridade: "media",
+        prioridade: "baixa",
         data: "05/02/2026"
     },
 
@@ -89,7 +89,7 @@ let avisos = [
         titulo: "Programador Front-End Duração: 348h Presencial",
         descricao: "As inscrições para o curso estão abertas.",
         imagem: "",
-        prioridade: "media",
+        prioridade: "baixa",
         data: "15/02/2026"
     },
 
@@ -98,7 +98,7 @@ let avisos = [
         titulo: "Introdução a IoT para Manutenção Industrial Duração: 40h Presencial",
         descricao: "As inscrições para o curso estão abertas.",
         imagem: "",
-        prioridade: "media",
+        prioridade: "baixa",
         data: "21/02/2026"
     },
 
@@ -107,7 +107,7 @@ let avisos = [
         titulo: "Inspetor de Qualidade Duração: 160h Presencial",
         descricao: "As inscrições para o curso estão abertas.",
         imagem: "",
-        prioridade: "media",
+        prioridade: "baixa",
         data: "01/03/2026"
     },
 ];
