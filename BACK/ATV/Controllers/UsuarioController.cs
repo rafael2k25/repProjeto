@@ -15,6 +15,32 @@ namespace BancoIFTT.Controllers
             _context = context;
         }
 
+        [HttpPost("cadastro")]
+        public IActionResult Cadastro(Usuario novoUsuario)
+        {
+            // VERIFICA SE O EMAIL JÁ EXISTE
+            var usuarioExistente = _context.Usuarios
+                .FirstOrDefault(u => u.Email == novoUsuario.Email);
+
+            if (usuarioExistente != null)
+            {
+                return BadRequest("Email já cadastrado");
+            }
+
+            // ADICIONA O NOVO USUÁRIO
+            _context.Usuarios.Add(novoUsuario);
+
+            // SALVA NO BANCO
+            _context.SaveChanges();
+
+            return Ok(new
+            {
+                mensagem = "Usuário cadastrado com sucesso",
+                novoUsuario.Nome,
+                novoUsuario.Email
+            });
+        }
+
         [HttpPost("login")]
         public IActionResult Login(Usuario login)
         {
