@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|c:\\users\\tarde.cetafaju\\documents\\github\\repprojeto\\back\\atv\\controllers\\canalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|solutionrelative:atv\\controllers\\canalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|c:\\users\\tarde.cetafaju\\documents\\github\\repprojeto\\back\\atv\\models\\canal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|solutionrelative:atv\\models\\canal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|c:\\users\\tarde.cetafaju\\documents\\github\\repprojeto\\back\\atv\\controllers\\avisocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|solutionrelative:atv\\controllers\\avisocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|c:\\users\\tarde.cetafaju\\documents\\github\\repprojeto\\back\\atv\\data\\ifttdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|solutionrelative:atv\\data\\ifttdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|c:\\users\\tarde.cetafaju\\documents\\github\\repprojeto\\back\\atv\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|solutionrelative:atv\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,20 +27,12 @@
       "RelativeMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|solutionrelative:atv\\models\\aviso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|c:\\users\\tarde.cetafaju\\documents\\github\\repprojeto\\back\\atv\\data\\ifttdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|solutionrelative:atv\\data\\ifttdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|c:\\users\\tarde.cetafaju\\documents\\github\\repprojeto\\back\\atv\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|solutionrelative:atv\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|c:\\users\\tarde.cetafaju\\documents\\github\\repprojeto\\back\\atv\\controllers\\mensagemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|solutionrelative:atv\\controllers\\mensagemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|c:\\users\\tarde.cetafaju\\documents\\github\\repprojeto\\back\\atv\\controllers\\avisocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|solutionrelative:atv\\controllers\\avisocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|c:\\users\\tarde.cetafaju\\documents\\github\\repprojeto\\back\\atv\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -37,14 +45,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|c:\\users\\tarde.cetafaju\\documents\\github\\repprojeto\\back\\atv\\models\\comunicacaomensagem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|solutionrelative:atv\\models\\comunicacaomensagem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|c:\\users\\tarde.cetafaju\\documents\\github\\repprojeto\\back\\atv\\models\\canal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|solutionrelative:atv\\models\\canal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|c:\\users\\tarde.cetafaju\\documents\\github\\repprojeto\\back\\atv\\controllers\\canalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|solutionrelative:atv\\controllers\\canalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,11 +54,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\appsettings.json",
               "RelativeDocumentMoniker": "ATV\\appsettings.json",
@@ -66,38 +66,37 @@
               "RelativeToolTip": "ATV\\appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-05-27T19:43:46.762Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-27T19:43:46.762Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Program.cs",
               "RelativeDocumentMoniker": "ATV\\Program.cs",
               "ToolTip": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Program.cs",
               "RelativeToolTip": "ATV\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAADAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-27T19:42:31.201Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ifttDBContext.cs",
               "DocumentMoniker": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Data\\ifttDBContext.cs",
               "RelativeDocumentMoniker": "ATV\\Data\\ifttDBContext.cs",
               "ToolTip": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Data\\ifttDBContext.cs",
               "RelativeToolTip": "ATV\\Data\\ifttDBContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-27T19:35:12.872Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "UsuarioController.cs",
               "DocumentMoniker": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Controllers\\UsuarioController.cs",
               "RelativeDocumentMoniker": "ATV\\Controllers\\UsuarioController.cs",
@@ -105,12 +104,11 @@
               "RelativeToolTip": "ATV\\Controllers\\UsuarioController.cs",
               "ViewState": "AQIAAAIAAAAAAAAAAAAcwDQAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-27T19:30:06.923Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-27T19:30:06.923Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "Aviso.cs",
               "DocumentMoniker": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Models\\Aviso.cs",
               "RelativeDocumentMoniker": "ATV\\Models\\Aviso.cs",
@@ -118,25 +116,24 @@
               "RelativeToolTip": "ATV\\Models\\Aviso.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-27T19:34:25.21Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-27T19:34:25.21Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "AvisoController.cs",
               "DocumentMoniker": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Controllers\\AvisoController.cs",
               "RelativeDocumentMoniker": "ATV\\Controllers\\AvisoController.cs",
               "ToolTip": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Controllers\\AvisoController.cs",
               "RelativeToolTip": "ATV\\Controllers\\AvisoController.cs",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAcwFAAAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADMAAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-27T19:30:42.646Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "MensagemController.cs",
               "DocumentMoniker": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Controllers\\MensagemController.cs",
               "RelativeDocumentMoniker": "ATV\\Controllers\\MensagemController.cs",
@@ -144,12 +141,11 @@
               "RelativeToolTip": "ATV\\Controllers\\MensagemController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACwAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-27T19:31:19.326Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-27T19:31:19.326Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "Usuario.cs",
               "DocumentMoniker": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Models\\Usuario.cs",
               "RelativeDocumentMoniker": "ATV\\Models\\Usuario.cs",
@@ -157,12 +153,11 @@
               "RelativeToolTip": "ATV\\Models\\Usuario.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-27T19:31:49.157Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-27T19:31:49.157Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "ComunicacaoMensagem.cs",
               "DocumentMoniker": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Models\\ComunicacaoMensagem.cs",
               "RelativeDocumentMoniker": "ATV\\Models\\ComunicacaoMensagem.cs",
@@ -170,12 +165,11 @@
               "RelativeToolTip": "ATV\\Models\\ComunicacaoMensagem.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-27T19:34:52.6Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-27T19:34:52.6Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 1,
               "Title": "Canal.cs",
               "DocumentMoniker": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Models\\Canal.cs",
               "RelativeDocumentMoniker": "ATV\\Models\\Canal.cs",
@@ -188,13 +182,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 0,
               "Title": "CanalController.cs",
               "DocumentMoniker": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Controllers\\CanalController.cs",
               "RelativeDocumentMoniker": "ATV\\Controllers\\CanalController.cs",
               "ToolTip": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Controllers\\CanalController.cs",
               "RelativeToolTip": "ATV\\Controllers\\CanalController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAD4AAAAAAAAAAAAiwFwAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-27T19:31:05.209Z",
               "EditorCaption": ""
