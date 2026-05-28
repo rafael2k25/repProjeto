@@ -1,4 +1,4 @@
-﻿namespace BancoIFTT.Models
+﻿namespace ATV.Models
 {
     public class ComunicacaoMensagem
     {

@@ -1,310 +1,196 @@
 /* ======================= INÍCIO JS DA PÁGINA DE PERFIL [PERFIL.HTML] ======================= */
-// === DADOS E UTILITÁRIOS ===
 
+// === BASE DA API ===
+const API_URL = "https://localhost:7030/Usuario";
+
+// === NOTIFICAÇÃO ===
 function showToast(message, type = 'sucesso') {
+
     const toast = document.getElementById("notificacao");
+
     if (!toast) return;
 
-    // Transforma chamadas 'success' e 'error' para bater com as classes CSS em português
-    let tipoClasse = type === 'success' ? 'sucesso' : (type === 'error' ? 'erro' : type);
-
     toast.textContent = message;
-    toast.className = "visivel " + tipoClasse;
+
+    toast.className = "visivel " + type;
 
     setTimeout(() => {
-        toast.className = toast.className.replace("visivel", "").trim();
+        toast.classList.remove("visivel");
     }, 3000);
 }
 
+// === MOSTRAR / ESCONDER SENHA ===
 function togglePassword(id) {
+
     const input = document.getElementById(id);
-    if (input) input.type = input.type === "password" ? "text" : "password";
+
+    if (!input) return;
+
+    input.type =
+        input.type === "password"
+            ? "text"
+            : "password";
 }
 
-function sair() {
-    window.location.href = "inicio.html";
-}
+// === LOGOUT ===
+async function sair() {
 
-// === INICIALIZAÇÃO DOS CAMPOS ===
-function initDropdowns() {
-    // === DATAS ===
-    const selectDia = document.getElementById("dia");
-    if (selectDia) {
-        for (let i = 1; i <= 31; i++) {
-            let opt = document.createElement("option");
-            opt.value = i; opt.text = i;
-            selectDia.appendChild(opt);
+    try {
+
+        const response = await fetch(
+            `${API_URL}/logout`,
+            {
+                method: "POST",
+                credentials: "include"
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error("Erro ao sair");
         }
-    }
 
-    const selectAno = document.getElementById("ano");
-    if (selectAno) {
-        for (let i = 2026; i >= 1950; i--) {
-            let opt = document.createElement("option");
-            opt.value = i; opt.text = i;
-            selectAno.appendChild(opt);
+        window.location.href = "index.html";
+
+    } catch (error) {
+
+        console.error(error);
+
+        showToast("Erro ao sair", "erro");
+    }
+}
+
+// === CARREGAR PERFIL ===
+async function carregarPerfil() {
+
+    try {
+
+        const response = await fetch(
+            `${API_URL}/usuario-logado`,
+            {
+                credentials: "include"
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error("Usuário não logado");
         }
+
+        const usuario = await response.json();
+
+        // === PREENCHER CAMPOS ===
+        document.getElementById("nome").value =
+            usuario.nome || "";
+
+        document.getElementById("email").value =
+            usuario.email || "";
+
+        document.getElementById("senha").value =
+            usuario.senha || "";
+
+        // === FOTO ===
+        if (usuario.avatar) {
+
+            document.getElementById("fotoPerfil").src =
+                usuario.avatar;
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+        showToast(
+            "Erro ao carregar perfil",
+            "erro"
+        );
     }
 }
 
-function updateCountries(continent, selectedCountry = null) {
-    const selectPais = document.getElementById('pais');
-    if (!selectPais) return; // Proteção para caso o campo país não exista no HTML
+// === SALVAR PERFIL ===
+document
+    .getElementById("formPerfil")
+    .addEventListener("submit", async function (e) {
 
-    selectPais.innerHTML = '<option value="" disabled selected>País</option>';
+        e.preventDefault();
 
-    if (continent && typeof locationData !== 'undefined' && locationData[continent]) {
-        selectPais.disabled = false;
-        locationData[continent].forEach(country => {
-            const option = document.createElement('option');
-            option.value = country;
-            option.textContent = country;
-            if (selectedCountry === country) option.selected = true;
-            selectPais.appendChild(option);
-        });
-    } else {
-        selectPais.disabled = true;
-    }
-}
+        const dados = {
 
-// === CARREGAR DADOS DO LOCALSTORAGE ===
-function loadProfile() {
-    // === PEGAR DADOS DO LOGIN E DO PERFIL ===
-    const loginEmail = localStorage.getItem('userEmail');
-    const loginPass = localStorage.getItem('userPass');
+            nome:
+                document.getElementById("nome").value,
 
-    if (loginEmail && document.getElementById('email')) document.getElementById('email').value = loginEmail;
-    if (loginPass && document.getElementById('senha')) document.getElementById('senha').value = loginPass;
+            email:
+                document.getElementById("email").value,
 
-    const savedData = JSON.parse(localStorage.getItem('userProfileData')) || {};
+            senha:
+                document.getElementById("senha").value,
 
-    if (savedData.nome && document.getElementById('nome')) document.getElementById('nome').value = savedData.nome;
-    if (savedData.email && document.getElementById('email')) document.getElementById('email').value = savedData.email;
-    if (savedData.senha && document.getElementById('senha')) document.getElementById('senha').value = savedData.senha;
-    if (savedData.dia && document.getElementById('dia')) document.getElementById('dia').value = savedData.dia;
-    if (savedData.mes && document.getElementById('mes')) document.getElementById('mes').value = savedData.mes;
-    if (savedData.ano && document.getElementById('ano')) document.getElementById('ano').value = savedData.ano;
+            avatar:
+                document.getElementById("fotoPerfil").src
+        };
 
-    if (savedData.continente) {
-        const continenteEl = document.getElementById('continente');
-        if (continenteEl) continenteEl.value = savedData.continente;
-        updateCountries(savedData.continente, savedData.pais);
-    }
+        try {
 
-    if (savedData.genero) {
-        const radio = document.querySelector(`input[name="gender"][value="${savedData.genero}"]`);
-        if (radio) radio.checked = true;
-    }
+            const response = await fetch(
+                `${API_URL}/atualizar`,
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    credentials: "include",
+                    body: JSON.stringify(dados)
+                }
+            );
 
-    // === CARREGAR FOTO ===
-    const foto = localStorage.getItem("fotoPerfil");
-    if (foto && document.getElementById("fotoPerfil")) document.getElementById("fotoPerfil").src = foto;
-}
+            if (!response.ok) {
+                throw new Error("Erro ao atualizar");
+            }
 
-// === SALVAR DADOS ===
-document.getElementById('formPerfil').addEventListener('submit', function (e) {
-    e.preventDefault();
+            showToast(
+                "Perfil atualizado com sucesso!",
+                "sucesso"
+            );
 
-    // Adicionado "?" antes do .value para não quebrar o código caso o campo falte no HTML
-    const data = {
-        nome: document.getElementById('nome')?.value || "",
-        email: document.getElementById('email')?.value || "",
-        senha: document.getElementById('senha')?.value || "",
-        continente: document.getElementById('continente')?.value || "",
-        pais: document.getElementById('pais')?.value || "",
-        dia: document.getElementById('dia')?.value || "",
-        mes: document.getElementById('mes')?.value || "",
-        ano: document.getElementById('ano')?.value || "",
-        genero: document.querySelector('input[name="gender"]:checked')?.value || ""
-    };
+        } catch (error) {
 
-    localStorage.setItem('userProfileData', JSON.stringify(data));
-    localStorage.setItem('userEmail', data.email);
-    localStorage.setItem('userPass', data.senha);
+            console.error(error);
 
-    showToast("Perfil atualizado com sucesso!", "success");
-});
+            showToast(
+                "Erro ao atualizar perfil",
+                "erro"
+            );
+        }
+    });
 
-// === FOTO UPLOAD ===
-document.getElementById('inputFoto').addEventListener("change", e => {
-    const file = e.target.files[0];
-    if (!file) return;
+// === FOTO PERFIL ===
+document
+    .getElementById("inputFoto")
+    .addEventListener("change", function (e) {
 
-    const reader = new FileReader();
-    reader.onload = () => {
-        document.getElementById('fotoPerfil').src = reader.result;
-        localStorage.setItem("fotoPerfil", reader.result);
-        showToast("Foto atualizada!", "success");
-    };
-    reader.readAsDataURL(file);
-});
+        const file = e.target.files[0];
 
-initDropdowns();
-loadProfile();
+        if (!file) return;
 
-/*
+        const reader = new FileReader();
 
-========= BASE DA API =========
-const API_BASE = "http://LINK";
-========= BASE DA API =========
+        reader.onload = function () {
 
-========= GET =========
-   async function loadProfile() {
-       try {
-           const userId = 1; // LOGIN/TOKEN
+            document.getElementById(
+                "fotoPerfil"
+            ).src = reader.result;
 
-           const response = await fetch(`${API_BASE}/usuarios/${userId}`);
-           const data = await response.json();
+            showToast(
+                "Foto atualizada!",
+                "sucesso"
+            );
+        };
 
-           document.getElementById('nome').value = data.nome || "";
-           document.getElementById('email').value = data.email || "";
-           document.getElementById('senha').value = data.senha || "";
-           document.getElementById('dia').value = data.dia || "";
-           document.getElementById('mes').value = data.mes || "";
-           document.getElementById('ano').value = data.ano || "";
+        reader.readAsDataURL(file);
+    });
 
-           if (data.continente) {
-               document.getElementById('continente').value = data.continente;
-               updateCountries(data.continente, data.pais);
-           }
+// === INICIAR ===
+document.addEventListener(
+    "DOMContentLoaded",
+    carregarPerfil
+);
 
-           if (data.genero) {
-               const radio = document.querySelector(`input[name="gender"][value="${data.genero}"]`);
-               if (radio) radio.checked = true;
-           }
-
-           if (data.foto) {
-               document.getElementById("fotoPerfil").src = data.foto;
-           }
-
-       } catch (error) {
-           console.error("Erro ao carregar perfil:", error);
-       }
-   }
-========= GET =========
-
-========= ID =========
-   async function buscarUsuarioPorId(id) {
-       try {
-           const response = await fetch(`${API_BASE}/usuarios/${id}`);
-           const usuario = await response.json();
-           console.log("Usuário encontrado:", usuario);
-       } catch (error) {
-           console.error("Erro ao buscar usuário:", error);
-       }
-   }
-========= ID =========
-
-========= POST =========
-   async function criarPerfil(data) {
-       try {
-           const response = await fetch(`${API_BASE}/usuarios`, {
-               method: "POST",
-               headers: {
-                   "Content-Type": "application/json"
-               },
-               body: JSON.stringify(data)
-           });
-
-           const novoUsuario = await response.json();
-           console.log("Usuário criado:", novoUsuario);
-
-       } catch (error) {
-           console.error("Erro ao criar perfil:", error);
-       }
-   }
-========= POST =========
-
-========= PUT =========
-   document.getElementById('formPerfil').addEventListener('submit', async function (e) {
-       e.preventDefault();
-
-       const userId = 1; // futuramente virá do login
-
-       const data = {
-           nome: document.getElementById('nome').value,
-           email: document.getElementById('email').value,
-           senha: document.getElementById('senha').value,
-           continente: document.getElementById('continente').value,
-           pais: document.getElementById('pais').value,
-           dia: document.getElementById('dia').value,
-           mes: document.getElementById('mes').value,
-           ano: document.getElementById('ano').value,
-           genero: document.querySelector('input[name="gender"]:checked')?.value
-       };
-
-       try {
-           const response = await fetch(`${API_BASE}/usuarios/${userId}`, {
-               method: "PUT",
-               headers: {
-                   "Content-Type": "application/json"
-               },
-               body: JSON.stringify(data)
-           });
-
-           const updatedUser = await response.json();
-           console.log("Perfil atualizado:", updatedUser);
-
-           showToast("Perfil atualizado com sucesso!", "success");
-
-       } catch (error) {
-           console.error("Erro ao atualizar perfil:", error);
-           showToast("Erro ao atualizar perfil", "error");
-       }
-   });
-========= PUT =========
-
-========= PATCH - ATUALIZAR E FAZER UPLOAD DE USUÁRIO =========
-   async function atualizarParcialUsuario(id, dadosParciais) {
-       try {
-           const response = await fetch(`${API_BASE}/usuarios/${id}`, {
-               method: "PATCH",
-               headers: {
-                   "Content-Type": "application/json"
-               },
-               body: JSON.stringify(dadosParciais)
-           });
-
-           const usuarioAtualizado = await response.json();
-           console.log("Atualização parcial:", usuarioAtualizado);
-
-       } catch (error) {
-           console.error("Erro no PATCH:", error);
-       }
-   }
-
-document.getElementById('inputFoto').addEventListener("change", async e => {
-   const file = e.target.files[0];
-   if (!file) return;
-
-   const reader = new FileReader();
-   reader.onload = async () => {
-       const base64 = reader.result;
-
-       document.getElementById('fotoPerfil').src = base64;
-
-       await atualizarParcialUsuario(1, { foto: base64 });
-
-       showToast("Foto atualizada!", "success");
-   };
-   reader.readAsDataURL(file);
-});
-========= PATCH - ATUALIZAR E FAZER UPLOAD DE USUÁRIO =========
-
-========= DELETE =========
-   async function deletarUsuario(id) {
-       try {
-           await fetch(`${API_BASE}/usuarios/${id}`, {
-               method: "DELETE"
-           });
-
-           showToast("Conta excluída com sucesso!", "success");
-
-       } catch (error) {
-           console.error("Erro ao deletar usuário:", error);
-       }
-   }
-========= DELETE =========
-
-*/
 /* ======================= FIM JS DA PÁGINA DE PERFIL [PERFIL.HTML] ======================= */

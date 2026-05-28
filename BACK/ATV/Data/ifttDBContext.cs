@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using BancoIFTT.Models;
+using ATV.Models;
 
-namespace BancoIFTT.Data
+namespace ATV.Data
 {
     public class ifttDBContext : DbContext
     {

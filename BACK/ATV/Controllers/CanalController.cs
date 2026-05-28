@@ -1,8 +1,8 @@
-﻿using BancoIFTT.Data;
-using BancoIFTT.Models;
+﻿using ATV.Data;
+using ATV.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BancoIFTT.Controllers
+namespace ATV.Controllers
 {
     [ApiController]
     [Route("[controller]")]

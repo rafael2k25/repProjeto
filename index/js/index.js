@@ -1,137 +1,292 @@
-/* ======================= INÍCIO JS DA PÁGINA DE LOGIN [INDEX.HTML] ======================= */
-// === VARIÁVEIS GLOBAIS DO CÓDIGO DE LOGIN ===
+/* ======================= INÍCIO JS LOGIN/CADASTRO ======================= */
+
+/* ======================= API ======================= */
+
+const API_USUARIO = "https://localhost:5140/Usuario";
+
+/* ======================= VARIÁVEIS ======================= */
+
 let codigoGerado = "";
 
-// === MOSTRAR/ESCONDER SENHA ===
+/* ======================= MOSTRAR SENHA ======================= */
+
 function alternarVisibilidadeSenha(inputId) {
+
     const input = document.getElementById(inputId);
-    if (input.type === "password") {
-        input.type = "text";
-    } else {
-        input.type = "password";
-    }
+
+    input.type =
+        input.type === "password"
+            ? "text"
+            : "password";
 }
 
-// === NOTIFICAÇÃO ===
+/* ======================= NOTIFICAÇÃO ======================= */
+
 function exibirNotificacao(mensagem, tipo = 'sucesso') {
-    const notificacao = document.getElementById("notificacao");
+
+    const notificacao =
+        document.getElementById("notificacao");
+
     notificacao.textContent = mensagem;
 
     notificacao.className = "visivel";
+
     notificacao.classList.add(tipo);
 
-    setTimeout(function () {
-        notificacao.className = notificacao.className.replace("visivel", "");
-        setTimeout(() => notificacao.classList.remove(tipo), 300);
+    setTimeout(() => {
+
+        notificacao.className =
+            notificacao.className.replace("visivel", "");
+
+        setTimeout(() => {
+
+            notificacao.classList.remove(tipo);
+
+        }, 300);
+
     }, 3000);
 }
 
-// === CADASTRO ===
-const formularioCadastro = document.querySelector('.formulario-cadastro');
-formularioCadastro.addEventListener('submit', function (event) {
-    event.preventDefault();
+/* ======================= CADASTRO ======================= */
 
-    // === SALVA LOGIN ===
-    const email = document.getElementById('cadastro-email').value.trim();
-    const senha = document.getElementById('cadastro-senha').value;
+const formularioCadastro =
+    document.querySelector('.formulario-cadastro');
 
-    localStorage.setItem('emailUsuario', email);
-    localStorage.setItem('senhaUsuario', senha);
+formularioCadastro.addEventListener(
+    'submit',
+    async function (event) {
 
-    exibirNotificacao("Cadastro realizado com sucesso!", "sucesso");
-    formularioCadastro.reset();
+        event.preventDefault();
 
-    // === RESET INTERFACE ===
-    const paisSelect = document.getElementById('pais');
-    if (paisSelect) {
-        paisSelect.innerHTML = '<option value="" disabled selected>País</option>';
-        paisSelect.disabled = true;
-    }
-});
+        const usuario = {
 
-// === VERIFICAÇÃO DE 2 FATORES ===
-document.querySelector('.formulario-login').addEventListener('submit', function (event) {
-    event.preventDefault();
+            nome:
+                document.getElementById('cadastro-nome').value,
 
-    const emailInput = document.getElementById('login-email');
-    const senhaInput = document.getElementById('login-senha');
+            email:
+                document.getElementById('cadastro-email').value,
 
-    const email = emailInput.value.trim();
-    const senha = senhaInput.value;
+            senha:
+                document.getElementById('cadastro-senha').value,
 
-    const emailValido = "teste@gmail.com";
-    const senhaValida = "123456";
+            cargo: "Usuário",
 
-    const emailArmazenado = localStorage.getItem('emailUsuario');
-    const senhaArmazenada = localStorage.getItem('senhaUsuario');
+            avatar: "default.png",
 
-    // === VERIFICAÇÃO DA SENHA ===
-    let loginValido = false;
+            tema_Pag: "claro"
+        };
 
-    if (email === emailValido && senha === senhaValida) {
-        // === USUÁRIO PADRÃO DE TESTE ===
-        loginValido = true;
-    } else if (emailArmazenado && email === emailArmazenado) {
-        // === USUÁRIO CADASTRADO NO LOCALSTORAGE ===
-        if (senha === senhaArmazenada) {
-            loginValido = true;
-        } else {
-            // === SE A SENHA FOR INCORRETA ===
-            loginValido = false;
+        try {
+
+            const response = await fetch(
+                `${API_USUARIO}/cadastro`,
+                {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify(usuario)
+                }
+            );
+
+            const mensagem = await response.text();
+
+            if (response.ok) {
+
+                exibirNotificacao(
+                    "Cadastro realizado com sucesso!",
+                    "sucesso"
+                );
+
+                formularioCadastro.reset();
+
+            } else {
+
+                exibirNotificacao(mensagem, "erro");
+            }
+
+        } catch (error) {
+
+            console.error(error);
+
+            exibirNotificacao(
+                "Erro ao cadastrar usuário",
+                "erro"
+            );
         }
     }
+);
 
-    if (loginValido) {
-        // === SENHA CORRETA ===
-        codigoGerado = Math.floor(100000 + Math.random() * 900000).toString();
-        console.log("CÓDIGO DE LOGIN: " + codigoGerado); // (F12)
+/* ======================= LOGIN ======================= */
 
-        exibirNotificacao("Senha correta! Código enviado ao e-mail.", "sucesso");
-        abrirModal();
-    } else {
-        // === SENHA INCORRETA === 
-        exibirNotificacao("E-mail ou senha incorretos!", "erro");
+const formularioLogin =
+    document.querySelector('.formulario-login');
+
+formularioLogin.addEventListener(
+    'submit',
+    async function (event) {
+
+        event.preventDefault();
+
+        const login = {
+
+            email:
+                document.getElementById('login-email').value,
+
+            senha:
+                document.getElementById('login-senha').value
+        };
+
+        try {
+
+            const response = await fetch(
+                `${API_USUARIO}/login`,
+                {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    credentials: "include",
+
+                    body: JSON.stringify(login)
+                }
+            );
+
+            const dados = await response.json();
+
+            if (response.ok) {
+
+                codigoGerado =
+                    Math.floor(
+                        100000 + Math.random() * 900000
+                    ).toString();
+
+                console.log(
+                    "CÓDIGO LOGIN:",
+                    codigoGerado
+                );
+
+                exibirNotificacao(
+                    "Senha correta! Código enviado.",
+                    "sucesso"
+                );
+
+                abrirModal();
+
+            } else {
+
+                exibirNotificacao(
+                    dados,
+                    "erro"
+                );
+            }
+
+        } catch (error) {
+
+            console.error(error);
+
+            exibirNotificacao(
+                "Erro ao fazer login",
+                "erro"
+            );
+        }
     }
-});
+);
 
-// === VERIFICAÇÃO ===
+/* ======================= MODAL ======================= */
+
 function abrirModal() {
-    document.getElementById('modal-verificacao').style.display = 'flex';
-    document.getElementById('codigo-verificacao').focus();
+
+    document.getElementById(
+        'modal-verificacao'
+    ).style.display = 'flex';
+
+    document.getElementById(
+        'codigo-verificacao'
+    ).focus();
 }
 
 function fecharModal() {
-    document.getElementById('modal-verificacao').style.display = 'none';
-    document.getElementById('codigo-verificacao').value = '';
+
+    document.getElementById(
+        'modal-verificacao'
+    ).style.display = 'none';
+
+    document.getElementById(
+        'codigo-verificacao'
+    ).value = '';
 }
 
+/* ======================= VERIFICAR CÓDIGO ======================= */
+
 function verificarCodigoLogin() {
-    const codigoInserido = document.getElementById('codigo-verificacao').value;
+
+    const codigoInserido =
+        document.getElementById(
+            'codigo-verificacao'
+        ).value;
 
     if (codigoInserido === codigoGerado) {
-        exibirNotificacao("Login efetuado com sucesso! Redirecionando...", "sucesso");
+
+        exibirNotificacao(
+            "Login efetuado com sucesso!",
+            "sucesso"
+        );
+
         fecharModal();
 
-        // === DEPOIS DE 1,5 SEGUNDOS E REDIRECIONA O USUÁRIO PARA A TELA INICIAL ===
         setTimeout(() => {
-            window.location.href = "inicio.html";
+
+            window.location.href =
+                "inicio.html";
+
         }, 1500);
+
     } else {
-        exibirNotificacao("Código inválido. Tente novamente.", "erro");
+
+        exibirNotificacao(
+            "Código inválido",
+            "erro"
+        );
     }
 }
 
-const selectDia = document.getElementById("dia");
+/* ======================= SELECT DIA ======================= */
+
+const selectDia =
+    document.getElementById("dia");
+
 for (let i = 1; i <= 31; i++) {
+
     let opt = document.createElement("option");
-    opt.value = i; opt.text = i;
+
+    opt.value = i;
+
+    opt.text = i;
+
     selectDia.appendChild(opt);
 }
 
-const selectAno = document.getElementById("ano");
+/* ======================= SELECT ANO ======================= */
+
+const selectAno =
+    document.getElementById("ano");
+
 for (let i = 2026; i >= 1950; i--) {
+
     let opt = document.createElement("option");
-    opt.value = i; opt.text = i;
+
+    opt.value = i;
+
+    opt.text = i;
+
     selectAno.appendChild(opt);
 }
-/* ======================= FIM JS DA PÁGINA DE LOGIN [INDEX.HTML] ======================= */
+
+/* ======================= FIM JS LOGIN/CADASTRO ======================= */

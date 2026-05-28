@@ -1,387 +1,360 @@
+/* ======================= INÍCIO JS DA PÁGINA DE INÍCIO [INICIO.HTML] ======================= */
+
+/* ======================= API ======================= */
+
+const API_AVISOS = "https://localhost:5140/Aviso";
+const API_USUARIO = "https://localhost:5140/Usuario";
 
 /* ======================= TEMA ESCURO ======================= */
 
-/* ======================= INÍCIO JS DA PÁGINA DE INÍCIO [INICIO.HTML] ======================= */
-// === TEMA ESCURO ===
-<<<<<<< HEAD
 const themeToggle = document.getElementById('theme-toggle');
+
 const themeIcon = document.getElementById('theme-icon');
+
 const body = document.body;
 
 const savedTheme = localStorage.getItem('theme');
+
 if (savedTheme === 'dark') {
+
     body.classList.add('dark-mode');
+
     themeIcon.setAttribute('name', 'sunny-outline');
 }
 
 themeToggle.addEventListener('click', () => {
+
     body.classList.toggle('dark-mode');
-    const isDark = body.classList.contains('dark-mode');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    themeIcon.setAttribute('name', isDark ? 'sunny-outline' : 'moon-outline');
+
+    const isDark =
+        body.classList.contains('dark-mode');
+
+    localStorage.setItem(
+        'theme',
+        isDark ? 'dark' : 'light'
+    );
+
+    themeIcon.setAttribute(
+        'name',
+        isDark
+            ? 'sunny-outline'
+            : 'moon-outline'
+    );
 });
 
-/*
+/* ======================= ELEMENTOS ======================= */
 
-========= BASE DA API =========
-let noticias = [];
-const API_URL = "http://LINK";
-========= BASE DA API =========
+const carouselTrack =
+    document.getElementById("carouselTrack");
 
-========= CARREGAR E RENDERIZAR NOTICIAS =========
-    function renderizarNoticias(lista) {
+const carouselNav =
+    document.getElementById("carouselNav");
 
-        const featuredContainer = document.getElementById("featuredContainer");
-        const sideList = document.getElementById("sideList");
+const prevBtn =
+    document.getElementById("prevBtn");
 
-        featuredContainer.innerHTML = "";
-        sideList.innerHTML = "";
+const nextBtn =
+    document.getElementById("nextBtn");
 
-        if (lista.length === 0) return;
+const newsGrid =
+    document.querySelector(".news-grid");
 
-        // Primeira notícia = destaque
-        const destaque = lista[0];
+/* ======================= VARIÁVEIS ======================= */
 
-        featuredContainer.innerHTML = `
-<article class="featured-card">
-    <div class="featured-img-container">
-        <img src="${destaque.imagem}" class="featured-img">
-    </div>
-    <div class="featured-content">
-        <span class="tag">${destaque.categoria}</span>
-        <h3 class="featured-title">${destaque.titulo}</h3>
-        <p class="featured-desc">${destaque.descricao}</p>
-        <div class="meta-info">
-            ${destaque.data}
-        </div>
-        <button onclick="deletarNoticia(${destaque.id})"
-            style="margin-top:10px; background:red; color:white; border:none; padding:6px 10px; border-radius:4px;">
-            EXCLUIR
-        </button>
-    </div>
-</article>
-`;
+let currentSlide = 0;
 
-        lista.slice(1).forEach(noticia => {
-            sideList.innerHTML += `
-    <div class="side-item">
-        <img src="${noticia.imagem}" class="side-img">
-        <div class="side-content">
-            <h4 class="side-title">${noticia.titulo}</h4>
-            <div class="meta-info">${noticia.data}</div>
-            <button onclick="deletarNoticia(${noticia.id})"
-                style="margin-top:5px; background:red; color:white; border:none; padding:4px 8px; border-radius:4px;">
-                EXCLUIR
-            </button>
-        </div>
-    </div>
-`;
-        });
-    }
-
-const API_URL = "http://";
-let noticias = [];
-
-document.addEventListener("DOMContentLoaded", carregarNoticias);
-
-async function carregarNoticias() {
-    try {
-        const response = await fetch(API_URL);
-        noticias = await response.json();
-        renderizarNoticias(noticias);
-    } catch (error) {
-        console.error("Erro ao carregar notícias:", error);
-    }
-}
-========= CARREGAR E RENDERIZAR NOTICIAS =========
-
-========= POST =========
-    async function criarNoticia(novaNoticia) {
-        try {
-            const response = await fetch(API_URL, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(novaNoticia)
-            });
-
-            await carregarNoticias();
-        } catch (error) {
-            console.error("Erro ao criar notícia:", error);
-        }
-    }
-========= POST =========
-
-========= ID =========
-    async function buscarNoticiaPorId(id) {
-        try {
-            const response = await fetch(`${API_URL}/${id}`);
-            const noticia = await response.json();
-            console.log(noticia);
-        } catch (error) {
-            console.error("Erro ao buscar notícia:", error);
-        }
-    }
-========= ID =========
-
-========= PUT =========
-    async function atualizarNoticiaCompleta(id, dadosAtualizados) {
-        try {
-            await fetch(`${API_URL}/${id}`, {
-                method: "PUT",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(dadosAtualizados)
-            });
-
-            await carregarNoticias();
-        } catch (error) {
-            console.error("Erro no PUT:", error);
-        }
-    }
-========= PUT =========
-
-========= PATCH =========
-    async function atualizarNoticiaParcial(id, dadosParciais) {
-        try {
-            await fetch(`${API_URL}/${id}`, {
-                method: "PATCH",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(dadosParciais)
-            });
-
-            await carregarNoticias();
-        } catch (error) {
-            console.error("Erro no PATCH:", error);
-        }
-    }
-========= PATCH =========
-
-========= DELETE =========
-    async function deletarNoticia(id) {
-        try {
-            await fetch(`${API_URL}/${id}`, {
-                method: "DELETE"
-            });
-
-            noticias = noticias.filter(n => n.id !== id);
-            renderizarNoticias(noticias);
-        } catch (error) {
-            console.error("Erro ao deletar notícia:", error);
-        }
-    }
-========= DELETE =========
-
-*/
-/* ======================= FIM JS DA PÁGINA DE INÍCIO [INICIO.HTML] ======================= */
-=======
-
-const themeToggle = document.getElementById('theme-toggle');
-const themeIcon = document.getElementById('theme-icon');
-const body = document.body;
-
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme === 'dark') {
-    body.classList.add('dark-mode');
-    themeIcon.setAttribute('name', 'sunny-outline');
-}
-
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    const isDark = body.classList.contains('dark-mode');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    themeIcon.setAttribute('name', isDark ? 'sunny-outline' : 'moon-outline');
-});
-
-
-/* ======================= CONFIGURAÇÕES DA API ======================= */
-const API_URL = "http://SEU_LINK_AQUI"; // Substitua pela URL da sua API de avisos
 let avisos = [];
-let carouselInterval; 
 
-// Inicia o carregamento ao abrir a página
-document.addEventListener("DOMContentLoaded", carregarAvisos);
+/* ======================= INICIAR ======================= */
+
+document.addEventListener(
+    'DOMContentLoaded',
+    async () => {
+
+        await carregarUsuario();
+
+        await carregarAvisos();
+
+        iniciarCarousel();
+    }
+);
+
+/* ======================= CARREGAR USUÁRIO ======================= */
+
+async function carregarUsuario() {
+
+    try {
+
+        const response = await fetch(
+            `${API_USUARIO}/usuario-logado`,
+            {
+                credentials: "include"
+            }
+        );
+
+        if (!response.ok) return;
+
+        const usuario = await response.json();
+
+        document.querySelector(".nome-usuario")
+            .textContent = usuario.nome;
+
+        document.querySelector(".cargo-usuario")
+            .textContent = usuario.cargo;
+
+        document.querySelector(".avatar")
+            .textContent =
+                usuario.nome.substring(0, 2).toUpperCase();
+
+    } catch (error) {
+
+        console.error(
+            "Erro ao carregar usuário:",
+            error
+        );
+    }
+}
+
+/* ======================= CARREGAR AVISOS ======================= */
 
 async function carregarAvisos() {
+
     try {
-        const response = await fetch(API_URL);
+
+        const response = await fetch(API_AVISOS);
+
         avisos = await response.json();
-        renderizarAvisos(avisos);
+
+        criarCarousel();
+
+        criarGridNoticias();
+
     } catch (error) {
-        console.error("Erro ao carregar avisos:", error);
+
+        console.error(
+            "Erro ao carregar avisos:",
+            error
+        );
     }
 }
 
-/* ======================= RENDERIZAR AVISOS ======================= */
-function renderizarAvisos(lista) {
-    const carouselTrack = document.getElementById("carouselTrack");
-    const carouselNav = document.getElementById("carouselNav");
-    const newsGrid = document.querySelector(".news-grid"); // Pode manter a classe HTML ou renomear depois
+/* ======================= CRIAR CAROUSEL ======================= */
 
-    // Limpa os containers antes de preencher
-    if (carouselTrack) carouselTrack.innerHTML = "";
-    if (carouselNav) carouselNav.innerHTML = "";
-    if (newsGrid) newsGrid.innerHTML = "";
+function criarCarousel() {
 
-    if (lista.length === 0) {
-        if(newsGrid) newsGrid.innerHTML = "<p>Nenhum aviso no momento.</p>";
-        return;
-    }
+    carouselTrack.innerHTML = "";
 
-    // Pega os 3 primeiros avisos para o carrossel (Urgentes/Destaques)
-    const destaques = lista.slice(0, 3);
-    
-    // Pega o resto para o grid inferior (Avisos Gerais)
-    const gerais = lista.slice(3);
+    carouselNav.innerHTML = "";
 
-    // 1. Preenchendo o Carrossel (Avisos Importantes)
-    destaques.forEach((aviso, index) => {
-        // Usa uma imagem padrão caso o aviso não tenha imagem
-        const imagemAviso = aviso.imagem ? aviso.imagem : 'img/aviso-padrao.avif';
-        const setor = aviso.categoria || aviso.setor || 'Aviso Geral';
+    avisos.forEach((aviso, index) => {
 
-        carouselTrack.innerHTML += `
-            <div class="carousel-slide">
-                <img src="${imagemAviso}" alt="Aviso">
-                <div class="carousel-caption">
-                    <span style="background: var(--accent-color, #e63946); color: white; padding: 3px 8px; border-radius: 4px; font-size: 12px; margin-bottom: 8px; display: inline-block; font-weight: bold;">
-                        <ion-icon name="alert-circle-outline" style="vertical-align: middle;"></ion-icon> ${setor}
-                    </span>
-                    <h3>${aviso.titulo}</h3>
-                    <p>${aviso.descricao}</p>
-                    
-                    <button onclick="deletarAviso(${aviso.id})"
-                        style="position: absolute; top: 20px; right: 20px; background: rgba(255,0,0,0.8); color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; z-index: 20;">
-                        <ion-icon name="trash-outline" style="vertical-align: middle;"></ion-icon> Excluir
-                    </button>
-                </div>
+        const slide =
+            document.createElement("div");
+
+        slide.className = "carousel-slide";
+
+        slide.innerHTML = `
+
+            <img
+                src="${aviso.imagem}"
+                alt="${aviso.titulo}"
+            >
+
+            <div class="carousel-caption">
+
+                <h3>
+                    ${aviso.titulo}
+                </h3>
+
+                <p>
+                    ${aviso.descricao}
+                </p>
+
             </div>
         `;
 
-        carouselNav.innerHTML += `
-            <button class="carousel-indicator ${index === 0 ? 'active' : ''}"></button>
-        `;
-    });
+        carouselTrack.appendChild(slide);
 
-    // 2. Preenchendo os avisos gerais abaixo do carrossel
-    gerais.forEach(aviso => {
-        const imagemAviso = aviso.imagem ? aviso.imagem : 'img/aviso-padrao-pequeno.avif';
+        /* ======================= INDICADORES ======================= */
 
-        newsGrid.innerHTML += `
-            <article class="side-item" style="display:flex; background: var(--bg-card, #fff); margin-bottom: 15px; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); align-items: center;">
-                <img src="${imagemAviso}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 6px; margin-right: 15px;">
-                <div class="side-content" style="flex: 1;">
-                    <h4 style="margin: 0 0 5px 0; font-size: 16px;">${aviso.titulo}</h4>
-                    <div style="font-size: 12px; color: gray; margin-bottom: 8px;">Publicado em: ${aviso.data || 'Data indisponível'}</div>
-                </div>
-                <button onclick="deletarAviso(${aviso.id})"
-                    style="background: #ff4d4d; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; display:flex; align-items:center; gap: 5px;">
-                    <ion-icon name="trash-outline"></ion-icon> Excluir
-                </button>
-            </article>
-        `;
-    });
+        const indicator =
+            document.createElement("button");
 
-    // 3. Inicia o carrossel se houver destaques
-    if (destaques.length > 0) {
-        iniciarLogicaDoCarrossel();
-    }
-}
+        indicator.className =
+            "carousel-indicator";
 
-/* ======================= LÓGICA DE FUNCIONAMENTO DO CARROSSEL ======================= */
-function iniciarLogicaDoCarrossel() {
-    const track = document.getElementById('carouselTrack');
-    const slides = Array.from(track.children);
-    const nextButton = document.getElementById('nextBtn');
-    const prevButton = document.getElementById('prevBtn');
-    const navIndicators = Array.from(document.getElementById('carouselNav').children);
+        if (index === 0) {
 
-    if (slides.length <= 1) {
-        // Se só tiver um aviso, esconde os controles
-        if(nextButton) nextButton.style.display = 'none';
-        if(prevButton) prevButton.style.display = 'none';
-        if(document.getElementById('carouselNav')) document.getElementById('carouselNav').style.display = 'none';
-        return;
-    }
-
-    let currentIndex = 0;
-
-    function updateCarousel(index) {
-        track.style.transform = `translateX(-${index * 100}%)`;
-        
-        navIndicators.forEach((indicator, i) => {
-            if (i === index) {
-                indicator.classList.add('active');
-            } else {
-                indicator.classList.remove('active');
-            }
-        });
-        currentIndex = index;
-    }
-
-    nextButton.replaceWith(nextButton.cloneNode(true));
-    prevButton.replaceWith(prevButton.cloneNode(true));
-    
-    const newNextBtn = document.getElementById('nextBtn');
-    const newPrevBtn = document.getElementById('prevBtn');
-
-    newNextBtn.addEventListener('click', () => {
-        let index = currentIndex + 1;
-        if (index >= slides.length) index = 0;
-        updateCarousel(index);
-    });
-
-    newPrevBtn.addEventListener('click', () => {
-        let index = currentIndex - 1;
-        if (index < 0) index = slides.length - 1;
-        updateCarousel(index);
-    });
-
-    navIndicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => updateCarousel(index));
-    });
-
-    clearInterval(carouselInterval);
-    carouselInterval = setInterval(() => {
-        let index = currentIndex + 1;
-        if (index >= slides.length) index = 0;
-        updateCarousel(index);
-    }, 6000); // 6 segundos para dar tempo de ler o aviso
-}
-
-/* ======================= REQUISIÇÕES CRUD DA API ======================= */
-async function criarAviso(novoAviso) {
-    try {
-        await fetch(API_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(novoAviso)
-        });
-        await carregarAvisos();
-    } catch (error) {
-        console.error("Erro ao criar aviso:", error);
-    }
-}
-
-async function deletarAviso(id) {
-    if (confirm("Tem certeza que deseja excluir este aviso?")) {
-        try {
-            await fetch(`${API_URL}/${id}`, { method: "DELETE" });
-            await carregarAvisos(); 
-        } catch (error) {
-            console.error("Erro ao deletar aviso:", error);
+            indicator.classList.add("active");
         }
-    }
+
+        indicator.addEventListener(
+            "click",
+            () => {
+
+                irParaSlide(index);
+            }
+        );
+
+        carouselNav.appendChild(indicator);
+    });
 }
 
-async function atualizarAviso(id, dadosAtualizados) {
-    try {
-        await fetch(`${API_URL}/${id}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(dadosAtualizados)
-        });
-        await carregarAvisos();
-    } catch (error) {
-        console.error("Erro no PUT:", error);
-    }
+/* ======================= GRID DE NOTÍCIAS ======================= */
+
+function criarGridNoticias() {
+
+    newsGrid.innerHTML = "";
+
+    avisos.forEach(aviso => {
+
+        const card =
+            document.createElement("div");
+
+        card.className = "news-card";
+
+        card.innerHTML = `
+
+            <img
+                src="${aviso.imagem}"
+                alt="${aviso.titulo}"
+                class="news-image"
+            >
+
+            <div class="news-content">
+
+                <h3>
+                    ${aviso.titulo}
+                </h3>
+
+                <p>
+                    ${aviso.descricao}
+                </p>
+
+                <span class="news-date">
+
+                    <ion-icon
+                        name="calendar-outline">
+                    </ion-icon>
+
+                    ${formatarData(
+                        aviso.data_Publicacao
+                    )}
+
+                </span>
+
+            </div>
+        `;
+
+        newsGrid.appendChild(card);
+    });
 }
->>>>>>> fce3fb7a4463832710ae8f40dff8fd73fd4b5d91
+
+/* ======================= FORMATAR DATA ======================= */
+
+function formatarData(data) {
+
+    const novaData = new Date(data);
+
+    return novaData.toLocaleDateString(
+        'pt-BR'
+    );
+}
+
+/* ======================= CAROUSEL ======================= */
+
+function atualizarCarousel() {
+
+    carouselTrack.style.transform =
+        `translateX(-${currentSlide * 100}%)`;
+
+    const indicators =
+        document.querySelectorAll(
+            ".carousel-indicator"
+        );
+
+    indicators.forEach((indicator, index) => {
+
+        indicator.classList.toggle(
+            "active",
+            index === currentSlide
+        );
+    });
+}
+
+function irParaSlide(index) {
+
+    currentSlide = index;
+
+    atualizarCarousel();
+}
+
+function proximoSlide() {
+
+    currentSlide++;
+
+    if (currentSlide >= avisos.length) {
+
+        currentSlide = 0;
+    }
+
+    atualizarCarousel();
+}
+
+function slideAnterior() {
+
+    currentSlide--;
+
+    if (currentSlide < 0) {
+
+        currentSlide = avisos.length - 1;
+    }
+
+    atualizarCarousel();
+}
+
+/* ======================= BOTÕES ======================= */
+
+nextBtn.addEventListener(
+    "click",
+    proximoSlide
+);
+
+prevBtn.addEventListener(
+    "click",
+    slideAnterior
+);
+
+/* ======================= AUTO PLAY ======================= */
+
+function iniciarCarousel() {
+
+    setInterval(() => {
+
+        if (avisos.length > 0) {
+
+            proximoSlide();
+        }
+
+    }, 5000);
+}
+
+/* ======================= DATA ATUAL ======================= */
+
+const dataAtual =
+    document.querySelector(".current-date");
+
+const hoje = new Date();
+
+dataAtual.textContent =
+    hoje.toLocaleDateString(
+        'pt-BR',
+        {
+            weekday: 'long',
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric'
+        }
+    );
+
+/* ======================= FIM JS DA PÁGINA DE INÍCIO ======================= */
