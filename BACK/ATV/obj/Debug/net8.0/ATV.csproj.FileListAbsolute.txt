@@ -1,0 +1,432 @@
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\appsettings.Development.json
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\appsettings.json
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\ATV.exe
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\ATV.deps.json
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\ATV.runtimeconfig.json
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\ATV.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\ATV.pdb
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Azure.Core.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Azure.Identity.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Humanizer.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.OpenApi.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Mono.TextTemplating.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\System.ClientModel.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\System.CodeDom.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Composition.Convention.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Composition.Hosting.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Composition.Runtime.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Composition.TypedParts.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Drawing.Common.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Formats.Asn1.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Memory.Data.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Runtime.Caching.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Security.Permissions.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Windows.Extensions.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+E:\VS\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+E:\VS\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.csproj.AssemblyReference.cache
+E:\VS\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.GeneratedMSBuildEditorConfig.editorconfig
+E:\VS\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.AssemblyInfoInputs.cache
+E:\VS\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.AssemblyInfo.cs
+E:\VS\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.csproj.CoreCompileInputs.cache
+E:\VS\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.MvcApplicationPartsAssemblyInfo.cs
+E:\VS\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.MvcApplicationPartsAssemblyInfo.cache
+E:\VS\ATbackend\ATV\ATV\obj\Debug\net8.0\staticwebassets.build.json
+E:\VS\ATbackend\ATV\ATV\obj\Debug\net8.0\staticwebassets.development.json
+E:\VS\ATbackend\ATV\ATV\obj\Debug\net8.0\staticwebassets\msbuild.ATV.Microsoft.AspNetCore.StaticWebAssets.props
+E:\VS\ATbackend\ATV\ATV\obj\Debug\net8.0\staticwebassets\msbuild.build.ATV.props
+E:\VS\ATbackend\ATV\ATV\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.ATV.props
+E:\VS\ATbackend\ATV\ATV\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.ATV.props
+E:\VS\ATbackend\ATV\ATV\obj\Debug\net8.0\staticwebassets.pack.json
+E:\VS\ATbackend\ATV\ATV\obj\Debug\net8.0\scopedcss\bundle\ATV.styles.css
+E:\VS\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.csproj.Up2Date
+E:\VS\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.dll
+E:\VS\ATbackend\ATV\ATV\obj\Debug\net8.0\refint\ATV.dll
+E:\VS\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.pdb
+E:\VS\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.genruntimeconfig.cache
+E:\VS\ATbackend\ATV\ATV\obj\Debug\net8.0\ref\ATV.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\appsettings.Development.json
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\appsettings.json
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\ATV.exe
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\ATV.deps.json
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\ATV.runtimeconfig.json
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\ATV.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\ATV.pdb
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Azure.Core.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Azure.Identity.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Humanizer.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.OpenApi.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Mono.TextTemplating.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\System.ClientModel.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\System.CodeDom.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Composition.Convention.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Composition.Hosting.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Composition.Runtime.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Composition.TypedParts.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Drawing.Common.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Formats.Asn1.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Memory.Data.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Runtime.Caching.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Security.Permissions.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Windows.Extensions.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.csproj.AssemblyReference.cache
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.GeneratedMSBuildEditorConfig.editorconfig
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.AssemblyInfoInputs.cache
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.AssemblyInfo.cs
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.csproj.CoreCompileInputs.cache
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.MvcApplicationPartsAssemblyInfo.cs
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.MvcApplicationPartsAssemblyInfo.cache
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\obj\Debug\net8.0\staticwebassets.build.json
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\obj\Debug\net8.0\staticwebassets.development.json
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\obj\Debug\net8.0\staticwebassets\msbuild.ATV.Microsoft.AspNetCore.StaticWebAssets.props
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\obj\Debug\net8.0\staticwebassets\msbuild.build.ATV.props
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.ATV.props
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.ATV.props
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\obj\Debug\net8.0\staticwebassets.pack.json
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\obj\Debug\net8.0\scopedcss\bundle\ATV.styles.css
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.csproj.Up2Date
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\obj\Debug\net8.0\refint\ATV.dll
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.pdb
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.genruntimeconfig.cache
+E:\VS\ATbackend (3)\ATbackend\ATV\ATV\obj\Debug\net8.0\ref\ATV.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\appsettings.Development.json
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\appsettings.json
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\ATV.exe
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\ATV.deps.json
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\ATV.runtimeconfig.json
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\ATV.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\ATV.pdb
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Azure.Core.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Azure.Identity.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Humanizer.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.OpenApi.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Mono.TextTemplating.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\System.ClientModel.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\System.CodeDom.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Composition.Convention.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Composition.Hosting.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Composition.Runtime.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Composition.TypedParts.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Drawing.Common.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Formats.Asn1.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Memory.Data.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Runtime.Caching.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Security.Permissions.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\System.Windows.Extensions.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.csproj.AssemblyReference.cache
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.GeneratedMSBuildEditorConfig.editorconfig
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.AssemblyInfoInputs.cache
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.AssemblyInfo.cs
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.csproj.CoreCompileInputs.cache
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.MvcApplicationPartsAssemblyInfo.cs
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.MvcApplicationPartsAssemblyInfo.cache
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\obj\Debug\net8.0\staticwebassets.build.json
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\obj\Debug\net8.0\staticwebassets.development.json
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\obj\Debug\net8.0\staticwebassets\msbuild.ATV.Microsoft.AspNetCore.StaticWebAssets.props
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\obj\Debug\net8.0\staticwebassets\msbuild.build.ATV.props
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.ATV.props
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.ATV.props
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\obj\Debug\net8.0\staticwebassets.pack.json
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\obj\Debug\net8.0\scopedcss\bundle\ATV.styles.css
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.csproj.Up2Date
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\obj\Debug\net8.0\refint\ATV.dll
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.pdb
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\obj\Debug\net8.0\ATV.genruntimeconfig.cache
+E:\VS\ATbackend Finalizada\ATbackend\ATV\ATV\obj\Debug\net8.0\ref\ATV.dll

@@ -19,12 +19,6 @@
                 <a href="inicio.html" class="nav-item">
                     <ion-icon name="home-outline"></ion-icon> <span>Início</span>
                 </a>
-                <a href="cursos.html" class="nav-item">
-                    <ion-icon name="school-outline"></ion-icon> <span>Cursos</span>
-                </a>
-                <a href="validaçãocert.html" class="item-navegacao">
-                    <ion-icon name="megaphone-outline"></ion-icon> <span>Validação de Certificado</span>
-                </a>
             </nav>
         </div>
 
@@ -64,11 +58,6 @@
                 <div class="notificacao-badge">4</div>
             </a>
 
-            <a href="calendario.html" class="server-icon" title="Calendário de Eventos"
-                style="display:flex; text-decoration:none;">
-                <ion-icon name="calendar-outline"></ion-icon>
-            </a>
-
             <a href="avisos.html" class="server-icon" title="Avisos">
                 <ion-icon name="megaphone-outline"></ion-icon>
             </a>
@@ -77,71 +66,59 @@
         <!-- === ÁREA DE CONTEÚDO === -->
         <main class="content-scroll-area">
             <div class="news-container">
-
+                <!-- === TÍTULO CATEGORIA E DATA === -->
                 <div class="page-title-area">
-                    <h2 class="page-title">Destaques & Notícias</h2>
+                    <h2 class="page-title">QUADRO DE AVISOS</h2>
                     <span class="current-date">Segunda-feira, 09 de Fevereiro de 2026</span>
                 </div>
+               
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carouselTrack">
 
-                <div class="news-grid">
-                    <!-- === Notícia Principal  === -->
-                    <article class="featured-card">
-                        <div class="featured-img-container">
-                            <img src="img/industrial.avif" class="featured-img" alt="Indústria">
-                        </div>
-                        <div class="featured-content">
-                            <h3 class="featured-title">Juros punitivos e baixa demanda seguraram crescimento da
-                                indústria em 2025</h3>
-                            <p class="featured-desc">Análise detalhada sobre o impacto econômico no setor industrial de
-                                Sergipe e as expectativas para o próximo semestre, com dados exclusivos da CNI.</p>
-                            <div class="meta-info">
-                                <ion-icon name="time-outline"></ion-icon> 06/02/2026 às 09:00
+                        <!-- === DESCRIÇÃO DO AVISO === -->
+                        <div class="carousel-slide">
+                            <img src="img/industrial.avif" alt="Indústria">
+                            <div class="carousel-caption">
+                                <h3>Juros punitivos e baixa demanda seguraram crescimento da indústria em 2025</h3>
+                                <p>Análise detalhada sobre o impacto econômico no setor industrial de Sergipe e as expectativas para o próximo semestre, com dados exclusivos da CNI.</p>
                             </div>
                         </div>
-                    </article>
-
-                    <!-- === LISTA DE NOTÍCIAS === -->                   
-                    <div class="side-list">
-                        <div class="side-item">
-                            <img src="img/curso1.webp" class="side-img" alt="Construção">
-                            <div class="side-content">
-                                <h4 class="side-title">Programador Full-Stack <br>Duração: 670h<br>Presencial</h4>
-                                <div class="meta-info">05/02/2026</div>
+        
+                        <div class="carousel-slide">
+                            <img src="img/industrial.avif" alt="Tecnologia"> <div class="carousel-caption">
+                                <h3>Novos investimentos em automação para o setor em 2026</h3>
+                                <p>Confira o plano estratégico de modernização tecnológica das fábricas locais.</p>
                             </div>
                         </div>
-
-                        <div class="side-item">
-                            <img src="img/curso2.jpg" class="side-img" alt="Tributos">
-                            <div class="side-content">
-                                <h4 class="side-title">Programador Front-End<br>Duração: 348h<br>Presencial</h4>
-                                <div class="meta-info">15/02/2026</div>
+        
+                        <div class="carousel-slide">
+                            <img src="img/industrial.avif" alt="Parcerias"> <div class="carousel-caption">
+                                <h3>Parcerias internacionais abrem portas para novos mercados</h3>
+                                <p>Acordos firmados prometem alavancar a exportação de insumos do estado.</p>
                             </div>
                         </div>
-
-                        <div class="side-item">
-                            <img src="img/curso3.webp" class="side-img" alt="Economia Global">
-                            <div class="side-content">
-                                <h4 class="side-title">Introdução a IoT para Manutenção Industrial<br>Duração:
-                                    40h<br>Presencial</h4>
-                                <div class="meta-info">21/02/2026</div>
-                            </div>
-                        </div>
-
-                        <div class="side-item">
-                            <img src="img/curso4.png" class="side-img" alt="Produção">
-                            <div class="side-content">
-                                <h4 class="side-title">Inspetor de Qualidade<br>Duração: 160h<br>Presencial</h4>
-                                <div class="meta-info">01/03/2026</div>
-                            </div>
-                        </div>
+        
+                    </div>
+        
+                    <button class="carousel-btn btn-prev" id="prevBtn">
+                        <ion-icon name="chevron-back-outline"></ion-icon>
+                    </button>
+                    <button class="carousel-btn btn-next" id="nextBtn">
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+                    </button>
+        
+                    <div class="carousel-nav" id="carouselNav">
+                        <button class="carousel-indicator active"></button>
+                        <button class="carousel-indicator"></button>
+                        <button class="carousel-indicator"></button>
                     </div>
                 </div>
-
-                <div class="actions-row">
-                    <button class="btn-primary">VER TODAS AS NOTÍCIAS</button>
-                </div>
+                <div class="news-grid">
+                    </div>
+        
             </div>
         </main>
+          <!-- === FIM ÁREA DE CONTEÚDO === -->
     </div>
 <script src="js/inicio.js"></script>
 
