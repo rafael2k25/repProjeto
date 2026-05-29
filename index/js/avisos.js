@@ -1,6 +1,6 @@
 /* ======================= API ======================= */
 
-const API = "https://localhost:5140/Aviso";
+const API = "http://localhost:5140/Aviso";
 
 /* ======================= NOTIFICAÇÃO ======================= */
 

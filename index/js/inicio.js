@@ -2,8 +2,8 @@
 
 /* ======================= API ======================= */
 
-const API_AVISOS = "https://localhost:5140/Aviso";
-const API_USUARIO = "https://localhost:5140/Usuario";
+const API_AVISOS = "http://localhost:5140/Aviso";
+const API_USUARIO = "http://localhost:5140/Usuario";
 
 /* ======================= TEMA ESCURO ======================= */
 
@@ -42,23 +42,6 @@ themeToggle.addEventListener('click', () => {
     );
 });
 
-/* ======================= ELEMENTOS ======================= */
-
-const carouselTrack =
-    document.getElementById("carouselTrack");
-
-const carouselNav =
-    document.getElementById("carouselNav");
-
-const prevBtn =
-    document.getElementById("prevBtn");
-
-const nextBtn =
-    document.getElementById("nextBtn");
-
-const newsGrid =
-    document.querySelector(".news-grid");
-
 /* ======================= VARIÁVEIS ======================= */
 
 let currentSlide = 0;
@@ -75,7 +58,7 @@ document.addEventListener(
 
         await carregarAvisos();
 
-        iniciarCarousel();
+       
     }
 );
 
@@ -125,7 +108,7 @@ async function carregarAvisos() {
 
         avisos = await response.json();
 
-        criarCarousel();
+       
 
         criarGridNoticias();
 
@@ -136,68 +119,6 @@ async function carregarAvisos() {
             error
         );
     }
-}
-
-/* ======================= CRIAR CAROUSEL ======================= */
-
-function criarCarousel() {
-
-    carouselTrack.innerHTML = "";
-
-    carouselNav.innerHTML = "";
-
-    avisos.forEach((aviso, index) => {
-
-        const slide =
-            document.createElement("div");
-
-        slide.className = "carousel-slide";
-
-        slide.innerHTML = `
-
-            <img
-                src="${aviso.imagem}"
-                alt="${aviso.titulo}"
-            >
-
-            <div class="carousel-caption">
-
-                <h3>
-                    ${aviso.titulo}
-                </h3>
-
-                <p>
-                    ${aviso.descricao}
-                </p>
-
-            </div>
-        `;
-
-        carouselTrack.appendChild(slide);
-
-        /* ======================= INDICADORES ======================= */
-
-        const indicator =
-            document.createElement("button");
-
-        indicator.className =
-            "carousel-indicator";
-
-        if (index === 0) {
-
-            indicator.classList.add("active");
-        }
-
-        indicator.addEventListener(
-            "click",
-            () => {
-
-                irParaSlide(index);
-            }
-        );
-
-        carouselNav.appendChild(indicator);
-    });
 }
 
 /* ======================= GRID DE NOTÍCIAS ======================= */
@@ -211,37 +132,43 @@ function criarGridNoticias() {
         const card =
             document.createElement("div");
 
-        card.className = "news-card";
+        card.className = "side-item";
 
         card.innerHTML = `
 
             <img
                 src="${aviso.imagem}"
                 alt="${aviso.titulo}"
-                class="news-image"
+                class="side-img"
             >
 
-            <div class="news-content">
+            <div class="side-content">
 
-                <h3>
-                    ${aviso.titulo}
-                </h3>
+                <div>
 
-                <p>
-                    ${aviso.descricao}
-                </p>
+                    <h3 class="side-title">
+                        ${aviso.titulo}
+                    </h3>
 
-                <span class="news-date">
+                    <p class="side-description">
+                        ${aviso.descricao}
+                    </p>
+
+                </div>
+
+                <div class="side-date">
 
                     <ion-icon
                         name="calendar-outline">
                     </ion-icon>
 
-                    ${formatarData(
-                        aviso.data_Publicacao
-                    )}
+                    <span>
+                        ${formatarData(
+                            aviso.data_Publicacao
+                        )}
+                    </span>
 
-                </span>
+                </div>
 
             </div>
         `;
@@ -259,84 +186,6 @@ function formatarData(data) {
     return novaData.toLocaleDateString(
         'pt-BR'
     );
-}
-
-/* ======================= CAROUSEL ======================= */
-
-function atualizarCarousel() {
-
-    carouselTrack.style.transform =
-        `translateX(-${currentSlide * 100}%)`;
-
-    const indicators =
-        document.querySelectorAll(
-            ".carousel-indicator"
-        );
-
-    indicators.forEach((indicator, index) => {
-
-        indicator.classList.toggle(
-            "active",
-            index === currentSlide
-        );
-    });
-}
-
-function irParaSlide(index) {
-
-    currentSlide = index;
-
-    atualizarCarousel();
-}
-
-function proximoSlide() {
-
-    currentSlide++;
-
-    if (currentSlide >= avisos.length) {
-
-        currentSlide = 0;
-    }
-
-    atualizarCarousel();
-}
-
-function slideAnterior() {
-
-    currentSlide--;
-
-    if (currentSlide < 0) {
-
-        currentSlide = avisos.length - 1;
-    }
-
-    atualizarCarousel();
-}
-
-/* ======================= BOTÕES ======================= */
-
-nextBtn.addEventListener(
-    "click",
-    proximoSlide
-);
-
-prevBtn.addEventListener(
-    "click",
-    slideAnterior
-);
-
-/* ======================= AUTO PLAY ======================= */
-
-function iniciarCarousel() {
-
-    setInterval(() => {
-
-        if (avisos.length > 0) {
-
-            proximoSlide();
-        }
-
-    }, 5000);
 }
 
 /* ======================= DATA ATUAL ======================= */

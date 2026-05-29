@@ -2,8 +2,8 @@
 
 /* ======================= API ======================= */
 
-const API_CANAIS = "https://localhost:5140/Canal";
-const API_MENSAGENS = "https://localhost:5140/Mensagem";
+const API_CANAIS = "http://localhost:5140/Canal";
+const API_MENSAGENS = "http://localhost:5140/Mensagem";
 
 /* ======================= ELEMENTOS ======================= */
 

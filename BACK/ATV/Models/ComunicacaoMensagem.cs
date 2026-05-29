@@ -1,7 +1,11 @@
-﻿namespace ATV.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+namespace ATV.Models
 {
+    [Table("Comunicacao_Mensagem")]
     public class ComunicacaoMensagem
     {
+        [Key]
         public int Id_Mensagem { get; set; }
 
         public string Texto { get; set; }

@@ -1,7 +1,7 @@
 /* ======================= INÍCIO JS DA PÁGINA DE PERFIL [PERFIL.HTML] ======================= */
 
 // === BASE DA API ===
-const API_URL = "https://localhost:7030/Usuario";
+const API_URL = "http://localhost:5140/Usuario";
 
 // === NOTIFICAÇÃO ===
 function showToast(message, type = 'sucesso') {

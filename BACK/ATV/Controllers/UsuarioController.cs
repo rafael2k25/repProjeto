@@ -71,7 +71,7 @@ namespace ATV.Controllers
         }
 
         [HttpPost("login")]
-        public IActionResult Login(Usuario login)
+        public IActionResult Login(LoginC login)
         {
             var usuario = _context.Usuarios
                 .FirstOrDefault(u =>
@@ -83,17 +83,21 @@ namespace ATV.Controllers
                 return Unauthorized("Email ou senha inválidos");
             }
 
-            HttpContext.Session.SetString("IdLogado", usuario.Id_Usuario.ToString());
+            HttpContext.Session.SetString(
+                "IdLogado",
+                usuario.Id_Usuario.ToString()
+            );
 
-            Response.Cookies.Append("IdLogado", usuario.Id_Usuario.ToString(),
-
-            new CookieOptions
-               {
-                HttpOnly = true,
-                IsEssential = true,
-                SameSite = SameSiteMode.None,
-                Secure = false
-               }
+            Response.Cookies.Append(
+                "IdLogado",
+                usuario.Id_Usuario.ToString(),
+                new CookieOptions
+                {
+                    HttpOnly = true,
+                    IsEssential = true,
+                    SameSite = SameSiteMode.None,
+                    Secure = false
+                }
             );
 
             return Ok(new

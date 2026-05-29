@@ -1,7 +1,7 @@
 /* ======================= INÍCIO JS DA PÁGINA DE MANUTENÇÃO [MANUTENCAO.HTML] ======================= */
 
 // === BASE DA API ===
-const API_URL = "https://localhost:5140/Mensagem";
+const API_URL = "http://localhost:5140/Mensagem";
 const CANAL_ID = 1;
 
 // === ELEMENTOS ===

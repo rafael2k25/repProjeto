@@ -1,0 +1,50 @@
+CREATE DATABASE BancoIFTT;
+go
+
+use BancoIFTT;
+go
+
+CREATE TABLE Aviso (
+    id_aviso int identity PRIMARY KEY,
+    titulo varchar(150),
+    descricao varchar(1000),
+    imagem varchar(255),
+    data_publicacao DATE,
+    fk_Usuario_id_usuario int
+);
+
+CREATE TABLE Usuario (
+    id_usuario int  identity  PRIMARY KEY,
+    nome varchar(100),
+    cargo varchar(50),
+    avatar varchar(255),
+    email varchar(100),
+    senha varchar(100),
+    tema_pag varchar(20)
+);
+
+CREATE TABLE Canal (
+    nome_canal varchar(50),
+    id_canal int  identity  PRIMARY KEY
+);
+
+CREATE TABLE Comunicacao_Mensagem (
+    texto varchar(100),
+    id_mensagem int  identity PRIMARY KEY,
+    id_hora DATE,
+    fk_Usuario_id_usuario int,
+    fk_Canal_id_canal int
+);
+ 
+ALTER TABLE Aviso ADD CONSTRAINT FK_Aviso_2
+    FOREIGN KEY (fk_Usuario_id_usuario)
+    REFERENCES Usuario (id_usuario)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE Comunicacao_Mensagem ADD CONSTRAINT FK_Comunicacao_Mensagem_2
+    FOREIGN KEY (fk_Usuario_id_usuario)
+    REFERENCES Usuario (id_usuario);
+ 
+ALTER TABLE Comunicacao_Mensagem ADD CONSTRAINT FK_Comunicacao_Mensagem_3
+    FOREIGN KEY (fk_Canal_id_canal)
+    REFERENCES Canal (id_canal);

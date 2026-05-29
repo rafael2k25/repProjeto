@@ -2,7 +2,7 @@
 
 /* ======================= API ======================= */
 
-const API_USUARIO = "https://localhost:5140/Usuario";
+const API_USUARIO = "http://localhost:5140/Usuario";
 
 /* ======================= VARIÁVEIS ======================= */
 
@@ -158,7 +158,7 @@ formularioLogin.addEventListener(
                 }
             );
 
-            const dados = await response.json();
+            const dados = await response.text();
 
             if (response.ok) {
 

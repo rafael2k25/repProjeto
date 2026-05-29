@@ -300,163 +300,6 @@ body {
     font-size: 14px;
 }
 
-/* ======================= NOVO CARROSSEL DE AVISOS CRÍTICOS ======================= */
-.carousel-container {
-    position: relative;
-    width: 100%;
-    border-radius: 16px;
-    overflow: hidden;
-    margin-bottom: 35px;
-
-    /* visual de painel */
-    background: linear-gradient(145deg, #f8fafc, #eef2f7);
-    border: 3px solid var(--texto-destaque);
-
-    /* profundidade */
-    box-shadow:
-        0 10px 25px rgba(0, 0, 0, 0.12),
-        inset 0 0 0 2px rgba(255, 255, 255, 0.4);
-
-    padding: 12px;
-}
-
-.carousel-container::before {
-    position: absolute;
-    top: 12px;
-    left: 15px;
-    z-index: 20;
-
-    background: var(--alerta-urgente);
-    color: white;
-
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 1px;
-
-    padding: 6px 14px;
-    border-radius: 30px;
-
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-}
-
-.carousel-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-.carousel-slide {
-    min-width: 100%;
-    display: flex;
-    flex-direction: column;
-    background: white;
-    position: relative;
-}
-
-.carousel-slide img {
-    width: 100%;
-    height: 420px;
-    object-fit: cover;
-    border-bottom: 1px solid #ddd;
-    filter: none;
-}
-
-.carousel-caption {
-    position: relative;
-    background: white;
-    color: #1e293b;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
-
-.carousel-caption h3 {
-    font-size: 22px;
-    font-weight: 800;
-
-    color: #132b5c;
-
-    line-height: 1.4;
-
-    border-left: 6px solid #ef4444;
-    padding-left: 14px;
-
-    text-transform: uppercase;
-}
-
-.carousel-caption p {
-    font-size: 16px;
-    color: #475569;
-
-    line-height: 1.7;
-
-    margin-left: 20px;
-}
-
-/* Botões de Navegação (Setas) */
-.carousel-btn {
-    position: absolute;
-    top: 32%;
-    transform: translateY(-50%);
-    width: 46px;
-    height: 46px;
-    border: none;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(6px);
-    color: white;
-    font-size: 22px;
-    cursor: pointer;
-    transition: 0.25s;
-    z-index: 10;
-}
-
-.carousel-btn:hover {
-    background: var(--alerta-urgente);
-    transform: translateY(-50%) scale(1.08);
-}
-
-.btn-prev {
-    left: 15px;
-}
-
-.btn-next {
-    right: 15px;
-}
-
-/* Indicadores de Posição */
-.carousel-nav {
-    position: absolute;
-    bottom: 16px;
-    left: 50%;
-    transform: translateX(-50%);
-
-    display: flex;
-    gap: 10px;
-    z-index: 10;
-}
-
-.carousel-indicator {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    border: none;
-
-    background: rgba(255, 255, 255, 0.4);
-    transition: 0.3s;
-}
-
-.carousel-indicator.active {
-    width: 26px;
-    border-radius: 20px;
-    background: var(--alerta-urgente);
-
-    box-shadow: 0 0 10px rgba(230, 57, 70, 0.5);
-}
-
 /* ======================= GRID DE AVISOS GERAIS ======================= */
 .news-grid {
     display: grid;
@@ -587,6 +430,106 @@ body {
     text-decoration: none;
     color: inherit;
     display: block;
+}
+
+/* ======================= AVISOS DESTAQUE ======================= */
+
+.avisos-destaque {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    margin-bottom: 35px;
+}
+
+.aviso-importante {
+    background: var(--bg-card);
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    border-left: 6px solid var(--texto-destaque);
+
+    box-shadow:
+        0 6px 18px rgba(0,0,0,0.08);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.aviso-importante:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 24px rgba(0,0,0,0.12);
+}
+
+.aviso-importante.urgente {
+    border-left-color: var(--alerta-urgente);
+}
+
+.tag-aviso {
+    width: fit-content;
+
+    background: var(--alerta-urgente);
+
+    color: white;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    padding: 6px 12px;
+
+    border-radius: 30px;
+
+    margin-bottom: 18px;
+}
+
+.tag-aviso.azul {
+    background: var(--texto-destaque);
+}
+
+.aviso-importante h3 {
+    font-size: 24px;
+
+    margin-bottom: 12px;
+
+    color: var(--texto-primario);
+
+    line-height: 1.3;
+}
+
+.aviso-importante p {
+    color: var(--texto-secundario);
+
+    line-height: 1.7;
+
+    font-size: 15px;
+
+    margin-bottom: 20px;
+}
+
+.aviso-info {
+    display: flex;
+    gap: 20px;
+
+    flex-wrap: wrap;
+}
+
+.aviso-info span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    font-size: 13px;
+
+    color: var(--texto-destaque);
+
+    font-weight: 600;
 }
 
 /* === RESPONSIVIDADE ADAPTADA PARA O CORESSEL/MURAL === */

@@ -1,8 +1,8 @@
 [
   {
-    "ContainingType": "ATV.Controllers.ClienteController",
-    "Method": "SolicitaTodasPessoas",
-    "RelativePath": "Cliente",
+    "ContainingType": "ATV.Controllers.AvisoController",
+    "Method": "ListarAvisos",
+    "RelativePath": "Aviso",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -10,25 +10,25 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "ATV.Controllers.ClienteController",
-    "Method": "ConsultaPessoasID",
-    "RelativePath": "Cliente/{id}",
-    "HttpMethod": "GET",
+    "ContainingType": "ATV.Controllers.AvisoController",
+    "Method": "CriarAviso",
+    "RelativePath": "Aviso",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
-        "Type": "System.Int32",
+        "Name": "aviso",
+        "Type": "ATV.Models.Aviso",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "ATV.Controllers.ClienteController",
-    "Method": "AtualizaPessoas",
-    "RelativePath": "Cliente/atualizar/{id}",
+    "ContainingType": "ATV.Controllers.AvisoController",
+    "Method": "AtualizarAviso",
+    "RelativePath": "Aviso/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -39,33 +39,17 @@
         "IsRequired": true
       },
       {
-        "Name": "pessoa",
-        "Type": "ATV.Models.Cliente",
+        "Name": "aviso",
+        "Type": "ATV.Models.Aviso",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "ATV.Controllers.ClienteController",
-    "Method": "CadastraPessoas",
-    "RelativePath": "Cliente/cadastrar",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "pessoa",
-        "Type": "ATV.Models.Cliente",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ATV.Controllers.ClienteController",
-    "Method": "DeletePessoas",
-    "RelativePath": "Cliente/deletar/{id}",
+    "ContainingType": "ATV.Controllers.AvisoController",
+    "Method": "DeletarAviso",
+    "RelativePath": "Aviso/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -79,9 +63,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "ATV.Controllers.ClienteController",
-    "Method": "Inicio",
-    "RelativePath": "Cliente/Inicio",
+    "ContainingType": "ATV.Controllers.CanalController",
+    "Method": "ListarCanais",
+    "RelativePath": "Canal",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -89,134 +73,166 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "ATV.Controllers.ClienteController",
-    "Method": "LerCookie",
-    "RelativePath": "Cliente/ler-cookie",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ATV.Controllers.ClienteController",
-    "Method": "login",
-    "RelativePath": "Cliente/login",
+    "ContainingType": "ATV.Controllers.CanalController",
+    "Method": "CriarCanal",
+    "RelativePath": "Canal",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "cliente",
-        "Type": "ATV.Models.Cliente",
+        "Name": "canal",
+        "Type": "ATV.Models.Canal",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "ATV.Controllers.ClienteController",
+    "ContainingType": "ATV.Controllers.CanalController",
+    "Method": "BuscarCanal",
+    "RelativePath": "Canal/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ATV.Controllers.CanalController",
+    "Method": "AtualizarCanal",
+    "RelativePath": "Canal/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "canal",
+        "Type": "ATV.Models.Canal",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ATV.Controllers.CanalController",
+    "Method": "DeletarCanal",
+    "RelativePath": "Canal/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ATV.Controllers.CanalController",
+    "Method": "ListarMensagensCanal",
+    "RelativePath": "Canal/{id}/mensagens",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ATV.Controllers.MensagemController",
+    "Method": "ListarMensagens",
+    "RelativePath": "Mensagem",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ATV.Controllers.MensagemController",
+    "Method": "EnviarMensagem",
+    "RelativePath": "Mensagem",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "mensagem",
+        "Type": "ATV.Models.ComunicacaoMensagem",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ATV.Controllers.UsuarioController",
+    "Method": "Cadastro",
+    "RelativePath": "Usuario/cadastro",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "novoUsuario",
+        "Type": "ATV.Models.Usuario",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ATV.Controllers.UsuarioController",
+    "Method": "Login",
+    "RelativePath": "Usuario/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "login",
+        "Type": "ATV.Models.LoginC",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ATV.Controllers.UsuarioController",
     "Method": "Logout",
-    "RelativePath": "Cliente/logout",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ATV.Controllers.ClienteController",
-    "Method": "ConsultaPessoasNome",
-    "RelativePath": "Cliente/nome/{nome}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "nome",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ATV.Controllers.TarefaController",
-    "Method": "TarefasUsuario",
-    "RelativePath": "Tarefa",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ATV.Controllers.TarefaController",
-    "Method": "BuscarTarefa",
-    "RelativePath": "Tarefa/{IdTarefa}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "IdTarefa",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ATV.Controllers.TarefaController",
-    "Method": "AtualizarTarefa",
-    "RelativePath": "Tarefa/atualizarTarefa/{IdTarefa}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "IdTarefa",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "tarefa",
-        "Type": "ATV.Models.Tarefa",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ATV.Controllers.TarefaController",
-    "Method": "CadastrarTarefa",
-    "RelativePath": "Tarefa/cadastrarTarefa",
+    "RelativePath": "Usuario/logout",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "tarefa",
-        "Type": "ATV.Models.Tarefa",
-        "IsRequired": true
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "ATV.Controllers.TarefaController",
-    "Method": "DeletarTarefa",
-    "RelativePath": "Tarefa/deletarTarefa/{IdTarefa}",
-    "HttpMethod": "DELETE",
+    "ContainingType": "ATV.Controllers.UsuarioController",
+    "Method": "UsuarioLogado",
+    "RelativePath": "Usuario/usuario-logado",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "IdTarefa",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": []
   }
 ]
