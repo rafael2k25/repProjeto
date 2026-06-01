@@ -173,8 +173,6 @@ form.addEventListener('submit', async (e) => {
 
         descricao: document.getElementById('descricao').value,
 
-        imagem: document.getElementById('imagem').value,
-
         data_Publicacao: document.getElementById('dataPub').value
     };
 
@@ -283,8 +281,6 @@ window.editarAviso = async function (id) {
         document.getElementById('titulo').value = aviso.titulo;
 
         document.getElementById('descricao').value = aviso.descricao;
-
-        document.getElementById('imagem').value = aviso.imagem;
 
         document.getElementById('dataPub').value =
             aviso.data_Publicacao.split('T')[0];

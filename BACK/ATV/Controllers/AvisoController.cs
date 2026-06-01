@@ -54,7 +54,7 @@ namespace ATV.Controllers
 
             avisoBanco.Titulo = aviso.Titulo;
             avisoBanco.Descricao = aviso.Descricao;
-            avisoBanco.Imagem = aviso.Imagem;
+           
 
             _context.SaveChanges();
 

@@ -1,0 +1,7 @@
+SELECT TOP (1000) [id_aviso]
+      ,[titulo]
+      ,[descricao]
+      ,[imagem]
+      ,[data_publicacao]
+      ,[fk_Usuario_id_usuario]
+  FROM [BancoIFTT].[dbo].[Aviso]

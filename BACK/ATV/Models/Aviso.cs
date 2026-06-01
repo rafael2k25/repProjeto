@@ -12,8 +12,6 @@ namespace ATV.Models
 
         public string Descricao { get; set; } = string.Empty;
 
-        public string Imagem { get; set; } = string.Empty;
-
         public DateTime Data_Publicacao { get; set; }
 
         public int Fk_Usuario_Id_Usuario { get; set; }

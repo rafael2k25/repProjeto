@@ -50,131 +50,65 @@ let avisos = [];
 
 /* ======================= INICIAR ======================= */
 
-document.addEventListener(
-    'DOMContentLoaded',
-    async () => {
+document.addEventListener("DOMContentLoaded", () => {
+    carregarAvisos();
+});
 
-        await carregarUsuario();
+/* ======================= CRIAR AVISOS ======================= */
 
-        await carregarAvisos();
+function criarAvisos() {
 
-       
+    const container = document.querySelector(".avisos-destaque");
+
+    if (!container) {
+        console.error("Container de avisos não encontrado");
+        return;
     }
-);
 
-/* ======================= CARREGAR USUÁRIO ======================= */
+    container.innerHTML = "";
 
-async function carregarUsuario() {
+    avisos.forEach(aviso => {
 
-    try {
+        const card = document.createElement("div");
 
-        const response = await fetch(
-            `${API_USUARIO}/usuario-logado`,
-            {
-                credentials: "include"
-            }
-        );
+        card.classList.add("aviso");
 
-        if (!response.ok) return;
+        card.innerHTML = `
+            <h3>${aviso.titulo}</h3>
 
-        const usuario = await response.json();
+            <p>${aviso.descricao}</p>
 
-        document.querySelector(".nome-usuario")
-            .textContent = usuario.nome;
+            <div class="aviso-info">
+                <span>
+                    <ion-icon name="calendar-outline"></ion-icon>
+                    ${formatarData(aviso.data_Publicacao)}
+                </span>
+            </div>
+        `;
 
-        document.querySelector(".cargo-usuario")
-            .textContent = usuario.cargo;
-
-        document.querySelector(".avatar")
-            .textContent =
-                usuario.nome.substring(0, 2).toUpperCase();
-
-    } catch (error) {
-
-        console.error(
-            "Erro ao carregar usuário:",
-            error
-        );
-    }
+        container.appendChild(card);
+    });
 }
 
 /* ======================= CARREGAR AVISOS ======================= */
 
 async function carregarAvisos() {
-
     try {
 
         const response = await fetch(API_AVISOS);
 
+        if (!response.ok) {
+            throw new Error(`Erro HTTP: ${response.status}`);
+        }
+
         avisos = await response.json();
 
-       
-
-        criarGridNoticias();
+        criarAvisos();
 
     } catch (error) {
 
-        console.error(
-            "Erro ao carregar avisos:",
-            error
-        );
+        console.error("Erro ao carregar avisos:", error);
     }
-}
-
-/* ======================= GRID DE NOTÍCIAS ======================= */
-
-function criarGridNoticias() {
-
-    newsGrid.innerHTML = "";
-
-    avisos.forEach(aviso => {
-
-        const card =
-            document.createElement("div");
-
-        card.className = "side-item";
-
-        card.innerHTML = `
-
-            <img
-                src="${aviso.imagem}"
-                alt="${aviso.titulo}"
-                class="side-img"
-            >
-
-            <div class="side-content">
-
-                <div>
-
-                    <h3 class="side-title">
-                        ${aviso.titulo}
-                    </h3>
-
-                    <p class="side-description">
-                        ${aviso.descricao}
-                    </p>
-
-                </div>
-
-                <div class="side-date">
-
-                    <ion-icon
-                        name="calendar-outline">
-                    </ion-icon>
-
-                    <span>
-                        ${formatarData(
-                            aviso.data_Publicacao
-                        )}
-                    </span>
-
-                </div>
-
-            </div>
-        `;
-
-        newsGrid.appendChild(card);
-    });
 }
 
 /* ======================= FORMATAR DATA ======================= */
