@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ATV")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+31976d607922f01248f8f50b5b5e2f0563b91797")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e72b63789d374739df2729c22b08724bc15d4718")]
 [assembly: System.Reflection.AssemblyProductAttribute("ATV")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ATV")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

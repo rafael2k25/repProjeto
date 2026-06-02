@@ -1,8 +1,0 @@
-SELECT TOP (1000) [id_usuario]
-      ,[nome]
-      ,[cargo]
-      ,[avatar]
-      ,[email]
-      ,[senha]
-      ,[tema_pag]
-  FROM [BancoIFTT].[dbo].[Usuario]

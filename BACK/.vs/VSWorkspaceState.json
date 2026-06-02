@@ -7,6 +7,6 @@
     "\\ATV\\Models",
     "\\ATV\\Properties"
   ],
-  "SelectedNode": "\\ATV\\Models\\Aviso.cs",
+  "SelectedNode": "\\ATV\\Controllers\\AvisoController.cs",
   "PreviewInSolutionExplorer": false
 }

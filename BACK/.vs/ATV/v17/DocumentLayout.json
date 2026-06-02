@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|c:\\users\\tarde.cetafaju\\documents\\github\\repprojeto\\back\\atv\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|solutionrelative:atv\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|c:\\users\\tarde.cetafaju\\documents\\github\\repprojeto\\back\\atv\\controllers\\avisocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|solutionrelative:atv\\controllers\\avisocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|c:\\users\\tarde.cetafaju\\documents\\github\\repprojeto\\back\\atv\\models\\loginc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|solutionrelative:atv\\models\\loginc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|c:\\users\\tarde.cetafaju\\documents\\github\\repprojeto\\back\\atv\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|solutionrelative:atv\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2150B1DD-6943-46D2-BB29-7F0457870EBC}|ATV\\ATV.csproj|c:\\users\\tarde.cetafaju\\documents\\github\\repprojeto\\back\\atv\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -62,7 +62,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
@@ -78,7 +78,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Usuario.cs",
               "DocumentMoniker": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Models\\Usuario.cs",
               "RelativeDocumentMoniker": "ATV\\Models\\Usuario.cs",
@@ -86,12 +86,11 @@
               "RelativeToolTip": "ATV\\Models\\Usuario.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-27T19:31:49.157Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-27T19:31:49.157Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Aviso.cs",
               "DocumentMoniker": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Models\\Aviso.cs",
               "RelativeDocumentMoniker": "ATV\\Models\\Aviso.cs",
@@ -99,24 +98,24 @@
               "RelativeToolTip": "ATV\\Models\\Aviso.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-27T19:34:25.21Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-27T19:34:25.21Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "UsuarioController.cs",
               "DocumentMoniker": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Controllers\\UsuarioController.cs",
               "RelativeDocumentMoniker": "ATV\\Controllers\\UsuarioController.cs",
               "ToolTip": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Controllers\\UsuarioController.cs",
               "RelativeToolTip": "ATV\\Controllers\\UsuarioController.cs",
-              "ViewState": "AQIAADsAAAAAAAAAAAAwwEwAAAAkAAAA",
+              "ViewState": "AQIAAEkAAAAAAAAAAAAAAF4AAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-27T19:30:06.923Z"
+              "WhenOpened": "2026-05-27T19:30:06.923Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "LoginC.cs",
               "DocumentMoniker": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Models\\LoginC.cs",
               "RelativeDocumentMoniker": "ATV\\Models\\LoginC.cs",
@@ -124,8 +123,7 @@
               "RelativeToolTip": "ATV\\Models\\LoginC.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-29T19:15:02.11Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-29T19:15:02.11Z"
             },
             {
               "$type": "Document",
@@ -189,13 +187,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "AvisoController.cs",
               "DocumentMoniker": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Controllers\\AvisoController.cs",
               "RelativeDocumentMoniker": "ATV\\Controllers\\AvisoController.cs",
               "ToolTip": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Controllers\\AvisoController.cs",
               "RelativeToolTip": "ATV\\Controllers\\AvisoController.cs",
-              "ViewState": "AQIAAB0AAAAAAAAAAAAwwC8AAAA2AAAA",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAwwDEAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-27T19:30:42.646Z",
               "EditorCaption": ""
