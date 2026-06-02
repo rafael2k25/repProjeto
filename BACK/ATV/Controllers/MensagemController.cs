@@ -18,13 +18,26 @@ namespace ATV.Controllers
         [HttpGet]
         public IActionResult ListarMensagens()
         {
-            var mensagens = _context.Comunicacao_Mensagens.ToList();
+            var mensagens = _context.Comunicacao_Mensagens
+                .OrderBy(m => m.Id_Hora)
+                .ToList();
+
+            return Ok(mensagens);
+        }
+
+        [HttpGet("canal/{idCanal}")]
+        public IActionResult BuscarPorCanal(int idCanal)
+        {
+            var mensagens = _context.Comunicacao_Mensagens
+                .Where(m => m.Fk_Canal_Id_Canal == idCanal)
+                .OrderBy(m => m.Id_Hora)
+                .ToList();
 
             return Ok(mensagens);
         }
 
         [HttpPost]
-        public IActionResult EnviarMensagem(ComunicacaoMensagem mensagem)
+        public IActionResult EnviarMensagem([FromBody] ComunicacaoMensagem mensagem)
         {
             var id = HttpContext.Session.GetString("IdLogado");
 
@@ -35,11 +48,13 @@ namespace ATV.Controllers
 
             mensagem.Fk_Usuario_Id_Usuario = int.Parse(id);
 
+            mensagem.Id_Hora = DateTime.Now;
+
             _context.Comunicacao_Mensagens.Add(mensagem);
 
             _context.SaveChanges();
 
-            return Ok("Mensagem enviada");
+            return Ok(mensagem);
         }
     }
 }
