@@ -51,7 +51,10 @@ let avisos = [];
 /* ======================= INICIAR ======================= */
 
 document.addEventListener("DOMContentLoaded", () => {
+
     carregarAvisos();
+    carregarUsuarioLogado();
+
 });
 
 /* ======================= CRIAR AVISOS ======================= */
@@ -139,5 +142,46 @@ dataAtual.textContent =
             year: 'numeric'
         }
     );
+
+/* ======================= USUÁRIO LOGADO ======================= */
+
+async function carregarUsuarioLogado() {
+
+    try {
+
+        const response = await fetch(
+            `${API_USUARIO}/usuario-logado`,
+            {
+                credentials: "include"
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error("Usuário não encontrado");
+        }
+
+        const usuario = await response.json();
+
+        document.getElementById(
+            "nomeUsuario"
+        ).textContent = usuario.nome;
+
+        document.getElementById(
+            "cargoUsuario"
+        ).textContent = usuario.cargo;
+
+        document.getElementById(
+            "avatarUsuario"
+        ).textContent =
+            usuario.nome.charAt(0).toUpperCase();
+
+    } catch (error) {
+
+        console.error(
+            "Erro ao carregar usuário:",
+            error
+        );
+    }
+}
 
 /* ======================= FIM JS DA PÁGINA DE INÍCIO ======================= */
