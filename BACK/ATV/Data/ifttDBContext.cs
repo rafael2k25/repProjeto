@@ -3,9 +3,9 @@ using ATV.Models;
 
 namespace ATV.Data
 {
-    public class ifttDBContext : DbContext
+    public class IFTTDBContext : DbContext
     {
-        public ifttDBContext(DbContextOptions<ifttDBContext> options)
+        public IFTTDBContext(DbContextOptions<IFTTDBContext> options)
             : base(options)
         {
 

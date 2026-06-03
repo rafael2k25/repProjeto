@@ -1,10 +1,9 @@
-/* ======================= INÍCIO JS DA PÁGINA DE PROFESSORES [PROFESSORES.HTML] ======================= */
+/* ======================= INÍCIO JS PROFESSORES [PROFESSORES.HTML] ======================= */
 
 /* ======================= API ======================= */
 
 const API_USUARIO = "http://localhost:5140/Usuario";
 const API_MENSAGENS = "http://localhost:5140/Mensagem";
-
 const CANAL_ID = 2; // Canal dos Professores
 
 /* ======================= ELEMENTOS ======================= */
@@ -40,7 +39,20 @@ async function carregarUsuarioLogado() {
             throw new Error("Usuário não encontrado");
         }
 
-        usuarioLogado = await response.json();
+        const usuario = await response.json();
+
+        document.getElementById(
+            "nomeUsuario"
+        ).textContent = usuario.nome;
+
+        document.getElementById(
+            "cargoUsuario"
+        ).textContent = usuario.cargo;
+
+        document.getElementById(
+            "avatarUsuario"
+        ).textContent =
+            usuario.nome.charAt(0).toUpperCase();
 
     } catch (error) {
 
@@ -50,6 +62,8 @@ async function carregarUsuarioLogado() {
         );
     }
 }
+
+/* ======================= FIM JS DA PÁGINA DE INÍCIO ======================= */
 
 /* ======================= CARREGAR MENSAGENS ======================= */
 
@@ -264,4 +278,4 @@ themeToggle.addEventListener(
     }
 );
 
-/* ======================= FIM JS DA PÁGINA DE PROFESSORES ======================= */
+/* ======================= FIM JS PROFESSORES [PROFESSORES.HTML] ======================= */

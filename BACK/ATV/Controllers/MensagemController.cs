@@ -8,9 +8,9 @@ namespace ATV.Controllers
     [Route("[controller]")]
     public class MensagemController : ControllerBase
     {
-        private readonly ifttDBContext _context;
+        private readonly IFTTDBContext _context;
 
-        public MensagemController(ifttDBContext context)
+        public MensagemController(IFTTDBContext context)
         {
             _context = context;
         }

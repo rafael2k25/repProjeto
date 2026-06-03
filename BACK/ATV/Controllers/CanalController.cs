@@ -8,9 +8,9 @@ namespace ATV.Controllers
     [Route("[controller]")]
     public class CanalController : ControllerBase
     {
-        private readonly ifttDBContext _context;
+        private readonly IFTTDBContext _context;
 
-        public CanalController(ifttDBContext context)
+        public CanalController(IFTTDBContext context)
         {
             _context = context;
         }

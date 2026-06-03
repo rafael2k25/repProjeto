@@ -184,4 +184,4 @@ async function carregarUsuarioLogado() {
     }
 }
 
-/* ======================= FIM JS DA PÁGINA DE INÍCIO ======================= */
+/* ======================= FIM JS INÍCIO [INICIO.HTML] ======================= */

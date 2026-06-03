@@ -1,4 +1,4 @@
-/* ======================= INÍCIO JS LOGIN/CADASTRO ======================= */
+/* ======================= INÍCIO JS LOGIN / CADASTRO [CANAIS.HTML] ======================= */
 
 /* ======================= API ======================= */
 
@@ -257,36 +257,4 @@ function verificarCodigoLogin() {
     }
 }
 
-/* ======================= SELECT DIA ======================= */
-
-const selectDia =
-    document.getElementById("dia");
-
-for (let i = 1; i <= 31; i++) {
-
-    let opt = document.createElement("option");
-
-    opt.value = i;
-
-    opt.text = i;
-
-    selectDia.appendChild(opt);
-}
-
-/* ======================= SELECT ANO ======================= */
-
-const selectAno =
-    document.getElementById("ano");
-
-for (let i = 2026; i >= 1950; i--) {
-
-    let opt = document.createElement("option");
-
-    opt.value = i;
-
-    opt.text = i;
-
-    selectAno.appendChild(opt);
-}
-
-/* ======================= FIM JS LOGIN/CADASTRO ======================= */
+/* ======================= FIM JS LOGIN/CADASTRO [INDEX.HTML] ======================= */

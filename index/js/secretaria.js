@@ -1,14 +1,24 @@
-/* ======================= INÍCIO JS DA PÁGINA DE MANUTENÇÃO [MANUTENCAO.HTML] ======================= */
+/* ======================= INÍCIO JS SECRETARIA [SECRETARIA.HTML] ======================= */
 
-// === BASE DA API ===
+/* ======================= API ======================= */
+const API_USUARIO = "http://localhost:5140/Usuario";
 const API_URL = "http://localhost:5140/Mensagem";
-const CANAL_ID = 1;
+const CANAL_ID = 3; // Canal da Secretaria
 
-// === ELEMENTOS ===
+// ======================= ELEMENTOS =======================
 const inputMensagem = document.getElementById('inputMensagem');
 const containerMensagens = document.getElementById('containerMensagens');
 
-// === CARREGAR MENSAGENS ===
+/* ======================= INICIAR ======================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    carregarUsuarioLogado();
+    carregarMensagens();
+
+});
+
+// ======================= CARREGAR MENSAGENS =======================
 document.addEventListener('DOMContentLoaded', carregarMensagens);
 
 async function carregarMensagens() {
@@ -46,7 +56,7 @@ async function carregarMensagens() {
     }
 }
 
-// === ENVIAR MENSAGEM ===
+// ======================= ENVIAR MENSAGEM =======================
 async function enviarMensagem() {
 
     const texto = inputMensagem.value.trim();
@@ -83,7 +93,7 @@ async function enviarMensagem() {
     }
 }
 
-// === ADICIONAR MENSAGEM NO HTML ===
+// ======================= ADICIONAR MENSAGEM NO HTML =======================
 function adicionarMensagemDOM(msg) {
 
     const div = document.createElement('div');
@@ -116,7 +126,7 @@ function adicionarMensagemDOM(msg) {
         containerMensagens.scrollHeight;
 }
 
-// === ENTER PARA ENVIAR ===
+// ======================= ENTER PARA ENVIAR =======================
 inputMensagem.addEventListener('keypress', (e) => {
 
     if (e.key === 'Enter') {
@@ -124,7 +134,7 @@ inputMensagem.addEventListener('keypress', (e) => {
     }
 });
 
-// === TEMA ESCURO ===
+// ======================= TEMA ESCURO =======================
 const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
 const body = document.body;
@@ -156,4 +166,45 @@ themeToggle.addEventListener('click', () => {
     );
 });
 
-/* ======================= FIM JS DA PÁGINA DE MANUTENÇÃO [MANUTENCAO.HTML] ======================= */
+/* ======================= USUÁRIO LOGADO ======================= */
+
+async function carregarUsuarioLogado() {
+
+    try {
+
+        const response = await fetch(
+            `${API_USUARIO}/usuario-logado`,
+            {
+                credentials: "include"
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error("Usuário não encontrado");
+        }
+
+        const usuario = await response.json();
+console.log(usuario.nome);
+        document.getElementById(
+            "nomeUsuario"
+        ).textContent = usuario.nome;
+
+        document.getElementById(
+            "cargoUsuario"
+        ).textContent = usuario.cargo;
+
+        document.getElementById(
+            "avatarUsuario"
+        ).textContent =
+            usuario.nome.charAt(0).toUpperCase();
+
+    } catch (error) {
+
+        console.error(
+            "Erro ao carregar usuário:",
+            error
+        );
+    }
+}
+
+/* ======================= FIM JS SECRETARIA [SECRETARIA.HTML] ======================= */

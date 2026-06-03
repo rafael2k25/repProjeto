@@ -1,9 +1,15 @@
-/* ======================= INÍCIO JS DA PÁGINA DE PERFIL [PERFIL.HTML] ======================= */
+/* ======================= INÍCIO JS PERFIL [PERFIL.HTML] ======================= */
 
-// === BASE DA API ===
+/* ======================= API ======================= */
 const API_URL = "http://localhost:5140/Usuario";
 
-// === NOTIFICAÇÃO ===
+// ======================= INICIAR =======================
+document.addEventListener(
+    "DOMContentLoaded",
+    carregarPerfil
+);
+
+// ======================= NOTIFICAÇÃO =======================
 function showToast(message, type = 'sucesso') {
 
     const toast = document.getElementById("notificacao");
@@ -19,7 +25,7 @@ function showToast(message, type = 'sucesso') {
     }, 3000);
 }
 
-// === MOSTRAR / ESCONDER SENHA ===
+// ======================= MOSTRAR / ESCONDER SENHA =======================
 function togglePassword(id) {
 
     const input = document.getElementById(id);
@@ -32,7 +38,7 @@ function togglePassword(id) {
             : "password";
 }
 
-// === LOGOUT ===
+// ======================= LOGOUT =======================
 async function sair() {
 
     try {
@@ -59,7 +65,7 @@ async function sair() {
     }
 }
 
-// === CARREGAR PERFIL ===
+// ======================= CARREGAR PERFIL =======================
 async function carregarPerfil() {
 
     try {
@@ -105,7 +111,7 @@ async function carregarPerfil() {
     }
 }
 
-// === SALVAR PERFIL ===
+// ======================= SALVAR PERFIL =======================
 document
     .getElementById("formPerfil")
     .addEventListener("submit", async function (e) {
@@ -161,7 +167,7 @@ document
         }
     });
 
-// === FOTO PERFIL ===
+// ======================= FOTO PERFIL =======================
 document
     .getElementById("inputFoto")
     .addEventListener("change", function (e) {
@@ -187,10 +193,4 @@ document
         reader.readAsDataURL(file);
     });
 
-// === INICIAR ===
-document.addEventListener(
-    "DOMContentLoaded",
-    carregarPerfil
-);
-
-/* ======================= FIM JS DA PÁGINA DE PERFIL [PERFIL.HTML] ======================= */
+/* ======================= FIM JS PERFIL [PERFIL.HTML] ======================= */

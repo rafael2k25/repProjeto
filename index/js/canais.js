@@ -1,9 +1,11 @@
-/* ======================= INÍCIO JS DA PÁGINA DE CANAIS [CANAIS.HTML] ======================= */
+/* ======================= INÍCIO JS CANAIS [CANAIS.HTML] ======================= */
 
 /* ======================= API ======================= */
 
+const API_USUARIO = "http://localhost:5140/Usuario";
 const API_CANAIS = "http://localhost:5140/Canal";
 const API_MENSAGENS = "http://localhost:5140/Mensagem";
+const CANAL_ID = 1; // Canal de Comunicados Gerais
 
 /* ======================= ELEMENTOS ======================= */
 
@@ -18,11 +20,13 @@ const params = new URLSearchParams(window.location.search);
 
 const canalId = params.get("id") || 1;
 
-/* ======================= CARREGAR MENSAGENS ======================= */
+/* ======================= INICIAR ======================= */
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
 
+    carregarUsuarioLogado();
     carregarMensagens();
+
 });
 
 /* ======================= GET ======================= */
@@ -168,7 +172,7 @@ inputMensagem.addEventListener('keypress', (e) => {
     }
 });
 
-/* ======================= TOAST ======================= */
+/* ======================= NOTIFICAÇÃO ======================= */
 
 function showToast(message, type = "sucesso", duration = 3000) {
 
@@ -220,4 +224,45 @@ themeToggle.addEventListener('click', () => {
     );
 });
 
-/* ======================= FIM JS DA PÁGINA DE CANAIS ======================= */
+/* ======================= USUÁRIO LOGADO ======================= */
+
+async function carregarUsuarioLogado() {
+
+    try {
+
+        const response = await fetch(
+            `${API_USUARIO}/usuario-logado`,
+            {
+                credentials: "include"
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error("Usuário não encontrado");
+        }
+
+        const usuario = await response.json();
+console.log(usuario.nome);
+        document.getElementById(
+            "nomeUsuario"
+        ).textContent = usuario.nome;
+
+        document.getElementById(
+            "cargoUsuario"
+        ).textContent = usuario.cargo;
+
+        document.getElementById(
+            "avatarUsuario"
+        ).textContent =
+            usuario.nome.charAt(0).toUpperCase();
+
+    } catch (error) {
+
+        console.error(
+            "Erro ao carregar usuário:",
+            error
+        );
+    }
+}
+
+/* ======================= FIM JS CANAIS [CANAIS.HTML] ======================= */
