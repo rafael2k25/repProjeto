@@ -1,52 +1,3 @@
-CREATE DATABASE BancoIFTT;
-go
-use BancoIFTT;
-go
-
-CREATE TABLE Aviso (
-    id_aviso int identity PRIMARY KEY,
-    titulo varchar(150),
-    descricao varchar(1000),
-    imagem varchar(255),
-    data_publicacao DATE,
-    fk_Usuario_id_usuario int
-);
-
-CREATE TABLE Usuario (
-    id_usuario int  identity  PRIMARY KEY,
-    nome varchar(100),
-    cargo varchar(50),
-    avatar varchar(255),
-    email varchar(100),
-    senha varchar(100),
-    tema_pag varchar(20)
-);
-
-CREATE TABLE Canal (
-    nome_canal varchar(50),
-    id_canal int  identity  PRIMARY KEY
-);
-
-CREATE TABLE Comunicacao_Mensagem (
-    texto varchar(100),
-    id_mensagem int  identity PRIMARY KEY,
-    id_hora DATE,
-    fk_Usuario_id_usuario int,
-    fk_Canal_id_canal int
-);
- 
-ALTER TABLE Aviso ADD CONSTRAINT FK_Aviso_2
-    FOREIGN KEY (fk_Usuario_id_usuario)
-    REFERENCES Usuario (id_usuario)
-    ON DELETE CASCADE;
- 
-ALTER TABLE Comunicacao_Mensagem ADD CONSTRAINT FK_Comunicacao_Mensagem_2
-    FOREIGN KEY (fk_Usuario_id_usuario)
-    REFERENCES Usuario (id_usuario);
- 
-ALTER TABLE Comunicacao_Mensagem ADD CONSTRAINT FK_Comunicacao_Mensagem_3
-    FOREIGN KEY (fk_Canal_id_canal)
-    REFERENCES Canal (id_canal);
 
 	USE BancoIFTT;
 GO
@@ -94,12 +45,11 @@ VALUES
 ========================= */
 
 INSERT INTO Aviso
-(titulo, descricao, imagem, data_publicacao, fk_Usuario_id_usuario)
+(titulo, descricao, data_publicacao, fk_Usuario_id_usuario)
 VALUES
 (
 'Reunião Pedagógica',
 'Reunião geral com todos os professores na sala principal às 14h.',
-'reuniao.jpg',
 '2026-05-20',
 1
 ),
@@ -107,7 +57,6 @@ VALUES
 (
 'Atualização do Sistema',
 'O sistema interno ficará indisponível das 22h até meia-noite para manutenção.',
-'manutencao.jpg',
 '2026-05-22',
 5
 ),
@@ -115,7 +64,6 @@ VALUES
 (
 'Semana de Tecnologia',
 'Evento de tecnologia com palestras e minicursos aberto aos alunos.',
-'evento-tech.jpg',
 '2026-05-25',
 2
 ),
@@ -123,7 +71,6 @@ VALUES
 (
 'Entrega de Documentos',
 'Os alunos devem entregar a documentação pendente até sexta-feira.',
-'documentos.jpg',
 '2026-05-26',
 4
 ),
@@ -131,7 +78,6 @@ VALUES
 (
 'Novo Laboratório',
 'O laboratório 3 foi liberado para uso nas aulas práticas.',
-'laboratorio.jpg',
 '2026-05-28',
 3
 );

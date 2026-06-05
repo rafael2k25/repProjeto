@@ -86,8 +86,7 @@
               "RelativeToolTip": "ATV\\Models\\Aviso.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-27T19:34:25.21Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-27T19:34:25.21Z"
             },
             {
               "$type": "Document",
@@ -99,8 +98,7 @@
               "RelativeToolTip": "ATV\\Controllers\\UsuarioController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-27T19:30:06.923Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-27T19:30:06.923Z"
             },
             {
               "$type": "Document",
@@ -153,15 +151,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "IFTTDBContext.cs",
-              "DocumentMoniker": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Data\\IFTTDBContext.cs",
-              "RelativeDocumentMoniker": "ATV\\Data\\IFTTDBContext.cs",
-              "ToolTip": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Data\\IFTTDBContext.cs",
-              "RelativeToolTip": "ATV\\Data\\IFTTDBContext.cs",
+              "Title": "ifttDBContext.cs",
+              "DocumentMoniker": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Data\\ifttDBContext.cs",
+              "RelativeDocumentMoniker": "ATV\\Data\\ifttDBContext.cs",
+              "ToolTip": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Data\\ifttDBContext.cs",
+              "RelativeToolTip": "ATV\\Data\\ifttDBContext.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-27T19:35:12.872Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-27T19:35:12.872Z"
             },
             {
               "$type": "Document",
@@ -183,7 +180,7 @@
               "RelativeDocumentMoniker": "ATV\\Controllers\\AvisoController.cs",
               "ToolTip": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Controllers\\AvisoController.cs",
               "RelativeToolTip": "ATV\\Controllers\\AvisoController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAARAAAA",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAACwAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-27T19:30:42.646Z",
               "EditorCaption": ""
@@ -198,8 +195,7 @@
               "RelativeToolTip": "ATV\\Controllers\\MensagemController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-27T19:31:19.326Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-27T19:31:19.326Z"
             },
             {
               "$type": "Document",
@@ -211,8 +207,7 @@
               "RelativeToolTip": "ATV\\Controllers\\CanalController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-27T19:31:05.209Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-27T19:31:05.209Z"
             },
             {
               "$type": "Document",
