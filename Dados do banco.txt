@@ -10,7 +10,7 @@ VALUES
 
 ('Lucas Almeida', 'Professor', 'avatar3.png', 'lucas@iftt.com', '123456', 'escuro'),
 
-('Fernanda Lima', 'Secret·ria', 'avatar4.png', 'fernanda@iftt.com', '123456', 'claro'),
+('Fernanda Lima', 'Secret√°ria', 'avatar4.png', 'fernanda@iftt.com', '123456', 'claro'),
 
 ('Carlos Henrique', 'Administrador', 'avatar5.png', 'carlos@iftt.com', '123456', 'escuro');
    
@@ -29,15 +29,15 @@ INSERT INTO Aviso
 (titulo, descricao, data_publicacao, fk_Usuario_id_usuario)
 VALUES
 (
-'Reuni„o PedagÛgica',
-'Reuni„o geral com todos os professores na sala principal ‡s 14h.',
+'Reuni√£o Pedag√≥gica',
+'Reuni√£o geral com todos os professores na sala principal √†s 14h.',
 '2026-05-20',
 1
 ),
 
 (
-'AtualizaÁ„o do Sistema',
-'O sistema interno ficar· indisponÌvel das 22h atÈ meia-noite para manutenÁ„o.',
+'Atualiza√ß√£o do Sistema',
+'O sistema interno ficar√° indispon√≠vel das 22h at√© meia-noite para manuten√ß√£o.',
 '2026-05-22',
 5
 ),
@@ -51,14 +51,14 @@ VALUES
 
 (
 'Entrega de Documentos',
-'Os alunos devem entregar a documentaÁ„o pendente atÈ sexta-feira.',
+'Os alunos devem entregar a documenta√ß√£o pendente at√© sexta-feira.',
 '2026-05-26',
 4
 ),
 
 (
-'Novo LaboratÛrio',
-'O laboratÛrio 3 foi liberado para uso nas aulas pr·ticas.',
+'Novo Laborat√≥rio',
+'O laborat√≥rio 3 foi liberado para uso nas aulas pr√°ticas.',
 '2026-05-28',
 3
 );
@@ -67,35 +67,35 @@ INSERT INTO Comunicacao_Mensagem
 (texto, id_hora, fk_Usuario_id_usuario, fk_Canal_id_canal)
 VALUES
 (
-'Bom dia pessoal, a reuni„o comeÁa em 15 minutos.',
+'Bom dia pessoal, a reuni√£o come√ßa em 15 minutos.',
 '2026-05-20',
 1,
 1
 ),
 
 (
-'Os computadores do laboratÛrio j· foram atualizados.',
+'Os computadores do laborat√≥rio j√° foram atualizados.',
 '2026-05-21',
 5,
 5
 ),
 
 (
-'AlguÈm pode substituir minha aula de sexta?',
+'Algu√©m pode substituir minha aula de sexta?',
 '2026-05-22',
 3,
 2
 ),
 
 (
-'Os certificados do evento j· est„o disponÌveis.',
+'Os certificados do evento j√° est√£o dispon√≠veis.',
 '2026-05-24',
 2,
 4
 ),
 
 (
-'A secretaria funcionar· atÈ ‡s 18h hoje.',
+'A secretaria funcionar√° at√© √†s 18h hoje.',
 '2026-05-25',
 4,
 3

@@ -35,8 +35,9 @@ async function carregarMensagens() {
 
     try {
 
-        const response =
-            await fetch(`${API_CANAIS}/${canalId}/mensagens`);
+        const response = await fetch(`${API_CANAIS}/${canalId}/mensagens`, {
+            credentials: "include"
+        });
 
         const mensagens = await response.json();
 
@@ -230,39 +231,68 @@ async function carregarUsuarioLogado() {
 
     try {
 
-        const response = await fetch(
-            `${API_USUARIO}/usuario-logado`,
-            {
-                credentials: "include"
-            }
-        );
+        const response = await fetch(`${API_USUARIO}/usuario-logado`, {
+            credentials: "include"
+        });
 
+        // Não logado → volta pro login
         if (!response.ok) {
-            throw new Error("Usuário não encontrado");
+            window.location.href = "index.html";
+            return;
         }
 
         const usuario = await response.json();
-console.log(usuario.nome);
-        document.getElementById(
-            "nomeUsuario"
-        ).textContent = usuario.nome;
 
-        document.getElementById(
-            "cargoUsuario"
-        ).textContent = usuario.cargo;
+        // Cargos permitidos nesta página
+        const permitidos = ["Secretaria", "Admin"];
 
-        document.getElementById(
-            "avatarUsuario"
-        ).textContent =
+        if (!permitidos.includes(usuario.cargo)) {
+            window.location.href = "canais.html";
+            return;
+        }
+
+        // Preenche o DOM com os dados do usuário
+        document.getElementById("nomeUsuario").textContent = usuario.nome;
+        document.getElementById("cargoUsuario").textContent = usuario.cargo;
+        document.getElementById("avatarUsuario").textContent =
             usuario.nome.charAt(0).toUpperCase();
 
-    } catch (error) {
+        // Aplica restrições no menu lateral
+        aplicarRestricoesPorCargo(usuario.cargo);
 
-        console.error(
-            "Erro ao carregar usuário:",
-            error
-        );
+    } catch (error) {
+        console.error("Erro ao carregar usuário:", error);
     }
+}
+
+/* ======================= RESTRIÇÕES ======================= */
+
+function aplicarRestricoesPorCargo(cargo) {
+
+    const regras = [
+        {
+            seletor: 'a[href="secretaria.html"]',
+            permitidos: ["Secretaria", "Admin"]
+        },
+        {
+            seletor: 'a[href="professores.html"]',
+            permitidos: ["Professor", "Admin"]
+        },
+        {
+            seletor: 'a[href="T.I.html"]',
+            permitidos: ["T.I", "Admin"]
+        }
+        
+    ];
+
+    regras.forEach(({ seletor, permitidos }) => {
+        const el = document.querySelector(seletor);
+        if (!el) return;
+
+        if (!permitidos.includes(cargo)) {
+            el.style.display = "none";
+        }
+    });
 }
 
 /* ======================= FIM JS CANAIS [CANAIS.HTML] ======================= */
