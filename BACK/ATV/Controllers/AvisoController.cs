@@ -1,4 +1,5 @@
 ﻿using ATV.Data;
+using ATV.Filters;
 using ATV.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,6 +25,7 @@ namespace ATV.Controllers
         }
 
         [HttpPost]
+        [CargoAuthorize("Administrador", "Diretor", "Coordenadora", "Secretária")]
         public IActionResult CriarAviso(Aviso aviso)
         {
             var id = HttpContext.Session.GetString("IdLogado");
@@ -43,6 +45,7 @@ namespace ATV.Controllers
         }
 
         [HttpPut("{id}")]
+        [CargoAuthorize("Administrador", "Diretor", "Coordenadora", "Secretária")]
         public IActionResult AtualizarAviso(int id, Aviso aviso)
         {
             var avisoBanco = _context.Avisos.Find(id);
@@ -62,6 +65,7 @@ namespace ATV.Controllers
         }
 
         [HttpDelete("{id}")]
+        [CargoAuthorize("Administrador", "Diretor", "Coordenadora", "Secretária")]
         public IActionResult DeletarAviso(int id)
         {
             var aviso = _context.Avisos.Find(id);

@@ -15,26 +15,6 @@ namespace ATV.Controllers
             _context = context;
         }
 
-        [HttpGet]
-        public IActionResult ListarMensagens()
-        {
-            var mensagens = _context.Comunicacao_Mensagens
-                .OrderBy(m => m.Id_Hora)
-                .ToList();
-
-            return Ok(mensagens);
-        }
-
-        [HttpGet("canal/{idCanal}")]
-        public IActionResult BuscarPorCanal(int idCanal)
-        {
-            var mensagens = _context.Comunicacao_Mensagens
-                .Where(m => m.Fk_Canal_Id_Canal == idCanal)
-                .OrderBy(m => m.Id_Hora)
-                .ToList();
-
-            return Ok(mensagens);
-        }
         [HttpPost]
         public IActionResult EnviarMensagem([FromBody] ComunicacaoMensagem mensagem)
         {
@@ -55,7 +35,7 @@ namespace ATV.Controllers
             // Permissões por canal
             var permissoes = new Dictionary<int, string[]>
     {
-        { 1, new[] { "Professor", "Secretaria", "Manutencao", "Admin" } },  // Geral
+        { 1, new[] { "Professor", "Secretaria", "T.I", "Admin" } },  // Geral
         { 2, new[] { "Professor", "Admin" } },                             
         { 3, new[] { "Secretaria", "Admin" } },                             
         { 4, new[] { "T.I", "Admin" } }                                     

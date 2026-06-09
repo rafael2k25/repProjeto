@@ -95,10 +95,10 @@ namespace ATV.Controllers
             // Ajuste os IDs conforme seu banco de dados
             var permissoes = new Dictionary<int, string[]>
             {
-                { 1, new[] { "Professor", "Secretaria", "T.I.", "Admin" } }, // Geral
+                { 1, new[] { "Professor", "Secretaria", "T.I", "Admin" } }, // Geral
                 { 2, new[] { "Professor", "Admin" } },                       // Professores
                 { 3, new[] { "Secretaria", "Admin" } },                      // Secretaria
-                { 4, new[] { "T.I", "Admin" } }                             // T.I.
+                { 4, new[] { "T.I", "Admin" } }                             // T.I
             };
 
             // 3. Canal existe no mapa?
