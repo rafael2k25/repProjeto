@@ -35,7 +35,6 @@ namespace ATV.Controllers
 
             return Ok(mensagens);
         }
-
         [HttpPost]
         public IActionResult EnviarMensagem([FromBody] ComunicacaoMensagem mensagem)
         {
@@ -46,12 +45,37 @@ namespace ATV.Controllers
                 return Unauthorized("Faça login");
             }
 
-            mensagem.Fk_Usuario_Id_Usuario = int.Parse(id);
+            var usuario = _context.Usuarios.Find(int.Parse(id));
 
+            if (usuario == null)
+            {
+                return Unauthorized("Usuário não encontrado");
+            }
+
+            // Permissões por canal
+            var permissoes = new Dictionary<int, string[]>
+    {
+        { 1, new[] { "Professor", "Secretaria", "Manutencao", "Admin" } },  // Geral
+        { 2, new[] { "Professor", "Admin" } },                             
+        { 3, new[] { "Secretaria", "Admin" } },                             
+        { 4, new[] { "T.I", "Admin" } }                                     
+    };
+
+            if (!permissoes.ContainsKey(mensagem.Fk_Canal_Id_Canal))
+            {
+                return NotFound("Canal não encontrado");
+            }
+
+            if (!permissoes[mensagem.Fk_Canal_Id_Canal]
+                .Contains(usuario.Cargo))
+            {
+                return StatusCode(403, "Acesso negado para seu cargo");
+            }
+
+            mensagem.Fk_Usuario_Id_Usuario = int.Parse(id);
             mensagem.Id_Hora = DateTime.Now;
 
             _context.Comunicacao_Mensagens.Add(mensagem);
-
             _context.SaveChanges();
 
             return Ok(mensagem);

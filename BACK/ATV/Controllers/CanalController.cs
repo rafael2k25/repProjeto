@@ -1,5 +1,6 @@
 ﻿using ATV.Data;
 using ATV.Models;
+using ATV.Filters;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ATV.Controllers
@@ -23,10 +24,12 @@ namespace ATV.Controllers
         }
 
         [HttpPost]
+        [CargoAuthorize("Admin")]
         public IActionResult CriarCanal(Canal canal)
         {
             _context.Canais.Add(canal);
             _context.SaveChanges();
+
             return Ok("Canal criado com sucesso");
         }
 
@@ -41,26 +44,38 @@ namespace ATV.Controllers
         }
 
         [HttpPut("{id}")]
+        [CargoAuthorize("Admin")]
         public IActionResult AtualizarCanal(int id, Canal canal)
         {
             var canalBanco = _context.Canais.Find(id);
+
             if (canalBanco == null)
+            {
                 return NotFound("Canal não encontrado");
+            }
 
             canalBanco.Nome_Canal = canal.Nome_Canal;
+
             _context.SaveChanges();
+
             return Ok("Canal atualizado");
         }
 
         [HttpDelete("{id}")]
+        [CargoAuthorize("Admin")]
         public IActionResult DeletarCanal(int id)
         {
             var canal = _context.Canais.Find(id);
+
             if (canal == null)
+            {
                 return NotFound("Canal não encontrado");
+            }
 
             _context.Canais.Remove(canal);
+
             _context.SaveChanges();
+
             return Ok("Canal deletado");
         }
 

@@ -82,8 +82,7 @@
               "RelativeToolTip": "ATV\\Filters\\CargoAuthorizeAttribute.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-09T17:17:54.205Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-09T17:17:54.205Z"
             },
             {
               "$type": "Document",
@@ -93,7 +92,7 @@
               "RelativeDocumentMoniker": "ATV\\Controllers\\CanalController.cs",
               "ToolTip": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Controllers\\CanalController.cs",
               "RelativeToolTip": "ATV\\Controllers\\CanalController.cs",
-              "ViewState": "AQIAAD8AAAAAAAAAAAAmwF0AAAA4AAAA",
+              "ViewState": "AQIAAFMAAAAAAAAAAAAuwGMAAABaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-27T19:31:05.209Z",
               "EditorCaption": ""
@@ -101,15 +100,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ATV",
+              "Title": "ATV.csproj",
               "DocumentMoniker": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\ATV.csproj",
               "RelativeDocumentMoniker": "ATV\\ATV.csproj",
               "ToolTip": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\ATV.csproj",
               "RelativeToolTip": "ATV\\ATV.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-06-09T17:16:11.59Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-09T17:16:11.59Z"
             },
             {
               "$type": "Document",
@@ -193,8 +191,7 @@
               "RelativeToolTip": "ATV\\Controllers\\AvisoController.cs",
               "ViewState": "AQIAABgAAAAAAAAAAAAAADIAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-27T19:30:42.646Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-27T19:30:42.646Z"
             },
             {
               "$type": "Document",
@@ -218,8 +215,7 @@
               "RelativeToolTip": "ATV\\Controllers\\UsuarioController.cs",
               "ViewState": "AQIAAFAAAAAAAAAAAAAYwGgAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-27T19:30:06.923Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-27T19:30:06.923Z"
             },
             {
               "$type": "Document",
