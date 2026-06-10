@@ -19,7 +19,9 @@ namespace ATV.Controllers
         [HttpGet]
         public IActionResult ListarAvisos()
         {
-            var avisos = _context.Avisos.ToList();
+            var avisos = _context.Avisos
+    .OrderByDescending(a => a.Data_Publicacao)
+    .ToList();
 
             return Ok(avisos);
         }
@@ -36,9 +38,9 @@ namespace ATV.Controllers
             }
 
             aviso.Fk_Usuario_Id_Usuario = int.Parse(id);
+            aviso.Data_Publicacao = DateTime.Now;
 
             _context.Avisos.Add(aviso);
-
             _context.SaveChanges();
 
             return Ok("Aviso criado");

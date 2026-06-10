@@ -24,7 +24,7 @@ namespace ATV.Controllers
         }
 
         [HttpPost]
-        [CargoAuthorize("Admin")]
+        [CargoAuthorize("Administrador")]
         public IActionResult CriarCanal(Canal canal)
         {
             _context.Canais.Add(canal);
@@ -44,7 +44,7 @@ namespace ATV.Controllers
         }
 
         [HttpPut("{id}")]
-        [CargoAuthorize("Admin")]
+        [CargoAuthorize("Administrador")]
         public IActionResult AtualizarCanal(int id, Canal canal)
         {
             var canalBanco = _context.Canais.Find(id);
@@ -62,7 +62,7 @@ namespace ATV.Controllers
         }
 
         [HttpDelete("{id}")]
-        [CargoAuthorize("Admin")]
+        [CargoAuthorize("Administrador")]
         public IActionResult DeletarCanal(int id)
         {
             var canal = _context.Canais.Find(id);
@@ -94,12 +94,15 @@ namespace ATV.Controllers
             // 2. Mapa de permissões por canal
             // Ajuste os IDs conforme seu banco de dados
             var permissoes = new Dictionary<int, string[]>
-            {
-                { 1, new[] { "Professor", "Secretaria", "T.I", "Admin" } }, // Geral
-                { 2, new[] { "Professor", "Admin" } },                       // Professores
-                { 3, new[] { "Secretaria", "Admin" } },                      // Secretaria
-                { 4, new[] { "T.I", "Admin" } }                             // T.I
-            };
+{
+    { 1, new[] { "Professor", "Secretária", "Administrador", "Diretor", "Coordenadora" } },
+
+    { 2, new[] { "Professor", "Administrador", "Diretor", "Coordenadora" } },
+
+    { 3, new[] { "Secretária", "Administrador", "Diretor", "Coordenadora" } },
+
+    { 4, new[] { "Administrador" } }
+};
 
             // 3. Canal existe no mapa?
             if (!permissoes.ContainsKey(id))
@@ -111,9 +114,15 @@ namespace ATV.Controllers
 
             // 5. Retorna as mensagens
             var mensagens = _context.Comunicacao_Mensagens
-                .Where(m => m.Fk_Canal_Id_Canal == id)
-                .ToList();
-
+     .Where(m => m.Fk_Canal_Id_Canal == id)
+     .Select(m => new
+     {
+         m.Texto,
+         m.Id_Hora,
+         Nome = m.Usuario.Nome,
+         Cargo = m.Usuario.Cargo
+     })
+     .ToList();
             return Ok(mensagens);
         }
     }

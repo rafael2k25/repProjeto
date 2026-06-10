@@ -40,43 +40,44 @@ namespace ATV.Controllers
                 avatar = usuario.Avatar
             });
         }
-        [HttpPost("cadastro")]
-        public IActionResult Cadastro(Usuario novoUsuario)
-        {
-            if (string.IsNullOrWhiteSpace(novoUsuario.Email) ||
-                string.IsNullOrWhiteSpace(novoUsuario.Senha) ||
-                string.IsNullOrWhiteSpace(novoUsuario.Nome))
-            {
-                return BadRequest("Preencha todos os campos");
-            }
 
-            var usuarioExistente = _context.Usuarios
-                .FirstOrDefault(u => u.Email == novoUsuario.Email);
+        // [HttpPost("cadastro")]
+        // public IActionResult Cadastro(Usuario novoUsuario)
+        //  {
+        //    if (string.IsNullOrWhiteSpace(novoUsuario.Email) ||
+        //       string.IsNullOrWhiteSpace(novoUsuario.Senha) ||
+        //      string.IsNullOrWhiteSpace(novoUsuario.Nome))
+        //  {
+        //      return BadRequest("Preencha todos os campos");
+        //  }
 
-            if (usuarioExistente != null)
-            {
-                return BadRequest("Email já cadastrado");
-            }
+        // var usuarioExistente = _context.Usuarios
+        //     .FirstOrDefault(u => u.Email == novoUsuario.Email);
 
-            _context.Usuarios.Add(novoUsuario);
+        // if (usuarioExistente != null)
+        // {
+        //     return BadRequest("Email já cadastrado");
+        //   }
 
-            _context.SaveChanges();
+        //   _context.Usuarios.Add(novoUsuario);
 
-            return Ok(new
-            {
-                mensagem = "Usuário cadastrado com sucesso",
-                novoUsuario.Nome,
-                novoUsuario.Email
-            });
-        }
+        //    _context.SaveChanges();
+
+        //    return Ok(new
+        //   {
+        //      mensagem = "Usuário cadastrado com sucesso",
+        //       novoUsuario.Nome,
+        //       novoUsuario.Email
+        //  });
+        //  }
 
         [HttpPost("login")]
         public IActionResult Login(LoginC login)
         {
             var usuario = _context.Usuarios
                 .FirstOrDefault(u =>
-                    u.Email == login.Email &&
-                    u.Senha == login.Senha);
+                u.Email.Trim() == login.Email.Trim() &&
+                u.Senha == login.Senha);
 
             if (usuario == null)
             {

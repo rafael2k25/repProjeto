@@ -12,7 +12,10 @@
     <link rel="stylesheet" href="css/canais.css">
 </head>
 <body>
-    
+
+    <!-- === NOTIFICAÇÃO === -->
+    <div id="notificacao"></div>
+
     <!-- === CABEÇALHO === -->
     <header class="cabecalho-principal">
         <div class="cabecalho-esquerda">
@@ -36,7 +39,9 @@
                         <span class="nome-usuario" id="nomeUsuario">Usuário</span>
                         <span class="cargo-usuario" id="cargoUsuario">Cargo</span>                                                                     
                     </div>
-                    <div class="avatar" id="avatarUsuario">U</div>
+                    <div class="avatar" id="avatarUsuario">
+                        U
+                    </div>
                     <ion-icon name="chevron-down-outline" style="font-size: 12px; color: rgba(255,255,255,0.7)">
                     </ion-icon>
                 </div>
@@ -51,11 +56,10 @@
                 <ion-icon name="newspaper-outline"></ion-icon>
             </a>
             <div class="separador"></div>
-
-            <a href="canais.html" class="icone-lateral ativo" title="Comunicação Interna">
+            <a href="canais.html?id=1" class="icone-lateral ativo" title="Comunicação Interna">
                 <ion-icon name="people-outline"></ion-icon>
-                <div class="notificacao-badge">4</div>
             </a>
+          
 
             <a href="avisos.html" class="icone-lateral" title="Avisos">
                 <ion-icon name="megaphone-outline"></ion-icon>
@@ -70,30 +74,32 @@
                     <input type="text" class="input-busca-chat" placeholder="Buscar conversas...">
                 </div>
                 <div class="lista-canais">
-                    <a href="canais.html" class="item-canal ativo">
-                        <div class="avatar-canal" style="background: var(--header-bg);">G</div>
+                    <a href="canais.html?id=1" class="item-canal" id="canal1">
+                        <div class="avatar-canal">G</div>
                         <div class="info-canal">
                             <span class="nome-canal">Canal Geral</span>
-                            <span class="preview-msg"> </span>
                         </div>
                     </a>
-
-                    <a href="secretaria.html" class="item-canal">
-                        <div class="avatar-canal" style="background: var(--header-bg);">M</div>
-                        <div class="info-canal">
-                            <span class="nome-canal">Manutenção</span>
-                            <span class="preview-msg">Boa tarde, o problema...</span>
-                        </div>
-                        <div class="status-online"></div>
-                    </a>
-
-                    <a href="professores.html" class="item-canal">
-                        <div class="avatar-canal" style="background: var(--header-bg);">PR</div>
+                    
+                    <a href="canais.html?id=2" class="item-canal" id="canal2">
+                        <div class="avatar-canal">PR</div>
                         <div class="info-canal">
                             <span class="nome-canal">Professores</span>
-                            <span class="preview-msg">Bom dia pessoal, o si... </span>
                         </div>
-                        <div class="status-online"></div>
+                    </a>
+                    
+                    <a href="canais.html?id=3" class="item-canal" id="canal3">
+                        <div class="avatar-canal">S</div>
+                        <div class="info-canal">
+                            <span class="nome-canal">Secretária</span>
+                        </div>
+                    </a>
+                    
+                    <a href="canais.html?id=4" class="item-canal" id="canal4">
+                        <div class="avatar-canal">TI</div>
+                        <div class="info-canal">
+                            <span class="nome-canal">T.I</span>
+                        </div>
                     </a>
 
                 </div>
@@ -102,26 +108,30 @@
             <section class="area-chat-principal">
                 <header class="cabecalho-chat">
                     <div class="info-chat-ativo">
-                        <div class="avatar-canal"
-                            style="background: var(--header-bg); width: 32px; height: 32px; font-size: 12px;">G</div>
+                        <div
+                            class="avatar-canal"
+                            id="avatarCanalAtivo"
+                            style="background: var(--header-bg); width: 32px; height: 32px; font-size: 12px;">
+                            G
+                        </div>
+                    
                         <div>
-                            <div class="titulo-chat-ativo">Canal Geral</div>
-                            <div class="subtitulo-chat"><ion-icon name="ellipse"></ion-icon> 30 membros online</div>
+                            <div
+                                class="titulo-chat-ativo"
+                                id="tituloCanalAtivo">
+                                Canal Geral
+                            </div>
+                    
+                            <div class="subtitulo-chat">
+                                <ion-icon name="ellipse"></ion-icon>
+                                Canal de comunicação
+                            </div>
                         </div>
                     </div>
                 </header>
 
                 <div class="container-mensagens" id="containerMensagens">
-                    <div class="mensagem">
-                        <div class="avatar-msg">JM</div>
-                        <div class="conteudo-msg">
-                            <div class="cabecalho-msg">
-                                <span class="nome-usuario-msg">José Moura</span>
-                                <span class="horario-msg">10:00</span>
-                            </div>
-                            <p class="texto-msg">Bom dia a todos! Lembrem-se de enviar o relatório até sexta-feira.</p>
-                        </div>
-                    </div>
+                    
                 </div>
 
                 <div class="area-input">

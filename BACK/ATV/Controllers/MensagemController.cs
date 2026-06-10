@@ -34,12 +34,15 @@ namespace ATV.Controllers
 
             // Permissões por canal
             var permissoes = new Dictionary<int, string[]>
-    {
-        { 1, new[] { "Professor", "Secretaria", "T.I", "Admin" } },  // Geral
-        { 2, new[] { "Professor", "Admin" } },                             
-        { 3, new[] { "Secretaria", "Admin" } },                             
-        { 4, new[] { "T.I", "Admin" } }                                     
-    };
+{
+    { 1, new[] { "Professor", "Secretária", "Administrador", "Diretor", "Coordenadora" } },
+
+    { 2, new[] { "Professor", "Administrador", "Diretor", "Coordenadora" } },
+
+    { 3, new[] { "Secretária", "Administrador", "Diretor", "Coordenadora" } },
+
+    { 4, new[] { "Administrador" } }
+};
 
             if (!permissoes.ContainsKey(mensagem.Fk_Canal_Id_Canal))
             {

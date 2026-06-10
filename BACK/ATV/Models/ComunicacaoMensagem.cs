@@ -15,5 +15,11 @@ namespace ATV.Models
         public int Fk_Usuario_Id_Usuario { get; set; }
 
         public int Fk_Canal_Id_Canal { get; set; }
+
+        [ForeignKey("Fk_Usuario_Id_Usuario")]
+        public Usuario Usuario { get; set; }
+
+        [ForeignKey("Fk_Canal_Id_Canal")]
+        public Canal Canal { get; set; }
     }
 }

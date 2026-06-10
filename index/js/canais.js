@@ -5,7 +5,6 @@
 const API_USUARIO = "http://localhost:5140/Usuario";
 const API_CANAIS = "http://localhost:5140/Canal";
 const API_MENSAGENS = "http://localhost:5140/Mensagem";
-const CANAL_ID = 1; // Canal de Comunicados Gerais
 
 /* ======================= ELEMENTOS ======================= */
 
@@ -20,14 +19,108 @@ const params = new URLSearchParams(window.location.search);
 
 const canalId = params.get("id") || 1;
 
+const canais = {
+    1: "Canal Geral",
+    2: "Professores",
+    3: "Secretária",
+    4: "T.I"
+};
+
 /* ======================= INICIAR ======================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
     carregarUsuarioLogado();
     carregarMensagens();
+    document.getElementById("tituloCanalAtivo").textContent =
+    canais[canalId];
+
+    const avatarCanal = {
+        1: "G",
+        2: "PR",
+        3: "S",
+        4: "TI"
+    };
+    
+    document.getElementById("avatarCanalAtivo").textContent =
+    avatarCanal[canalId];
 
 });
+
+/* ======================= USUÁRIO LOGADO ======================= */
+
+async function carregarUsuarioLogado() {
+
+    try {
+
+        const response = await fetch(`${API_USUARIO}/usuario-logado`, {
+            credentials: "include"
+        });
+
+        // Não logado → volta pro login
+        if (!response.ok) {
+            window.location.href = "index.html";
+            return;
+        }
+
+        const usuario = await response.json();
+
+        // Preenche o DOM com os dados do usuário
+        document.getElementById("nomeUsuario").textContent = usuario.nome;
+        document.getElementById("cargoUsuario").textContent = usuario.cargo;
+        document.getElementById("avatarUsuario").textContent =
+            usuario.nome.charAt(0).toUpperCase();
+
+        // Aplica restrições no menu lateral
+        aplicarRestricoesPorCargo(usuario.cargo);
+
+    } catch (error) {
+        console.error("Erro ao carregar usuário:", error);
+    }
+}
+
+/* ======================= RESTRIÇÕES ======================= */
+
+function aplicarRestricoesPorCargo(cargo) {
+
+    const regras = [
+        {
+            seletor: 'a[href="canais.html?id=2"]',
+            permitidos: [
+                "Professor",
+                "Administrador",
+                "Diretor",
+                "Coordenadora"
+            ]
+        },
+        {
+            seletor: 'a[href="canais.html?id=3"]',
+            permitidos: [
+                "Secretária",
+                "Administrador",
+                "Diretor",
+                "Coordenadora"
+            ]
+        },
+        {
+            seletor: 'a[href="canais.html?id=4"]',
+            permitidos: [
+                "Administrador",
+                "Técnico de TI"
+            ]
+        }
+    ];
+
+    regras.forEach(({ seletor, permitidos }) => {
+        const el = document.querySelector(seletor);
+
+        if (!el) return;
+
+        if (!permitidos.includes(cargo)) {
+            el.style.display = "none";
+        }
+    });
+}
 
 /* ======================= GET ======================= */
 
@@ -35,9 +128,24 @@ async function carregarMensagens() {
 
     try {
 
-        const response = await fetch(`${API_CANAIS}/${canalId}/mensagens`, {
-            credentials: "include"
-        });
+        const response = await fetch(
+            `${API_CANAIS}/${canalId}/mensagens`,
+            {
+                credentials: "include"
+            }
+        );
+
+        if (response.status === 403) {
+
+            showToast(
+                "Você não possui acesso a este canal",
+                "erro"
+            );
+
+            window.location.href = "canais.html?id=1";
+
+            return;
+        }
 
         const mensagens = await response.json();
 
@@ -46,13 +154,20 @@ async function carregarMensagens() {
         mensagens.forEach(msg => {
 
             adicionarMensagemDOM(msg);
+
         });
 
     } catch (error) {
 
-        console.error("Erro ao carregar mensagens:", error);
+        console.error(
+            "Erro ao carregar mensagens:",
+            error
+        );
 
-        showToast("Erro ao carregar mensagens", "erro");
+        showToast(
+            "Erro ao carregar mensagens",
+            "erro"
+        );
     }
 }
 
@@ -115,9 +230,7 @@ function adicionarMensagemDOM(msg) {
     div.innerHTML = `
 
         <div class="avatar-msg">
-
             MSG
-
         </div>
 
         <div class="conteudo-msg">
@@ -125,7 +238,7 @@ function adicionarMensagemDOM(msg) {
             <div class="cabecalho-msg">
 
                 <span class="nome-usuario-msg">
-                    Usuário
+                    ${msg.nome || "Usuário"}
                 </span>
 
                 <span class="horario-msg">
@@ -134,10 +247,12 @@ function adicionarMensagemDOM(msg) {
 
             </div>
 
+            <small>
+                ${msg.cargo || ""}
+            </small>
+
             <p class="texto-msg">
-
                 ${msg.texto}
-
             </p>
 
         </div>
@@ -224,75 +339,5 @@ themeToggle.addEventListener('click', () => {
         isDark ? 'sunny-outline' : 'moon-outline'
     );
 });
-
-/* ======================= USUÁRIO LOGADO ======================= */
-
-async function carregarUsuarioLogado() {
-
-    try {
-
-        const response = await fetch(`${API_USUARIO}/usuario-logado`, {
-            credentials: "include"
-        });
-
-        // Não logado → volta pro login
-        if (!response.ok) {
-            window.location.href = "index.html";
-            return;
-        }
-
-        const usuario = await response.json();
-
-        // Cargos permitidos nesta página
-        const permitidos = ["Secretaria", "Admin"];
-
-        if (!permitidos.includes(usuario.cargo)) {
-            window.location.href = "canais.html";
-            return;
-        }
-
-        // Preenche o DOM com os dados do usuário
-        document.getElementById("nomeUsuario").textContent = usuario.nome;
-        document.getElementById("cargoUsuario").textContent = usuario.cargo;
-        document.getElementById("avatarUsuario").textContent =
-            usuario.nome.charAt(0).toUpperCase();
-
-        // Aplica restrições no menu lateral
-        aplicarRestricoesPorCargo(usuario.cargo);
-
-    } catch (error) {
-        console.error("Erro ao carregar usuário:", error);
-    }
-}
-
-/* ======================= RESTRIÇÕES ======================= */
-
-function aplicarRestricoesPorCargo(cargo) {
-
-    const regras = [
-        {
-            seletor: 'a[href="secretaria.html"]',
-            permitidos: ["Secretaria", "Admin"]
-        },
-        {
-            seletor: 'a[href="professores.html"]',
-            permitidos: ["Professor", "Admin"]
-        },
-        {
-            seletor: 'a[href="T.I.html"]',
-            permitidos: ["T.I", "Admin"]
-        }
-        
-    ];
-
-    regras.forEach(({ seletor, permitidos }) => {
-        const el = document.querySelector(seletor);
-        if (!el) return;
-
-        if (!permitidos.includes(cargo)) {
-            el.style.display = "none";
-        }
-    });
-}
 
 /* ======================= FIM JS CANAIS [CANAIS.HTML] ======================= */
