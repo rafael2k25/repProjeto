@@ -227,8 +227,8 @@ function adicionarMensagemDOM(msg) {
 
     div.className = 'mensagem minha';
 
-    const nome = msg.nome || usuarioLogado?.nome || "Usuário";
-    const cargo = msg.cargo || usuarioLogado?.cargo || "";
+    const nome = msg.nome || "Usuário";
+    const cargo = msg.cargo || "";
 
     div.innerHTML = `
 
@@ -241,11 +241,11 @@ function adicionarMensagemDOM(msg) {
             <div class="cabecalho-msg">
 
                 <span class="nome-usuario-msg">
-                ${cargo}
+                    ${cargo}
                 </span>
 
-                <span class="nome-usuario-msg">
-                    ${nome}  -
+                <span class="nome-cargo-msg">
+                    ${nome}
                 </span>
 
                 <span class="horario-msg">
@@ -253,8 +253,6 @@ function adicionarMensagemDOM(msg) {
                 </span>
 
             </div>
-
-           
 
             <p class="texto-msg">
                 ${msg.texto}
@@ -267,7 +265,6 @@ function adicionarMensagemDOM(msg) {
 
     containerMensagens.scrollTop =
         containerMensagens.scrollHeight;
-
 }
 
 /* ======================= FORMATAR DATA ======================= */
@@ -346,37 +343,6 @@ themeToggle.addEventListener('click', () => {
     );
 });
 
-/* ======================= TESTE USUÁRIO ======================= */
 
-let usuarioLogado = null;
-
-async function carregarUsuarioLogado() {
-
-    try {
-
-        const response = await fetch(`${API_USUARIO}/usuario-logado`, {
-            credentials: "include"
-        });
-
-        if (!response.ok) {
-            window.location.href = "index.html";
-            return;
-        }
-
-        const usuario = await response.json();
-
-        usuarioLogado = usuario; // <-- guarda pra usar depois
-
-        document.getElementById("nomeUsuario").textContent = usuario.nome;
-        document.getElementById("cargoUsuario").textContent = usuario.cargo;
-        document.getElementById("avatarUsuario").textContent =
-            usuario.nome.charAt(0).toUpperCase();
-
-        aplicarRestricoesPorCargo(usuario.cargo);
-
-    } catch (error) {
-        console.error("Erro ao carregar usuário:", error);
-    }
-}
 
 /* ======================= FIM JS CANAIS [CANAIS.HTML] ======================= */

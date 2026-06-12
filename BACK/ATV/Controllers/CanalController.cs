@@ -83,6 +83,7 @@ namespace ATV.Controllers
         [HttpGet("{id}/mensagens")]
         public IActionResult ListarMensagensCanal(int id)
         {
+            return Ok("MARCADOR_TESTE_12345");
             // 1. Verifica sessão
             var userId = HttpContext.Session.GetString("IdLogado");
             if (userId == null)
@@ -114,19 +115,22 @@ namespace ATV.Controllers
                 return StatusCode(403, "Acesso negado para seu cargo");
 
 
-           
+
+
 
             // 5. Retorna as mensagens
             var mensagens = _context.Comunicacao_Mensagens
-                 .Include(m => m.Usuario)
-                 .Where(m => m.Fk_Canal_Id_Canal == id)
-                 .Select(m => new
+     .Include(m => m.Usuario)
+     .Where(m => m.Fk_Canal_Id_Canal == id)
+     .Select(m => new
      {
-        Mensagem = m.Texto, m.Id_Hora,
-        Usuario = m.Usuario.Nome, m.Usuario.Cargo
-        
+         texto = m.Texto,
+         id_Hora = m.Id_Hora,
+         nome = m.Usuario.Nome,
+         cargo = m.Usuario.Cargo
      })
      .ToList();
+
             return Ok(mensagens);
         }
     }
