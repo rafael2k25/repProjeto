@@ -22,7 +22,7 @@ const canalId = params.get("id") || 1;
 const canais = {
     1: "Canal Geral",
     2: "Professores",
-    3: "Secretária",
+    3: "Secretaria",
     4: "T.I"
 };
 
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     carregarUsuarioLogado();
     carregarMensagens();
     document.getElementById("tituloCanalAtivo").textContent =
-    canais[canalId];
+        canais[canalId];
 
     const avatarCanal = {
         1: "G",
@@ -41,9 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
         3: "S",
         4: "TI"
     };
-    
+
     document.getElementById("avatarCanalAtivo").textContent =
-    avatarCanal[canalId];
+        avatarCanal[canalId];
 
 });
 
@@ -96,7 +96,7 @@ function aplicarRestricoesPorCargo(cargo) {
         {
             seletor: 'a[href="canais.html?id=3"]',
             permitidos: [
-                "Secretária",
+                "Secretaria",
                 "Administrador",
                 "Diretor",
                 "Coordenadora"
@@ -150,7 +150,7 @@ async function carregarMensagens() {
         const mensagens = await response.json();
 
         containerMensagens.innerHTML = "";
-
+            console.log(mensagens);
         mensagens.forEach(msg => {
 
             adicionarMensagemDOM(msg);
@@ -227,18 +227,25 @@ function adicionarMensagemDOM(msg) {
 
     div.className = 'mensagem minha';
 
+    const nome = msg.nome || usuarioLogado?.nome || "Usuário";
+    const cargo = msg.cargo || usuarioLogado?.cargo || "";
+
     div.innerHTML = `
 
-        <div class="avatar-msg">
-            MSG
-        </div>
+    <div class="avatar-msg">
+        ${nome.charAt(0).toUpperCase()}
+    </div>
 
         <div class="conteudo-msg">
 
             <div class="cabecalho-msg">
 
                 <span class="nome-usuario-msg">
-                    ${msg.nome || "Usuário"}
+                ${cargo}
+                </span>
+
+                <span class="nome-usuario-msg">
+                    ${nome}  -
                 </span>
 
                 <span class="horario-msg">
@@ -247,21 +254,20 @@ function adicionarMensagemDOM(msg) {
 
             </div>
 
-            <small>
-                ${msg.cargo || ""}
-            </small>
+           
 
             <p class="texto-msg">
                 ${msg.texto}
             </p>
 
         </div>
-    `;
+            `;
 
     containerMensagens.appendChild(div);
 
     containerMensagens.scrollTop =
         containerMensagens.scrollHeight;
+
 }
 
 /* ======================= FORMATAR DATA ======================= */
@@ -339,5 +345,38 @@ themeToggle.addEventListener('click', () => {
         isDark ? 'sunny-outline' : 'moon-outline'
     );
 });
+
+/* ======================= TESTE USUÁRIO ======================= */
+
+let usuarioLogado = null;
+
+async function carregarUsuarioLogado() {
+
+    try {
+
+        const response = await fetch(`${API_USUARIO}/usuario-logado`, {
+            credentials: "include"
+        });
+
+        if (!response.ok) {
+            window.location.href = "index.html";
+            return;
+        }
+
+        const usuario = await response.json();
+
+        usuarioLogado = usuario; // <-- guarda pra usar depois
+
+        document.getElementById("nomeUsuario").textContent = usuario.nome;
+        document.getElementById("cargoUsuario").textContent = usuario.cargo;
+        document.getElementById("avatarUsuario").textContent =
+            usuario.nome.charAt(0).toUpperCase();
+
+        aplicarRestricoesPorCargo(usuario.cargo);
+
+    } catch (error) {
+        console.error("Erro ao carregar usuário:", error);
+    }
+}
 
 /* ======================= FIM JS CANAIS [CANAIS.HTML] ======================= */

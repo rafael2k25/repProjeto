@@ -2,6 +2,7 @@
 using ATV.Models;
 using ATV.Filters;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ATV.Controllers
 {
@@ -112,15 +113,18 @@ namespace ATV.Controllers
             if (!permissoes[id].Contains(usuario.Cargo))
                 return StatusCode(403, "Acesso negado para seu cargo");
 
+
+           
+
             // 5. Retorna as mensagens
             var mensagens = _context.Comunicacao_Mensagens
-     .Where(m => m.Fk_Canal_Id_Canal == id)
-     .Select(m => new
+                 .Include(m => m.Usuario)
+                 .Where(m => m.Fk_Canal_Id_Canal == id)
+                 .Select(m => new
      {
-         m.Texto,
-         m.Id_Hora,
-         Nome = m.Usuario.Nome,
-         Cargo = m.Usuario.Cargo
+        Mensagem = m.Texto, m.Id_Hora,
+        Usuario = m.Usuario.Nome, m.Usuario.Cargo
+        
      })
      .ToList();
             return Ok(mensagens);

@@ -36,7 +36,7 @@
     --tag-bg: #e3f2fd;
     --tag-text: #1565c0;
 
-    --shadow-card: rgba(0, 0, 0, 0.05);
+    --shadow-card: rgba(15, 23, 42, 0.08);
 }
 
 body.dark-mode {
@@ -78,6 +78,7 @@ body {
     flex-direction: column;
     overflow: hidden;
     transition: background-color 0.3s, color 0.3s;
+    
 }
 
 /* HEADER PRINCIPAL */
@@ -222,12 +223,14 @@ body {
     cursor: pointer;
     transition: 0.2s;
     position: relative;
+    transition: all .25s ease;
 }
 
 .server-icon:hover {
     border-radius: 12px;
     background-color: var(--icon-hover-bg);
     color: var(--icon-hover-text);
+    transform: scale(1.08);
 }
 
 .server-icon.active {
@@ -288,11 +291,17 @@ body {
 }
 
 .page-title {
-    color: var(--texto-destaque);
-    font-size: 24px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    position: relative;
+}
+
+.page-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    margin-top: 8px;
+    border-radius: 999px;
+    background: var(--texto-destaque);
 }
 
 .current-date {
@@ -362,7 +371,7 @@ body {
 .avisos-destaque {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 24px;
 }
 
 .aviso {
@@ -372,15 +381,21 @@ body {
 
     border-radius: 12px;
 
-    border-left: 5px solid var(--texto-destaque);
+    border-left: 6px solid var(--texto-destaque);
 
     box-shadow: 0 3px 10px var(--shadow-card);
 
     transition: 0.2s;
 }
 
+.aviso {
+    transition: transform .25s ease,
+                box-shadow .25s ease;
+}
+
 .aviso:hover {
-    transform: translateY(-2px);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px var(--shadow-card);
 }
 
 .aviso h3 {
@@ -451,6 +466,23 @@ body {
     .aviso-importante h3 {
         font-size: 20px;
     }
+}
+
+.content-scroll-area::-webkit-scrollbar {
+    width: 8px;
+}
+
+.content-scroll-area::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.content-scroll-area::-webkit-scrollbar-thumb {
+    background: #c3cad7;
+    border-radius: 10px;
+}
+
+.content-scroll-area::-webkit-scrollbar-thumb:hover {
+    background: #9ca8bf;
 }
 
 /* ======================= FIM CSS DA PÁGINA DE INÍCIO [INICIO.HTML] ======================= */
