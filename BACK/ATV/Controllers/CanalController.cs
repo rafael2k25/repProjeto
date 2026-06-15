@@ -83,7 +83,7 @@ namespace ATV.Controllers
         [HttpGet("{id}/mensagens")]
         public IActionResult ListarMensagensCanal(int id)
         {
-            return Ok("MARCADOR_TESTE_12345");
+            
             // 1. Verifica sessão
             var userId = HttpContext.Session.GetString("IdLogado");
             if (userId == null)

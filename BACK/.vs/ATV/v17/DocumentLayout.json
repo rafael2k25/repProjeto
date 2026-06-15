@@ -42,21 +42,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ComunicacaoMensagem.cs",
-              "DocumentMoniker": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Models\\ComunicacaoMensagem.cs",
-              "RelativeDocumentMoniker": "ATV\\Models\\ComunicacaoMensagem.cs",
-              "ToolTip": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Models\\ComunicacaoMensagem.cs",
-              "RelativeToolTip": "ATV\\Models\\ComunicacaoMensagem.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-12T19:19:42.996Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
@@ -67,8 +54,7 @@
               "RelativeToolTip": "ATV\\Models\\Canal.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-12T19:19:25.926Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-12T19:19:25.926Z"
             },
             {
               "$type": "Document",
@@ -80,8 +66,7 @@
               "RelativeToolTip": "ATV\\Models\\Aviso.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-12T19:19:24.874Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-12T19:19:24.874Z"
             },
             {
               "$type": "Document",
@@ -93,8 +78,32 @@
               "RelativeToolTip": "ATV\\Filters\\CargoAuthorizeAttribute.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAuwC0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-12T19:19:10.668Z",
+              "WhenOpened": "2026-06-12T19:19:10.668Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CanalController.cs",
+              "DocumentMoniker": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Controllers\\CanalController.cs",
+              "RelativeDocumentMoniker": "ATV\\Controllers\\CanalController.cs",
+              "ToolTip": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Controllers\\CanalController.cs",
+              "RelativeToolTip": "ATV\\Controllers\\CanalController.cs",
+              "ViewState": "AQIAAEgAAAAAAAAAAAAmwFUAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-12T18:25:26.173Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ComunicacaoMensagem.cs",
+              "DocumentMoniker": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Models\\ComunicacaoMensagem.cs",
+              "RelativeDocumentMoniker": "ATV\\Models\\ComunicacaoMensagem.cs",
+              "ToolTip": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Models\\ComunicacaoMensagem.cs",
+              "RelativeToolTip": "ATV\\Models\\ComunicacaoMensagem.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-12T19:19:42.996Z"
             },
             {
               "$type": "Document",
@@ -106,8 +115,7 @@
               "RelativeToolTip": "ATV\\Controllers\\MensagemController.cs",
               "ViewState": "AQIAABkAAAAAAAAAAAAkwEIAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-12T19:18:09.465Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-12T19:18:09.465Z"
             },
             {
               "$type": "Document",
@@ -119,21 +127,7 @@
               "RelativeToolTip": "ATV\\Controllers\\UsuarioController.cs",
               "ViewState": "AQIAAFEAAAAAAAAAAAAYwHkAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-12T18:26:41.914Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CanalController.cs",
-              "DocumentMoniker": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Controllers\\CanalController.cs",
-              "RelativeDocumentMoniker": "ATV\\Controllers\\CanalController.cs",
-              "ToolTip": "C:\\Users\\tarde.cetafaju\\Documents\\GitHub\\repProjeto\\BACK\\ATV\\Controllers\\CanalController.cs",
-              "RelativeToolTip": "ATV\\Controllers\\CanalController.cs",
-              "ViewState": "AQIAAEgAAAAAAAAAAAAmwFkAAAAyAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-12T18:25:26.173Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-12T18:26:41.914Z"
             },
             {
               "$type": "Document",
@@ -145,8 +139,7 @@
               "RelativeToolTip": "ATV\\Controllers\\AvisoController.cs",
               "ViewState": "AQIAAC8AAAAAAAAAAAAAwFYAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-12T18:22:38.198Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-12T18:22:38.198Z"
             }
           ]
         }

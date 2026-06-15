@@ -6,6 +6,11 @@ const API_USUARIO = "http://localhost:5140/Usuario";
 const API_CANAIS = "http://localhost:5140/Canal";
 const API_MENSAGENS = "http://localhost:5140/Mensagem";
 
+let usuarioLogado = {
+    nome: "Usuário",
+    cargo: ""
+};
+
 /* ======================= ELEMENTOS ======================= */
 
 const inputMensagem = document.getElementById('inputMensagem');
@@ -28,10 +33,11 @@ const canais = {
 
 /* ======================= INICIAR ======================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
 
-    carregarUsuarioLogado();
-    carregarMensagens();
+    await carregarUsuarioLogado();
+    await carregarMensagens();
+
     document.getElementById("tituloCanalAtivo").textContent =
         canais[canalId];
 
@@ -64,6 +70,9 @@ async function carregarUsuarioLogado() {
         }
 
         const usuario = await response.json();
+
+        usuarioLogado.nome = usuario.nome;
+        usuarioLogado.cargo = usuario.cargo;
 
         // Preenche o DOM com os dados do usuário
         document.getElementById("nomeUsuario").textContent = usuario.nome;
@@ -150,7 +159,7 @@ async function carregarMensagens() {
         const mensagens = await response.json();
 
         containerMensagens.innerHTML = "";
-            console.log(mensagens);
+        console.log(mensagens);
         mensagens.forEach(msg => {
 
             adicionarMensagemDOM(msg);
@@ -227,8 +236,8 @@ function adicionarMensagemDOM(msg) {
 
     div.className = 'mensagem minha';
 
-    const nome = msg.nome || "Usuário";
-    const cargo = msg.cargo || "";
+    const nome = msg.nome || usuarioLogado.nome;
+    const cargo = msg.cargo || usuarioLogado.cargo;
 
     div.innerHTML = `
 
