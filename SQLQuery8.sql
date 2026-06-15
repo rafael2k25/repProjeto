@@ -1,6 +1,0 @@
-USE BancoIFTT;
-GO
-
-ALTER TABLE Aviso
-DROP COLUMN imagem;
-GO
